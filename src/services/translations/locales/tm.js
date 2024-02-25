@@ -1,0 +1,19 @@
+import system from './system/tm.json'
+import auth from '@/views/pages/admin/auth/locales/tm.json';
+import dashboard from '@/views/pages/admin/dashboard/locales/tm.json';
+import company from '@/views/pages/admin/company/locales/tm.json'
+import university from '@/views/pages/admin/university/locales/tm.json'
+import faculty from '@/views/pages/admin/faculty/locales/tm.json'
+import department from '@/views/pages/admin/department/locales/tm.json'
+import application from '@/views/pages/admin/application/locales/tm.json'
+
+export default {
+  system,
+  auth,
+  dashboard,
+  company,
+  university,
+  faculty,
+  department,
+  application,
+}

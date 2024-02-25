@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "Tyrone Roberts",
+        "image": "user2.jpg",
+        "email": "tyroneroberts@adobe.com",
+        "created_date": "08 April 2020",
+        "tags": "pending"
+    },
+    {
+        "id": 2,
+        "name": "Julie Pennington",
+        "image": "user1.jpg",
+        "email": "julie@adobe.com",
+        "created_date": "08 April 2020",
+        "tags": "pending"
+    },
+    {
+        "id": 3,
+        "name": "Allen Davis",
+        "image": "user3.jpg",
+        "email": "allendavis@adobe.com",
+        "created_date": "08 April 2020",
+        "tags": "pending"
+    },
+    {
+        "id": 4,
+        "name": "Patricia Manzi",
+        "image": "user4.jpg",
+        "email": "patriciamanzi@adobe.com",
+        "created_date": "08 April 2020",
+        "tags": "accepted"
+    },
+    {
+        "id": 5,
+        "name": "Olive Lawrence",
+        "image": "user5.jpg",
+        "email": "olivelawrence@adobe.com",
+        "created_date": "08 April 2020",
+        "tags": "accepted"
+    },
+    {
+        "id": 6,
+        "name": "Frances Foster",
+        "image": "user6.jpg",
+        "email": "frances@adobe.com",
+        "created_date": "08 April 2020",
+        "tags": "accepted"
+    },
+    {
+        "id": 7,
+        "name": "Deloris Briscoe",
+        "image": "user7.jpg",
+        "email": "delorisbriscoe@adobe.com",
+        "created_date": "08 April 2020",
+        "tags": "rejected"
+    }
+]

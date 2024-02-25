@@ -1,0 +1,70 @@
+{
+  "name": "mentoring-vuejs",
+  "version": "0.1.0",
+  "description": "mentoring-vuejs project",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@bhplugin/vue3-datatable": "^1.1.3",
+    "axios": "^1.6.5",
+    "bootstrap": "5.2.3",
+    "datatables.net-bs4": "^3.2.2",
+    "datatables.net-dt": "^1.1.0",
+    "device-uuid": "^1.0.4",
+    "feather-icons": "^4.28.0",
+    "file-loader": "^6.2.0",
+    "jquery": "^3.7.1",
+    "moment": "^2.29.1",
+    "popper.js": "^1.16.1",
+    "raphael": "^2.3.0",
+    "sass-loader": "^11.0.1",
+    "vue": "^3.3.8",
+    "vue-custom-scrollbar": "^1.4.1",
+    "vue-i18n": "^9.9.1",
+    "vue-morris": "^1.1.0",
+    "vue-router": "^4.2.5",
+    "vue-slick": "^1.1.16",
+    "vue-tiny-slider": "^0.1.39",
+    "vue3-autocounter": "^1.0.6",
+    "vue3-carousel": "^0.3.1",
+    "vue3-datepicker": "^0.2.5",
+    "vue3-perfect-scrollbar": "^1.6.1",
+    "vue3-select2-component": "^0.1.7",
+    "vue3-toastify": "^0.2.1",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/compiler-sfc": "^3.1.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}

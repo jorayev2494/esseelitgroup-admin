@@ -1,0 +1,27 @@
+[
+    {
+        "id": "1",
+        "image": "trust-icon-01.svg",
+        "name": "Angular Js"
+    },
+    {
+        "id": "2",
+        "image": "trust-icon-02.svg",
+        "name": "App Store"
+    },
+    {
+        "id": "3",
+        "image": "trust-icon-03.svg",
+        "name": "Podcast"
+    },
+    {
+        "id": "4",
+        "image": "trust-icon-04.svg",
+        "name": "Promit"
+    },
+    {
+        "id": "5",
+        "image": "trust-icon-05.svg",
+        "name": "Dribble"
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "id": "1",
+        "image": "news-blog-01.jpg",
+        "position": "Marketing",
+        "title": "How to Make a Perfect CV That Attracts the Attention",
+        "text": "Lorem ipsum dolor sit amet, et alii clita tritani per. Vix ut vidisse pertinacia, ius ut maiorum omittam....",
+        "avatar": "profile-01.jpg",
+        "name": "Harvey",
+        "date": "06 Jan 2023",
+        "time": "20 Min to read"
+    },
+    {
+        "id": "2",
+        "image": "news-blog-02.jpg",
+        "position": "Marketing",
+        "title": "Interview Question: Why Dont You Have a Degree?",
+        "text": "Lorem ipsum dolor sit amet, et alii clita tritani per. Vix ut vidisse pertinacia, ius ut maiorum omittam....",
+        "avatar": "profile-02.jpg",
+        "name": "Steve",
+        "date": "06 Jan 2023",
+        "time": "20 Min to read"
+    },
+    {
+        "id": "3",
+        "image": "news-blog-03.jpg",
+        "position": "Marketing",
+        "title": "39 Strengths and Weaknesses To Discuss in a Courses",
+        "text": "Lorem ipsum dolor sit amet, et alii clita tritani per. Vix ut vidisse pertinacia, ius ut maiorum omittam....",
+        "avatar": "profile-03.jpg",
+        "name": "Casandra",
+        "date": "06 Jan 2023",
+        "time": "20 Min to read"
+    },
+    {
+        "id": "4",
+        "image": "news-blog-01.jpg",
+        "position": "Marketing",
+        "title": "How to Make a Perfect CV That Attracts the Attention",
+        "text": "Lorem ipsum dolor sit amet, et alii clita tritani per. Vix ut vidisse pertinacia, ius ut maiorum omittam....",
+        "avatar": "profile-01.jpg",
+        "name": "Harvey",
+        "date": "06 Jan 2023",
+        "time": "20 Min to read"
+    }
+]

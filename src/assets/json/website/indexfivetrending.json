@@ -1,0 +1,54 @@
+[
+    {
+        "id": "1",
+        "image": "trending-course-08.jpg",
+        "content": "Marketing",
+        "ratings": "5.0",
+        "count": "(2566)",
+        "title": "Learn CorelDraw – Interactive Tutorial",
+        "student": "800 Students",
+        "lesson": "60 Lessons",
+        "avatar": "profile-01.jpg",
+        "name": "Brittany Garcia",
+        "price": "$36.00"
+    },
+    {
+        "id": "2",
+        "image": "trending-course-06.jpg",
+        "content": "Marketing",
+        "ratings": "5.0",
+        "count": "(2566)",
+        "title": "Computer Science – Interactive Tutorial",
+        "student": "600 Students",
+        "lesson": "50 Lessons",
+        "avatar": "profile-02.jpg",
+        "name": "James",
+        "price": "$23.10"
+    },
+    {
+        "id": "3",
+        "image": "trending-course-07.jpg",
+        "content": "Marketing",
+        "ratings": "4.8",
+        "count": "(2400)",
+        "title": "Maths & logics – Interactive Tutorial",
+        "student": "700 Students",
+        "lesson": "65 Lessons",
+        "avatar": "profile-03.jpg",
+        "name": "Remora Jaine",
+        "price": "$6.99"
+    },
+    {
+        "id": "4",
+        "image": "trending-course-05.jpg",
+        "content": "Marketing",
+        "ratings": "4.5",
+        "count": "(2560)",
+        "title": "Learn Python – Interactive Free Tutorials",
+        "student": "800 Students",
+        "lesson": "60 Lessons",
+        "avatar": "profile-01.jpg",
+        "name": "Remora Jaine",
+        "price": "$35.99"
+    }
+]

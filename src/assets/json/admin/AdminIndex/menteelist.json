@@ -1,0 +1,42 @@
+[
+    {   
+        "id": 1,
+        "name": "Jonathan Doe",
+        "image": "avatar-01.jpg",
+        "phone": "8286329170",
+        "lastvisit": "20 Oct 2019",
+        "paid": "$100.00"
+    },
+    {
+        "id": 2,
+        "name": "Julie Pennington",
+        "image": "avatar-02.jpg",
+        "phone": "2077299974",
+        "lastvisit": "22 Oct 2019",
+        "paid": "$200.00"
+    },
+    {
+        "id": 3,
+        "name": "Tyrone Roberts",
+        "image": "avatar-03.jpg",
+        "phone": "2607247769",
+        "lastvisit": "21 Oct 2019",
+        "paid": "$250.00"
+    },
+    {
+        "id": 4,
+        "name": "Allen Davis",
+        "image": "avatar-01.jpg",
+        "phone": "5043686874",
+        "lastvisit": "21 Sep 2019",
+        "paid": "$150.00"
+    },
+    {
+        "id": 5,
+        "name": "Patricia Manzi",
+        "image": "avatar-04.jpg",
+        "phone": "9548207887",
+        "lastvisit": "18 Sep 2019",
+        "paid": "$350.00"
+    }
+]

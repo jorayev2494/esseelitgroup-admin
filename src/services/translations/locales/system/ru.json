@@ -1,0 +1,12 @@
+{
+    "supported-locales": {
+        "en": "English",
+        "ru": "Русский",
+        "tm": "Türkmençe"
+    },
+    "create": "Создать",
+    "edit": "Редактировать",
+    "show": "Показывать",
+    "delete": "Delete",
+    "send": "Удалить"
+}

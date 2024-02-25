@@ -1,0 +1,42 @@
+[
+    {
+        "id": "1",
+        "image": "user16.png",
+        "name": "David Le",
+        "job": "Web Developer",
+        "rating": "5.0 (2566)",
+        "students": "800 Students"
+    },
+    {
+        "id": "2",
+        "image": "user17.png",
+        "name": "Charlott",
+        "job": "Designer",
+        "rating": "4.8 (2550)",
+        "students": "700 Students"
+    },
+    {
+        "id": "3",
+        "image": "user18.png",
+        "name": "Ethan William",
+        "job": "Marketing",
+        "rating": "4.5 (2500)",
+        "students": "850 Students"
+    },
+    {
+        "id": "4",
+        "image": "user19.png",
+        "name": "John Hudson",
+        "job": "Web Developer",
+        "rating": "5.0 (2666)",
+        "students": "600 Students"
+    },
+    {
+        "id": "5",
+        "image": "user18.png",
+        "name": "Designer",
+        "job": "Web Developer",
+        "rating": "5.0 (2566)",
+        "students": "800 Students"
+    }
+]

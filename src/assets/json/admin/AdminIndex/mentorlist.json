@@ -1,0 +1,37 @@
+[
+    {   
+        "id": 1,
+        "name": "James Amen",
+        "image": "avatar-17.jpg",
+        "course": "Maths",
+        "earned": "$3200.00"
+    },
+    {
+        "id": 2,
+        "name": "Jessica Fogarty",
+        "image": "avatar-01.jpg",
+        "course": "Business Maths",
+        "earned": "$3100.00"
+    },
+    {
+        "id": 3,
+        "name": "Jose Anderson",
+        "image": "avatar-02.jpg",
+        "course": "Algebra",
+        "earned": "$4000.00"
+    },
+    {
+        "id": 4,
+        "name": "Sofia Brient",
+        "image": "avatar-03.jpg",
+        "course": "Integrated Sum",
+        "earned": "$3200.00"
+    },
+    {
+        "id": 5,
+        "name": "Marvin Campbell",
+        "image": "avatar-04.jpg",
+        "course": "Flow chart",
+        "earned": "$3500.00"
+    }
+]

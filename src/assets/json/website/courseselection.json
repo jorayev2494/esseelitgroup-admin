@@ -1,0 +1,46 @@
+[
+    {
+        "id": "1",
+        "avatar": "trending-course-04.jpg",
+        "rating": "5.0 (2566)",
+        "students": "800 Students",
+        "title": "Learn Python – Interactive Free Tutorials",
+        "text": "Do you want to move on next step? Choose your most popular",
+        "image": "profile-01.jpg",
+        "name": "Brittany Garcia",
+        "price": "$600"
+    },
+    {
+        "id": "2",
+        "avatar": "trending-course-01.jpg",
+        "rating": "4.4 (2500)",
+        "students": "700 Students",
+        "text": "Do you want to move on next step? Choose your most popular",
+        "title": "Maths & logics – Interactive Free Tutorials",
+        "image": "profile-02.jpg",
+        "name": "Allen Davis",
+        "price": "$750"
+    },
+    {
+        "id": "3",
+        "avatar": "trending-course-03.jpg",
+        "rating": " 4.8 (2550)",
+        "students": "850 Students",
+        "title": "Research – Interactive Free Tutorials",
+        "text": "Do you want to move on next step? Choose your most popular",
+        "image": "profile-03.jpg",
+        "name": "Tyrone Roberts",
+        "price": "$450"
+    },
+    {
+        "id": "4",
+        "avatar": "trending-course-01.jpg",
+        "rating": " 4.6 (2466)",
+        "students": "750 Students",
+        "title": "Learn Python – Interactive Free Tutorials",
+        "text": "Do you want to move on next step? Choose your most popular",
+        "image": "profile-01.jpg",
+        "name": "Brittany Garcia",
+        "price": "$600"
+    }
+]

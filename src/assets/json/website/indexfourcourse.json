@@ -1,0 +1,54 @@
+[
+    {
+        "id": "1",
+        "image": "trending-course-01.jpg",
+        "price": "$600",
+        "position": "marketing",
+        "title": "Learn Python – Interactive Free Tutorials",
+        "text": "Do you want to move on next step? Choose your most popular",
+        "students": "800",
+        "ratings": "5.0",
+        "lesson": "20",
+        "avatar": "user10.jpg",
+        "name": "James Collins"
+    },
+    {
+        "id": "2",
+        "image": "trending-course-02.jpg",
+        "price": "$500",
+        "position": "Digital Marketer",
+        "title": "Learn Python – Interactive Free Tutorials",
+        "text": "Do you want to move on next step? Choose your most popular",
+        "students": "700",
+        "ratings": "4.5",
+        "lesson": "25",
+        "avatar": "user11.jpg",
+        "name": "Allen Davis"
+    },
+    {
+        "id": "3",
+        "image": "trending-course-03.jpg",
+        "price": "$400",
+        "position": "IT Security",
+        "title": "Learn Python – Interactive Free Tutorials",
+        "text": "Do you want to move on next step? Choose your most popular",
+        "students": "850",
+        "ratings": "4.7",
+        "lesson": "15",
+        "avatar": "user12.jpg",
+        "name": "Tyrone Roberts"
+    },
+    {
+        "id": "4",
+        "image": "trending-course-04.jpg",
+        "price": "$600",
+        "position": "IT Security",
+        "title": "Learn Python – Interactive Free Tutorials",
+        "text": "Do you want to move on next step? Choose your most popular",
+        "students": "600",
+        "ratings": "4.6",
+        "lesson": "18",
+        "avatar": "user12.jpg",
+        "name": "Tyrone Roberts"
+    }
+]

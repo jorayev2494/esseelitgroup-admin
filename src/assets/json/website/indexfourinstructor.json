@@ -1,0 +1,42 @@
+[
+    {
+        "id":"1",
+        "image":"exclusive-mentor-01.jpg",
+        "name":"Steve kennedy",
+        "rating":"5.0",
+        "location":"Norway",
+        "courses":"17 Courses"
+    },
+    {
+        "id":"2",
+        "image":"exclusive-mentor-02.jpg",
+        "name":"William Harvey",
+        "rating":"4.5",
+        "location":"U.S.A",
+        "courses":"16 Courses"
+    },
+    {
+        "id":"3",
+        "image":"exclusive-mentor-03.jpg",
+        "name":"Leonardo",
+        "rating":"4.8",
+        "location":"canada",
+        "courses":"20 Courses"
+    },
+    {
+        "id":"4",
+        "image":"exclusive-mentor-04.jpg",
+        "name":"George Franklin",
+        "rating":"4.9",
+        "location":"Norway",
+        "courses":"22 Courses"
+    },
+    {
+        "id":"5",
+        "image":"exclusive-mentor-01.jpg",
+        "name":"William Harvey",
+        "rating":"5.0",
+        "location":"U.S.A",
+        "courses":"23 Courses"
+    }
+]

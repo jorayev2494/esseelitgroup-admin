@@ -1,0 +1,42 @@
+# FROM node:21.5
+
+# RUN apt-get update \
+#     && npm install -g npm@10.2
+
+# # EXPOSE 8080
+
+# WORKDIR /var/project
+
+# CMD ["npm", "run", "serve"]
+
+# build stage
+FROM node:21.5 as build-stage
+# Image meta information, Maintainer project maintainer
+# LABEL maintainer="vuefans@gmail.com"
+
+# Copy all files from git repository to working directory
+COPY ./ /var/project
+
+# Working directory
+WORKDIR /var/project
+
+# installation CNPM
+# RUN npm install cnpm -g --no-progress --registry=https://registry.npm.taobao.org
+
+# Install project dependencies and package
+RUN ls -la && npm install --no-progress && npm run build
+
+# production stage
+# Production environment base Nginx image (the image above has been packaged as a static file)
+FROM nginx:stable-alpine as production-stage
+
+RUN ls -la
+
+# Use --from to copy the static files generated above to the nginx run directory
+COPY --from=build-stage /var/project/dist /usr/share/nginx/html
+
+# nginx exposed ports inside the container
+EXPOSE 80
+
+# Run the command
+CMD ["nginx", "-g", "daemon off;"]

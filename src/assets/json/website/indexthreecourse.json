@@ -1,0 +1,72 @@
+[
+    {
+        "id": "1",
+        "image": "trend-img-01.jpg",
+        "rating": "5.0",
+        "location": "Russia",
+        "lesson": "60 Lessons",
+        "title": "Learn CorelDraw – Interactive Tutorial",
+        "price": "$200",
+        "avatar": "user2.jpg"
+    },
+    {
+        "id": "2",
+        "image": "trend-img-02.jpg",
+        "rating": "5.0",
+        "location": "Russia",
+        "lesson": "60 Lessons",
+        "title": "Learn CorelDraw – Interactive Tutorial",
+        "price": "$200",
+        "avatar": "user3.jpg"
+    },
+    {
+        "id": "3",
+        "image": "trend-img-03.jpg",
+        "rating": "5.0",
+        "location": "Russia",
+        "lesson": "60 Lessons",
+        "title": "Learn CorelDraw – Interactive Tutorial",
+        "price": "$200",
+        "avatar": "user4.jpg"
+    },
+    {
+        "id": "4",
+        "image": "trend-img-04.jpg",
+        "rating": "5.0",
+        "location": "Russia",
+        "lesson": "60 Lessons",
+        "title": "Learn CorelDraw – Interactive Tutorial",
+        "price": "$200",
+        "avatar": "user5.jpg"
+    },
+    {
+        "id": "5",
+        "image": "trend-img-05.jpg",
+        "rating": "5.0",
+        "location": "Russia",
+        "lesson": "60 Lessons",
+        "title": "Learn CorelDraw – Interactive Tutorial",
+        "price": "$200",
+        "avatar": "user6.jpg"
+    },
+    {
+        "id": "6",
+        "image": "trend-img-06.jpg",
+        "rating": "5.0",
+        "location": "Russia",
+        "lesson": "60 Lessons",
+        "title": "Learn CorelDraw – Interactive Tutorial",
+        "price": "$200",
+        "avatar": "user7.jpg"
+    },
+    {
+        "id": "7",
+        "image": "trend-img-07.jpg",
+        "rating": "5.0",
+        "location": "Russia",
+        "lesson": "60 Lessons",
+        "title": "Learn CorelDraw – Interactive Tutorial",
+        "price": "$200",
+        "avatar": "user2.jpg"
+    }
+]

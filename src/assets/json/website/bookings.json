@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "name": "Tyrone Roberts",
+        "image": "user2.jpg",
+        "email": "tyroneroberts@adobe.com",
+        "scheduled_date": "08 April 2020",
+        "scheduled_timings": "9.00 AM - 10.00 AM"
+    },
+    {
+        "id": 2,
+        "name": "Julie Pennington",
+        "image": "user1.jpg",
+        "email": "julie@adobe.com",
+        "scheduled_date": "08 April 2020",
+        "scheduled_timings": "9.00 AM - 10.00 AM"
+    },
+    {
+        "id": 3,
+        "name": "Allen Davis",
+        "image": "user3.jpg",
+        "email": "allendavis@adobe.com",
+        "scheduled_date": "07 April 2020",
+        "scheduled_timings": "9.00 AM - 10.00 AM"
+    },
+    {
+        "id": 4,
+        "name": "Patricia Manzi",
+        "image": "user4.jpg",
+        "email": "patriciamanzi@adobe.com",
+        "scheduled_date": "07 April 2020",
+        "scheduled_timings": "9.00 AM - 10.00 AM"
+    },
+    {
+        "id": 5,
+        "name": "Olive Lawrence",
+        "image": "user5.jpg",
+        "email": "olivelawrence@adobe.com",
+        "scheduled_date": "06 April 2020",
+        "scheduled_timings": "9.00 AM - 10.00 AM"
+    },
+    {
+        "id": 6,
+        "name": "Frances Foster",
+        "image": "user6.jpg",
+        "email": "frances@adobe.com",
+        "scheduled_date": "06 April 2020",
+        "scheduled_timings": "9.00 AM - 10.00 AM"
+    },
+    {
+        "id": 7,
+        "name": "Deloris Briscoe",
+        "image": "user7.jpg",
+        "email": "delorisbriscoe@adobe.com",
+        "scheduled_date": "05 April 2020",
+        "scheduled_timings": "9.00 AM - 10.00 AM"
+    },
+    {
+        "id": 8,
+        "name": "Tyrone Roberts",
+        "image": "user2.jpg",
+        "email": "tyroneroberts@adobe.com",
+        "scheduled_date": "08 April 2020",
+        "scheduled_timings": "9.00 AM - 10.00 AM"
+    },
+    {
+        "id": 9,
+        "name": "Julie Pennington",
+        "image": "user1.jpg",
+        "email": "julie@adobe.com",
+        "scheduled_date": "08 April 2020",
+        "scheduled_timings": "9.00 AM - 10.00 AM"
+    }
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "id":"1",
+        "image":"course-cat-01.jpg",
+        "mentors":"100 Mentors",
+        "title":"Design Courses"
+    },
+    {
+        "id":"2",
+        "image":"course-cat-02.jpg",
+        "mentors":"89 Mentors",
+        "title":"Development"
+    },
+    {
+        "id":"3",
+        "image":"course-cat-03.jpg",
+        "mentors":"64 Mentors",
+        "title":"Marketing Strategy"
+    },
+    {
+        "id":"4",
+        "image":"course-cat-04.jpg",
+        "mentors":"55 Mentors",
+        "title":"Python Development"
+    },
+    {
+        "id":"5",
+        "image":"course-cat-02.jpg",
+        "mentors":"89 Mentors",
+        "title":"Development"
+    },
+    {
+        "id":"6",
+        "image":"course-cat-03.jpg",
+        "mentors":"64 Mentors",
+        "title":"Marketing Strategy"
+    }
+]

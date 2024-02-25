@@ -1,0 +1,44 @@
+[
+    {
+        "id":"1",
+        "image":"cate-1.svg",
+        "title":"UI Design",
+        "number":"120",
+        "status":"Mentors Available"
+    },
+    {
+        "id":"2",
+        "image":"cate-2.svg",
+        "title":"Development",
+        "number":"200",
+        "status":"Mentors Available"
+    },
+    {
+        "id":"3",
+        "image":"cate-3.svg",
+        "title":"IT & Software",
+        "number":"240",
+        "status":"Mentors Available"
+    },
+    {
+        "id":"4",
+        "image":"cate-4.svg",
+        "title":"Business",
+        "number":"292",
+        "status":"Mentors Available"
+    },
+    {
+        "id":"5",
+        "image":"cate-5.svg",
+        "title":"Marketing",
+        "number":"150",
+        "status":"Mentors Available"
+    },
+    {
+        "id":"6",
+        "image":"cate-6.svg",
+        "title":"Photography",
+        "number":"160",
+        "status":"Mentors Available"
+    }
+]

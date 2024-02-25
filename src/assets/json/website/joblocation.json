@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "image": "city-07.jpg",
+        "place": "Paris, France",
+        "mentors": "14 Mentors"
+    },
+    {
+        "id": "2",
+        "image": "city-08.jpg",
+        "place": "Elpo, Mexico",
+        "mentors": "18 Mentors"
+    },
+    {
+        "id": "3",
+        "image": "city-09.jpg",
+        "place": "Buenos Aires, Argentina",
+        "mentors": "22 Mentors"
+    },
+    {
+        "id": "4",
+        "image": "city-10.jpg",
+        "place": "London, England",
+        "mentors": "20 Mentors"
+    },
+    {
+        "id": "5",
+        "image": "city-08.jpg",
+        "place": "Elpo, Mexico",
+        "mentors": "18 Mentors"
+    }
+]
