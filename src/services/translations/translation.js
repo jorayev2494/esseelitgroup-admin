@@ -66,14 +66,24 @@ const Trans = {
   },
   async routeMiddleware(to, _from, next) {
     const paramLocale = to.params.locale;
+    // console.log('routeMiddleware: ', paramLocale);
 
-    if (!Trans.isLocaleSupported(paramLocale)) {
-      return next(Trans.guessDefaultLocale());
+    // if (!Trans.isLocaleSupported(paramLocale)) {
+    //   return next(Trans.guessDefaultLocale());
+    // }
+
+    
+
+    // console.log('2 routeMiddleware: ', paramLocale);
+
+    if (paramLocale === undefined || paramLocale === null) {
+      await Trans.switchLanguage('ru');
+    } else {
+      await Trans.switchLanguage(paramLocale);
     }
 
-    await Trans.switchLanguage(paramLocale);
-
     return next();
+    // return next('ru');
   },
   async loadLocaleMessages(locale) {
     if (! i18n.global.availableLocales.includes(locale)) {
