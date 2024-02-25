@@ -38,7 +38,7 @@
               </li>
             </template>
 
-            <li class="menu-title">
+            <!-- <li class="menu-title">
               <span>
                 <i class="fontsize" data-feather="file-text"></i>
                 Pages
@@ -216,7 +216,7 @@
                   </a>
                 </li>
               </ul>
-            </li>
+            </li> -->
           </ul>
         </div>
 
@@ -289,119 +289,119 @@
                 name: 'applications',
               },
             },
-            {
-              label: 'Mentor',
-              route: {
-                name: 'mentor',
-              },
-            },
-            {
-              label: 'Mentee',
-              route: {
-                name: 'mentee',
-              },
-            },
-            {
-              label: 'Booking List',
-              route: {
-                name: 'booking-list',
-              },
-            },
-            {
-              label: 'Categories',
-              route: {
-                name: 'categories',
-              },
-            },
-            {
-              label: 'Transactions',
-              route: {
-                name: 'transaction-list',
-              },
-            },
-            {
-              label: 'Settings',
-              route: {
-                name: 'settings',
-              },
-            },
-            {
-              label: 'Reports',
-              submenu: [{
-                  label: 'Invoices List',
-                  route: {
-                    name: 'invoices',
-                  },
-                },
-                {
-                  label: 'Invoices Grid',
-                  route: {
-                    name: 'invoice-grid',
-                  },
-                },
-                {
-                  label: 'Add Invoices',
-                  route: {
-                    name: 'add-invoice',
-                  },
-                },
-                {
-                  label: 'Edit Invoices',
-                  route: {
-                    name: 'edit-invoice',
-                  },
-                },
-                {
-                  label: 'Invoice Details',
-                  route: {
-                    name: 'view-invoice',
-                  },
-                },
-              ],
-            },
-            {
-              label: 'Items',
-              route: {
-                name: 'invoice-items',
-              },
-            },
+            // {
+            //   label: 'Mentor',
+            //   route: {
+            //     name: 'mentor',
+            //   },
+            // },
+            // {
+            //   label: 'Mentee',
+            //   route: {
+            //     name: 'mentee',
+            //   },
+            // },
+            // {
+            //   label: 'Booking List',
+            //   route: {
+            //     name: 'booking-list',
+            //   },
+            // },
+            // {
+            //   label: 'Categories',
+            //   route: {
+            //     name: 'categories',
+            //   },
+            // },
+            // {
+            //   label: 'Transactions',
+            //   route: {
+            //     name: 'transaction-list',
+            //   },
+            // },
+            // {
+            //   label: 'Settings',
+            //   route: {
+            //     name: 'settings',
+            //   },
+            // },
+            // {
+            //   label: 'Reports',
+            //   submenu: [{
+            //       label: 'Invoices List',
+            //       route: {
+            //         name: 'invoices',
+            //       },
+            //     },
+            //     {
+            //       label: 'Invoices Grid',
+            //       route: {
+            //         name: 'invoice-grid',
+            //       },
+            //     },
+            //     {
+            //       label: 'Add Invoices',
+            //       route: {
+            //         name: 'add-invoice',
+            //       },
+            //     },
+            //     {
+            //       label: 'Edit Invoices',
+            //       route: {
+            //         name: 'edit-invoice',
+            //       },
+            //     },
+            //     {
+            //       label: 'Invoice Details',
+            //       route: {
+            //         name: 'view-invoice',
+            //       },
+            //     },
+            //   ],
+            // },
+            // {
+            //   label: 'Items',
+            //   route: {
+            //     name: 'invoice-items',
+            //   },
+            // },
           ],
         },
 
-        {
-          label: 'Test',
-          icon: 'file-text',
-          class: '',
-          items: [{
-              label: 'My Profile',
-              route: {
-                name: 'profile',
-              },
-            },
-            {
-              label: 'Blog',
-              submenu: [{
-                  label: 'Blog Details',
-                  route: {
-                    name: 'blogdetails',
-                  },
-                },
-                {
-                  label: 'Add Blog',
-                  route: {
-                    name: 'addblog',
-                  },
-                },
-                {
-                  label: 'Edit Blog',
-                  route: {
-                    name: 'editblog',
-                  },
-                },
-              ],
-            },
-          ]
-        }
+        // {
+        //   label: 'Test',
+        //   icon: 'file-text',
+        //   class: '',
+        //   items: [{
+        //       label: 'My Profile',
+        //       route: {
+        //         name: 'profile',
+        //       },
+        //     },
+        //     {
+        //       label: 'Blog',
+        //       submenu: [{
+        //           label: 'Blog Details',
+        //           route: {
+        //             name: 'blogdetails',
+        //           },
+        //         },
+        //         {
+        //           label: 'Add Blog',
+        //           route: {
+        //             name: 'addblog',
+        //           },
+        //         },
+        //         {
+        //           label: 'Edit Blog',
+        //           route: {
+        //             name: 'editblog',
+        //           },
+        //         },
+        //       ],
+        //     },
+        //   ]
+        // }
       ];
 
       onMounted(() => {
