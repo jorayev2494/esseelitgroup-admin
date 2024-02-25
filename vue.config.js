@@ -3,5 +3,5 @@ module.exports = defineConfig({
   transpileDependencies: ['vuetify'],
   lintOnSave:false,
   // publicPath: "/vuejs/template/",
-  publicPath: "/admin/",
+  publicPath: "/",
 });
