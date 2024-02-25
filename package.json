@@ -4,6 +4,7 @@
   "description": "mentoring-vuejs project",
   "private": true,
   "scripts": {
+    "dev": "vue-cli-service build --mode development",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
