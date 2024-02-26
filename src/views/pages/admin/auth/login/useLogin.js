@@ -7,8 +7,8 @@ export function useLogin() {
   const router = useRouter();
 
   const form = reactive({
-    email: 'admin@gmail.com',
-    password: '12345Secret_',
+    email: '',
+    password: '',
   })
 
   const login = () => {
