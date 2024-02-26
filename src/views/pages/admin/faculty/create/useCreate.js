@@ -43,7 +43,11 @@ export default function useCreate() {
   }
 
   const loadUniversities = () => {
-    store.dispatch('university/loadUniversityListAsync').then(response => {
+    store.dispatch('university/loadUniversityListAsync', {
+      params: {
+        
+      }
+    }).then(response => {
       universities.value = response.data;
     })
   }

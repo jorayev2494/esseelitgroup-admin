@@ -1,5 +1,5 @@
 import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
-import { onMounted, reactive, ref } from "vue"
+import { onMounted, reactive, ref, watch } from "vue"
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
 
@@ -11,12 +11,15 @@ export default function useEdit() {
   const { image } = useUrlPattern();
   const { uuid } = route.params;
 
+  const companies = ref([])
+
   const form = ref({
-    slug: '',
+    youtube_video_id: '',
     logo: null,
     cover: null,
     name: '',
     label: '',
+    company_uuid: '',
     description: '',
     translations: {
       en: {
@@ -112,7 +115,21 @@ export default function useEdit() {
       })
   }
 
+  const loadCompanies = () => {
+    store.dispatch('company/loadCompanyListAsync').then(response => {
+      companies.value = response.data.map(({ uuid, name }) => ({
+        uuid,
+        name,
+      }))
+    })
+  }
+
+  watch(() => form.value.youtube_video_id, (newV, oldV) => {
+    console.log(newV, oldV);
+  })
+
   onMounted(() => {
+    loadCompanies()
     logoPreview.value = image(logoPreview.value)
     coverPreview.value = image(coverPreview.value, 1200, 800, 'cover')
   })
@@ -122,6 +139,7 @@ export default function useEdit() {
     logoPreview,
     coverPreview,
     uploadMedia,
+    companies,
 
     uploadLogo,
     uploadCover,

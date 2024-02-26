@@ -2,23 +2,23 @@
     <div class="col-xl-12 col-md-12">
       <div class="card flex-fill">
         <div class="card-header">
-          <h4 class="card-title">Logo</h4>
+          <strong class="card-title">Logo </strong>
+          <!-- <small>{{ imageInfo.logoWidth }} x {{ imageInfo.logoHeight }}</small> -->
         </div>
+
         <center>
           <div class="card-body">
             <div class="avatar avatar-xxl mr-2">
               <img class="avatar-img rounded-circle" alt="User Image" :src="logoPreview">
             </div>
-            <!-- <div class="avatar avatar-xxl ml-2">
-              <img class="avatar-img rounded" alt="User Image" :src="logoPreview">
-            </div> -->
           </div>
         </center>
       </div>
 
       <div class="card flex-fill">
         <div class="card-header">
-          <h4 class="card-title">Cover</h4>
+          <strong class="card-title">Cover </strong>
+          <!-- <small>{{ imageInfo.coverWidth }} x {{ imageInfo.coverHeight }}</small> -->
         </div>
         <center>
           <div class="card-body">
@@ -47,5 +47,5 @@
     },
   });
 
-  // const { logoPreview, coverPreview, uploadLogo, uploadCover } = useIndex({ props });
+  const { imageInfo } = useIndex({ props });
 </script>

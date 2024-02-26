@@ -3,6 +3,7 @@ import store from './services/store'
 import router from './services/router';
 import translation from './services/translations/index.js';
 import globalVariables from './services/globalVariables/index'
+import VueYtframe from "vue3-ytframe"
 
 // Table
 import Vue3Datatable from '@bhplugin/vue3-datatable';
@@ -153,4 +154,5 @@ app.use(
 );
 app.use(store);
 app.use(router);
+app.use(VueYtframe);
 app.mount('#app');

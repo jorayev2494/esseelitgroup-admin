@@ -12,6 +12,7 @@ export default function useCreate() {
 
   const { uuid } = route.params;
 
+  const universities = ref([]);
   const faculties = ref([]);
 
   const translations = {
@@ -36,8 +37,24 @@ export default function useCreate() {
     })
   }
 
-  const loadFaculties = () => {
-    store.dispatch('faculty/loadFacultyListAsync').then(response => {
+  const loadUniversities = () => {
+    store.dispatch('university/loadUniversityListAsync', {
+      params: {
+        
+      }
+    }).then(response => {
+      universities.value = response.data;
+    })
+  }
+
+  const loadFaculties = ({ target }) => {
+    const universityUuid = target.value;
+
+    store.dispatch('faculty/loadFacultyListAsync', {
+      params: {
+        filter_by_university_uuid: universityUuid,
+      }
+    }).then(response => {
       faculties.value = response.data;
     })
   }
@@ -52,16 +69,26 @@ export default function useCreate() {
   }
 
   onMounted(() => {
+    loadUniversities()
     loadDepartment()
-    loadFaculties()
+
+    store.dispatch('faculty/loadFacultyListAsync', {
+      params: {
+        
+      }
+    }).then(response => {
+      faculties.value = response.data;
+    })
   })
 
   return {
     form,
     activityOptions,
     translations,
+    universities,
     faculties,
 
     create,
+    loadFaculties,
   }
 }

@@ -19,7 +19,10 @@ export default function useEdit() {
   const loadUniversity = () => {
     store.dispatch('university/showUniversityAsync', uuid)
       .then(response => {
+        const { logo, cover } = response.data
         form.value = response.data;
+        logoPreview.value = logo.url
+        coverPreview.value = cover.url
       })
   }
 
@@ -29,6 +32,14 @@ export default function useEdit() {
     for (const key in form.value) {
       if (Object.hasOwnProperty.call(form.value, key)) {
         const value = form.value[key];
+
+        if (key === 'logo' || key === 'cover') {
+          console.log('typeof(value): ', typeof(value), value instanceof File)
+          if (! (value instanceof File)) {
+            formData.append(key, '');
+            continue;
+          }
+        }
 
         if (key === 'translations') {
           for (const kk in value) {
@@ -102,8 +113,8 @@ export default function useEdit() {
 
   onMounted(() => {
     loadUniversity()
-    logoPreview.value = image(logoPreview.value)
-    coverPreview.value = image(coverPreview.value, 1200, 800, 'cover')
+    // logoPreview.value = image(logoPreview.value)
+    // coverPreview.value = image(coverPreview.value, 1200, 800, 'cover')
   })
 
   return {

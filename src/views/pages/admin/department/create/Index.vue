@@ -9,6 +9,21 @@
           <form action="#" method="POST" @submit.prevent="create" enctype="multipart/form-data">
 
             <div class="form-group row">
+              <label class="col-lg-3 col-form-label">University</label>
+              <div class="col-lg-9">
+                <select class="form-select" aria-label="Default select example" required @change="loadFaculties">
+                  <option selected>Open this select menu</option>
+                  <option
+                    v-for="({ uuid, name }, idx) of universities" :key="idx"
+                    :value="uuid"
+                    >
+                    {{ name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
               <label class="col-lg-3 col-form-label">Faculties</label>
               <div class="col-lg-9">
                 <select class="form-select" v-model="form.faculty_uuid" aria-label="Default select example" required>
@@ -55,5 +70,5 @@
   import Inputs from '../partials/input/Index.vue'
   import useCreate from './useCreate';
 
-  const { form, activityOptions, faculties, logoPreview, uploadLogo, create } = useCreate();
+  const { form, activityOptions, universities, faculties, logoPreview, uploadLogo, loadFaculties, create } = useCreate();
 </script>
