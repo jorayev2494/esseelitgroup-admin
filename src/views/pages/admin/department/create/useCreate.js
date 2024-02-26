@@ -12,6 +12,7 @@ export default function useCreate() {
 
   const logoPreview = ref(null);
 
+  const universities = ref([]);
   const faculties = ref([]);
 
   const translations = {
@@ -47,8 +48,24 @@ export default function useCreate() {
     }
   }
 
-  const loadFaculties = () => {
-    store.dispatch('faculty/loadFacultyListAsync').then(response => {
+  const loadUniversities = () => {
+    store.dispatch('university/loadUniversityListAsync', {
+      params: {
+        
+      }
+    }).then(response => {
+      universities.value = response.data;
+    })
+  }
+
+  const loadFaculties = ({ target }) => {
+    const universityUuid = target.value;
+
+    store.dispatch('faculty/loadFacultyListAsync', {
+      params: {
+        filter_by_university_uuid: universityUuid,
+      }
+    }).then(response => {
       faculties.value = response.data;
     })
   }
@@ -63,7 +80,7 @@ export default function useCreate() {
   }
 
   onMounted(() => {
-    loadFaculties()
+    loadUniversities()
     logoPreview.value = image(logoPreview.value)
     makeTranslationsForm(form, translations)
   })
@@ -72,9 +89,11 @@ export default function useCreate() {
     form,
     activityOptions,
     translations,
+    universities,
     faculties,
     logoPreview,
-
+    
+    loadFaculties,
     uploadLogo,
     create,
   }

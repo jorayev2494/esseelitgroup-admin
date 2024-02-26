@@ -23,6 +23,14 @@ const actions = {
     })
   },
 
+  async loadCompanyListAsync(_, payload) {
+    return await new Promise((resolve, reject) => {
+      return httpClient.get('/companies/list', payload)
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    })
+  },
+
   async createCompanyAsync(_, payload) {
     return await new Promise((resolve, reject) => {
       return httpClient.post('/companies', payload)

@@ -8,6 +8,13 @@ export default function useIndex({ props }) {
   const logoPreview = ref(null);
   const coverPreview = ref(null);
 
+  const imageInfo = {
+    logoWidth: 400,
+    logoHeight: 400,
+    coverHeight: 1280,
+    coverWidth: 568,
+  }
+
   watch(props, (v, o) => {
     console.log('Watch: ', v, o)
   })
@@ -39,6 +46,7 @@ export default function useIndex({ props }) {
   })
 
   return {
+    imageInfo,
     logoPreview,
     coverPreview,
 

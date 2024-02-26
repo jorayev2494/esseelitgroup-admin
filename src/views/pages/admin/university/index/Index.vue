@@ -42,9 +42,9 @@
           </template>
 
           <template #actions="data">
-            <router-link class="btn btn-sm bg-primary-light me-2" :to="{ name: 'company-show', params: { uuid: data.value.uuid } }">
+            <!-- <router-link class="btn btn-sm bg-primary-light me-2" :to="{ name: 'company-show', params: { uuid: data.value.uuid } }">
               <i class="fa fa-info-circle"></i> {{ $t('system.show') }}
-            </router-link>
+            </router-link> -->
 
             <router-link class="btn btn-sm bg-success-light me-2" :to="{ name: 'university-edit', params: { uuid: data.value.uuid } }">
               <i class="fa fa-edit"></i> {{ $t('system.edit') }}

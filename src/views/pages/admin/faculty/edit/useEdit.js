@@ -26,13 +26,17 @@ export default function useEdit() {
     const uploadedLogo = event.target.files[0];
 
     if (uploadedLogo) {
-      form.logo = uploadedLogo;
+      form.value.logo = uploadedLogo;
       logoPreview.value = URL.createObjectURL(uploadedLogo);
     }
   }
 
   const loadUniversities = () => {
-    store.dispatch('university/loadUniversityListAsync').then(response => {
+    store.dispatch('university/loadUniversityListAsync', {
+      params: {
+        
+      }
+    }).then(response => {
       universities.value = response.data;
     })
   }
@@ -67,6 +71,7 @@ export default function useEdit() {
           continue;
         }
 
+        console.log('Key: ', key, 'Value: ', value)
 
         formData.append(key, value);
       }
@@ -77,8 +82,9 @@ export default function useEdit() {
 
   const loadFaculty = () => {
     store.dispatch('faculty/showFacultyAsync', { uuid }).then(response => {
-      console.log('Response: ', response)
+      const { logo } = response.data
       form.value = response.data;
+      logoPreview.value = logo.url
     })
   }
 
