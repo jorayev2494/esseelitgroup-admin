@@ -2,6 +2,7 @@ import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { onMounted, reactive, ref, watch } from "vue"
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
+import { useInputs } from '../useCases/usePartials'
 
 export default function useEdit() {
 
@@ -12,6 +13,7 @@ export default function useEdit() {
   const { uuid } = route.params;
 
   const companies = ref([])
+  const inputs = useInputs()
 
   const form = ref({
     youtube_video_id: '',
@@ -22,16 +24,16 @@ export default function useEdit() {
     company_uuid: '',
     description: '',
     translations: {
-      en: {
-        name: '',
-        label: '',
-        description: '',
-      },
-      ru: {
-        name: '',
-        label: '',
-        description: '',
-      },
+      // en: {
+      //   name: '',
+      //   label: '',
+      //   description: '',
+      // },
+      // ru: {
+      //   name: '',
+      //   label: '',
+      //   description: '',
+      // },
     },
   });
 
@@ -116,7 +118,7 @@ export default function useEdit() {
   }
 
   const loadCompanies = () => {
-    store.dispatch('company/loadCompanyListAsync').then(response => {
+    store.dispatch('company/loadCompanyListAsync', { params: {} }).then(response => {
       companies.value = response.data.map(({ uuid, name }) => ({
         uuid,
         name,
@@ -136,6 +138,7 @@ export default function useEdit() {
 
   return {
     form,
+    inputs,
     logoPreview,
     coverPreview,
     uploadMedia,

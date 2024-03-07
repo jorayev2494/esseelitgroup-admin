@@ -50,7 +50,6 @@
 </template>
 
 <script>
-
     import { useLogin } from './useLogin';
 
     export default {

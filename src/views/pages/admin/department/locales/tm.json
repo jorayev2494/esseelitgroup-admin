@@ -1,3 +1,12 @@
 {
-    "context_title": "Bölümler"
+  "context_title": "Bölümler",
+  "translations": "Terjimeleri",
+  "form": {
+    "company": "Kompaniýa",
+    "university": "Uniwersitet",
+    "faculty": "Fakultet",
+    "activity": "Activity",
+    "name": "Ady",
+    "description": "Düşündiriş"
+  }
 }

@@ -29,7 +29,7 @@
     <!-- Header Right Menu -->
     <ul class="nav user-menu">
       <LanguageSwitcher />
-      <Notification />
+      <!-- <Notification /> -->
 
       <!-- User Menu -->
       <li class="nav-item dropdown has-arrow">
@@ -44,7 +44,7 @@
               <img src="@/assets/img/default/logo.jpg" alt="User Image" class="avatar-img rounded-circle" />
             </div>
             <div class="user-text">
-              <h6>Allen Davis</h6>
+              <!-- <h6>Allen Davis</h6> -->
               <p class="text-muted mb-0">Administrator</p>
             </div>
           </div>

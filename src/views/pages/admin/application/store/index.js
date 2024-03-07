@@ -21,13 +21,13 @@ const actions = {
     })
   },
 
-  // async createDepartmentAsync(_, { data }) {
-  //   return await new Promise((resolve, reject) => {
-  //     return httpClient.post('/departments', data)
-  //       .then(response => resolve(response))
-  //       .catch(error => reject(error));
-  //   })
-  // },
+  async createApplicationAsync(_, { data }) {
+    return await new Promise((resolve, reject) => {
+      return httpClient.post('/applications', data)
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    })
+  },
 
   async showApplicationAsync(_, { uuid }) {
     return await new Promise((resolve, reject) => {

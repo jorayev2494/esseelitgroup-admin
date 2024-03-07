@@ -12,11 +12,11 @@
 
       <div class="card-body">
 
-        <!-- <div class="mb-2">
-          <router-link class="btn btn-primary btn-sm me-2" :to="{ name: 'department-create' }">
+        <div class="mb-2">
+          <router-link class="btn btn-primary btn-sm me-2" :to="$tMakeRoute({ name: 'application-create' })">
             <i class="fa fa-plus"></i> {{ $t('system.create') }}
           </router-link>
-        </div> -->
+        </div>
 
         <data-table
           :rows="items"

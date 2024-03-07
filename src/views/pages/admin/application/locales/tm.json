@@ -1,3 +1,48 @@
 {
-    "context_title": "Goýmalar"
+    "context_title": "Goýmalar",
+    "application_form": "Anketa",
+    "documents": "Resminamalar",
+    "additional_documents": "Goşmaça resminamalar",
+    "add_additional_document": "Goşmaça resminama goş",
+    "save_changes": "Uýtgetmeleri ýatda sakla",
+    "document": "Resminama",
+    "document_type": "Resminamanyň görnüşi",
+    "document_name": "Resminamanyň ady",
+    "extension": "Formaty",
+    "file_name": "Faýlyň ady",
+    "form": {
+        "full_name": "Doly ady",
+        "birthday": "Doglan gün",
+        "father_name": "Kakasynyň ady",
+        "mother_name": "Ejesiniň ady",
+        "passport_number": "Pasport nomeri",
+        "phone": "Telefon",
+        "friend_phone": "Dostyn telefon",
+        "home_address": "Öý salgysy",
+        "email": "E-poçta",
+        "company": "Kompaniýa",
+        "country": "Yurt",
+        "university": "Uniwersitet",
+        "faculties_and_departments": "Fakultetler we bölümler",
+        "status": "Status",
+        "status_note": "Status belligi",
+        "faculties_and_departments_select": {
+            "placeholder": "Fakultetler we bölümler",
+            "select_group_label": "Press enter to select group",
+            "deselect_group_label": "Press enter to deselect group",
+            "select_label": "Press enter to select",
+            "deselect_label": "Press enter to remove",
+            "selected": "Selected"
+        },
+        "documents": {
+            "passport": "Passport",
+            "school_attestat": "Mekdep attestaty",
+            "equivalence_document": "Denklik belgesi",
+            "passport_translation": "Pasportyn terjimesi",
+            "transcript": "Transcript",
+            "transcript_translation": "Transcriptin terjimesi",
+            "school_attestat_translation": "Mekdep attestatyn terjimesi",
+            "biometric_photo": "Biometrik surat"
+        }
+    }
 }

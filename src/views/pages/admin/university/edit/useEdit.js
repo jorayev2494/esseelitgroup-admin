@@ -2,6 +2,7 @@ import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { onMounted, reactive, ref } from "vue"
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
+import { useInputs } from '../useCases/usePartials'
 
 export default function useEdit() {
 
@@ -12,6 +13,7 @@ export default function useEdit() {
   const { uuid } = route.params;
 
   const form = ref({});
+  const inputs = useInputs();
 
   const logoPreview = ref(null);
   const coverPreview = ref(null);
@@ -21,6 +23,7 @@ export default function useEdit() {
       .then(response => {
         const { logo, cover } = response.data
         form.value = response.data;
+        console.log('form form f translax: ', response.data)
         logoPreview.value = logo.url
         coverPreview.value = cover.url
       })
@@ -119,6 +122,7 @@ export default function useEdit() {
 
   return {
     form,
+    inputs,
     logoPreview,
     coverPreview,
     uploadMedia,

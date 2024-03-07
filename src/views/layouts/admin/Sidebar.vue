@@ -6,217 +6,192 @@
 
         <div id="sidebar-menu" class="sidebar-menu">
           <ul v-if="menuItems">
+            <SidebarMenuItems :menu-items="menuItems" />
+            <hr>
 
-            <template v-for="(menuItem, idx) in menuItems" :key="idx">
+            <SidebarMenuItems v-if="$app.isNodeEnv('local')" :menu-items="otherMenuItems" />
+
+            <template v-if="$app.isNodeEnv('local')">
               <li class="menu-title">
                 <span>
-                  <!-- <i class="fontsize" :data-feather="menuItem.icon"></i> -->
-                  <i v-if="menuItem.icon" :class="`fa fa-${menuItem.icon}`" aria-hidden="true"></i>
-                  <!-- <i class="fontsize" :data-feather="menuItem.icon"></i> -->
-                  {{ menuItem.label }}
+                  <i class="fontsize" data-feather="file-text"></i>
+                  Pages
                 </span>
               </li>
+              <li>
+                <router-link to="/profile">
+                  <span>My Profile</span>
+                </router-link>
+              </li>
+              <li class="submenu">
+                <a href="#">
+                  <span>Blog</span>
+                  <span class="menu-arrow"></span>
+                </a>
+                <ul style="display: none">
+                  <li>
+                    <router-link to="/blog">Blog</router-link>
+                  </li>
+                  <li>
+                    <router-link to="/blogdetails">
+                      Blog Details
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link to="/addblog">
+                      Add Blog
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link to="/editblog">
+                      Edit Blog
+                    </router-link>
+                  </li>
+                </ul>
+              </li>
+              <li class="submenu">
+                <a href="#"
+                  ><span> Authentication </span> <span class="menu-arrow"></span
+                ></a>
+                <ul style="display: none">
+                  <li><router-link to="/login"> Login </router-link></li>
+                  <li>
+                    <router-link to="/register"> Register </router-link>
+                  </li>
+                  <li>
+                    <router-link to="/forgotpassword">
+                      Forgot Password
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link to="/lockscreen">
+                      Lock Screen
+                    </router-link>
+                  </li>
+                </ul>
+              </li>
+              <li class="submenu">
+                <a href="#"
+                  ><span> Error Pages </span> <span class="menu-arrow"></span
+                ></a>
+                <ul style="display: none">
+                  <li>
+                    <router-link to="/error404">404 Error </router-link>
+                  </li>
+                  <li>
+                    <router-link to="/error500">500 Error </router-link>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <router-link to="/blankpage"
+                  ><span>Blank Page</span></router-link
+                >
+              </li>
 
-              <li v-for="(item, itemInx) in menuItem?.items" :key="itemInx" :class="item?.submenu ? 'submenu' : ''">
-                <template v-if="item?.route">
-                  <router-link :to="$tMakeRoute(item.route)">
-                    <span>{{ $t(`${item.label}.context_title`) }}</span>
-                  </router-link>
-                </template>
-
-                <template v-if="item?.submenu">
-                  <a href="#">
-                    <span>{{ item.label }}</span>
-                    <span class="menu-arrow"></span>
-                  </a>
-                  <ul style="display: none">
-                    <li v-for="(submenuItem, submenuItemIdx) in item.submenu" :key="submenuItemIdx">
-                      <router-link :to="$tMakeRoute(submenuItem.route)">{{ submenuItem.label }}</router-link>
-                    </li>
-                  </ul>
-                </template>
+              <li class="menu-title">
+                <span>
+                  <i class="fontsize" data-feather="file"></i> UI Interface</span>
+              </li>
+              <li>
+                <router-link to="/components"><span>Components</span></router-link>
+              </li>
+              <li class="submenu">
+                <a href="#">
+                  <span> Forms </span>
+                  <span class="menu-arrow"></span>
+                </a>
+                <ul style="display: none">
+                  <li>
+                    <router-link to="/formbasicinputs">
+                      Basic Inputs
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link to="/forminputgroups">
+                      Input Groups
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link to="/formhorizontal">
+                      Horizontal Form
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link to="/formvertical">
+                      Vertical Form
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link to="/formmask">
+                      Form Mask
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link to="/formvalidation">
+                      Form Validation
+                    </router-link>
+                  </li>
+                </ul>
+              </li>
+              <li class="submenu">
+                <a href="#">
+                  <span>Tables</span>
+                  <span class="menu-arrow"></span>
+                </a>
+                <ul style="display: none">
+                  <li>
+                    <router-link to="/tablesbasic">
+                      Basic Tables
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link to="/datatables">Data Table </router-link>
+                  </li>
+                </ul>
+              </li>
+              <li class="submenu">
+                <a href="javascript:void(0);">
+                  <span>Multi Level</span>
+                  <span class="menu-arrow"></span>
+                </a>
+                <ul style="display: none">
+                  <li class="submenu">
+                    <a href="javascript:void(0);">
+                      <span>Level 1</span>
+                      <span class="menu-arrow"></span>
+                    </a>
+                    <ul style="display: none">
+                      <li>
+                        <a href="javascript:void(0);">
+                          <span>Level 2</span>
+                        </a>
+                      </li>
+                      <li class="submenu">
+                        <a href="javascript:void(0);">
+                          <span>Level 2</span>
+                          <span class="menu-arrow"></span>
+                        </a>
+                        <ul style="display: none">
+                          <li><a href="javascript:void(0);">Level 3</a></li>
+                          <li><a href="javascript:void(0);">Level 3</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);">
+                          <span>Level 2</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">
+                      <span>Level 1</span>
+                    </a>
+                  </li>
+                </ul>
               </li>
             </template>
-
-            <!-- <li class="menu-title">
-              <span>
-                <i class="fontsize" data-feather="file-text"></i>
-                Pages
-              </span>
-            </li>
-            <li>
-              <router-link to="/profile">
-                <span>My Profile</span>
-              </router-link>
-            </li>
-            <li class="submenu">
-              <a href="#">
-                <span>Blog</span>
-                <span class="menu-arrow"></span>
-              </a>
-              <ul style="display: none">
-                <li>
-                  <router-link to="/blog">Blog</router-link>
-                </li>
-                <li>
-                  <router-link to="/blogdetails">
-                    Blog Details
-                  </router-link>
-                </li>
-                <li>
-                  <router-link to="/addblog">
-                    Add Blog
-                  </router-link>
-                </li>
-                <li>
-                  <router-link to="/editblog">
-                    Edit Blog
-                  </router-link>
-                </li>
-              </ul>
-            </li>
-            <li class="submenu">
-              <a href="#"
-                ><span> Authentication </span> <span class="menu-arrow"></span
-              ></a>
-              <ul style="display: none">
-                <li><router-link to="/login"> Login </router-link></li>
-                <li>
-                  <router-link to="/register"> Register </router-link>
-                </li>
-                <li>
-                  <router-link to="/forgotpassword">
-                    Forgot Password
-                  </router-link>
-                </li>
-                <li>
-                  <router-link to="/lockscreen">
-                    Lock Screen
-                  </router-link>
-                </li>
-              </ul>
-            </li>
-            <li class="submenu">
-              <a href="#"
-                ><span> Error Pages </span> <span class="menu-arrow"></span
-              ></a>
-              <ul style="display: none">
-                <li>
-                  <router-link to="/error404">404 Error </router-link>
-                </li>
-                <li>
-                  <router-link to="/error500">500 Error </router-link>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <router-link to="/blankpage"
-                ><span>Blank Page</span></router-link
-              >
-            </li>
-
-            <li class="menu-title">
-              <span>
-                <i class="fontsize" data-feather="file"></i> UI Interface</span>
-            </li>
-            <li>
-              <router-link to="/components"><span>Components</span></router-link>
-            </li>
-            <li class="submenu">
-              <a href="#">
-                <span> Forms </span>
-                <span class="menu-arrow"></span>
-              </a>
-              <ul style="display: none">
-                <li>
-                  <router-link to="/formbasicinputs">
-                    Basic Inputs
-                  </router-link>
-                </li>
-                <li>
-                  <router-link to="/forminputgroups">
-                    Input Groups
-                  </router-link>
-                </li>
-                <li>
-                  <router-link to="/formhorizontal">
-                    Horizontal Form
-                  </router-link>
-                </li>
-                <li>
-                  <router-link to="/formvertical">
-                    Vertical Form
-                  </router-link>
-                </li>
-                <li>
-                  <router-link to="/formmask">
-                    Form Mask
-                  </router-link>
-                </li>
-                <li>
-                  <router-link to="/formvalidation">
-                    Form Validation
-                  </router-link>
-                </li>
-              </ul>
-            </li>
-            <li class="submenu">
-              <a href="#">
-                <span>Tables</span>
-                <span class="menu-arrow"></span>
-              </a>
-              <ul style="display: none">
-                <li>
-                  <router-link to="/tablesbasic">
-                    Basic Tables
-                  </router-link>
-                </li>
-                <li>
-                  <router-link to="/datatables">Data Table </router-link>
-                </li>
-              </ul>
-            </li>
-            <li class="submenu">
-              <a href="javascript:void(0);">
-                <span>Multi Level</span>
-                <span class="menu-arrow"></span>
-              </a>
-              <ul style="display: none">
-                <li class="submenu">
-                  <a href="javascript:void(0);">
-                    <span>Level 1</span>
-                    <span class="menu-arrow"></span>
-                  </a>
-                  <ul style="display: none">
-                    <li>
-                      <a href="javascript:void(0);">
-                        <span>Level 2</span>
-                      </a>
-                    </li>
-                    <li class="submenu">
-                      <a href="javascript:void(0);">
-                        <span>Level 2</span>
-                        <span class="menu-arrow"></span>
-                      </a>
-                      <ul style="display: none">
-                        <li><a href="javascript:void(0);">Level 3</a></li>
-                        <li><a href="javascript:void(0);">Level 3</a></li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0);">
-                        <span>Level 2</span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="javascript:void(0);">
-                    <span>Level 1</span>
-                  </a>
-                </li>
-              </ul>
-            </li> -->
           </ul>
         </div>
 
@@ -227,13 +202,10 @@
 </template>
 
 <script>
-  import {
-    PerfectScrollbar
-  } from "vue3-perfect-scrollbar";
+  import { PerfectScrollbar } from "vue3-perfect-scrollbar";
+  import SidebarMenuItems from "./partials/SidebarMenuItems.vue";
   import "vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css";
-  import {
-    onMounted
-  } from "vue";
+  import { onMounted } from "vue";
   import feather from "feather-icons";
 
   export default {
@@ -247,6 +219,92 @@
       //  isactive : true
     },
     setup() {
+      const otherMenuItems = [
+      {
+          label: 'University',
+          icon: 'university',
+          class: '',
+          items: [
+            {
+              label: 'Mentor',
+              route: {
+                name: 'mentor',
+              },
+            },
+            {
+              label: 'Mentee',
+              route: {
+                name: 'mentee',
+              },
+            },
+            {
+              label: 'Booking List',
+              route: {
+                name: 'booking-list',
+              },
+            },
+            {
+              label: 'Categories',
+              route: {
+                name: 'categories',
+              },
+            },
+            {
+              label: 'Transactions',
+              route: {
+                name: 'transaction-list',
+              },
+            },
+            {
+              label: 'Settings',
+              route: {
+                name: 'settings',
+              },
+            },
+            {
+              label: 'Reports',
+              submenu: [{
+                  label: 'Invoices List',
+                  route: {
+                    name: 'invoices',
+                  },
+                },
+                {
+                  label: 'Invoices Grid',
+                  route: {
+                    name: 'invoice-grid',
+                  },
+                },
+                {
+                  label: 'Add Invoices',
+                  route: {
+                    name: 'add-invoice',
+                  },
+                },
+                {
+                  label: 'Edit Invoices',
+                  route: {
+                    name: 'edit-invoice',
+                  },
+                },
+                {
+                  label: 'Invoice Details',
+                  route: {
+                    name: 'view-invoice',
+                  },
+                },
+              ],
+            },
+            {
+              label: 'Items',
+              route: {
+                name: 'invoice-items',
+              },
+            },
+          ]
+        },
+      ];
+
       const menuItems = [
         {
           label: 'University',
@@ -263,6 +321,12 @@
               label: 'company',
               route: {
                 name: 'companies',
+              },
+            },
+            {
+              label: 'country',
+              route: {
+                name: 'countries',
               },
             },
             {
@@ -289,82 +353,6 @@
                 name: 'applications',
               },
             },
-            // {
-            //   label: 'Mentor',
-            //   route: {
-            //     name: 'mentor',
-            //   },
-            // },
-            // {
-            //   label: 'Mentee',
-            //   route: {
-            //     name: 'mentee',
-            //   },
-            // },
-            // {
-            //   label: 'Booking List',
-            //   route: {
-            //     name: 'booking-list',
-            //   },
-            // },
-            // {
-            //   label: 'Categories',
-            //   route: {
-            //     name: 'categories',
-            //   },
-            // },
-            // {
-            //   label: 'Transactions',
-            //   route: {
-            //     name: 'transaction-list',
-            //   },
-            // },
-            // {
-            //   label: 'Settings',
-            //   route: {
-            //     name: 'settings',
-            //   },
-            // },
-            // {
-            //   label: 'Reports',
-            //   submenu: [{
-            //       label: 'Invoices List',
-            //       route: {
-            //         name: 'invoices',
-            //       },
-            //     },
-            //     {
-            //       label: 'Invoices Grid',
-            //       route: {
-            //         name: 'invoice-grid',
-            //       },
-            //     },
-            //     {
-            //       label: 'Add Invoices',
-            //       route: {
-            //         name: 'add-invoice',
-            //       },
-            //     },
-            //     {
-            //       label: 'Edit Invoices',
-            //       route: {
-            //         name: 'edit-invoice',
-            //       },
-            //     },
-            //     {
-            //       label: 'Invoice Details',
-            //       route: {
-            //         name: 'view-invoice',
-            //       },
-            //     },
-            //   ],
-            // },
-            // {
-            //   label: 'Items',
-            //   route: {
-            //     name: 'invoice-items',
-            //   },
-            // },
           ],
         },
 
@@ -453,6 +441,7 @@
       });
 
       return {
+        otherMenuItems,
         menuItems,
       }
     },
@@ -466,6 +455,7 @@
     },
     components: {
       PerfectScrollbar,
+      SidebarMenuItems,
     },
   };
 </script>

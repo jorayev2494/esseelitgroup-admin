@@ -1,3 +1,13 @@
 {
-    "context_title": "Университеты"
+  "context_title": "Университеты",
+  "form": {
+    "company": "Компания",
+    "logo": "Логотип",
+    "cover": "Обложка",
+    "youtube_video_id": "YouTube видео id",
+    "youtube_video": "YouTube видео",
+    "name": "Называть",
+    "label": "Этикетка",
+    "description": "Описание"
+  }
 }

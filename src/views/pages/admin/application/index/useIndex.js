@@ -1,6 +1,7 @@
 import { useUrlPattern } from '@/views/pages/utils/UrlPattern';
 import { usePaginator } from '@/views/pages/utils/paginator';
 import { onMounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
 
 export default function useIndex() {
@@ -8,17 +9,19 @@ export default function useIndex() {
   const store = useStore();
   const paginator = usePaginator();
   const { image } = useUrlPattern();
+  const { t, d } = useI18n();
 
   const loading = ref(true);
   const items = ref([]);
   const columns = [
-    { field: 'full_name', title: 'Full name' },
-    { field: 'email', title: 'Email' },
-    { field: 'university.name', title: 'University' },
-    { field: 'faculty.name', title: 'Faculty' },
-    { field: 'status.value', title: 'Status' },
-    { field: 'created_at', title: 'Created At', type: 'date' },
-    { field: 'actions', title: 'Actions', sort: false, headerClass: 'float-end' },
+    { field: 'full_name', title: t('application.form.full_name') },
+    { field: 'email', title: t('application.form.email') },
+    { field: 'company.name', title: t('application.form.company') },
+    { field: 'university.name', title: t('application.form.university') },
+    // { field: 'faculty.name', title: t('application.form.faculty') },
+    { field: 'status.value', title: t('application.form.status') },
+    { field: 'created_at', title: t('system.created_at'), type: 'date' },
+    { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end' },
   ];
 
   const reloadData = () => {
@@ -26,9 +29,10 @@ export default function useIndex() {
     loadApplications();
   }
 
-  const departmentMapper = faculty => {
+  const applicationMapper = application => {
+    application.created_at = d(new Date(application.created_at * 1000), 'short');
 
-    return faculty;
+    return application;
   }
 
   const loadApplications = () => {
@@ -40,7 +44,7 @@ export default function useIndex() {
         console.log('Data: ', data, 'response: ', response)
 
         paginator.setMetaData(data);
-        items.value = data.data.map(departmentMapper);
+        items.value = data.data.map(applicationMapper);
         console.log('Department data: ', data.data)
       })
       .catch(error => error)

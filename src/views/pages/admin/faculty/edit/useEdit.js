@@ -2,6 +2,7 @@ import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { onMounted, reactive, ref, getCurrentInstance } from "vue"
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
+import { useInputs, useCompanies } from '../useCases/usePartials'
 
 export default function useEdit() {
 
@@ -9,6 +10,8 @@ export default function useEdit() {
   const router = useRouter();
   const route = useRoute();
   const { image } = useUrlPattern();
+  const inputs = useInputs();
+  const { companies, loadCompanies } = useCompanies();
 
   const { uuid } = route.params;
 
@@ -17,9 +20,9 @@ export default function useEdit() {
   const universities = ref([]);
 
   const form = ref({
-    logo: '',
-    university_uuid: '',
-    translations: {},
+    // logo: '',
+    // university_uuid: '',
+    // translations: {},
   });
 
   const uploadLogo = event => {
@@ -31,12 +34,8 @@ export default function useEdit() {
     }
   }
 
-  const loadUniversities = () => {
-    store.dispatch('university/loadUniversityListAsync', {
-      params: {
-        
-      }
-    }).then(response => {
+  const loadUniversities = (params = {}) => {
+    store.dispatch('university/loadUniversityListAsync', { params }).then(response => {
       universities.value = response.data;
     })
   }
@@ -80,12 +79,34 @@ export default function useEdit() {
     return formData;
   }
 
+  const mapFaculty = faculty => {
+    const { logo, company_uuid } = faculty
+    form.value = faculty;
+    logoPreview.value = logo.url
+
+    loadUniversities({
+      filter_by_company_uuid: company_uuid,
+    });
+
+    return faculty;
+  }
+
   const loadFaculty = () => {
     store.dispatch('faculty/showFacultyAsync', { uuid }).then(response => {
-      const { logo } = response.data
-      form.value = response.data;
-      logoPreview.value = logo.url
+      form.value = mapFaculty(response.data)
     })
+  }
+
+  const companyWasChanged = event => {
+    const uuid = event.target.value;
+    
+    form.university_uuid = null;
+
+    universities.value = [];
+
+    loadUniversities({
+      filter_by_company_uuid: uuid,
+    });
   }
 
   const update = () => {
@@ -97,15 +118,17 @@ export default function useEdit() {
 
   onMounted(() => {
     loadFaculty()
-    loadUniversities()
-    logoPreview.value = image(logoPreview.value)
+    loadCompanies()
   })
 
   return {
     form,
+    inputs,
+    companies,
     universities,
     logoPreview,
 
+    companyWasChanged,
     uploadLogo,
     update,
   }

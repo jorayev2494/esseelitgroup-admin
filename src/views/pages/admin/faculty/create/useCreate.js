@@ -1,37 +1,27 @@
 import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
-import { onMounted, reactive, ref, getCurrentInstance } from "vue"
-import { useRoute, useRouter } from "vue-router";
+import { onMounted, reactive, ref } from "vue"
+import { useRouter } from "vue-router";
 import { useStore } from "vuex"
+import { useInputs, useCompanies } from '../useCases/usePartials'
 
 export default function useCreate() {
 
   const store = useStore();
   const router = useRouter();
-  const route = useRoute();
   const { image } = useUrlPattern();
+  const { companies, loadCompanies } = useCompanies();
 
   const logoPreview = ref(null);
+  const inputs = useInputs();
 
   const universities = ref([]);
 
-  const translations = {
-    name: '',
-    description: '',
-  }
-
   const form = reactive({
     logo: '',
+    company_uuid: '',
     university_uuid: '',
     translations: {},
   });
-
-  const makeTranslationsForm = (form, translations) => {
-    const clientSupportedLocales = getCurrentInstance().appContext.config.globalProperties.$clientSupportedLocales;
-
-    clientSupportedLocales.forEach(locale => {
-      form.translations[locale] = { ...translations };
-    });
-  }
 
   const uploadLogo = event => {
     const uploadedLogo = event.target.files[0];
@@ -42,12 +32,8 @@ export default function useCreate() {
     }
   }
 
-  const loadUniversities = () => {
-    store.dispatch('university/loadUniversityListAsync', {
-      params: {
-        
-      }
-    }).then(response => {
+  const loadUniversities = (params = {}) => {
+    store.dispatch('university/loadUniversityListAsync', { params }).then(response => {
       universities.value = response.data;
     })
   }
@@ -88,6 +74,18 @@ export default function useCreate() {
     return formData;
   }
 
+  const companyWasChanged = event => {
+    const uuid = event.target.value;
+    
+    form.university_uuid = null;
+
+    universities.value = [];
+
+    loadUniversities({
+      filter_by_company_uuid: uuid,
+    });
+  }
+
   const create = () => {
     store.dispatch('faculty/createFacultyAsync', decorateFormData())
       .then(() => {
@@ -96,17 +94,18 @@ export default function useCreate() {
   }
 
   onMounted(() => {
-    loadUniversities();
+    loadCompanies();
     logoPreview.value = image(logoPreview.value)
-    makeTranslationsForm(form, translations)
   })
 
   return {
     form,
-    translations,
+    inputs,
+    companies,
     universities,
     logoPreview,
 
+    companyWasChanged,
     uploadLogo,
     create,
   }

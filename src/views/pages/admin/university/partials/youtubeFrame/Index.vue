@@ -2,7 +2,7 @@
   <div class="col-xl-12 col-md-12">
     <div class="card flex-fill">
       <div class="card-header">
-        <h4 class="card-title">YouTube Video</h4>
+        <h4 class="card-title">{{ $t('university.form.youtube_video') }}</h4>
       </div>
       <center>
         <div class="card-body">

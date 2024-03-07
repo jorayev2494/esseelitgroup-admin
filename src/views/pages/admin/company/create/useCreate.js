@@ -11,18 +11,18 @@ export default function useCreate() {
 
   const logoPreview = ref(null);
 
-  const form = reactive({
+  const form = ref({
     name: '',
+    email: '',
     domain: '',
-    // logo: '',
+    logo: '',
   });
 
   const uploadLogo = event => {
-    const uploadedLogo = event.target.files[0];
-    console.log('event uploadLogo: ', uploadedLogo);
+    const [uploadedLogo] = event.target.files;
 
     if (uploadedLogo) {
-      form.logo = uploadedLogo;
+      form.value.logo = uploadedLogo;
       logoPreview.value = URL.createObjectURL(uploadedLogo);
     }
 
@@ -31,18 +31,20 @@ export default function useCreate() {
   const decorateFormData = () => {
     const formData = new FormData();
 
-    for (const key in form) {
-      if (Object.hasOwnProperty.call(form, key)) {
-        const value = form[key];
+    for (const key in form.value) {
+      if (Object.hasOwnProperty.call(form.value, key)) {
+        const value = form.value[key];
         formData.append(key, value);
       }
     }
+
+    console.log('awdawd decorateFormData: ', formData)
 
     return formData;
   }
 
   const create = () => {
-    store.dispatch('company/createCompanyAsync', decorateFormData())
+    store.dispatch('company/createCompanyAsync', { data: decorateFormData() })
       .then(() => {
         router.push({ name: 'companies' });
       })

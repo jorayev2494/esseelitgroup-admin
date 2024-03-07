@@ -16,9 +16,7 @@ const actions = {
   async loadFacultiesAsync(_, payload) {
     return await new Promise((resolve, reject) => {
       return httpClient.get('/faculties', payload)
-        .then(response => {
-          return resolve(response);
-        })
+        .then(response => resolve(response))
         .catch(error => reject(error));
     })
   },
@@ -34,9 +32,7 @@ const actions = {
   async createFacultyAsync(_, payload) {
     return await new Promise((resolve, reject) => {
       return httpClient.post('/faculties', payload)
-        .then(response => {
-          return resolve(response);
-        })
+        .then(response => resolve(response))
         .catch(error => reject(error));
     })
   },
@@ -44,9 +40,7 @@ const actions = {
   async showFacultyAsync(_, { uuid }) {
     return await new Promise((resolve, reject) => {
       return httpClient.get(`/faculties/${uuid}`)
-        .then(response => {
-          return resolve(response);
-        })
+        .then(response => resolve(response))
         .catch(error => reject(error));
     })
   },
@@ -54,9 +48,7 @@ const actions = {
   async updateFacultyAsync(_, { uuid, data }) {
     return await new Promise((resolve, reject) => {
       return httpClient.post(`/faculties/${uuid}`, data)
-        .then(response => {
-          return resolve(response);
-        })
+        .then(response => resolve(response))
         .catch(error => reject(error));
     })
   },
@@ -64,9 +56,7 @@ const actions = {
   async deleteFacultyAsync(_, { uuid }) {
     return await new Promise((resolve, reject) => {
       return httpClient.delete(`/faculties/${uuid}`)
-        .then(response => {
-          return resolve(response);
-        })
+        .then(response => resolve(response))
         .catch(error => reject(error));
     })
   },
