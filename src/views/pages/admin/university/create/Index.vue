@@ -7,50 +7,50 @@
 
         <div class="card-body">
             <form action="#" method="POST" @submit.prevent="create" enctype="multipart/form-data">
-                <div class="form-group row">
-                    <label class="col-lg-3 col-form-label">Company</label>
-                    <div class="col-lg-9">
-                    <select class="form-select" v-model="form.company_uuid" aria-label="Default select example" required>
-                        <option selected>Open this select menu</option>
-                        <option
-                        v-for="({ uuid, name }, idx) of companies" :key="idx"
-                        :value="uuid"
-                        >
-                        {{ name }}
-                        </option>
-                    </select>
-                    </div>
-                </div>
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label">{{ $t('university.form.company') }}</label>
+                  <div class="col-lg-9">
+                  <select class="form-select" v-model="form.company_uuid" aria-label="Default select example" required>
+                      <option value="" disabled selected>{{ $t('university.form.company') }}</option>
+                      <option
+                      v-for="({ uuid, name }, idx) of companies" :key="idx"
+                      :value="uuid"
+                      >
+                      {{ name }}
+                      </option>
+                  </select>
+                  </div>
+              </div>
 
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label">Logo</label>
+                    <label class="col-lg-3 col-form-label">{{ $t('university.form.logo') }}</label>
                     <div class="col-lg-9">
                         <input class="form-control" type="file" accept="image/*" @change="uploadMedia($event, 'logo')">
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label">Cover</label>
+                    <label class="col-lg-3 col-form-label">{{ $t('university.form.cover') }}</label>
                     <div class="col-lg-9">
                         <input class="form-control" type="file" accept="image/*" @change="uploadMedia($event, 'cover')">
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label">Youtube video id</label>
+                    <label class="col-lg-3 col-form-label">{{ $t('university.form.youtube_video_id') }}</label>
                     <div class="col-lg-9">
                         <input type="text" v-model="form.youtube_video_id" class="form-control" required>
                     </div>
                 </div>
 
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">{{ $t('system.save') }}</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <Inputs :form="form" />
+    <Inputs :form="form" :inputs="inputs" />
   </div>
 
   <div class="col-xl-6">
@@ -66,9 +66,19 @@
 
 <script setup>
   import Media from '../partials/media/Index.vue'
-  import Inputs from '../partials/input/Index.vue'
   import YouTubeFrame from '../partials/youtubeFrame/Index.vue'
   import useEdit from './useEdit.js';
+  import Inputs from '../../../components/InputCard/Index.vue'
 
-  const { form, logoPreview, coverPreview, companies, uploadLogo, uploadCover, uploadMedia, create } = useEdit();
+  const {
+    form,
+    inputs,
+    logoPreview,
+    coverPreview,
+    companies,
+    uploadLogo,
+    uploadCover,
+    uploadMedia,
+    create,
+  } = useEdit();
 </script>

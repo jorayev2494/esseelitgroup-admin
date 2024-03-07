@@ -4,9 +4,14 @@
         "ru": "Русский",
         "tm": "Türkmençe"
     },
+    "translations": "Terjimeleri",
+    "actions": "Hereketler",
     "create": "Döret",
     "edit": "Redaktirle",
     "show": "Görkez",
     "delete": "Öçür",
-    "send": "Iber"
+    "send": "Iber",
+    "save": "Saklaň",
+    "save_changes": "Üýtgetmeleri ýatda sakla",
+    "created_at": "Döredildi"
 }

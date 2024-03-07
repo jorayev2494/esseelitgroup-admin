@@ -21,6 +21,14 @@ const actions = {
     })
   },
 
+  async loadDepartmentListAsync(_, { params }) {
+    return await new Promise((resolve, reject) => {
+      return httpClient.get('/departments/list', { params })
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    })
+  },
+
   async createDepartmentAsync(_, { data }) {
     return await new Promise((resolve, reject) => {
       return httpClient.post('/departments', data)
@@ -41,7 +49,7 @@ const actions = {
 
   async updateDepartmentAsync(_, { uuid, data }) {
     return await new Promise((resolve, reject) => {
-      return httpClient.post(`/departments/${uuid}`, data)
+      return httpClient.put(`/departments/${uuid}`, data)
         .then(response => {
           return resolve(response);
         })

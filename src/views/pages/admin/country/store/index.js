@@ -13,9 +13,43 @@ const mutations = {
 }
 
 const actions = {
-  async loadCountryListAsync(_, { params }) {
+  async loadCountryListAsync(_, { params = {} }) {
     return await new Promise((resolve, reject) => {
       return httpClient.get('/countries/list', { params })
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    })
+  },
+
+  async loadCountriesAsync(_, payload) {
+    return await new Promise((resolve, reject) => {
+      return httpClient.get('/universities/countries', payload)
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    })
+  },
+
+  async createCountryAsync(_, { data }) {
+    return await new Promise((resolve, reject) => {
+      return httpClient.post('/countries', data)
+        .then(response => {
+          return resolve(response);
+        })
+        .catch(error => reject(error));
+    })
+  },
+
+  async showCountryAsync(_, payload) {
+    return await new Promise((resolve, reject) => {
+      return httpClient.get(`/universities/countries/${payload}`)
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    })
+  },
+
+  async updateCountryAsync(_, { uuid, data }) {
+    return await new Promise((resolve, reject) => {
+      return httpClient.post(`/countries/${uuid}`, data)
         .then(response => resolve(response))
         .catch(error => reject(error));
     })

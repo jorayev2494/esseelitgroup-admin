@@ -16,7 +16,7 @@ const makeDeviceIdHash = () => {
 }
 
 const request = config => {
-  let accessToken = window.localStorage.getItem('access_token') && store.getters['auth/getAccessToken'];
+  let accessToken = store.getters['auth/getAccessToken'];
   window.console.log(`Interceptor (request)  => { method: ${config.method}, url: ${config.url} }: `);
     
   if (accessToken) {
@@ -25,12 +25,7 @@ const request = config => {
 
   // request.headers['X-Socket-Id'] = Echo.socketId()
   config.headers['X-Device-Id'] = makeDeviceIdHash();
-  // config.headers['Content-Type'] = 'application/json';
-
-  // const locale = store.getters['lang/locale']
-  // if (locale) {
   config.headers['Accept-Language'] = Tr.currentLocale;
-  // }  
 
   return config;
 }

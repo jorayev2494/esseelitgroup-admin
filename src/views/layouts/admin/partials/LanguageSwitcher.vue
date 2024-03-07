@@ -22,7 +22,7 @@
 <script setup>
   import { useI18n } from 'vue-i18n';
   import Tr from '@/services/translations/translation'
-import { useRouter } from 'vue-router';
+  import { useRouter } from 'vue-router';
 
   const router = useRouter();
   const { t, locale } = useI18n();
@@ -30,7 +30,6 @@ import { useRouter } from 'vue-router';
   console.log('Supported Locales: ', Tr.supportedLocales);
 
   const switchLanguage = async locale => {
-    console.log('Locale: ', locale);
     await Tr.switchLanguage(locale);
 
     try {
@@ -39,7 +38,6 @@ import { useRouter } from 'vue-router';
       console.error(error);
       router.push('/');
     }
-
   }
 
 </script>

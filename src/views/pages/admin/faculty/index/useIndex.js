@@ -1,6 +1,7 @@
 import { useUrlPattern } from '@/views/pages/utils/UrlPattern';
 import { usePaginator } from '@/views/pages/utils/paginator';
 import { onMounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
 
 export default function useIndex() {
@@ -8,15 +9,17 @@ export default function useIndex() {
   const store = useStore();
   const paginator = usePaginator();
   const { image } = useUrlPattern();
+  const { t } = useI18n()
 
   const loading = ref(true);
   const items = ref([]);
   const columns = [
-    { field: 'logo', title: 'Logo' },
-    { field: 'name', title: 'Name' },
-    { field: 'description', title: 'description' },
-    { field: 'created_at', title: 'Created At', type: 'date' },
-    { field: 'actions', title: 'actions', sort: false },
+    { field: 'logo', title: t('faculty.form.logo') },
+    { field: 'name', title: t('faculty.form.name') },
+    { field: 'university.name', title: t('faculty.form.university') },
+    // { field: 'description', title: 'description' },
+    { field: 'created_at', title: t('system.created_at'), type: 'date' },
+    { field: 'actions', title: t('system.actions'), sort: false },
   ];
 
   const reloadData = () => {

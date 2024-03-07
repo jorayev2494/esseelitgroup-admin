@@ -6,6 +6,7 @@ import university from '@/views/pages/admin/university/locales/tm.json'
 import faculty from '@/views/pages/admin/faculty/locales/tm.json'
 import department from '@/views/pages/admin/department/locales/tm.json'
 import application from '@/views/pages/admin/application/locales/tm.json'
+import country from '@/views/pages/admin/country/locales/tm.json'
 
 export default {
   system,
@@ -16,4 +17,5 @@ export default {
   faculty,
   department,
   application,
+  country,
 }

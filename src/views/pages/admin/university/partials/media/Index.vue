@@ -2,7 +2,7 @@
     <div class="col-xl-12 col-md-12">
       <div class="card flex-fill">
         <div class="card-header">
-          <strong class="card-title">Logo </strong>
+          <strong class="card-title">{{ $t('university.form.logo') }} </strong>
           <!-- <small>{{ imageInfo.logoWidth }} x {{ imageInfo.logoHeight }}</small> -->
         </div>
 
@@ -17,7 +17,7 @@
 
       <div class="card flex-fill">
         <div class="card-header">
-          <strong class="card-title">Cover </strong>
+          <strong class="card-title">{{ $t('university.form.cover') }} </strong>
           <!-- <small>{{ imageInfo.coverWidth }} x {{ imageInfo.coverHeight }}</small> -->
         </div>
         <center>

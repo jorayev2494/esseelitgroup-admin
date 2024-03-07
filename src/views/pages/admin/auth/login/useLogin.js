@@ -1,6 +1,8 @@
 import { reactive, getCurrentInstance } from "vue";
 import useAuth from '@/services/auth/useAuth';
 import { useRouter } from "vue-router";
+import Tr from '@/services/translations/translation.js';
+import { toast } from "vue3-toastify";
 
 export function useLogin() {
   const showSocialLogin = false;
@@ -13,8 +15,10 @@ export function useLogin() {
 
   const login = () => {
     useAuth.login(form).then(() => {
-      // console.log('Success logined: ', getCurrentInstance().proxy.$tMakeRoute({ name: 'dashboard' }))
-      router.push({ name: 'dashboard' });
+      router.push(Tr.makeRoute({ name: 'dashboard' }));
+      toast.success(
+        'Welcome!',
+      )
     }).catch(err => {
       console.log('Login error response: ', err);
     });

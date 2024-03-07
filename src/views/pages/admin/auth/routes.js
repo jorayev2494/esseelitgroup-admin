@@ -5,7 +5,7 @@ const routes = [
   {
     path: 'auth',
     name: 'auth',
-    component: () => import('./layout/Index.js.vue'),
+    component: () => import('./layout/Index.vue'),
     children: [
       {
         path: 'login',

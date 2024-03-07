@@ -1,5 +1,7 @@
 import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
+import { useDate } from "@/views/pages/utils/helpers";
 import { onMounted, reactive, ref, getCurrentInstance } from "vue"
+import { useI18n } from "vue-i18n";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
 
@@ -8,14 +10,13 @@ export default function userEdit() {
   const store = useStore();
   const router = useRouter();
   const route = useRoute();
+  const { separator, dateFromTimestamp, formatDate } = useDate();
+  const { d } = useI18n()
   const { image } = useUrlPattern();
 
   const { uuid } = route.params;
 
-  const universities = ref([]);
-  const faculties = ref([]);
-  const countries = ref([]);
-  const statuses = ref([]);
+  const facultiesAndDepartments = ref([]);
 
   const form = ref(null);
   
@@ -24,38 +25,35 @@ export default function userEdit() {
     notActive: false,
   }
 
+  const mapApplication = application => {
+    const { birthday } = application;
+
+    application.birthday = d(dateFromTimestamp(birthday), 'short');
+
+    buildFacultiesAndDepartments(application);
+
+    return application
+  }
+
+  const buildFacultiesAndDepartments = ({ departments }) => {
+    const res = [];
+
+    departments.forEach(({ faculty }) => {
+      if (res.filter(f => f.uuid === faculty.uuid).length === 0) {
+        res.push({
+          uuid: faculty.uuid,
+          name: faculty.name,
+          departments: departments.filter(d => d.faculty_uuid === faculty.uuid).map(({ uuid, name }) => ({ uuid, name })),
+        })
+      }
+    });
+
+    facultiesAndDepartments.value = res;
+  }
+
   const showApplication = () => {
     store.dispatch('application/showApplicationAsync', { uuid }).then(response => {
-      const { university_uuid, company_uuid } = response.data;
-
-      form.value = response.data
-      loadUniversities(company_uuid)
-      loadFaculties(university_uuid)
-    })
-  }
-
-  const loadFaculties = uuid => {
-    store.dispatch('faculty/loadFacultyListAsync', { params: { filter_by_university_uuid: uuid } }).then(response => {
-      faculties.value = response.data;
-    })
-  }
-
-  const loadUniversities = uuid => {
-    store.dispatch('university/loadUniversityListAsync', { params: { filter_by_company_uuid: uuid } }).then(response => {
-      universities.value = response.data.map(({ uuid, name }) => ({ uuid, name }));
-    })
-  }
-
-  const loadCountries = () => {
-    store.dispatch('country/loadCountryListAsync').then(response => {
-      countries.value = response.data;
-    })
-  }
-
-
-  const loadStatuses = () => {
-    store.dispatch('application/loadApplicationStatusesListAsync').then(response => {
-      statuses.value = response.data;
+      form.value = mapApplication(response.data);
     })
   }
 
@@ -70,17 +68,13 @@ export default function userEdit() {
 
   onMounted(() => {
     showApplication()
-    loadFaculties()
-    loadStatuses()
-    // loadUniversities()
   })
 
   return {
     form,
+    // detailColumns,
     activityOptions,
-    universities,
-    faculties,
-    statuses,
+    facultiesAndDepartments,
 
     update,
   }

@@ -1,8 +1,9 @@
 import { onMounted, ref } from "vue";
+import { useI18n } from "vue-i18n";
 
 export default function useIndex({ props }) {
 
-  console.log('props: ', props)
+  const { t } = useI18n();
 
   const { form } = props;
 
@@ -33,14 +34,14 @@ export default function useIndex({ props }) {
     { field: 'document_type', title: 'Document type' },
     { field: 'extension', title: 'Extension' },
     { field: 'file_original_name', title: 'File name' },
-    { field: 'actions', title: 'actions', sort: false },
+    { field: 'actions', title: t('system.actions'), sort: false },
   ];
 
   const additionalDocumentColumns = [
     { field: 'description', title: 'Description' },
     { field: 'extension', title: 'Extension' },
     { field: 'file_original_name', title: 'File name' },
-    { field: 'actions', title: 'actions', sort: false },
+    { field: 'actions', title: t('system.actions'), sort: false },
   ]
 
   const documentItems = ref([]);

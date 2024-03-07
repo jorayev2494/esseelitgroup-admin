@@ -1,3 +1,11 @@
 {
-    "context_title": "Faculties"
+  "context_title": "Faculties",
+  "form": {
+    "company": "Company",
+    "university": "University",
+    "logo": "Logo",
+    "name": "Name",
+    "label": "Label",
+    "description": "Description"
+  }
 }

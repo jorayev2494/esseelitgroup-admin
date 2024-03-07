@@ -1,3 +1,13 @@
 {
-    "context_title": "Uniwersitetler"
+  "context_title": "Uniwersitetler",
+  "form": {
+    "company": "Kompaniýa",
+    "logo": "Logotip",
+    "cover": "Örtük",
+    "youtube_video_id": "YouTube video id - sy",
+    "youtube_video": "YouTube video",
+    "name": "Ady",
+    "label": "Etiketkasy",
+    "description": "Düşündiriş"
+  }
 }

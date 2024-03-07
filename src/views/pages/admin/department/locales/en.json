@@ -1,3 +1,12 @@
 {
-    "context_title": "Departments"
+  "context_title": "Departments",
+  "translations": "Translates",
+  "form": {
+    "company": "Company",
+    "university": "University",
+    "faculty": "Faculty",
+    "activity": "Activity",
+    "name": "Name",
+    "description": "Description"
+  }
 }

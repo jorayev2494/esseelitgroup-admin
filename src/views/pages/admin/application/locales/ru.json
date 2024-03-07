@@ -1,3 +1,48 @@
 {
-    "context_title": "Заявки"
+    "context_title": "Заявки",
+    "application_form": "Форма заявки",
+    "documents": "Документы",
+    "additional_documents": "Дополнительные документы",
+    "add_additional_document": "Добавить дополнительный документ",
+    "save_changes": "Сохранить изменения",
+    "document": "Документ",
+    "document_type": "Тип документа",
+    "document_name": "Название документа",
+    "extension": "Расширение",
+    "file_name": "Имя файла",
+    "form": {
+        "full_name": "Полное имя",
+        "birthday": "День рождения",
+        "father_name": "Имя Отца",
+        "mother_name": "Имя матери",
+        "passport_number": "Номер паспорта",
+        "phone": "Телефон",
+        "friend_phone": "Телефон друга",
+        "home_address": "Домашний адрес",
+        "email": "Эл. почта",
+        "company": "Компания",
+        "country": "Страна",
+        "university": "Университет",
+        "faculties_and_departments": "Факультеты и специальности",
+        "status": "Статус",
+        "status_note": "Примечание о статусе",
+        "faculties_and_departments_select": {
+            "placeholder": "Факультеты и специальности",
+            "select_group_label": "Нажмите чтобы выбрать факультет",
+            "deselect_group_label": "Нажмите чтобы отменить выбор факультета",
+            "select_label": "Нажмите чтобы выбрать специальность",
+            "deselect_label": "Нажмите чтобы убрать специальность",
+            "selected": "Добавлено"
+        },
+        "documents": {
+            "passport": "Заграничный паспорт",
+            "school_attestat": "Школьный аттестат",
+            "equivalence_document": "Документ об эквивалентности",
+            "passport_translation": "Перевод паспорта",
+            "transcript": "Транскрипт",
+            "transcript_translation": "Транскрипт перевода",
+            "school_attestat_translation": "Перевод школьного аттестата",
+            "biometric_photo": "Биометрическое фото"
+        }
+    }
 }

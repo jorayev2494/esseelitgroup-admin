@@ -1,3 +1,13 @@
 {
-    "context_title": "Universities"
+    "context_title": "Universities",
+    "form": {
+        "company": "Company",
+        "logo": "Logo",
+        "cover": "Cover",
+        "youtube_video_id": "Youtube video id",
+        "youtube_video": "YouTube video",
+        "name": "Name",
+        "label": "Label",
+        "description": "Description"
+    }
 }

@@ -4,9 +4,14 @@
         "ru": "Русский",
         "tm": "Türkmençe"
     },
+    "translations": "Translates",
+    "actions": "Actions",
     "create": "Create",
     "edit": "Edit",
     "show": "Show",
     "delete": "Delete",
-    "send": "Send"
+    "send": "Send",
+    "save": "Save",
+    "save_changes": "Save changes",
+    "created_at": "Created at"
 }

@@ -1,3 +1,4 @@
+import { reactive, getCurrentInstance } from 'vue';
 import { createRouter, createWebHistory, RouterView } from 'vue-router';
 import routes from './routes.js';
 import Tr from '@/services/translations/translation.js';
@@ -11,11 +12,11 @@ const router = createRouter({
       component: RouterView,
       beforeEnter: Tr.routeMiddleware,
       children: routes,
-    }
+    },
   ],
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(function(to, from, next) {
   // Middleware
   if (to.meta.hasOwnProperty('middleware')) {
     const accessToken = localStorage.getItem('access_token');
@@ -23,7 +24,7 @@ router.beforeEach((to, from, next) => {
     // For Guest
     if (to.meta.middleware.includes('guest')) {
       if (accessToken) {
-        next({ name: 'dashboard' });
+        next(Tr.makeRoute({ name: 'dashboard' }));
       }
     }
 
@@ -32,7 +33,7 @@ router.beforeEach((to, from, next) => {
       if (accessToken) {
         next();
       } else {
-        next({ name: 'login' });
+        next(Tr.makeRoute({ name: 'login' }));
       }
     }
 
