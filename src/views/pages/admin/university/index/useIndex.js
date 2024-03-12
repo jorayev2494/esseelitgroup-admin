@@ -1,4 +1,5 @@
 import { useUrlPattern } from '@/views/pages/utils/UrlPattern';
+import { useDate } from '@/views/pages/utils/helpers';
 import { usePaginator } from '@/views/pages/utils/paginator';
 import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -9,7 +10,8 @@ export default function useIndex() {
   const store = useStore();
   const paginator = usePaginator();
   const { image } = useUrlPattern();
-  const { t } = useI18n();
+  const { t, d } = useI18n();
+  const { dateFromTimestamp } = useDate()
 
   const loading = ref(true);
   const items = ref([]);
@@ -28,11 +30,13 @@ export default function useIndex() {
     loadUniversities();
   }
 
-  const companyMapper = company => {
-    // company.logo = image(company.logo, 60, 60);
-    company.logo = company.logo.url;
+  const universityMapper = university => {
+    // university.logo = image(university.logo, 60, 60);
+    university.logo = university.logo.url;
 
-    return company;
+    university.created_at = d(dateFromTimestamp(university.created_at), 'short');
+
+    return university;
   }
 
   const loadUniversities = () => {
@@ -43,7 +47,7 @@ export default function useIndex() {
         const { data } = response;
 
         paginator.setMetaData(data);
-        items.value = data.data.map(companyMapper);
+        items.value = data.data.map(universityMapper);
       })
       .catch(error => error)
       .finally(() => loading.value = false);

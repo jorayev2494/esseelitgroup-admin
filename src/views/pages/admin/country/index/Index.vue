@@ -40,9 +40,9 @@
               <i class="fa fa-edit"></i> {{ $t('system.edit') }}
             </router-link>
             
-            <!-- <span class="btn btn-sm bg-danger-light" @click="remove(data)">
+            <span class="btn btn-sm bg-danger-light" @click="remove(data)">
               <i class="fa fa-trash"></i> {{ $t('system.delete') }}
-            </span> -->
+            </span>
           </template>
 
         </data-table>

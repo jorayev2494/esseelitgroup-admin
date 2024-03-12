@@ -76,6 +76,7 @@
     inputs,
     logoPreview,
     coverPreview,
+    companies,
     uploadLogo,
     uploadCover,
     uploadMedia,
