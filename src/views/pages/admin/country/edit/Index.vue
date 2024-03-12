@@ -6,7 +6,7 @@
         </div>
 
         <div class="card-body">
-            <form action="#" method="POST" @submit.prevent="create" enctype="multipart/form-data">
+            <form action="#" method="POST" @submit.prevent="update" enctype="multipart/form-data">
 
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label">{{ $t('country.form.company') }}</label>
@@ -57,11 +57,8 @@
 
   const {
     form,
-    logoPreview,
-    coverPreview,
-    uploadLogo,
-    uploadCover,
-    uploadMedia,
+    companies,
+
     update,
   } = useEdit();
 </script>

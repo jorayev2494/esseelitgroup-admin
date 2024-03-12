@@ -4,6 +4,7 @@ import { onMounted, reactive, ref, getCurrentInstance } from "vue"
 import { useI18n } from "vue-i18n";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
+import { toast } from "vue3-toastify";
 
 export default function userEdit() {
 
@@ -182,6 +183,7 @@ export default function userEdit() {
     store.dispatch('application/updateApplicationAsync', { uuid: form.value.uuid, data: getData() })
       .then(() => {
         // router.push({ name: 'applications' });
+        toast.success('Success updated');
       })
   }
 

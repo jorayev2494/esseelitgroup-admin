@@ -46,6 +46,11 @@ export default function useEdit() {
     for (const key in form.value) {
       if (Object.hasOwnProperty.call(form.value, key)) {
         const value = form.value[key];
+
+        if (key === 'logo' && ! (value instanceof File)) {
+          formData.append(key, '');
+          continue;
+        }
         
         if (key === 'translations') {
           console.log('aaa key: ', key, 'Value: ', form.value, 'value: ', value);

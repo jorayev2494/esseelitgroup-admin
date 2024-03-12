@@ -7,7 +7,7 @@
 
         <div class="card-body">
             <form action="#" method="POST" @submit.prevent="create" enctype="multipart/form-data">
-              <pre>{{ form }}</pre>
+              <!-- <pre>{{ form }}</pre> -->
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label">{{ $t('company.form.name') }}</label>
                     <div class="col-lg-9">

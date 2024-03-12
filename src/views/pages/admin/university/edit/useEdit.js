@@ -14,6 +14,7 @@ export default function useEdit() {
 
   const form = ref({});
   const inputs = useInputs();
+  const companies = ref([])
 
   const logoPreview = ref(null);
   const coverPreview = ref(null);
@@ -73,6 +74,15 @@ export default function useEdit() {
     return formData;
   }
 
+  const loadCompanies = () => {
+    store.dispatch('company/loadCompanyListAsync', { params: {} }).then(response => {
+      companies.value = response.data.map(({ uuid, name }) => ({
+        uuid,
+        name,
+      }))
+    })
+  }
+
   const uploadMedia = (event, type) => {
     const uploadedMedia = event.target.files[0];
 
@@ -116,6 +126,7 @@ export default function useEdit() {
 
   onMounted(() => {
     loadUniversity()
+    loadCompanies()
     // logoPreview.value = image(logoPreview.value)
     // coverPreview.value = image(coverPreview.value, 1200, 800, 'cover')
   })
@@ -126,6 +137,7 @@ export default function useEdit() {
     logoPreview,
     coverPreview,
     uploadMedia,
+    companies,
 
     uploadLogo,
     uploadCover,

@@ -101,7 +101,7 @@
                 <ol class="ml-4">
                   <li v-for="(department, dIdx) in faculty.departments" :key="dIdx">
                     <router-link :to="$tMakeRoute({ name: 'department-show', params: { uuid: department.uuid } })" target="_blank">
-                      {{ department.name ?? 'Faculty name' }}
+                      {{ department.name ?? 'Department name' }}
                     </router-link>
                   </li>
                 </ol>

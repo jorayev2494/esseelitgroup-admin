@@ -1,4 +1,5 @@
 import { useUrlPattern } from '@/views/pages/utils/UrlPattern';
+import { useDate } from '@/views/pages/utils/helpers';
 import { usePaginator } from '@/views/pages/utils/paginator';
 import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -9,7 +10,8 @@ export default function useIndex() {
   const store = useStore();
   const paginator = usePaginator();
   const { image } = useUrlPattern();
-  const { t } = useI18n()
+  const { t, d } = useI18n();
+  const { dateFromTimestamp } = useDate();
 
   const loading = ref(true);
   const items = ref([]);
@@ -17,7 +19,6 @@ export default function useIndex() {
     { field: 'logo', title: t('faculty.form.logo') },
     { field: 'name', title: t('faculty.form.name') },
     { field: 'university.name', title: t('faculty.form.university') },
-    // { field: 'description', title: 'description' },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
     { field: 'actions', title: t('system.actions'), sort: false },
   ];
@@ -30,6 +31,8 @@ export default function useIndex() {
   const facultyMapper = faculty => {
     // faculty.logo = image(faculty.logo, 60, 60);
     faculty.logo = faculty.logo.url;
+
+    faculty.created_at = d(dateFromTimestamp(faculty.created_at), 'short');
 
     return faculty;
   }

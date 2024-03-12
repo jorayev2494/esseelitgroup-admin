@@ -57,12 +57,8 @@
 
   const {
     form,
-    logoPreview,
-    coverPreview,
     companies,
-    uploadLogo,
-    uploadCover,
-    uploadMedia,
+
     create,
   } = useEdit();
 </script>

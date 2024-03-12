@@ -1,4 +1,5 @@
 import { useUrlPattern } from '@/views/pages/utils/UrlPattern';
+import { useDate } from '@/views/pages/utils/helpers';
 import { usePaginator } from '@/views/pages/utils/paginator';
 import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -9,7 +10,8 @@ export default function useIndex() {
   const store = useStore();
   const paginator = usePaginator();
   const { image, defaultImage } = useUrlPattern();
-  const { t } = useI18n();
+  const { t, d } = useI18n();
+  const { dateFromTimestamp } = useDate()
 
   const loading = ref(true);
   const items = ref([]);
@@ -17,7 +19,7 @@ export default function useIndex() {
     { field: 'logo', title: t('company.form.logo') },
     { field: 'name', title: t('company.form.name') },
     { field: 'domain', title: t('company.form.domain') },
-    { field: 'status.value', title: t('company.form.status') },
+    // { field: 'status.value', title: t('company.form.status') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
     { field: 'actions', title: t('system.actions'), sort: false },
   ];
@@ -30,6 +32,7 @@ export default function useIndex() {
   const companyMapper = company => {
     // company.logo = image(company.logo, 60, 60);
     company.logo = company?.logo?.url ?? defaultImage('logo');
+    company.created_at = d(dateFromTimestamp(company.created_at), 'short');
 
     return company;
   }

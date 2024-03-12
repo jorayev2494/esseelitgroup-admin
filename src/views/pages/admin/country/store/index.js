@@ -23,7 +23,7 @@ const actions = {
 
   async loadCountriesAsync(_, payload) {
     return await new Promise((resolve, reject) => {
-      return httpClient.get('/universities/countries', payload)
+      return httpClient.get('/countries', payload)
         .then(response => resolve(response))
         .catch(error => reject(error));
     })
@@ -41,7 +41,7 @@ const actions = {
 
   async showCountryAsync(_, payload) {
     return await new Promise((resolve, reject) => {
-      return httpClient.get(`/universities/countries/${payload}`)
+      return httpClient.get(`/countries/${payload}`)
         .then(response => resolve(response))
         .catch(error => reject(error));
     })
@@ -49,7 +49,15 @@ const actions = {
 
   async updateCountryAsync(_, { uuid, data }) {
     return await new Promise((resolve, reject) => {
-      return httpClient.post(`/countries/${uuid}`, data)
+      return httpClient.put(`/countries/${uuid}`, data)
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    })
+  },
+
+  async deleteCountryAsync(_, { uuid }) {
+    return await new Promise((resolve, reject) => {
+      return httpClient.delete(`/countries/${uuid}`)
         .then(response => resolve(response))
         .catch(error => reject(error));
     })
