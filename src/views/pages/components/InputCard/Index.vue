@@ -1,7 +1,7 @@
 <template>
   <div class="card flex-fill" v-if="form">
     <div class="card-header">
-        <h4 class="card-title">{{ $t('system.translations') }}</h4>
+      <h4 class="card-title">{{ $t(blockTitle) }}</h4>
     </div>
 
     <div class="card-header" v-if="form.translations">
@@ -33,15 +33,35 @@
           :class="{ 'active': activeLocale === locale }"
         >
           <div class="form-group row" v-for="(input, tIdx) of inputs" :key="tIdx">
-            <label class="col-lg-3 col-form-label">{{ $t(input.tLabel) }} <span v-if="input.required" class="text-danger">*</span></label>
-            <div class="col-lg-9">
+            <label class="col-lg-3 col-form-label" v-if="input.tLabel !== null">
+              {{ $t(input.tLabel) }} <span v-if="input.required" class="text-danger">*</span>
+            </label>
 
+            <div :class="input.tLabel !== null ? 'col-lg-9' : 'col-lg-12'">
               <div v-if="inputs[tIdx]['type'] == 'text'">
-                <input type="text" class="form-control" v-model="form.translations[locale][input.field]" :key="locale + input.field" :placeholder="$t(input.tLabel)" required>
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="form.translations[locale][input.field]"
+                  :key="locale + input.field"
+                  :placeholder="input.tLabel ? $t(input.tLabel) : null"
+                  required
+                  :readonly="readonly"
+                >
               </div>
 
               <div v-if="inputs[tIdx]['type'] == 'textarea'">
-                <textarea class="form-control" v-model="form.translations[locale][input.field]" :key="locale + input.field" rows="5" :placeholder="$t(input.tLabel)" required style="height: 100%;"></textarea>
+                <textarea
+                  class="form-control"
+                  v-model="form.translations[locale][input.field]"
+                  :key="locale + input.field"
+                  rows="5"
+                  :placeholder="input.tLabel ? $t(input.tLabel) : null"
+                  required
+                  style="height: 100%;"
+                  :readonly="readonly"
+                >
+                </textarea>
               </div>
 
               <div v-if="inputs[tIdx]['type'] == 'ckeditor'">
@@ -52,8 +72,8 @@
                   :name="input['field']"
                 />
               </div>
-
             </div>
+
           </div>
         </div>
 
@@ -80,6 +100,14 @@
     values: {
       type: Object,
       default: () => ({}),
+    },
+    blockTitle: {
+      type: String,
+      default: () => 'system.translations',
+    },
+    readonly: {
+      type: Boolean,
+      default: () => false,
     },
   });
 

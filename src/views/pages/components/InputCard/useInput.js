@@ -1,4 +1,4 @@
-import { defineProps, onMounted, ref, toRefs, getCurrentInstance } from 'vue'
+import { onMounted, ref, toRefs, getCurrentInstance } from 'vue'
 
 export default function useInput({ props }) {
 

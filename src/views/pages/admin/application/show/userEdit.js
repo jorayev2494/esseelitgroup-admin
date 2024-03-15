@@ -4,6 +4,7 @@ import { onMounted, reactive, ref, getCurrentInstance } from "vue"
 import { useI18n } from "vue-i18n";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
+import { useStatusInputs } from "../useCases/usePartials";
 
 export default function userEdit() {
 
@@ -13,6 +14,7 @@ export default function userEdit() {
   const { separator, dateFromTimestamp, formatDate } = useDate();
   const { d } = useI18n()
   const { image } = useUrlPattern();
+  const statusInputs = useStatusInputs();
 
   const { uuid } = route.params;
 
@@ -73,6 +75,7 @@ export default function userEdit() {
   return {
     form,
     // detailColumns,
+    statusInputs,
     activityOptions,
     facultiesAndDepartments,
 

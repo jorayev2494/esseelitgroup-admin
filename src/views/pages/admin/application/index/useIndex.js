@@ -3,6 +3,7 @@ import { usePaginator } from '@/views/pages/utils/paginator';
 import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
+import { getStatusClassName } from "../useCases/usePartials";
 
 export default function useIndex() {
 
@@ -19,7 +20,7 @@ export default function useIndex() {
     { field: 'company.name', title: t('application.form.company') },
     { field: 'university.name', title: t('application.form.university') },
     // { field: 'faculty.name', title: t('application.form.faculty') },
-    { field: 'status.value', title: t('application.form.status') },
+    { field: 'status', title: t('application.form.status') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
     { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end' },
   ];
@@ -78,5 +79,6 @@ export default function useIndex() {
     paginator,
 
     changeServer,
+    getStatusClassName,
   }
 }

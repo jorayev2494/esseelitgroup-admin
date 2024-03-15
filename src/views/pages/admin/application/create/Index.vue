@@ -175,23 +175,20 @@
   </div>
 
   <div class="col-xl-6 d-flex">
-    <DocumentsPreview v-if="form" :form="form" :additional-documents="additionalDocuments" />
+    <DocumentsUpload v-if="form" :form="form" :additional-documents="additionalDocuments" />
   </div>
 </template>
 
 <script setup>
-  import DocumentsPreview from '../partials/documents/upload/Index.vue'
+  import DocumentsUpload from '../partials/documents/upload/Index.vue'
   import VueMultiselect from 'vue-multiselect'
   import useIndex from './useIndex';
 
   const {
     form,
-    activityOptions,
     companies,
     countries,
-    faculties,
     universities,
-    statuses,
     additionalDocuments,
 
     selectedDepartments,
@@ -199,7 +196,6 @@
 
     companyWasChanged,
     universityWasChanged,
-    loadFaculties,
     create,
   } = useIndex();
 </script>

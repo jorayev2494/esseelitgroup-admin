@@ -1,4 +1,3 @@
-import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
@@ -10,7 +9,6 @@ export default function useCreate() {
   const store = useStore();
   const router = useRouter();
   const route = useRoute();
-  const { image } = useUrlPattern();
   const { companies, loadCompanies } = useCompany()
 
   const { uuid } = route.params;
