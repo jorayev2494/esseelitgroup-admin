@@ -33,15 +33,12 @@
           @change="changeServer"
         >
 
-          <!-- <template #logo="data">
-            <div class="avatar-showcase">
-              <div class="avatars">
-                <div class="avatar">
-                  <img class="img-50 b-r-15" :src="data.value.logo" :alt="data.value.logo">
-                </div>
-              </div>
-            </div>
-          </template> -->
+          <template #status="data">
+            <!-- badge-pill inv-badge -->
+            <span class="badge" :class="getStatusClassName(data.value.status.value)">
+                {{ $t(`application.statuses.${data.value.status.value}`) }}
+            </span>
+          </template>
 
           <template #actions="data">
             <div class="float-end">
@@ -78,6 +75,7 @@
     paginator,
 
     changeServer,
+    getStatusClassName,
   } = useIndex();  
 </script>
 

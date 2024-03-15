@@ -90,13 +90,11 @@
     form,
     companies,
     inputs,
-    activityOptions,
     faculties,
     universities,
     update,
 
     companyWasChanged,
     universityWasChanged,
-    loadFaculties,
   } = useCreate();
 </script>

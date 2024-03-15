@@ -117,29 +117,26 @@
             <p class="col-sm-8">{{ form.status.value }}</p>
         </div>
 
-        <div class="row">
-            <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.status_note') }}</p>
-            <p class="col-sm-8">{{ form.status.note }}</p>
-        </div>
-
       </div>
     </div>
   </div>
 
-  <div class="col-xl-6 d-flex">
+  <div class="col-xl-6">
     <DocumentsPreview v-if="form" :form="form" />
+
+    <Inputs v-if="form?.status" :form="form.status" :inputs="statusInputs" :values="form.status.translations" :block-title="'application.form.status_note'" :readonly="true" />
   </div>
 </template>
 
 <script setup>
+  import Inputs from '../../../components/InputCard/Index.vue'
   import DocumentsPreview from '../partials/documents/preview/Index.vue'
   import userEdit from './userEdit';
 
   const {
     form,
-    activityOptions,
+    statusInputs,
     facultiesAndDepartments,
-    update,
   } = userEdit();
 </script>
 

@@ -485,11 +485,11 @@
 
   .sidebar-menu ul li a.active {
     background-color: transparent;
-    color: #1879cd;
+    color: #2c8e58;
   }
 
   .sidebar-menu ul ul a.active {
-    color: #1879cd;
+    color: #2c8e58;
     text-decoration: underline;
     background-color: unset;
   }

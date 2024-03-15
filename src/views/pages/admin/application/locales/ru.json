@@ -44,5 +44,10 @@
             "school_attestat_translation": "Перевод школьного аттестата",
             "biometric_photo": "Биометрическое фото"
         }
+    },
+    "statuses": {
+        "new": "Новый",
+        "pending": "В ожидании",
+        "viewed": "Просмотрено"
     }
 }

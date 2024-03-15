@@ -156,18 +156,18 @@
                     :value="value"
                     :selected="value === form.status.value"
                   >
-                    {{ value }}
+                    {{ $t(`application.statuses.${value}`) }}
                   </option>
                 </select>
               </div>
             </div>
 
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label class="col-lg-3 col-form-label">{{ $t('application.form.status_note') }}</label>
               <div class="col-lg-9">
                   <input type="text" v-model="form.status.note" class="form-control" required>
               </div>
-            </div>
+            </div> -->
 
             <div class="text-right">
                 <button type="submit" class="btn btn-primary">{{ $t('application.save_changes') }}</button>
@@ -177,30 +177,31 @@
     </div>
   </div>
 
-  <div class="col-xl-6 d-flex">
+  <div class="col-xl-6">
     <DocumentsPreview v-if="form" :form="form" />
+  
+    <Inputs v-if="form?.status" :form="form.status" :inputs="statusInputs" :values="form.status.translations" :block-title="'application.form.status_note'" />
   </div>
 </template>
 
 <script setup>
   import DocumentsPreview from '../partials/documents/preview/Index.vue'
+  import Inputs from '../../../components/InputCard/Index.vue'
   import VueMultiselect from 'vue-multiselect'
   import userEdit from './userEdit';
 
   const {
     form,
-    activityOptions,
-    faculties,
     universities,
     statuses,
     companies,
     countries,
+    statusInputs,
 
     selectedDepartments,
     departmentOptions,
 
     update,
-    loadFaculties,
     companyWasChanged,
     universityWasChanged,
   } = userEdit();

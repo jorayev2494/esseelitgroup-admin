@@ -77,9 +77,9 @@
             </div>
           </template>
 
-          <template #actions="data">            
-            <span class="btn btn-sm bg-danger-light" @click.prevent="removeAdditionalDocument(data.value.key)">
-              <i class="fa fa-trash"></i> {{ $t('system.delete') }}
+          <template #actions="data">
+            <span class="remove-btn" role='button' @click.prevent="removeAdditionalDocument(data.value.key)">
+              <i class="feather-trash-2 text-danger"></i>
             </span>
           </template>
         </data-table>
