@@ -33,15 +33,19 @@
           @change="changeServer"
         >
 
-          <!-- <template #logo="data">
-            <div class="avatar-showcase">
-              <div class="avatars">
-                <div class="avatar">
-                  <img class="img-50 b-r-15" :src="data.value.logo" :alt="data.value.logo">
-                </div>
-              </div>
+          <template #university="data">
+            <div class="d-flex flex-row">
+              <img :src="data.value.university.logo.url" alt="user-profile" width="35" />
+              <div class="m-2">{{ data.value.university.name }}</div>
             </div>
-          </template> -->
+          </template>
+
+          <template #faculty="data">
+            <div class="d-flex flex-row">
+              <img :src="data.value.faculty.logo.url" alt="user-profile" width="35" />
+              <div class="m-2">{{ data.value.faculty.name }}</div>
+            </div>
+          </template>
 
           <template #actions="data">
             <!-- <router-link class="btn btn-sm bg-primary-light me-2" :to="{ name: 'department-show', params: { uuid: data.value.uuid } }">

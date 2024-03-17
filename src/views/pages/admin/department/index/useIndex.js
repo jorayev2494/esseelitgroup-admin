@@ -18,8 +18,8 @@ export default function useIndex() {
   const columns = [
     { field: 'name', title: t('department.form.name') },
     // { field: 'description', title: 'description' },
-    { field: 'university.name', title: t('department.form.university') },
-    { field: 'faculty.name', title: t('department.form.faculty') },
+    { field: 'university', title: t('department.form.university') },
+    { field: 'faculty', title: t('department.form.faculty') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
     { field: 'actions', title: t('system.actions'), sort: false },
   ];

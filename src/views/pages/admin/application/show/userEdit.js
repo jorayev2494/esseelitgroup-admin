@@ -45,6 +45,7 @@ export default function userEdit() {
         res.push({
           uuid: faculty.uuid,
           name: faculty.name,
+          logo: faculty.logo,
           departments: departments.filter(d => d.faculty_uuid === faculty.uuid).map(({ uuid, name }) => ({ uuid, name })),
         })
       }

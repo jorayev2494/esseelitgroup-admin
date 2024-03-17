@@ -18,7 +18,7 @@ export default function useIndex() {
     { field: 'full_name', title: t('application.form.full_name') },
     { field: 'email', title: t('application.form.email') },
     { field: 'company.name', title: t('application.form.company') },
-    { field: 'university.name', title: t('application.form.university') },
+    { field: 'university', title: t('application.form.university') },
     // { field: 'faculty.name', title: t('application.form.faculty') },
     { field: 'status', title: t('application.form.status') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
