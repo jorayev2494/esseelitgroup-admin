@@ -43,6 +43,13 @@
             </div>
           </template>
 
+          <template #university="data">
+            <div class="d-flex flex-row">
+              <img :src="data.value.university.logo.url" alt="user-profile" width="35" />
+              <div class="m-2">{{ data.value.university.name }}</div>
+            </div>
+          </template>
+
           <template #actions="data">
             <!-- <router-link class="btn btn-sm bg-primary-light me-2" :to="{ name: 'faculty-show', params: { uuid: data.value.uuid } }">
               <i class="fa fa-info-circle"></i> {{ $t('system.show') }}

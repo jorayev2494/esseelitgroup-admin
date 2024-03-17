@@ -68,11 +68,11 @@
 
         <div class="row">
           <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.company') }}</p>
-          <p class="col-sm-8">
+          <div class="col-sm-8">
             <router-link :to="$tMakeRoute({ name: 'company-show', params: { uuid: form.company.uuid } })" target="_blank">
               {{ form.company.name }}
             </router-link>
-          </p>
+          </div>
         </div>
 
         <div class="row">
@@ -82,11 +82,17 @@
 
         <div class="row">
           <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.university') }}</p>
-          <p class="col-sm-8">
+          <div class="col-sm-8">
             <!-- <router-link :to="$tMakeRoute({ name: 'university-show', params: { uuid: form.university.uuid } })" target="_blank"> -->
-              {{ form.university.name }}
+              <!-- {{ form.university.name }} -->
             <!-- </router-link> -->
-          </p>
+
+            
+            <div class="d-flex flex-row">
+              <img :src="form.university.logo.url" class="logo" alt="university logo" width="25" height="25" />
+              <p>{{ form.university.name }}</p>
+            </div>
+          </div>
         </div>
 
         <div class="row">
@@ -96,12 +102,15 @@
             <ol class="block-university-and-departments">
               <li v-for="(faculty, fIdx) in facultiesAndDepartments" :key="fIdx">
                 <router-link :to="$tMakeRoute({ name: 'faculty-show', params: { uuid: faculty.uuid } })" target="_blank">
-                  {{ faculty.name ?? 'Faculty name' }}
+                  <div class="d-flex flex-row">
+                    <img :src="faculty.logo.url" class="logo" alt="faculty logo" width="25" height="25" />
+                    <span>{{ faculty.name ?? 'Faculty name' }}</span>
+                  </div>
                 </router-link>
                 <ol class="ml-4">
                   <li v-for="(department, dIdx) in faculty.departments" :key="dIdx">
                     <router-link :to="$tMakeRoute({ name: 'department-show', params: { uuid: department.uuid } })" target="_blank">
-                      {{ department.name ?? 'Department name' }}
+                      <p>{{ department.name ?? 'Department name' }}</p>
                     </router-link>
                   </li>
                 </ol>
@@ -143,5 +152,9 @@
 <style scoped>
 .block-university-and-departments {
   padding-left: 1rem
+}
+
+.logo {
+  margin-right: 6px;
 }
 </style>

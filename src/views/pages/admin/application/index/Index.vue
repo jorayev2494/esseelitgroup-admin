@@ -32,9 +32,14 @@
 
           @change="changeServer"
         >
+          <template #university="data">
+            <div class="d-flex flex-row">
+              <img :src="data.value.university.logo.url" alt="user-profile" width="35" />
+              <div class="m-2">{{ data.value.university.name }}</div>
+            </div>
+          </template>
 
           <template #status="data">
-            <!-- badge-pill inv-badge -->
             <span class="badge" :class="getStatusClassName(data.value.status.value)">
                 {{ $t(`application.statuses.${data.value.status.value}`) }}
             </span>
