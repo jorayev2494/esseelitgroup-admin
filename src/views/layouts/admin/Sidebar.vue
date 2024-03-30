@@ -220,7 +220,7 @@
     },
     setup() {
       const otherMenuItems = [
-      {
+        {
           label: 'University',
           icon: 'university',
           class: '',
@@ -327,6 +327,12 @@
               label: 'country',
               route: {
                 name: 'countries',
+              },
+            },
+            {
+              label: 'degree',
+              route: {
+                name: 'degrees',
               },
             },
             {

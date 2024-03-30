@@ -5,7 +5,7 @@
         class="nav-item"
         :class="currentPath == 'settings' ? 'active' : 'notactive'"
       >
-        <router-link class="nav-link" :to="{ name: 'settings' }"
+        <router-link class="nav-link" :to="$tMakeRoute({ name: 'settings' })"
           >General Settings</router-link
         >
       </li>
@@ -13,7 +13,7 @@
         class="nav-item"
         :class="currentPath == 'localization-details' ? 'active' : 'notactive'"
       >
-        <router-link class="nav-link" :to="{ name: 'localization-details' }"
+        <router-link class="nav-link" :to="$tMakeRoute({ name: 'localization-details' })"
           >Localization</router-link
         >
       </li>
@@ -21,7 +21,7 @@
         class="nav-item"
         :class="currentPath == 'payment-settings' ? 'active' : 'notactive'"
       >
-        <router-link class="nav-link" :to="{ name: 'payment-settings' }"
+        <router-link class="nav-link" :to="$tMakeRoute({ name: 'payment-settings' })"
           >Payment Settings</router-link
         >
       </li>
@@ -29,7 +29,7 @@
         class="nav-item"
         :class="currentPath == 'email-settings' ? 'active' : 'notactive'"
       >
-        <router-link class="nav-link" :to="{ name: 'email-settings' }"
+        <router-link class="nav-link" :to="$tMakeRoute({ name: 'email-settings' })"
           >Email Settings</router-link
         >
       </li>
@@ -37,7 +37,7 @@
         class="nav-item"
         :class="currentPath == 'social-settings' ? 'active' : 'notactive'"
       >
-        <router-link class="nav-link" :to="{ name: 'social-settings' }"
+        <router-link class="nav-link" :to="$tMakeRoute({ name: 'social-settings' })"
           >Social Media Login</router-link
         >
       </li>
@@ -45,7 +45,7 @@
         class="nav-item"
         :class="currentPath == 'social-links' ? 'active' : 'notactive'"
       >
-        <router-link class="nav-link" :to="{ name: 'social-links' }"
+        <router-link class="nav-link" :to="$tMakeRoute({ name: 'social-links' })"
           >Social Links</router-link
         >
       </li>
@@ -53,7 +53,7 @@
         class="nav-item"
         :class="currentPath == 'seo-settings' ? 'active' : 'notactive'"
       >
-        <router-link class="nav-link" :to="{ name: 'seo-settings' }"
+        <router-link class="nav-link" :to="$tMakeRoute({ name: 'seo-settings' })"
           >SEO Settings</router-link
         >
       </li>
@@ -61,7 +61,7 @@
         class="nav-item"
         :class="currentPath == 'others-settings' ? 'active' : 'notactive'"
       >
-        <router-link class="nav-link" :to="{ name: 'others-settings' }"
+        <router-link class="nav-link" :to="$tMakeRoute({ name: 'others-settings' })"
           >Others</router-link
         >
       </li>

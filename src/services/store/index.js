@@ -7,7 +7,9 @@ import university from '@/views/pages/admin/university/store/index.js';
 import faculty from '@/views/pages/admin/faculty/store/index.js';
 import department from '@/views/pages/admin/department/store/index.js';
 import application from '@/views/pages/admin/application/store/index.js';
-import country from '@/views/pages/admin/country/store/index.js';
+import country from '@/views/pages/admin/countryAndCity/country/store/index.js';
+import city from '@/views/pages/admin/countryAndCity/city/store/index.js';
+import degree from '@/views/pages/admin/degree/store/index.js';
 
 export default createStore({
   state: {
@@ -43,5 +45,7 @@ export default createStore({
     department,
     application,
     country,
+    city,
+    degree,
   }
 });

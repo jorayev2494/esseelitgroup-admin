@@ -1,19 +1,24 @@
 import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
-import { onMounted, reactive, ref, watch } from "vue"
-import { useRoute, useRouter } from "vue-router";
+import { onMounted, ref, watch } from "vue"
+import { useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInputs } from '../useCases/usePartials'
+import { useCompany } from "../useCases/useCompany";
+import { useCountry } from "../useCases/useCountry";
+import { useCity } from "../useCases/useCity";
 
 export default function useEdit() {
 
   const store = useStore();
   const router = useRouter();
-  const route = useRoute();
   const { image } = useUrlPattern();
-  const { uuid } = route.params;
 
-  const companies = ref([])
+  
   const inputs = useInputs()
+
+  const { companies, loadCompanies } = useCompany();
+  const { countries, loadCountries } = useCountry();
+  const { cities, loadCities } = useCity();
 
   const form = ref({
     youtube_video_id: '',
@@ -22,19 +27,11 @@ export default function useEdit() {
     name: '',
     label: '',
     company_uuid: '',
+    country_uuid: '',
+    city_uuid: '',
     description: '',
-    translations: {
-      // en: {
-      //   name: '',
-      //   label: '',
-      //   description: '',
-      // },
-      // ru: {
-      //   name: '',
-      //   label: '',
-      //   description: '',
-      // },
-    },
+    translations: {},
+    is_on_the_country_list: false,
   });
 
   const logoPreview = ref(null);
@@ -46,6 +43,11 @@ export default function useEdit() {
     for (const key in form.value) {
       if (Object.hasOwnProperty.call(form.value, key)) {
         const value = form.value[key];
+
+        if (key === 'is_on_the_country_list') {
+          formData.append(key, value === true ? 1 : 0);
+          continue;
+        }
 
         if (key === 'translations') {
           for (const kk in value) {
@@ -117,13 +119,19 @@ export default function useEdit() {
       })
   }
 
-  const loadCompanies = () => {
-    store.dispatch('company/loadCompanyListAsync', { params: {} }).then(response => {
-      companies.value = response.data.map(({ uuid, name }) => ({
-        uuid,
-        name,
-      }))
-    })
+  const companyChanged = event => {
+    const { value } = event.target;
+
+    loadCountries({ filters: { company_uuid: value } })
+    form.value.country_uuid = '';
+    form.value.city_uuid = '';
+    cities.value = [];
+  }
+
+  const countryChanged = event => {
+    const { value } = event.target;
+
+    loadCities({ filters: { country_uuids: [value] } })
   }
 
   watch(() => form.value.youtube_video_id, (newV, oldV) => {
@@ -139,6 +147,8 @@ export default function useEdit() {
   return {
     form,
     inputs,
+    countries,
+    cities,
     logoPreview,
     coverPreview,
     uploadMedia,
@@ -147,6 +157,8 @@ export default function useEdit() {
     uploadLogo,
     uploadCover,
 
+    companyChanged,
+    countryChanged,
     create,
   }
 }

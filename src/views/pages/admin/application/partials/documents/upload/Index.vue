@@ -36,7 +36,7 @@
               <!-- {{ $t('system.show') }} -->
             <!-- </a> -->
 
-            <!-- <router-link class="btn btn-sm bg-success-light me-2" :to="{ name: 'company-edit', params: { uuid: data.value.uuid } }">
+            <!-- <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'company-edit', params: { uuid: data.value.uuid } })">
               <i class="fa fa-edit"></i> {{ $t('system.edit') }}
             </router-link> -->
           </template>

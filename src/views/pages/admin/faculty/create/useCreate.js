@@ -82,7 +82,9 @@ export default function useCreate() {
     universities.value = [];
 
     loadUniversities({
-      filter_by_company_uuid: uuid,
+      filters: {
+        company_uuid: uuid,
+      }
     });
   }
 

@@ -3,7 +3,7 @@
   <div class="header">
     <!-- Logo -->
     <div class="header-left">
-      <router-link :to="{ name: 'dashboard' }" class="logo">
+      <router-link :to="$tMakeRoute({ name: 'dashboard' })" class="logo">
         <img src="@/assets/img/admin/logo.png" alt="Logo" />
       </router-link>
       <router-link to="/admin/index" class="logo logo-small">

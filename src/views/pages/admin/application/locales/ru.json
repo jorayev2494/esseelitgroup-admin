@@ -13,7 +13,7 @@
     "form": {
         "full_name": "Полное имя",
         "birthday": "День рождения",
-        "father_name": "Имя Отца",
+        "father_name": "Имя отца",
         "mother_name": "Имя матери",
         "passport_number": "Номер паспорта",
         "phone": "Телефон",

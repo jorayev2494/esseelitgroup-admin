@@ -45,7 +45,7 @@ export default () => {
   }
 
   const loadFaculties = universityUuid => {
-    store.dispatch('faculty/loadFacultyListAsync', { params: { filter_by_university_uuid: universityUuid } }).then(response => {
+    store.dispatch('faculty/loadFacultyListAsync', { params: { filters: { university_uuids: [universityUuid] } } }).then(response => {
       faculties.value = response.data;
     })
   }
@@ -53,7 +53,9 @@ export default () => {
   const loadUniversities = companyUuid => {
     store.dispatch('university/loadUniversityListAsync', {
       params: {
-        filter_by_company_uuid: companyUuid,
+        filters: {
+          company_uuid: companyUuid,
+        }
       },
     }).then(response => {
       universities.value = response.data.map(({ uuid, name }) => ({ uuid, name }));
@@ -69,7 +71,9 @@ export default () => {
   const loadCountries = companyUuid => {
     store.dispatch('country/loadCountryListAsync', {
       params: {
-        filter_by_company_uuid: companyUuid,
+        filters: {
+          company_uuid: companyUuid,
+        }
       }
     }).then(response => {
       countries.value = response.data;
@@ -106,7 +110,13 @@ export default () => {
   // #endregion
 
   const loadDepartments = universityUuid => {
-    store.dispatch('department/loadDepartmentListAsync', { params: { filter_by_university_uuid: universityUuid } }).then(response => {
+    store.dispatch('department/loadDepartmentListAsync', { 
+      params: { 
+        filters: { 
+          university_uuids: [universityUuid],
+         },
+       },
+    }).then(response => {
       departments.value = response.data.map(({ uuid, name, faculty_uuid }) => ({
         uuid,
         name,

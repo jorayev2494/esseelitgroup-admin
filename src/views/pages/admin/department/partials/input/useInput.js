@@ -9,8 +9,6 @@ export default function useInput() {
     }
   });
 
-  console.log('R: ', props);
-
   const { translations } = toRefs(props.form);
 
   return {

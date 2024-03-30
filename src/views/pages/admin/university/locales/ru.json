@@ -2,12 +2,15 @@
   "context_title": "Университеты",
   "form": {
     "company": "Компания",
+    "country": "Страна",
+    "city": "Город",
     "logo": "Логотип",
     "cover": "Обложка",
     "youtube_video_id": "YouTube видео id",
     "youtube_video": "YouTube видео",
     "name": "Называть",
     "label": "Этикетка",
-    "description": "Описание"
+    "description": "Описание",
+    "is_on_the_country_list": "Есть в списке страны"
   }
 }

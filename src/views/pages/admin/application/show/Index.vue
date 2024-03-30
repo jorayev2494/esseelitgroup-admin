@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3">
-    <router-link class="btn btn-sm bg-success-light me-2" :to="{ name: 'application-edit', params: { uuid: $route.params.uuid } }">
+    <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'application-edit', params: { uuid: $route.params.uuid } })">
       <i class="fa fa-edit"></i> {{ $t('system.edit') }}
     </router-link>
   </div>
@@ -69,15 +69,23 @@
         <div class="row">
           <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.company') }}</p>
           <div class="col-sm-8">
-            <router-link :to="$tMakeRoute({ name: 'company-show', params: { uuid: form.company.uuid } })" target="_blank">
-              {{ form.company.name }}
-            </router-link>
+
+            <template v-if="form.company">
+              <router-link :to="$tMakeRoute({ name: 'company-show', params: { uuid: form.company.uuid } })" target="_blank">
+                {{ form.company.name }}
+              </router-link>
+            </template>
+            
           </div>
         </div>
 
         <div class="row">
           <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.country') }}</p>
-          <p class="col-sm-8">{{ form.country.value }}</p>
+          <template v-if="form.country">
+            <p class="col-sm-8">
+              {{ form.country.value }}
+            </p>
+          </template>
         </div>
 
         <div class="row">
@@ -89,8 +97,10 @@
 
             
             <div class="d-flex flex-row">
-              <img :src="form.university.logo.url" class="logo" alt="university logo" width="25" height="25" />
-              <p>{{ form.university.name }}</p>
+              <template v-if="form.university">
+                <img :src="form.university.logo.url" class="logo" alt="university logo" width="25" height="25" />
+                <p>{{ form.university.name }}</p>
+              </template>
             </div>
           </div>
         </div>
