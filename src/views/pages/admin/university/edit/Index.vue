@@ -11,7 +11,7 @@
               <div class="form-group row">
                 <label class="col-lg-3 col-form-label">{{ $t('university.form.company') }}</label>
                 <div class="col-lg-9">
-                  <select class="form-select" v-model="form.company_uuid" aria-label="Default select example" required>
+                  <select class="form-select" v-model="form.company_uuid" @change="companyChanged" aria-label="Default select example" required>
                       <option value="" disabled selected>{{ $t('university.form.company') }}</option>
                       <option
                       v-for="({ uuid, name }, idx) of companies" :key="idx"
@@ -20,6 +20,36 @@
                       {{ name }}
                       </option>
                   </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label">{{ $t('university.form.country') }}</label>
+                <div class="col-lg-9">
+                <select class="form-select" v-model="form.country_uuid" @change="countryChanged" aria-label="Default select example" required>
+                    <option value="" disabled selected>{{ $t('university.form.country') }}</option>
+                    <option
+                      v-for="({ uuid, value }, idx) of countries" :key="idx"
+                      :value="uuid"
+                    >
+                    {{ value }}
+                    </option>
+                </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label">{{ $t('university.form.city') }}</label>
+                <div class="col-lg-9">
+                <select class="form-select" v-model="form.city_uuid" aria-label="Default select example" required>
+                    <option value="" disabled selected>{{ $t('university.form.city') }}</option>
+                    <option
+                      v-for="({ uuid, value }, idx) of cities" :key="idx"
+                      :value="uuid"
+                    >
+                    {{ value }}
+                    </option>
+                </select>
                 </div>
               </div>
 
@@ -42,6 +72,18 @@
                   <div class="col-lg-9">
                       <input type="text" v-model="form.youtube_video_id" class="form-control" required>
                   </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label">{{ $t('university.form.is_on_the_country_list') }}</label>
+                <div class="col-lg-9">
+
+                  <div class="status-toggle d-flex justify-content-left">
+                    <input type="checkbox" id="is_on_the_country_list" name="is_on_the_country_list" v-model="form.is_on_the_country_list" class="check" :checked="form.is_on_the_country_list">
+                    <label for="is_on_the_country_list" class="checktoggle m-0">checkbox</label>
+                  </div>
+
+                </div>
               </div>
 
               <div class="text-right">
@@ -79,6 +121,11 @@
     companies,
     uploadLogo,
     uploadCover,
+    countries,
+    cities,
+
+    companyChanged,
+    countryChanged,
     uploadMedia,
     update,
   } = useEdit();

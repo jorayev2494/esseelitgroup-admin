@@ -4,6 +4,7 @@ import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInputs } from '../useCases/usePartials'
 import useCompany from '../../globalUseCases/useCompany';
+import useDegree from "../useCases/useDegree";
 
 export default function useCreate() {
 
@@ -11,7 +12,8 @@ export default function useCreate() {
   const router = useRouter();
   const route = useRoute();
   const { image } = useUrlPattern();
-  const { companies, loadCompanies } = useCompany()
+  const { companies, loadCompanies } = useCompany();
+  const { degreesPreviews, degrees, loadDegrees } = useDegree();
 
   const logoPreview = ref(null);
 
@@ -29,8 +31,10 @@ export default function useCreate() {
     company_uuid: '',
     university_uuid: '',
     faculty_uuid: '',
-    is_active: '',
+    degree_uuids: [],
     translations: {},
+    is_filled: false,
+    is_active: '',
   });
   
   const activityOptions = {
@@ -77,9 +81,14 @@ export default function useCreate() {
     universities.value = [];
     faculties.value = [];
 
-    loadUniversities({
-      filter_by_company_uuid: uuid,
-    });
+    const params = {
+      filters: {
+        company_uuid: uuid,
+      }
+    };
+
+    loadUniversities(params);
+    loadDegrees(params);
   }
 
   const universityWasChanged = event => {
@@ -90,11 +99,20 @@ export default function useCreate() {
     faculties.value = [];
 
     loadFaculties({
-      filter_by_university_uuid: uuid,
+      filters: {
+        university_uuids: [uuid],
+      }
     })
   }
 
-  const getData = () => form;
+  const getData = () => {
+    form.is_filled = form.is_filled === true ? 1 : 0;
+
+    form.degree_uuids = degreesPreviews.value.map(({ uuid }) => uuid)
+                                            .filter((v, i, self) => i == self.indexOf(v));
+
+    return form;
+  };
 
   const create = () => {
     store.dispatch('department/createDepartmentAsync', { data: getData() })
@@ -118,6 +136,8 @@ export default function useCreate() {
     universities,
     faculties,
     logoPreview,
+    degrees,
+    degreesPreviews,
     
     companyWasChanged,
     universityWasChanged,

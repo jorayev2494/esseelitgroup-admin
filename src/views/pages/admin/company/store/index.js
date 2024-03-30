@@ -25,7 +25,7 @@ const actions = {
 
   async loadCompanyListAsync(_, { params = {} }) {
     return await new Promise((resolve, reject) => {
-      return httpClient.get('/companies/list', params)
+      return httpClient.get('/companies/list', { params })
         .then(response => resolve(response))
         .catch(error => reject(error));
     })

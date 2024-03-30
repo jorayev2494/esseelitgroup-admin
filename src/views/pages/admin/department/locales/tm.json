@@ -7,6 +7,8 @@
     "faculty": "Fakultet",
     "activity": "Activity",
     "name": "Ady",
-    "description": "Düşündiriş"
+    "description": "Düşündiriş",
+    "degrees": "Derejeler",
+    "is_filled": "Doldy"
   }
 }

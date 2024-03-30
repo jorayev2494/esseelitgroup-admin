@@ -90,7 +90,9 @@ export default function useEdit() {
     logoPreview.value = logo.url
 
     loadUniversities({
-      filter_by_company_uuid: company_uuid,
+      filters: {
+        company_uuid: company_uuid,
+      }
     });
 
     return faculty;
@@ -110,7 +112,9 @@ export default function useEdit() {
     universities.value = [];
 
     loadUniversities({
-      filter_by_company_uuid: uuid,
+      filters: {
+        company_uuid: uuid,
+      }
     });
   }
 

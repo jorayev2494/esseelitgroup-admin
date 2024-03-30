@@ -56,8 +56,11 @@ import university from '@/views/pages/admin/university/routes';
 import faculty from '@/views/pages/admin/faculty/routes';
 import department from '@/views/pages/admin/department/routes';
 import application from '@/views/pages/admin/application/routes';
-import country from '@/views/pages/admin/country/routes';
+import countryAndCity from '@/views/pages/admin/countryAndCity/routes';
+import country from '@/views/pages/admin/countryAndCity/country/routes';
+import city from '@/views/pages/admin/countryAndCity/city/routes';
 import errors from '@/views/pages/admin/errors/routes';
+import degree from '@/views/pages/admin/degree/routes';
 
 const routes = [
   ...auth,
@@ -73,7 +76,10 @@ const routes = [
       ...faculty,
       ...department,
       ...application,
+      ...countryAndCity,
       ...country,
+      ...city,
+      ...degree,
     ],
     meta: {
       middleware: [

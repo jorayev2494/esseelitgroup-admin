@@ -8,7 +8,7 @@
       <div class="card-body">
 
         <!-- <div class="mb-2">
-          <router-link class="btn btn-primary btn-sm me-2" :to="{ name: 'company-create' }">
+          <router-link class="btn btn-primary btn-sm me-2" :to="$tMakeRoute({ name: 'company-create' })">
             <i class="fa fa-plus"></i> {{ $t('system.create') }}
           </router-link>
         </div> -->
@@ -31,7 +31,7 @@
               </a>
             </span>
 
-            <!-- <router-link class="btn btn-sm bg-success-light me-2" :to="{ name: 'company-edit', params: { uuid: data.value.uuid } }">
+            <!-- <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'company-edit', params: { uuid: data.value.uuid } })">
               <i class="fa fa-edit"></i> {{ $t('system.edit') }}
             </router-link> -->
             
@@ -58,7 +58,7 @@
               </a>
             </span>
 
-            <!-- <router-link class="btn btn-sm bg-success-light me-2" :to="{ name: 'company-edit', params: { uuid: data.value.uuid } }">
+            <!-- <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'company-edit', params: { uuid: data.value.uuid } })">
               <i class="fa fa-edit"></i> {{ $t('system.edit') }}
             </router-link> -->
             

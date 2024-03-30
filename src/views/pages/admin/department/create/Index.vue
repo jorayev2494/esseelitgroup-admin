@@ -23,10 +23,12 @@
               </div>
             </div>
 
+            <!-- <pre>{{ form }}</pre> -->
+
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">{{ $t('department.form.university') }}</label>
               <div class="col-lg-9">
-                <select class="form-select" required @change="universityWasChanged">
+                <select class="form-select" v-model="form.university_uuid" required @change="universityWasChanged">
                   <option value="" selected disabled>{{ $t('department.form.university') }}</option>
                   <option
                     v-for="({ uuid, name }, idx) of universities" :key="idx"
@@ -50,6 +52,38 @@
                     {{ name }}
                   </option>
                 </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('department.form.degrees') }}</label>
+              <div class="col-lg-9">
+
+                <VueMultiselect
+                  v-model="degreesPreviews"
+                  :options="degrees"
+                  :multiple="true"
+                  :taggable="true"
+
+                  label="value"
+                   track-by="uuid"
+                  :placeholder="$t('department.form.degrees')"
+                  required
+                >
+                </VueMultiselect>
+
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('department.form.is_filled') }}</label>
+              <div class="col-lg-9">
+
+                <div class="status-toggle d-flex justify-content-left">
+                  <input type="checkbox" id="is_filled" name="is_filled" v-model="form.is_filled" class="check">
+                  <label for="is_filled" class="checktoggle m-0">checkbox</label>
+                </div>
+
               </div>
             </div>
 
@@ -85,20 +119,23 @@
 <script setup>
   import useCreate from './useCreate';
   import Inputs from '../../../components/InputCard/Index.vue'
+  import VueMultiselect from 'vue-multiselect'
 
   const {
     form,
     companies,
     inputs,
-    activityOptions,
     universities,
     faculties,
-    logoPreview,
-    uploadLogo,
+    degrees,
+    degreesPreviews,
 
     companyWasChanged,
     universityWasChanged,
-    loadFaculties,
     create,
   } = useCreate();
 </script>
+
+<style scoped>
+  @import '@/assets/css/admin/vue-multiselect.css';
+</style>

@@ -2,12 +2,15 @@
     "context_title": "Universities",
     "form": {
         "company": "Company",
+        "country": "Country",
+        "city": "City",
         "logo": "Logo",
         "cover": "Cover",
         "youtube_video_id": "Youtube video id",
         "youtube_video": "YouTube video",
         "name": "Name",
         "label": "Label",
-        "description": "Description"
+        "description": "Description",
+        "is_on_the_country_list": "Is on the country list"
     }
 }

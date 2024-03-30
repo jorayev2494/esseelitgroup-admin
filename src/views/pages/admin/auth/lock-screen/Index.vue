@@ -18,7 +18,7 @@
         
         <div class="text-center dont-have">
             Sign in as a different user?
-            <router-link :to="{ name: 'login' }">Login</router-link>
+            <router-link :to="$tMakeRoute({ name: 'login' })">Login</router-link>
         </div>
     </div>
 </template>

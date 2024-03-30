@@ -3,6 +3,9 @@ import { onMounted, reactive, ref } from "vue"
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInputs } from '../useCases/usePartials'
+import { useCompany } from "../useCases/useCompany";
+import { useCountry } from "../useCases/useCountry";
+import { useCity } from "../useCases/useCity";
 
 export default function useEdit() {
 
@@ -14,7 +17,10 @@ export default function useEdit() {
 
   const form = ref({});
   const inputs = useInputs();
-  const companies = ref([])
+
+  const { companies, loadCompanies } = useCompany();
+  const { countries, loadCountries } = useCountry();
+  const { cities, loadCities } = useCity();
 
   const logoPreview = ref(null);
   const coverPreview = ref(null);
@@ -22,11 +28,14 @@ export default function useEdit() {
   const loadUniversity = () => {
     store.dispatch('university/showUniversityAsync', uuid)
       .then(response => {
-        const { logo, cover } = response.data
+        const { logo, cover, company_uuid, country_uuid } = response.data
         form.value = response.data;
-        console.log('form form f translax: ', response.data)
+
         logoPreview.value = logo.url
         coverPreview.value = cover.url
+
+        loadCountries({ filters: { company_uuid } })
+        loadCities({ filters: { country_uuid } })
       })
   }
 
@@ -43,6 +52,11 @@ export default function useEdit() {
             formData.append(key, '');
             continue;
           }
+        }
+
+        if (key === 'is_on_the_country_list') {
+          formData.append(key, value === true ? 1 : 0);
+          continue;
         }
 
         if (key === 'translations') {
@@ -72,15 +86,6 @@ export default function useEdit() {
     }
 
     return formData;
-  }
-
-  const loadCompanies = () => {
-    store.dispatch('company/loadCompanyListAsync', { params: {} }).then(response => {
-      companies.value = response.data.map(({ uuid, name }) => ({
-        uuid,
-        name,
-      }))
-    })
   }
 
   const uploadMedia = (event, type) => {
@@ -117,6 +122,21 @@ export default function useEdit() {
     }
   }
 
+  const companyChanged = event => {
+    const { value } = event.target;
+
+    loadCountries({ filters: { company_uuid: value } })
+    form.value.country_uuid = '';
+    form.value.city_uuid = '';
+    cities.value = [];
+  }
+
+  const countryChanged = event => {
+    const { value } = event.target;
+
+    loadCities({ filters: { country_uuid: value } })
+  }
+
   const update = () => {
     store.dispatch('university/updateUniversityAsync', { uuid, data: decorateFormData() })
       .then(() => {
@@ -138,7 +158,11 @@ export default function useEdit() {
     coverPreview,
     uploadMedia,
     companies,
+    countries,
+    cities,
 
+    companyChanged,
+    countryChanged,
     uploadLogo,
     uploadCover,
 

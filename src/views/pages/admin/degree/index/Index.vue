@@ -11,7 +11,7 @@
       <div class="card-body">
 
         <div class="mb-2">
-          <router-link class="btn btn-primary btn-sm me-2" :to="{ name: 'country-create' }">
+          <router-link class="btn btn-primary btn-sm me-2" :to="$tMakeRoute({ name: 'degree-create' })">
             <i class="fa fa-plus"></i> {{ $t('system.create') }}
           </router-link>
         </div>
@@ -30,13 +30,19 @@
 
           @change="changeServer"
         >
+          <template #company="data">
+            <div class="d-flex flex-row" v-if="data.value.company">
+              <img :src="data.value.company.logo.url" alt="user-profile" width="35" />
+              <div class="m-2">{{ data.value.company.name }}</div>
+            </div>
+          </template>
 
           <template #actions="data">
-            <!-- <router-link class="btn btn-sm bg-primary-light me-2" :to="{ name: 'company-show', params: { uuid: data.value.uuid } }">
+            <!-- <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'city-show', params: { uuid: data.value.uuid } })">
               <i class="fa fa-info-circle"></i> {{ $t('system.show') }}
             </router-link> -->
 
-            <router-link class="btn btn-sm bg-success-light me-2" :to="{ name: 'country-edit', params: { uuid: data.value.uuid } }">
+            <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'degree-edit', params: { uuid: data.value.uuid } })">
               <i class="fa fa-edit"></i> {{ $t('system.edit') }}
             </router-link>
             

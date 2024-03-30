@@ -3,6 +3,7 @@ import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { useInputs } from '../useCases/usePartials';
 import useCompany from '../../globalUseCases/useCompany';
+import useDegree from "../useCases/useDegree";
 
 export default function useCreate() {
 
@@ -10,6 +11,7 @@ export default function useCreate() {
   const router = useRouter();
   const route = useRoute();
   const { companies, loadCompanies } = useCompany()
+  const { degreesPreviews, degrees, loadDegrees } = useDegree();
 
   const { uuid } = route.params;
 
@@ -37,15 +39,24 @@ export default function useCreate() {
   }
 
   const mapDepartment = department => {
-    const { company_uuid, university_uuid } = department;
+    const { company_uuid, university_uuid, degrees } = department;
 
-    loadUniversities({
-      filter_by_company_uuid: company_uuid,
-    });
+    const params = {
+      filters: {
+        company_uuid: company_uuid,
+      }
+    };
 
     loadFaculties({
-      filter_by_university_uuid: university_uuid,
+      filters: {
+        university_uuids: [university_uuid],
+      }
     })
+
+    loadUniversities(params);
+    loadDegrees(params);
+
+    degreesPreviews.value = degrees.map(({ uuid, value }) => ({ uuid, value }))
 
     return department;
   }
@@ -77,9 +88,14 @@ export default function useCreate() {
     universities.value = [];
     faculties.value = [];
 
-    loadUniversities({
-      filter_by_company_uuid: uuid,
-    });
+    const params = {
+      filters: {
+        company_uuid: uuid,
+      }
+    };
+
+    loadUniversities(params);
+    loadDegrees(params);    
   }
 
   const universityWasChanged = event => {
@@ -90,11 +106,20 @@ export default function useCreate() {
     faculties.value = [];
 
     loadFaculties({
-      filter_by_university_uuid: uuid,
+      filters: {
+        university_uuid: uuid,
+      }
     })
   }
 
-  const getData = () => form.value;
+  const getData = () => {
+    form.value.is_filled = form.value.is_filled === true ? 1 : 0;
+
+    form.value.degree_uuids = degreesPreviews.value.map(({ uuid }) => uuid)
+                                                  .filter((v, i, self) => i == self.indexOf(v));
+
+    return form.value;
+  };
 
   const update = () => {
     store.dispatch('department/updateDepartmentAsync', { uuid: route.params.uuid, data: getData() })
@@ -116,6 +141,8 @@ export default function useCreate() {
     translations,
     universities,
     faculties,
+    degreesPreviews,
+    degrees,
 
     companyWasChanged,
     universityWasChanged,

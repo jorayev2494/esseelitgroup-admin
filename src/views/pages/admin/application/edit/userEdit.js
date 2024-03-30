@@ -39,8 +39,12 @@ export default function userEdit() {
     application.birthday = formatDate(dateFromTimestamp(birthday));
     
     loadCountries(company_uuid);
-    loadUniversities(company_uuid)
-    loadFaculties(university_uuid)
+    loadUniversities(company_uuid);
+    loadFaculties(university_uuid);
+
+    if (Array.isArray(application.status.translations)) {
+      application.status.translations = {};
+    }
 
     Promise.all([
       loadFaculties(university_uuid),
@@ -62,13 +66,23 @@ export default function userEdit() {
   }
 
   const loadFaculties = universityUuid => {
-    store.dispatch('faculty/loadFacultyListAsync', { params: { filter_by_university_uuid: universityUuid } }).then(response => {
+    store.dispatch('faculty/loadFacultyListAsync', { params: {
+      filters: {
+        university_uuid: universityUuid,
+      }
+    } }).then(response => {
       faculties.value = response.data;
     })
   }
 
   const loadUniversities = uuid => {
-    store.dispatch('university/loadUniversityListAsync', { params: { filter_by_company_uuid: uuid } }).then(response => {
+    store.dispatch('university/loadUniversityListAsync', {
+      params: { 
+          filters: {
+            company_uuid: uuid,
+          },
+        },
+      }).then(response => {
       universities.value = response.data.map(({ uuid, name }) => ({ uuid, name }));
     })
   }
@@ -88,7 +102,9 @@ export default function userEdit() {
   const loadCountries = companyUuid => {
     store.dispatch('country/loadCountryListAsync', {
       params: {
-        filter_by_company_uuid: companyUuid,
+        filters: {
+          company_uuid: companyUuid,
+        }
       }
     }).then(response => {
       countries.value = response.data;
@@ -129,7 +145,13 @@ export default function userEdit() {
   }
 
   const loadDepartments = universityUuid => {
-    store.dispatch('department/loadDepartmentListAsync', { params: { filter_by_university_uuid: universityUuid } }).then(response => {
+    store.dispatch('department/loadDepartmentListAsync', {
+      params: {
+        filters: {
+          university_uuid: universityUuid,
+        },
+      },
+    }).then(response => {
       departments.value = response.data.map(({ uuid, name, faculty_uuid }) => ({
         uuid,
         name,
@@ -153,8 +175,6 @@ export default function userEdit() {
 
   const companyWasChanged = event => {
     const uuid = event.target.value;
-
-    console.log('CompanyWasChanged Uuid: ', uuid)
 
     clearSelects();
     // companies.value = [];
