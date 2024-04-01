@@ -2,24 +2,19 @@ import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { onMounted, reactive, ref } from "vue"
 import { useRouter } from "vue-router";
 import { useStore } from "vuex"
-import { useInputs, useCompanies } from '../useCases/usePartials'
+import { useInputs } from '../useCases/usePartials'
 
 export default function useCreate() {
 
   const store = useStore();
   const router = useRouter();
   const { image } = useUrlPattern();
-  const { companies, loadCompanies } = useCompanies();
 
   const logoPreview = ref(null);
   const inputs = useInputs();
 
-  const universities = ref([]);
-
   const form = reactive({
     logo: '',
-    company_uuid: '',
-    university_uuid: '',
     translations: {},
   });
 
@@ -30,12 +25,6 @@ export default function useCreate() {
       form.logo = uploadedLogo;
       logoPreview.value = URL.createObjectURL(uploadedLogo);
     }
-  }
-
-  const loadUniversities = (params = {}) => {
-    store.dispatch('university/loadUniversityListAsync', { params }).then(response => {
-      universities.value = response.data;
-    })
   }
 
   const decorateFormData = () => {
@@ -74,20 +63,6 @@ export default function useCreate() {
     return formData;
   }
 
-  const companyWasChanged = event => {
-    const uuid = event.target.value;
-    
-    form.university_uuid = null;
-
-    universities.value = [];
-
-    loadUniversities({
-      filters: {
-        company_uuid: uuid,
-      }
-    });
-  }
-
   const create = () => {
     store.dispatch('faculty/createFacultyAsync', decorateFormData())
       .then(() => {
@@ -96,18 +71,14 @@ export default function useCreate() {
   }
 
   onMounted(() => {
-    loadCompanies();
     logoPreview.value = image(logoPreview.value)
   })
 
   return {
     form,
     inputs,
-    companies,
-    universities,
     logoPreview,
 
-    companyWasChanged,
     uploadLogo,
     create,
   }

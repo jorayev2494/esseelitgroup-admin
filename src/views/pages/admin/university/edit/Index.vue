@@ -9,21 +9,6 @@
             <form action="#" method="POST" @submit.prevent="update" enctype="multipart/form-data">
 
               <div class="form-group row">
-                <label class="col-lg-3 col-form-label">{{ $t('university.form.company') }}</label>
-                <div class="col-lg-9">
-                  <select class="form-select" v-model="form.company_uuid" @change="companyChanged" aria-label="Default select example" required>
-                      <option value="" disabled selected>{{ $t('university.form.company') }}</option>
-                      <option
-                      v-for="({ uuid, name }, idx) of companies" :key="idx"
-                      :value="uuid"
-                      >
-                      {{ name }}
-                      </option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group row">
                 <label class="col-lg-3 col-form-label">{{ $t('university.form.country') }}</label>
                 <div class="col-lg-9">
                 <select class="form-select" v-model="form.country_uuid" @change="countryChanged" aria-label="Default select example" required>
@@ -118,13 +103,9 @@
     inputs,
     logoPreview,
     coverPreview,
-    companies,
-    uploadLogo,
-    uploadCover,
     countries,
     cities,
 
-    companyChanged,
     countryChanged,
     uploadMedia,
     update,

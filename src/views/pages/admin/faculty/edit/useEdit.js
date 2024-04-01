@@ -2,7 +2,7 @@ import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { onMounted, reactive, ref, getCurrentInstance } from "vue"
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
-import { useInputs, useCompanies } from '../useCases/usePartials'
+import { useInputs } from '../useCases/usePartials'
 
 export default function useEdit() {
 
@@ -11,17 +11,13 @@ export default function useEdit() {
   const route = useRoute();
   const { image } = useUrlPattern();
   const inputs = useInputs();
-  const { companies, loadCompanies } = useCompanies();
 
   const { uuid } = route.params;
 
   const logoPreview = ref(null);
 
-  const universities = ref([]);
-
   const form = ref({
     // logo: '',
-    // university_uuid: '',
     // translations: {},
   });
 
@@ -32,12 +28,6 @@ export default function useEdit() {
       form.value.logo = uploadedLogo;
       logoPreview.value = URL.createObjectURL(uploadedLogo);
     }
-  }
-
-  const loadUniversities = (params = {}) => {
-    store.dispatch('university/loadUniversityListAsync', { params }).then(response => {
-      universities.value = response.data;
-    })
   }
 
   const decorateFormData = () => {
@@ -85,15 +75,9 @@ export default function useEdit() {
   }
 
   const mapFaculty = faculty => {
-    const { logo, company_uuid } = faculty
+    const { logo } = faculty
     form.value = faculty;
     logoPreview.value = logo.url
-
-    loadUniversities({
-      filters: {
-        company_uuid: company_uuid,
-      }
-    });
 
     return faculty;
   }
@@ -102,20 +86,6 @@ export default function useEdit() {
     store.dispatch('faculty/showFacultyAsync', { uuid }).then(response => {
       form.value = mapFaculty(response.data)
     })
-  }
-
-  const companyWasChanged = event => {
-    const uuid = event.target.value;
-    
-    form.university_uuid = null;
-
-    universities.value = [];
-
-    loadUniversities({
-      filters: {
-        company_uuid: uuid,
-      }
-    });
   }
 
   const update = () => {
@@ -127,17 +97,13 @@ export default function useEdit() {
 
   onMounted(() => {
     loadFaculty()
-    loadCompanies()
   })
 
   return {
     form,
     inputs,
-    companies,
-    universities,
     logoPreview,
 
-    companyWasChanged,
     uploadLogo,
     update,
   }

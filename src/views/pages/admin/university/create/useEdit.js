@@ -3,7 +3,6 @@ import { onMounted, ref, watch } from "vue"
 import { useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInputs } from '../useCases/usePartials'
-import { useCompany } from "../useCases/useCompany";
 import { useCountry } from "../useCases/useCountry";
 import { useCity } from "../useCases/useCity";
 
@@ -16,7 +15,6 @@ export default function useEdit() {
   
   const inputs = useInputs()
 
-  const { companies, loadCompanies } = useCompany();
   const { countries, loadCountries } = useCountry();
   const { cities, loadCities } = useCity();
 
@@ -26,7 +24,6 @@ export default function useEdit() {
     cover: null,
     name: '',
     label: '',
-    company_uuid: '',
     country_uuid: '',
     city_uuid: '',
     description: '',
@@ -119,15 +116,6 @@ export default function useEdit() {
       })
   }
 
-  const companyChanged = event => {
-    const { value } = event.target;
-
-    loadCountries({ filters: { company_uuid: value } })
-    form.value.country_uuid = '';
-    form.value.city_uuid = '';
-    cities.value = [];
-  }
-
   const countryChanged = event => {
     const { value } = event.target;
 
@@ -139,7 +127,7 @@ export default function useEdit() {
   })
 
   onMounted(() => {
-    loadCompanies()
+    loadCountries();
     logoPreview.value = image(logoPreview.value)
     coverPreview.value = image(coverPreview.value, 1200, 800, 'cover')
   })
@@ -152,12 +140,10 @@ export default function useEdit() {
     logoPreview,
     coverPreview,
     uploadMedia,
-    companies,
 
     uploadLogo,
     uploadCover,
 
-    companyChanged,
     countryChanged,
     create,
   }

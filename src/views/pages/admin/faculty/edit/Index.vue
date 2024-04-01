@@ -8,46 +8,15 @@
         <div class="card-body">
           <form action="#" method="POST" @submit.prevent="update" enctype="multipart/form-data">
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label">{{ $t('faculty.form.company') }}</label>
-              <div class="col-lg-9">
-                <select class="form-select" v-model="form.company_uuid" @change="companyWasChanged" required>
-                    <option value="" disabled selected>{{ $t('faculty.form.company') }}</option>
-                    <option
-                    v-for="({ uuid, name }, idx) of companies" :key="idx"
-                    :value="uuid"
-                    >
-                    {{ name }}
-                    </option>
-                </select>
-              </div>
+                <label class="col-lg-3 col-form-label">{{ $t('faculty.form.logo') }}</label>
+                <div class="col-lg-9">
+                    <input class="form-control" type="file" accept="image/*" @change="uploadLogo">
+                </div>
             </div>
 
-              <div class="form-group row">
-                <label class="col-lg-3 col-form-label">{{ $t('faculty.form.university') }}</label>
-                <div class="col-lg-9">
-                  <select class="form-select" v-model="form.university_uuid" required>
-                    <option value="" disabled selected>{{ $t('faculty.form.university') }}</option>
-                    <option
-                      v-for="({ uuid, name }, idx) of universities" :key="idx"
-                      :value="uuid"
-                      :selected="form.university_uuid === uuid"
-                      >
-                      {{ name }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">{{ $t('faculty.form.logo') }}</label>
-                  <div class="col-lg-9">
-                      <input class="form-control" type="file" accept="image/*" @change="uploadLogo">
-                  </div>
-              </div>
-
-              <div class="text-right">
-                  <button type="submit" class="btn btn-primary">{{ $t('system.save_changes') }}</button>
-              </div>
+            <div class="text-right">
+                <button type="submit" class="btn btn-primary">{{ $t('system.save_changes') }}</button>
+            </div>
           </form>
         </div>
     </div>
@@ -80,10 +49,7 @@
   const {
     form,
     inputs,
-    companies,
-    universities,
     logoPreview,
-    companyWasChanged,
     uploadLogo,
     update,
   } = useEdit();

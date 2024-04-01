@@ -10,10 +10,7 @@ export default function useEdit() {
   const router = useRouter();
   const { countries, loadCountries } = useCountry();
 
-  const companies = ref([])
-
   const form = ref({
-    company_uuid: '',
     country_uuid: '',
     value: '',
     translations: {},
@@ -33,36 +30,19 @@ export default function useEdit() {
       })
   }
 
-  const loadCompanies = () => {
-    store.dispatch('company/loadCompanyListAsync', { params: {} }).then(response => {
-      companies.value = response.data.map(({ uuid, name }) => ({
-        uuid,
-        name,
-      }))
-    })
-  }
-
   watch(() => form.value.youtube_video_id, (newV, oldV) => {
     console.log(newV, oldV);
   })
 
-  const companyChanged = event => {
-    const { value } = event.target;
-
-    loadCountries({ filters: { company_uuid: value } })
-  }
-
   onMounted(() => {
-    loadCompanies()
+    loadCountries()
   })
 
   return {
     form,
     inputs,
-    companies,
     countries,
 
-    companyChanged,
     create,
   }
 }

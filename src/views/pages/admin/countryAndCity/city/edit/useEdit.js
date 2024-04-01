@@ -13,28 +13,17 @@ export default function useEdit() {
   const { uuid } = route.params;
 
   const form = ref({});
-  const companies = ref([]);
   const inputs = useInput();
 
   const loadCity = () => {
     store.dispatch('city/showCityAsync', { uuid })
       .then(response => {
         form.value = response.data;
-        loadCountries({ filters: { company_uuid: response.data.company_uuid } })
       })
   }
 
   const decorateFormData = () => {
     return form.value;
-  }
-
-  const loadCompanies = () => {
-    store.dispatch('company/loadCompanyListAsync', { params: {} }).then(response => {
-      companies.value = response.data.map(({ uuid, name }) => ({
-        uuid,
-        name,
-      }))
-    })
   }
 
   const update = () => {
@@ -44,24 +33,16 @@ export default function useEdit() {
       })
   }
 
-  const companyChanged = event => {
-    const { value } = event.target;
-
-    loadCountries({ filters: { company_uuid: value } })
-  }
-
   onMounted(() => {
-    loadCity()
-    loadCompanies()
+    loadCity();
+    loadCountries();
   })
 
   return {
     form,
     inputs,
-    companies,
     countries,
 
-    companyChanged,
     update,
   }
 }

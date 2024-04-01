@@ -32,7 +32,7 @@
         >
 
           <template #actions="data">
-            <!-- <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'company-show', params: { uuid: data.value.uuid } })">
+            <!-- <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'country-show', params: { uuid: data.value.uuid } })">
               <i class="fa fa-info-circle"></i> {{ $t('system.show') }}
             </router-link> -->
 

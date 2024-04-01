@@ -2,7 +2,6 @@ import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { useInputs } from '../useCases/usePartials';
-import useCompany from '../../globalUseCases/useCompany';
 import useDegree from "../useCases/useDegree";
 
 export default function useCreate() {
@@ -10,7 +9,6 @@ export default function useCreate() {
   const store = useStore();
   const router = useRouter();
   const route = useRoute();
-  const { companies, loadCompanies } = useCompany()
   const { degreesPreviews, degrees, loadDegrees } = useDegree();
 
   const { uuid } = route.params;
@@ -26,7 +24,6 @@ export default function useCreate() {
   }
 
   const form = ref({
-    company_uuid: '',
     university_uuid: '',
     faculty_uuid: '',
     is_active: true,
@@ -39,22 +36,7 @@ export default function useCreate() {
   }
 
   const mapDepartment = department => {
-    const { company_uuid, university_uuid, degrees } = department;
-
-    const params = {
-      filters: {
-        company_uuid: company_uuid,
-      }
-    };
-
-    loadFaculties({
-      filters: {
-        university_uuids: [university_uuid],
-      }
-    })
-
-    loadUniversities(params);
-    loadDegrees(params);
+    const { degrees } = department;
 
     degreesPreviews.value = degrees.map(({ uuid, value }) => ({ uuid, value }))
 
@@ -64,51 +46,6 @@ export default function useCreate() {
   const loadDepartment = () => {
     store.dispatch('department/showDepartmentAsync', { uuid }).then(response => {
       form.value = mapDepartment(response.data)
-    })
-  }
-
-  const loadUniversities = (params = {}) => {
-    store.dispatch('university/loadUniversityListAsync', { params }).then(response => {
-      universities.value = response.data;
-    })
-  }
-
-  const loadFaculties = (params) => {
-    store.dispatch('faculty/loadFacultyListAsync', { params }).then(response => {
-      faculties.value = response.data;
-    })
-  }
-
-  const companyWasChanged = event => {
-    const uuid = event.target.value;
-    
-    form.value.university_uuid = null;
-    form.value.faculty_uuid = null;
-
-    universities.value = [];
-    faculties.value = [];
-
-    const params = {
-      filters: {
-        company_uuid: uuid,
-      }
-    };
-
-    loadUniversities(params);
-    loadDegrees(params);    
-  }
-
-  const universityWasChanged = event => {
-    const uuid = event.target.value;
-
-    form.value.faculty_uuid = null;
-
-    faculties.value = [];
-
-    loadFaculties({
-      filters: {
-        university_uuid: uuid,
-      }
     })
   }
 
@@ -130,12 +67,11 @@ export default function useCreate() {
 
   onMounted(() => {
     loadDepartment()
-    loadCompanies()
+    loadDegrees()
   })
 
   return {
     form,
-    companies,
     inputs,
     activityOptions,
     translations,
@@ -144,9 +80,6 @@ export default function useCreate() {
     degreesPreviews,
     degrees,
 
-    companyWasChanged,
-    universityWasChanged,
     update,
-    loadFaculties,
   }
 }

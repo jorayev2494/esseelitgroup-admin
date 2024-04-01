@@ -17,7 +17,6 @@ export default function useIndex() {
   const columns = [
     { field: 'value', title: t('country.form.name') },
     { field: 'iso', title: t('country.form.iso') },
-    // { field: 'company.name', title: t('country.form.company') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
     { field: 'actions', title: t('system.actions'), sort: false },
   ];
