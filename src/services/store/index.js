@@ -10,6 +10,7 @@ import application from '@/views/pages/admin/application/store/index.js';
 import country from '@/views/pages/admin/countryAndCity/country/store/index.js';
 import city from '@/views/pages/admin/countryAndCity/city/store/index.js';
 import degree from '@/views/pages/admin/degree/store/index.js';
+import alias from '@/views/pages/admin/alias/store/index.js';
 
 export default createStore({
   state: {
@@ -47,5 +48,6 @@ export default createStore({
     country,
     city,
     degree,
+    alias,
   }
 });

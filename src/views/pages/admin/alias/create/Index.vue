@@ -13,7 +13,7 @@
         <div class="card-body">
             <form action="#" method="POST" @submit.prevent="create" enctype="multipart/form-data"> -->
               <div class="text-right">
-                  <button type="submit" @click.prevent="create" class="btn btn-primary">{{ $t('system.save') }}</button>
+                  <button type="submit" class="btn btn-primary" @click.prevent="create">{{ $t('system.save') }}</button>
               </div>
             <!-- </form>
         </div>

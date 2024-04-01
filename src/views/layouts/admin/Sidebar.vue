@@ -336,6 +336,12 @@
               },
             },
             {
+              label: 'alias',
+              route: {
+                name: 'aliases',
+              },
+            },
+            {
               label: 'university',
               route: {
                 name: 'universities',
