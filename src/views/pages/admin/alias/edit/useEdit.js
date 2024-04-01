@@ -14,8 +14,8 @@ export default function useEdit() {
   
   const inputs = useInput();
 
-  const loadDegree = () => {
-    store.dispatch('degree/showDegreeAsync', { uuid })
+  const loadAlias = () => {
+    store.dispatch('alias/showAliasAsync', { uuid })
       .then(response => {
         form.value = response.data;
       })
@@ -26,14 +26,14 @@ export default function useEdit() {
   }
 
   const update = () => {
-    store.dispatch('degree/updateDegreeAsync', { uuid, data: decorateFormData() })
+    store.dispatch('alias/updateAliasAsync', { uuid, data: decorateFormData() })
       .then(() => {
-        router.push({ name: 'degrees' });
+        router.push({ name: 'aliases' });
       })
   }
 
   onMounted(() => {
-    loadDegree();
+    loadAlias();
   })
 
   return {

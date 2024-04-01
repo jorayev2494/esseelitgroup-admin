@@ -9,6 +9,7 @@ import application from '@/views/pages/admin/application/locales/tm.json'
 import country from '@/views/pages/admin/countryAndCity/country/locales/tm.json'
 import city from '@/views/pages/admin/countryAndCity/city/locales/tm.json'
 import degree from '@/views/pages/admin/degree/locales/tm.json'
+import alias from '@/views/pages/admin/alias/locales/tm.json'
 
 export default {
   system,
@@ -22,4 +23,5 @@ export default {
   country,
   city,
   degree,
+  alias,
 }
