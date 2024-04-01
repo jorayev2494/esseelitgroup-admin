@@ -1,5 +1,5 @@
 <template>
-  <div class="col-xl-6 d-flex" v-if="form.translations">
+  <div class="col-xl-6" v-if="form.translations">
     <div class="card flex-fill">
         <div class="card-header">
             <h4 class="card-title">Basic Form</h4>
@@ -7,52 +7,6 @@
 
         <div class="card-body">
           <form action="#" method="POST" @submit.prevent="update" enctype="multipart/form-data">
-            
-            <div class="form-group row">
-              <label class="col-lg-3 col-form-label">{{ $t('department.form.company') }}</label>
-              <div class="col-lg-9">
-                <select class="form-select" v-model="form.company_uuid" @change="companyWasChanged" required>
-                    <option value="" disabled selected>{{ $t('department.form.company') }}</option>
-                    <option
-                      v-for="({ uuid, name }, idx) of companies" :key="idx"
-                      :value="uuid"
-                    >
-                    {{ name }}
-                    </option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label class="col-lg-3 col-form-label">{{ $t('department.form.university') }}</label>
-              <div class="col-lg-9">
-                <select class="form-select" v-model="form.university_uuid" @change="universityWasChanged" required>
-                  <option value="" disabled selected>{{ $t('department.form.university') }}</option>
-                  <option
-                    v-for="({ uuid, name }, idx) of universities" :key="idx"
-                    :value="uuid"
-                    >
-                    {{ name }}
-                  </option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label class="col-lg-3 col-form-label">{{ $t('department.form.faculty') }}</label>
-              <div class="col-lg-9">
-                <select class="form-select" v-model="form.faculty_uuid" aria-label="Default select example" required>
-                  <option value="" selected disabled>{{ $t('department.form.faculty') }}</option>
-                  <option
-                    v-for="({ uuid, name }, idx) of faculties" :key="idx"
-                    :value="uuid"
-                    >
-                    {{ name }}
-                  </option>
-                </select>
-              </div>
-            </div>
-
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">{{ $t('department.form.degrees') }}</label>
               <div class="col-lg-9">
@@ -121,16 +75,10 @@
 
   const {
     form,
-    companies,
     inputs,
-    faculties,
-    universities,
     update,
     degrees,
     degreesPreviews,
-
-    companyWasChanged,
-    universityWasChanged,
   } = useCreate();
 </script>
 

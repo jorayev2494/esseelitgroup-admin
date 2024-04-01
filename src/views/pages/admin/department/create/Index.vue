@@ -9,53 +9,6 @@
           <form action="#" method="POST" @submit.prevent="create" enctype="multipart/form-data">
 
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label">{{ $t('department.form.company') }}</label>
-              <div class="col-lg-9">
-                <select class="form-select" v-model="form.company_uuid" @change="companyWasChanged" required>
-                    <option value="" selected disabled>{{ $t('department.form.company') }}</option>
-                    <option
-                      v-for="({ uuid, name }, idx) of companies" :key="idx"
-                      :value="uuid"
-                    >
-                    {{ name }}
-                    </option>
-                </select>
-              </div>
-            </div>
-
-            <!-- <pre>{{ form }}</pre> -->
-
-            <div class="form-group row">
-              <label class="col-lg-3 col-form-label">{{ $t('department.form.university') }}</label>
-              <div class="col-lg-9">
-                <select class="form-select" v-model="form.university_uuid" required @change="universityWasChanged">
-                  <option value="" selected disabled>{{ $t('department.form.university') }}</option>
-                  <option
-                    v-for="({ uuid, name }, idx) of universities" :key="idx"
-                    :value="uuid"
-                  >
-                    {{ name }}
-                  </option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label class="col-lg-3 col-form-label">{{ $t('department.form.faculty') }}</label>
-              <div class="col-lg-9">
-                <select class="form-select" v-model="form.faculty_uuid" aria-label="Default select example" required>
-                  <option value="" selected disabled>{{ $t('department.form.faculty') }}</option>
-                  <option
-                    v-for="({ uuid, name }, idx) of faculties" :key="idx"
-                    :value="uuid"
-                    >
-                    {{ name }}
-                  </option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row">
               <label class="col-lg-3 col-form-label">{{ $t('department.form.degrees') }}</label>
               <div class="col-lg-9">
 
@@ -130,8 +83,6 @@
     degrees,
     degreesPreviews,
 
-    companyWasChanged,
-    universityWasChanged,
     create,
   } = useCreate();
 </script>

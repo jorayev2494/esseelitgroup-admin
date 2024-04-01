@@ -1,7 +1,6 @@
 {
   "context_title": "Countries",
   "form": {
-    "company": "Company",
     "name": "Name",
     "country": "Country"
   }

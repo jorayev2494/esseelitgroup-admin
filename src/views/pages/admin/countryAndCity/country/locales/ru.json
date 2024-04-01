@@ -1,7 +1,6 @@
 {
   "context_title": "Страны",
   "form": {
-    "company": "Компания",
     "name": "Название",
     "iso": "ISO"
   }

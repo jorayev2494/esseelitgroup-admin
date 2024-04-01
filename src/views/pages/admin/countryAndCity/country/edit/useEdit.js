@@ -10,7 +10,6 @@ export default function useEdit() {
   const { uuid } = route.params;
 
   const form = ref({});
-  const companies = ref([])
 
   const loadUniversity = () => {
     store.dispatch('country/showCountryAsync', uuid)
@@ -22,16 +21,6 @@ export default function useEdit() {
   const decorateFormData = () => {
     return form.value;
   }
-
-  const loadCompanies = () => {
-    store.dispatch('company/loadCompanyListAsync', { params: {} }).then(response => {
-      companies.value = response.data.map(({ uuid, name }) => ({
-        uuid,
-        name,
-      }))
-    })
-  }
-
   const update = () => {
     store.dispatch('country/updateCountryAsync', { uuid, data: decorateFormData() })
       .then(() => {
@@ -41,12 +30,10 @@ export default function useEdit() {
 
   onMounted(() => {
     loadUniversity()
-    loadCompanies()
   })
 
   return {
     form,
-    companies,
 
     update,
   }

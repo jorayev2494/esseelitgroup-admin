@@ -1,41 +1,24 @@
 <template>
-  <div class="col-xl-6">
-    <div class="card flex-fill">
+  <div class="col-xl-12 d-flex">
+    <Inputs v-if="form.translations" :form="form" :inputs="inputs" :values="form.translations" />
+  </div>
+
+  <div class="col-xl-2">
+    <!-- <div class="card flex-fill">
         <div class="card-header">
             <h4 class="card-title">Basic Form</h4>
         </div>
 
         <div class="card-body">
-            <form action="#" method="POST" @submit.prevent="update" enctype="multipart/form-data">
-
-                <div class="form-group row">
-                    <label class="col-lg-3 col-form-label">{{ $t('degree.form.company') }}</label>
-                    <div class="col-lg-9">
-                    <select class="form-select" v-model="form.company_uuid" @change="companyChanged" aria-required="Default select example" required>
-                        <option value="" disabled selected>{{ $t('degree.form.company') }}</option>
-                        <option
-                            v-for="({ uuid, name }, idx) of companies" :key="idx"
-                            :value="uuid"
-                        >
-                        {{ name }}
-                        </option>
-                    </select>
-                    </div>
-                </div>
-
-                <div class="text-right">
-                    <button type="submit" class="btn btn-primary">{{ $t('system.save') }}</button>
-                </div>
-            </form>
+            <form action="#" method="POST" enctype="multipart/form-data"> -->
+              <div class="text-right">
+                  <button type="submit" class="btn btn-primary" @click="update">{{ $t('system.save') }}</button>
+              </div>
+            <!-- </form>
         </div>
-    </div>
+    </div> -->
 
   </div>
-
-  <div class="col-xl-6 d-flex">
-    <Inputs v-if="form.translations" :form="form" :inputs="inputs" :values="form.translations" />
-  </div>
-
 </template>
 
 <script setup>
@@ -45,7 +28,6 @@
   const {
     form,
     inputs,
-    companies,
 
     update,
   } = useEdit();

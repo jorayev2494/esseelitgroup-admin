@@ -17,8 +17,6 @@ export default function useIndex() {
   const items = ref([]);
   const columns = [
     { field: 'name', title: t('department.form.name') },
-    { field: 'university', title: t('department.form.university') },
-    { field: 'faculty', title: t('department.form.faculty') },
     { field: 'degrees', title: t('department.form.degrees') },
     { field: 'is_filled', title: t('department.form.is_filled') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },

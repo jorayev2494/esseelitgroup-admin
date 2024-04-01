@@ -30,13 +30,6 @@
 
           @change="changeServer"
         >
-          <template #company="data">
-            <div class="d-flex flex-row" v-if="data.value.company">
-              <img :src="data.value.company.logo.url" alt="user-profile" width="35" />
-              <div class="m-2">{{ data.value.company.name }}</div>
-            </div>
-          </template>
-
           <template #actions="data">
             <!-- <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'city-show', params: { uuid: data.value.uuid } })">
               <i class="fa fa-info-circle"></i> {{ $t('system.show') }}

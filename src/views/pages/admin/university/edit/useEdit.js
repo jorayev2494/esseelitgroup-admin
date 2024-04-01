@@ -3,7 +3,6 @@ import { onMounted, reactive, ref } from "vue"
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInputs } from '../useCases/usePartials'
-import { useCompany } from "../useCases/useCompany";
 import { useCountry } from "../useCases/useCountry";
 import { useCity } from "../useCases/useCity";
 
@@ -18,7 +17,6 @@ export default function useEdit() {
   const form = ref({});
   const inputs = useInputs();
 
-  const { companies, loadCompanies } = useCompany();
   const { countries, loadCountries } = useCountry();
   const { cities, loadCities } = useCity();
 
@@ -28,14 +26,13 @@ export default function useEdit() {
   const loadUniversity = () => {
     store.dispatch('university/showUniversityAsync', uuid)
       .then(response => {
-        const { logo, cover, company_uuid, country_uuid } = response.data
+        const { logo, cover, country_uuid } = response.data
         form.value = response.data;
 
         logoPreview.value = logo.url
         coverPreview.value = cover.url
 
-        loadCountries({ filters: { company_uuid } })
-        loadCities({ filters: { country_uuid } })
+        loadCities({ filters: { country_uuids: [country_uuid] } })
       })
   }
 
@@ -122,19 +119,10 @@ export default function useEdit() {
     }
   }
 
-  const companyChanged = event => {
-    const { value } = event.target;
-
-    loadCountries({ filters: { company_uuid: value } })
-    form.value.country_uuid = '';
-    form.value.city_uuid = '';
-    cities.value = [];
-  }
-
   const countryChanged = event => {
     const { value } = event.target;
 
-    loadCities({ filters: { country_uuid: value } })
+    loadCities({ filters: { country_uuids: [value] } })
   }
 
   const update = () => {
@@ -146,7 +134,7 @@ export default function useEdit() {
 
   onMounted(() => {
     loadUniversity()
-    loadCompanies()
+    loadCountries()
     // logoPreview.value = image(logoPreview.value)
     // coverPreview.value = image(coverPreview.value, 1200, 800, 'cover')
   })
@@ -157,11 +145,9 @@ export default function useEdit() {
     logoPreview,
     coverPreview,
     uploadMedia,
-    companies,
     countries,
     cities,
 
-    companyChanged,
     countryChanged,
     uploadLogo,
     uploadCover,
