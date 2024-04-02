@@ -342,6 +342,12 @@
               },
             },
             {
+              label: 'language',
+              route: {
+                name: 'languages',
+              },
+            },
+            {
               label: 'university',
               route: {
                 name: 'universities',
