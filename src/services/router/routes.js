@@ -62,6 +62,7 @@ import city from '@/views/pages/admin/countryAndCity/city/routes';
 import errors from '@/views/pages/admin/errors/routes';
 import degree from '@/views/pages/admin/degree/routes';
 import alias from '@/views/pages/admin/alias/routes';
+import language from '@/views/pages/admin/language/routes';
 
 const routes = [
   ...auth,
@@ -82,6 +83,7 @@ const routes = [
       ...city,
       ...degree,
       ...alias,
+      ...language,
     ],
     meta: {
       middleware: [

@@ -11,7 +11,7 @@
       <div class="card-body">
 
         <div class="mb-2">
-          <router-link class="btn btn-primary btn-sm me-2" :to="$tMakeRoute({ name: 'alias-create' })">
+          <router-link class="btn btn-primary btn-sm me-2" :to="$tMakeRoute({ name: 'language-create' })">
             <i class="fa fa-plus"></i> {{ $t('system.create') }}
           </router-link>
         </div>
@@ -35,7 +35,7 @@
               <i class="fa fa-info-circle"></i> {{ $t('system.show') }}
             </router-link> -->
 
-            <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'alias-edit', params: { uuid: data.value.uuid } })">
+            <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'language-edit', params: { uuid: data.value.uuid } })">
               <i class="fa fa-edit"></i> {{ $t('system.edit') }}
             </router-link>
             
