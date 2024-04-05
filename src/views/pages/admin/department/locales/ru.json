@@ -3,12 +3,14 @@
   "translations": "Переводы",
   "form": {
     "company": "Компания",
+    "alias": "Псевдоним",
     "university": "Университет",
     "faculty": "Факультет",
     "activity": "Активность",
     "name": "Название",
     "description": "Описание",
     "degrees": "Степени",
+    "language": "Язык",
     "is_filled": "Заполнен"
   }
 }

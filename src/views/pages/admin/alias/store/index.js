@@ -13,13 +13,13 @@ const mutations = {
 }
 
 const actions = {
-  // async loadAliasListAsync(_, { params = {} }) {
-  //   return await new Promise((resolve, reject) => {
-  //     return httpClient.get('/aliases/list', { params })
-  //       .then(response => resolve(response))
-  //       .catch(error => reject(error));
-  //   })
-  // },
+  async loadAliasListAsync(_, { params = {} }) {
+    return await new Promise((resolve, reject) => {
+      return httpClient.get('/aliases/list', { params })
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    })
+  },
 
   async loadAliasesAsync(_, payload) {
     return await new Promise((resolve, reject) => {

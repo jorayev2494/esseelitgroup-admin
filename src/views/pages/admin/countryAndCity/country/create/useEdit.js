@@ -1,6 +1,7 @@
 import { ref, watch } from "vue"
 import { useRouter } from "vue-router";
 import { useStore } from "vuex"
+import { useInput } from "../useCases/useInput";
 
 export default function useEdit() {
 
@@ -10,8 +11,11 @@ export default function useEdit() {
   const form = ref({
     value: '',
     iso: '',
+    translations: {},
     is_active: true,
   });
+
+  const inputs = useInput();
 
   const decorateData = () => {
     return form.value;
@@ -30,6 +34,7 @@ export default function useEdit() {
 
   return {
     form,
+    inputs,
 
     create,
   }

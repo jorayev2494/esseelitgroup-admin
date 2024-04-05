@@ -3,12 +3,14 @@
   "translations": "Translates",
   "form": {
     "company": "Company",
+    "alias": "Alias",
     "university": "University",
     "faculty": "Faculty",
     "activity": "Activity",
     "name": "Name",
     "description": "Description",
     "degrees": "Degrees",
+    "language": "Language",
     "is_filled": "Is filled"
   }
 }

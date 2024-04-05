@@ -3,12 +3,14 @@
   "translations": "Terjimeleri",
   "form": {
     "company": "Kompaniýa",
+    "alias": "Lakam",
     "university": "Uniwersitet",
     "faculty": "Fakultet",
     "activity": "Activity",
     "name": "Ady",
     "description": "Düşündiriş",
     "degrees": "Derejeler",
+    "language": "Dil",
     "is_filled": "Doldy"
   }
 }

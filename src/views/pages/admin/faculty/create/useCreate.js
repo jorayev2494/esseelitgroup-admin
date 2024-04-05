@@ -3,18 +3,23 @@ import { onMounted, reactive, ref } from "vue"
 import { useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInputs } from '../useCases/usePartials'
+import { useName } from "../useCases/useName";
+import { useUniversity } from "../useCases/useUniversity";
 
 export default function useCreate() {
 
   const store = useStore();
   const router = useRouter();
   const { image } = useUrlPattern();
+  const { nameSelectedPreview, names, loadNamesList } = useName();
+  const { universitiesPreview, universities, loadUniversities } = useUniversity();
 
   const logoPreview = ref(null);
   const inputs = useInputs();
 
   const form = reactive({
     logo: '',
+    name_uuid: '',
     translations: {},
   });
 
@@ -71,13 +76,19 @@ export default function useCreate() {
   }
 
   onMounted(() => {
-    logoPreview.value = image(logoPreview.value)
+    loadNamesList()
+    loadUniversities()
+    logoPreview.value  = image(logoPreview.value)
   })
 
   return {
     form,
+    names,
     inputs,
+    universitiesPreview,
+    universities,
     logoPreview,
+    nameSelectedPreview,
 
     uploadLogo,
     create,

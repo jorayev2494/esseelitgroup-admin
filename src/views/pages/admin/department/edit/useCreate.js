@@ -2,6 +2,11 @@ import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { useInputs } from '../useCases/usePartials';
+import { useName } from "../useCases/useName";
+import { useAlias } from "../useCases/useAlias";
+import { useUniversity } from "../useCases/useUniversity";
+import { useFaculty } from "../useCases/useFaculty";
+import { useLanguage } from "../useCases/useLanguage";
 import useDegree from "../useCases/useDegree";
 
 export default function useCreate() {
@@ -9,12 +14,14 @@ export default function useCreate() {
   const store = useStore();
   const router = useRouter();
   const route = useRoute();
+  const { nameSelectedPreview, names, loadNamesList, makeNameSelectedPreview } = useName();
+  const { aliasesPreview, aliases, loadAliases } = useAlias();
+  const { universitiesPreview, universities, loadUniversities } = useUniversity();
+  const { facultiesPreview, faculties, loadFaculties } = useFaculty();
+  const { languagesPreview, languages, loadLanguages } = useLanguage();
   const { degreesPreviews, degrees, loadDegrees } = useDegree();
 
   const { uuid } = route.params;
-
-  const universities = ref([]);
-  const faculties = ref([]);
 
   const inputs = useInputs();
 
@@ -36,9 +43,10 @@ export default function useCreate() {
   }
 
   const mapDepartment = department => {
-    const { degrees } = department;
+    const { degrees, name_uuid } = department;
 
     degreesPreviews.value = degrees.map(({ uuid, value }) => ({ uuid, value }))
+    makeNameSelectedPreview(item => item.uuid === name_uuid)
 
     return department;
   }
@@ -67,17 +75,28 @@ export default function useCreate() {
 
   onMounted(() => {
     loadDepartment()
+    loadNamesList()
+    loadAliases()
+    loadUniversities()
+    loadFaculties()
+    loadLanguages()
     loadDegrees()
   })
 
   return {
     form,
+    names,
+    aliases,
     inputs,
-    activityOptions,
-    translations,
+    universitiesPreview,
     universities,
+    facultiesPreview,
     faculties,
+    activityOptions,
+    languages,
+    translations,
     degreesPreviews,
+    nameSelectedPreview,
     degrees,
 
     update,

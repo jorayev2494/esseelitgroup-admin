@@ -7,15 +7,136 @@
 
         <div class="card-body">
           <form action="#" method="POST" @submit.prevent="update" enctype="multipart/form-data">
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('faculty.form.name') }}</label>
+              <div class="col-lg-9">
+                <VueMultiselect
+                  v-model="nameSelectedPreview"
+                  :options="names"
+                  :multiple="false"
+
+                  track-by="uuid"
+
+                  label="value"
+                  :placeholder="$t('application.form.faculties_and_departments_select.placeholder')"
+                  
+                  :select-label="$t('application.form.faculties_and_departments_select.select_label')"
+                  :deselect-label="$t('application.form.faculties_and_departments_select.deselect_label')"
+                  :selected-label="$t('application.form.faculties_and_departments_select.selected')"
+
+                  @select="item => form.name_uuid = item.uuid"
+                  @remove="item => form.name_uuid = null"
+                >
+                </VueMultiselect>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('department.form.alias') }}</label>
+              <div class="col-lg-9">
+                <VueMultiselect
+                  v-model="form.alias"
+                  :options="aliases"
+                  :multiple="false"
+
+                  track-by="uuid"
+
+                  label="value"
+                  :placeholder="$t('department.form.alias')"
+                  
+                  :select-label="$t('application.form.faculties_and_departments_select.select_label')"
+                  :deselect-label="$t('application.form.faculties_and_departments_select.deselect_label')"
+                  :selected-label="$t('application.form.faculties_and_departments_select.selected')"
+
+                  @select="item => form.alias_uuid = item.uuid"
+                  @remove="item => form.alias_uuid = null"
+                >
+                </VueMultiselect>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('department.form.university') }}</label>
+              <div class="col-lg-9">
+                <VueMultiselect
+                  v-model="form.university"
+                  :options="universities"
+                  :multiple="false"
+
+                  track-by="uuid"
+
+                  label="name"
+                  :placeholder="$t('department.form.university')"
+                  
+                  :select-label="$t('application.form.faculties_and_departments_select.select_label')"
+                  :deselect-label="$t('application.form.faculties_and_departments_select.deselect_label')"
+                  :selected-label="$t('application.form.faculties_and_departments_select.selected')"
+
+                  @select="item => form.university_uuid = item.uuid"
+                  @remove="item => form.university_uuid = null"
+                >
+                </VueMultiselect>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('department.form.faculty') }}</label>
+              <div class="col-lg-9">
+                <VueMultiselect
+                  v-model="form.faculty"
+                  :options="faculties"
+                  :multiple="false"
+
+                  track-by="uuid"
+
+                  :custom-label="({ name }) => name?.value"
+                  :placeholder="$t('department.form.faculty')"
+                  
+                  :select-label="$t('application.form.faculties_and_departments_select.select_label')"
+                  :deselect-label="$t('application.form.faculties_and_departments_select.deselect_label')"
+                  :selected-label="$t('application.form.faculties_and_departments_select.selected')"
+
+                  @select="item => form.faculty_uuid = item.uuid"
+                  @remove="item => form.faculty_uuid = null"
+                >
+                </VueMultiselect>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('department.form.language') }}</label>
+              <div class="col-lg-9">
+                <VueMultiselect
+                  v-model="form.language"
+                  :options="languages"
+                  :multiple="false"
+
+                  track-by="uuid"
+
+                  label="value"
+                  :placeholder="$t('department.form.language')"
+                  
+                  :select-label="$t('application.form.faculties_and_departments_select.select_label')"
+                  :deselect-label="$t('application.form.faculties_and_departments_select.deselect_label')"
+                  :selected-label="$t('application.form.faculties_and_departments_select.selected')"
+
+                  @select="item => form.language_uuid = item.uuid"
+                  @remove="item => form.language_uuid = null"
+                >
+                </VueMultiselect>
+              </div>
+            </div>
+
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">{{ $t('department.form.degrees') }}</label>
               <div class="col-lg-9">
-
                 <VueMultiselect
                   v-model="degreesPreviews"
                   :options="degrees"
                   :multiple="true"
                   :taggable="true"
+                  :max="1"
 
                   label="value"
                   track-by="uuid"
@@ -63,7 +184,7 @@
     </div>
   </div>
 
-  <div class="col-xl-6 d-flex">
+  <div class="col-xl-6">
     <Inputs v-if="form.translations" :form="form" :inputs="inputs" />
   </div>
 </template>
@@ -75,10 +196,16 @@
 
   const {
     form,
+    names,
     inputs,
+    aliases,
+    universities,
+    faculties,
+    languages,
     update,
     degrees,
     degreesPreviews,
+    nameSelectedPreview,
   } = useCreate();
 </script>
 

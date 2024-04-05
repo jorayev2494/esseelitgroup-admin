@@ -13,9 +13,9 @@ const mutations = {
 }
 
 const actions = {
-  async loadFacultiesAsync(_, payload) {
+  async loadFacultiesAsync(_, { params }) {
     return await new Promise((resolve, reject) => {
-      return httpClient.get('/faculties', payload)
+      return httpClient.get('/faculties', { params })
         .then(response => resolve(response))
         .catch(error => reject(error));
     })
