@@ -13,13 +13,13 @@ const mutations = {
 }
 
 const actions = {
-  // async loadLanguagesListAsync(_, { params = {} }) {
-  //   return await new Promise((resolve, reject) => {
-  //     return httpClient.get('/languages/list', { params })
-  //       .then(response => resolve(response))
-  //       .catch(error => reject(error));
-  //   })
-  // },
+  async loadLanguagesListAsync(_, { params = {} }) {
+    return await new Promise((resolve, reject) => {
+      return httpClient.get('/languages/list', { params })
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    })
+  },
 
   async loadLanguagesAsync(_, payload) {
     return await new Promise((resolve, reject) => {

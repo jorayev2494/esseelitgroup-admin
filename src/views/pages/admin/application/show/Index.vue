@@ -114,13 +114,13 @@
                 <router-link :to="$tMakeRoute({ name: 'faculty-show', params: { uuid: faculty.uuid } })" target="_blank">
                   <div class="d-flex flex-row">
                     <img :src="faculty.logo.url" class="logo" alt="faculty logo" width="25" height="25" />
-                    <span>{{ faculty.name ?? 'Faculty name' }}</span>
+                    <span>{{ faculty.name?.value ?? 'Faculty name' }}</span>
                   </div>
                 </router-link>
                 <ol class="ml-4">
                   <li v-for="(department, dIdx) in faculty.departments" :key="dIdx">
                     <router-link :to="$tMakeRoute({ name: 'department-show', params: { uuid: department.uuid } })" target="_blank">
-                      <p>{{ department.name ?? 'Department name' }}</p>
+                      <p>{{ department.name?.value ?? 'Department name' }}</p>
                     </router-link>
                   </li>
                 </ol>

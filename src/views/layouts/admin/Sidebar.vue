@@ -307,8 +307,8 @@
 
       const menuItems = [
         {
-          label: 'University',
-          icon: 'university',
+          label: 'Company',
+          icon: 'pie-chart',
           class: '',
           items: [
             {
@@ -330,6 +330,20 @@
               },
             },
             {
+              label: 'language',
+              route: {
+                name: 'languages',
+              },
+            },
+
+          ],
+        },
+        {
+          label: 'University',
+          icon: 'university',
+          class: '',
+          items: [
+            {
               label: 'degree',
               route: {
                 name: 'degrees',
@@ -341,30 +355,62 @@
                 name: 'aliases',
               },
             },
-            {
-              label: 'language',
-              route: {
-                name: 'languages',
-              },
-            },
+
             {
               label: 'university',
               route: {
                 name: 'universities',
               },
             },
+
             {
               label: 'faculty',
-              route: {
-                name: 'faculties',
-              },
+              submenu: [
+                {
+                  label: 'facultyName',
+                  route: {
+                    name: 'faculties-names',
+                  },
+                },
+                {
+                  label: 'faculty',
+                  route: {
+                    name: 'faculties',
+                  },
+                },
+              ],
             },
+
             {
               label: 'department',
-              route: {
-                name: 'departments',
-              },
+              submenu: [
+                {
+                  label: 'departmentName',
+                  route: {
+                    name: 'departments-names',
+                  },
+                },
+                {
+                  label: 'department',
+                  route: {
+                    name: 'departments',
+                  },
+                },
+              ],
             },
+
+            // {
+            //   label: 'departmentName',
+            //   route: {
+            //     name: 'departments-names',
+            //   },
+            // },
+            // {
+            //   label: 'department',
+            //   route: {
+            //     name: 'departments',
+            //   },
+            // },
             {
               label: 'application',
               route: {

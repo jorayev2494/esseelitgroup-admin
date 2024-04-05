@@ -3,6 +3,11 @@ import { onMounted, reactive, ref, getCurrentInstance } from "vue"
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInputs } from '../useCases/usePartials'
+import { useName } from "../useCases/useName";
+import { useAlias } from "../useCases/useAlias";
+import { useUniversity } from "../useCases/useUniversity";
+import { useFaculty } from "../useCases/useFaculty";
+import { useLanguage } from "../useCases/useLanguage";
 import useDegree from "../useCases/useDegree";
 
 export default function useCreate() {
@@ -11,6 +16,11 @@ export default function useCreate() {
   const router = useRouter();
   const route = useRoute();
   const { image } = useUrlPattern();
+  const { nameSelectedPreview, names, loadNamesList } = useName();
+  const { aliasesPreview, aliases, loadAliases } = useAlias();
+  const { universitiesPreview, universities, loadUniversities } = useUniversity();
+  const { facultiesPreview, faculties, loadFaculties } = useFaculty();
+  const { languagesPreview, languages, loadLanguages } = useLanguage();
   const { degreesPreviews, degrees, loadDegrees } = useDegree();
 
   const logoPreview = ref(null);
@@ -18,11 +28,15 @@ export default function useCreate() {
   const inputs = useInputs();
 
   const translations = {
-    name: '',
     description: '',
   }
 
   const form = reactive({
+    name_uuid: '',
+    alias_uuid: '',
+    university_uuid: '',
+    faculty_uuid: '',
+    language_uuid: '',
     degree_uuids: [],
     translations: {},
     is_filled: false,
@@ -68,6 +82,11 @@ export default function useCreate() {
   }
 
   onMounted(() => {
+    loadNamesList()
+    loadAliases()
+    loadUniversities()
+    loadFaculties()
+    loadLanguages()
     loadDegrees()
     logoPreview.value = image(logoPreview.value)
     makeTranslationsForm(form, translations)
@@ -75,12 +94,22 @@ export default function useCreate() {
 
   return {
     form,
+    names,
+    aliasesPreview,
+    aliases,
     inputs,
+    universitiesPreview,
+    universities,
+    facultiesPreview,
+    faculties,
+    languages,
+    languagesPreview,
     activityOptions,
     translations,
     logoPreview,
     degrees,
     degreesPreviews,
+    nameSelectedPreview,
 
     uploadLogo,
     create,

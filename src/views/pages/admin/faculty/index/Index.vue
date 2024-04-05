@@ -33,7 +33,7 @@
           @change="changeServer"
         >
 
-          <template #logo="data">
+          <template #name="data">
             <div class="d-flex flex-row">
               <div class="avatar-showcase">
                 <div class="avatars">
@@ -47,7 +47,7 @@
 
               <div class="m-2">
                 <div>
-                  <span class="text-dark">{{ data.value.name }}</span>
+                  <span class="text-dark">{{ data.value.name.value }}</span>
                 </div>
               </div>
 

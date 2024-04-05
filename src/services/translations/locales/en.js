@@ -11,6 +11,8 @@ import city from '@/views/pages/admin/countryAndCity/city/locales/en.json'
 import degree from '@/views/pages/admin/degree/locales/en.json'
 import alias from '@/views/pages/admin/alias/locales/en.json'
 import language from '@/views/pages/admin/language/locales/en.json'
+import facultyName from '@/views/pages/admin/facultyName/locales/en.json'
+import departmentName from '@/views/pages/admin/departmentName/locales/en.json'
 
 export default {
   system,
@@ -26,4 +28,6 @@ export default {
   degree,
   alias,
   language,
+  facultyName,
+  departmentName,
 }

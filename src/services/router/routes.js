@@ -63,6 +63,8 @@ import errors from '@/views/pages/admin/errors/routes';
 import degree from '@/views/pages/admin/degree/routes';
 import alias from '@/views/pages/admin/alias/routes';
 import language from '@/views/pages/admin/language/routes';
+import facultyName from '@/views/pages/admin/facultyName/routes';
+import departmentName from '@/views/pages/admin/departmentName/routes';
 
 const routes = [
   ...auth,
@@ -84,6 +86,8 @@ const routes = [
       ...degree,
       ...alias,
       ...language,
+      ...facultyName,
+      ...departmentName,
     ],
     meta: {
       middleware: [

@@ -18,12 +18,12 @@
 
       <template v-if="item?.submenu">
         <a href="#">
-          <span>{{ item.label }}</span>
+          <span>{{ $t(`${item.label}.context_title`) }}</span>
           <span class="menu-arrow"></span>
         </a>
         <ul style="display: none">
           <li v-for="(submenuItem, submenuItemIdx) in item.submenu" :key="submenuItemIdx">
-            <router-link :to="$tMakeRoute(submenuItem.route)">{{ submenuItem.label }}</router-link>
+            <router-link :to="$tMakeRoute(submenuItem.route)">{{ $t(`${submenuItem.label}.context_title`) }}</router-link>
           </li>
         </ul>
       </template>

@@ -8,13 +8,6 @@
         <div class="card-body">
             <form action="#" method="POST" @submit.prevent="create" enctype="multipart/form-data">
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label">{{ $t('country.form.name') }}</label>
-                    <div class="col-lg-9">
-                        <input type="text" v-model="form.value" class="form-control" maxlength="100" :placeholder="$t('country.form.name')" required>
-                    </div>
-                </div>
-
-                <div class="form-group row">
                     <label class="col-lg-3 col-form-label">{{ $t('country.form.iso') }}</label>
                     <div class="col-lg-9">
                         <input type="text" v-model="form.iso" class="form-control" maxlength="3" :placeholder="$t('country.form.iso')" required>
@@ -31,16 +24,18 @@
   </div>
 
   <div class="col-xl-6">
-    
+    <Inputs :form="form" :inputs="inputs" />
   </div>
 
 </template>
 
 <script setup>
   import useEdit from './useEdit.js';
+  import Inputs from '../../../../components/InputCard/Index.vue'
 
   const {
     form,
+    inputs,
 
     create,
   } = useEdit();
