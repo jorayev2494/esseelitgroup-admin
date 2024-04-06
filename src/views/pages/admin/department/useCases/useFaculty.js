@@ -5,6 +5,7 @@ export function useFaculty()
 {
   const store = useStore();
 
+  const facultiesPreview = ref(null);
   const faculties = ref([]);
 
   const loadFaculties = (params) => {
@@ -15,6 +16,7 @@ export function useFaculty()
   }
 
   return {
+    facultiesPreview,
     faculties,
 
     loadFaculties,

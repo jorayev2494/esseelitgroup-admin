@@ -9,7 +9,7 @@
     "activity": "Activity",
     "name": "Ady",
     "description": "Düşündiriş",
-    "degrees": "Derejeler",
+    "degree": "Dereje",
     "language": "Dil",
     "is_filled": "Doldy"
   }

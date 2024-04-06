@@ -46,19 +46,17 @@
           </template>
 
           <template #actions="data">
-            <div class="float-end">
-              <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'application-show', params: { uuid: data.value.uuid } })">
-                <i class="fa fa-eye"></i> {{ $t('system.show') }}
-              </router-link>
+            <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'application-show', params: { uuid: data.value.uuid } })">
+              <i class="fa fa-eye"></i> {{ $t('system.show') }}
+            </router-link>
 
-              <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'application-edit', params: { uuid: data.value.uuid } })">
-                <i class="fa fa-edit"></i> {{ $t('system.edit') }}
-              </router-link>
-              
-              <span class="btn btn-sm bg-danger-light" @click="remove(data)">
-                <i class="fa fa-trash"></i> {{ $t('system.delete') }}
-              </span>
-            </div>
+            <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'application-edit', params: { uuid: data.value.uuid } })">
+              <i class="fa fa-edit"></i> {{ $t('system.edit') }}
+            </router-link>
+            
+            <span class="btn btn-sm bg-danger-light" @click="remove(data)">
+              <i class="fa fa-trash"></i> {{ $t('system.delete') }}
+            </span>
           </template>
 
         </data-table>

@@ -10,42 +10,42 @@ export default function useIndex({ props }) {
   const uploadFiles = [
     {
       document_type: 'passport',
-      accept: '.pdf',
+      accept: '.pdf, .jpg, .jpeg',
       required: true,
     },
     {
       document_type: 'passport_translation',
-      accept: '.pdf',
+      accept: '.pdf, .jpg, .jpeg',
       required: true,
     },
     {
       document_type: 'school_attestat',
-      accept: '.pdf',
+      accept: '.pdf, .jpg, .jpeg',
       required: true,
     },
     {
       document_type: 'school_attestat_translation',
-      accept: '.pdf',
+      accept: '.pdf, .jpg, .jpeg',
       required: true,
     },
     {
       document_type: 'transcript',
-      accept: '.pdf',
+      accept: '.pdf, .jpg, .jpeg',
       required: true,
     },
     {
       document_type: 'transcript_translation',
-      accept: '.pdf',
+      accept: '.pdf, .jpg, .jpeg',
       required: true,
     },
     {
       document_type: 'equivalence_document',
-      accept: '.pdf',
+      accept: '.pdf, .jpg, .jpeg',
       required: true,
     },
     {
       document_type: 'biometric_photo',
-      accept: '.pdf',
+      accept: '.pdf, .jpg, .jpeg',
       required: true,
     },
   ]
