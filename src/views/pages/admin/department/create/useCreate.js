@@ -1,6 +1,6 @@
 import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { onMounted, reactive, ref, getCurrentInstance } from "vue"
-import { useRoute, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInputs } from '../useCases/usePartials'
 import { useName } from "../useCases/useName";
@@ -14,7 +14,6 @@ export default function useCreate() {
 
   const store = useStore();
   const router = useRouter();
-  const route = useRoute();
   const { image } = useUrlPattern();
   const { nameSelectedPreview, names, loadNamesList } = useName();
   const { aliasesPreview, aliases, loadAliases } = useAlias();
@@ -37,7 +36,7 @@ export default function useCreate() {
     university_uuid: '',
     faculty_uuid: '',
     language_uuid: '',
-    degree_uuids: [],
+    degree_uuid: '',
     translations: {},
     is_filled: false,
     is_active: '',
@@ -65,11 +64,21 @@ export default function useCreate() {
     }
   }
 
+  const universityWasChanged = ({ uuid }) => {
+    form.university_uuid = uuid
+    form.faculty_uuid = null
+    form.faculty = null;
+    facultiesPreview.value = null;
+
+    loadFaculties({
+      filters: {
+        university_uuids: [uuid],
+      }
+    })
+  }
+
   const getData = () => {
     form.is_filled = form.is_filled === true ? 1 : 0;
-
-    form.degree_uuids = degreesPreviews.value.map(({ uuid }) => uuid)
-                                            .filter((v, i, self) => i == self.indexOf(v));
 
     return form;
   };
@@ -110,8 +119,9 @@ export default function useCreate() {
     degrees,
     degreesPreviews,
     nameSelectedPreview,
-
+    
     uploadLogo,
     create,
+    universityWasChanged,
   }
 }

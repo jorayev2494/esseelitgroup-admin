@@ -22,7 +22,7 @@ export default function useIndex() {
     // { field: 'faculty.name', title: t('application.form.faculty') },
     { field: 'status', title: t('application.form.status') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
-    { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end' },
+    { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
   ];
 
   const reloadData = () => {

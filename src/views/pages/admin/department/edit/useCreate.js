@@ -19,7 +19,7 @@ export default function useCreate() {
   const { universitiesPreview, universities, loadUniversities } = useUniversity();
   const { facultiesPreview, faculties, loadFaculties } = useFaculty();
   const { languagesPreview, languages, loadLanguages } = useLanguage();
-  const { degreesPreviews, degrees, loadDegrees } = useDegree();
+  const { degrees, loadDegrees } = useDegree();
 
   const { uuid } = route.params;
 
@@ -43,9 +43,13 @@ export default function useCreate() {
   }
 
   const mapDepartment = department => {
-    const { degrees, name_uuid } = department;
+    const { name_uuid, university_uuid } = department;
 
-    degreesPreviews.value = degrees.map(({ uuid, value }) => ({ uuid, value }))
+    loadFaculties({
+      filters: {
+        university_uuids: [university_uuid],
+      }
+    })
     makeNameSelectedPreview(item => item.uuid === name_uuid)
 
     return department;
@@ -57,11 +61,20 @@ export default function useCreate() {
     })
   }
 
+  const universityWasChanged = ({ uuid }) => {
+    form.value.university_uuid = uuid
+    form.value.faculty_uuid = null
+    form.value.faculty = null;
+
+    loadFaculties({
+      filters: {
+        university_uuids: [uuid],
+      }
+    })
+  }
+
   const getData = () => {
     form.value.is_filled = form.value.is_filled === true ? 1 : 0;
-
-    form.value.degree_uuids = degreesPreviews.value.map(({ uuid }) => uuid)
-                                                  .filter((v, i, self) => i == self.indexOf(v));
 
     return form.value;
   };
@@ -78,7 +91,6 @@ export default function useCreate() {
     loadNamesList()
     loadAliases()
     loadUniversities()
-    loadFaculties()
     loadLanguages()
     loadDegrees()
   })
@@ -95,10 +107,10 @@ export default function useCreate() {
     activityOptions,
     languages,
     translations,
-    degreesPreviews,
     nameSelectedPreview,
     degrees,
 
+    universityWasChanged,
     update,
   }
 }

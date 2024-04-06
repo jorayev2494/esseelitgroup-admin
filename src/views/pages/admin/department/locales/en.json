@@ -9,7 +9,7 @@
     "activity": "Activity",
     "name": "Name",
     "description": "Description",
-    "degrees": "Degrees",
+    "degree": "Degree",
     "language": "Language",
     "is_filled": "Is filled"
   }

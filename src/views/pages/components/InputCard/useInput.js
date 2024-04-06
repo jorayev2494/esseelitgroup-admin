@@ -11,6 +11,10 @@ export default function useInput({ props }) {
   }
 
   const makeTranslates = () => {
+    if (Array.isArray(form.value.translations)) {
+      form.value.translations = {};
+    }
+
     clientSupportedLocales.value.forEach(locale => {
       const res = {};
 

@@ -18,7 +18,7 @@ export default function useIndex() {
     { field: 'value', title: t('country.form.name') },
     { field: 'iso', title: t('country.form.iso') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
-    { field: 'actions', title: t('system.actions'), sort: false },
+    { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
   ];
 
   const reloadData = () => {

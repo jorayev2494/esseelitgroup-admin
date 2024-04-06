@@ -73,7 +73,7 @@
                   :deselect-label="$t('application.form.faculties_and_departments_select.deselect_label')"
                   :selected-label="$t('application.form.faculties_and_departments_select.selected')"
 
-                  @select="item => form.university_uuid = item.uuid"
+                  @select="universityWasChanged"
                   @remove="item => form.university_uuid = null"
                 >
                 </VueMultiselect>
@@ -129,19 +129,19 @@
             </div>
 
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label">{{ $t('department.form.degrees') }}</label>
+              <label class="col-lg-3 col-form-label">{{ $t('department.form.degree') }}</label>
               <div class="col-lg-9">
                 <VueMultiselect
-                  v-model="degreesPreviews"
+                  v-model="form.degree"
                   :options="degrees"
-                  :multiple="true"
-                  :taggable="true"
-                  :max="1"
 
                   label="value"
                   track-by="uuid"
-                  :placeholder="$t('department.form.degrees')"
+                  :placeholder="$t('department.form.degree')"
                   required
+
+                  @select="item => form.degree_uuid = item.uuid"
+                  @remove="item => form.degree_uuid = null"
                 >
                 </VueMultiselect>
 
@@ -204,8 +204,8 @@
     languages,
     update,
     degrees,
-    degreesPreviews,
     nameSelectedPreview,
+    universityWasChanged,
   } = useCreate();
 </script>
 

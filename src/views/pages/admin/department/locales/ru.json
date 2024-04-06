@@ -9,7 +9,7 @@
     "activity": "Активность",
     "name": "Название",
     "description": "Описание",
-    "degrees": "Степени",
+    "degree": "Степен",
     "language": "Язык",
     "is_filled": "Заполнен"
   }
