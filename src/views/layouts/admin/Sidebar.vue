@@ -307,7 +307,7 @@
 
       const menuItems = [
         {
-          label: 'Company',
+          label: 'Main',
           icon: 'pie-chart',
           class: '',
           items: [
@@ -338,6 +338,7 @@
 
           ],
         },
+
         {
           label: 'University',
           icon: 'university',
@@ -411,6 +412,20 @@
             //     name: 'departments',
             //   },
             // },
+          ],
+        },
+
+        {
+          label: 'Student',
+          icon: 'users',
+          class: '',
+          items: [
+            {
+              label: 'student',
+              route: {
+                name: 'students',
+              },
+            },
             {
               label: 'application',
               route: {

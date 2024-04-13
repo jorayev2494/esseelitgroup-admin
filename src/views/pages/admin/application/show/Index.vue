@@ -1,170 +1,189 @@
 <template>
-  <div class="mb-3">
-    <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'application-edit', params: { uuid: $route.params.uuid } })">
-      <i class="fa fa-edit"></i> {{ $t('system.edit') }}
-    </router-link>
-  </div>
-
-  <div class="col-xl-6 d-flex" v-if="form">
-
-    <div class="card flex-fill">
-      <div class="card-header">
-        <h5 class="card-title d-flex justify-content-between">
-            <span>{{ $t('application.application_form') }}</span>
-            <router-link class="edit-link text-success" :to="$tMakeRoute({ name: 'application-edit', params: { uuid: $route.params.uuid } })">
-              <!-- <i class="fa fa-edit mr-2"></i> -->
-              {{ form.status.value }}
-            </router-link>
-        </h5>
-      </div>
-
-      <div class="card-body">
-
-        <div class="row">
-          <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.full_name') }}</p>
-          <p class="col-sm-8">{{ form.full_name }}</p>
-        </div>
-
-        <div class="row">
-          <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.birthday') }}</p>
-          <p class="col-sm-8">{{ form.birthday }}</p>
-        </div>
-
-        <div class="row">
-          <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.father_name') }}</p>
-          <p class="col-sm-8">{{ form.father_name }}</p>
-        </div>
-
-        <div class="row">
-          <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.mother_name') }}</p>
-          <p class="col-sm-8">{{ form.mother_name }}</p>
-        </div>
-
-        <div class="row">
-          <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.passport_number') }}</p>
-          <p class="col-sm-8">{{ form.passport_number }}</p>
-        </div>
-
-        <div class="row">
-          <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.phone') }}</p>
-          <p class="col-sm-8">{{ form.phone }}</p>
-        </div>
-
-        <div class="row">
-          <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.friend_phone') }}</p>
-          <p class="col-sm-8">{{ form.friend_phone }}</p>
-        </div>
-
-        <div class="row">
-          <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.home_address') }}</p>
-          <p class="col-sm-8">{{ form.home_address }}</p>
-        </div>
-
-        <div class="row">
-          <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.email') }}</p>
-          <p class="col-sm-8">{{ form.email }}</p>
-        </div>
-
-
-        <div class="row">
-          <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.company') }}</p>
-          <div class="col-sm-8">
-
-            <template v-if="form.company">
-              <router-link :to="$tMakeRoute({ name: 'company-show', params: { uuid: form.company.uuid } })" target="_blank">
-                {{ form.company.name }}
-              </router-link>
-            </template>
-            
-          </div>
-        </div>
-
-        <div class="row">
-          <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.country') }}</p>
-          <template v-if="form.country">
-            <p class="col-sm-8">
-              {{ form.country.value }}
-            </p>
-          </template>
-        </div>
-
-        <div class="row">
-          <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.university') }}</p>
-          <div class="col-sm-8">
-            <!-- <router-link :to="$tMakeRoute({ name: 'university-show', params: { uuid: form.university.uuid } })" target="_blank"> -->
-              <!-- {{ form.university.name }} -->
-            <!-- </router-link> -->
-
-            
-            <div class="d-flex flex-row">
-              <template v-if="form.university">
-                <img :src="form.university.logo.url" class="logo" alt="university logo" width="25" height="25" />
-                <p>{{ form.university.name }}</p>
-              </template>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.faculties_and_departments') }}</p>
-          <div class="col-sm-8">
-
-            <ol class="block-university-and-departments">
-              <li v-for="(faculty, fIdx) in facultiesAndDepartments" :key="fIdx">
-                <router-link :to="$tMakeRoute({ name: 'faculty-show', params: { uuid: faculty.uuid } })" target="_blank">
-                  <div class="d-flex flex-row">
-                    <img :src="faculty.logo.url" class="logo" alt="faculty logo" width="25" height="25" />
-                    <span>{{ faculty.name?.value ?? 'Faculty name' }}</span>
-                  </div>
-                </router-link>
-                <ol class="ml-4">
-                  <li v-for="(department, dIdx) in faculty.departments" :key="dIdx">
-                    <router-link :to="$tMakeRoute({ name: 'department-show', params: { uuid: department.uuid } })" target="_blank">
-                      <p>{{ department.name?.value ?? 'Department name' }}</p>
-                    </router-link>
-                  </li>
-                </ol>
-              </li>
-            </ol>
-
-          </div>
-        </div>
-
-
-        <div class="row">
-            <p class="col-sm-4 text-muted mb-0 mb-sm-3">{{ $t('application.form.status') }}</p>
-            <p class="col-sm-8">{{ form.status.value }}</p>
-        </div>
-
-      </div>
-    </div>
+  <div class="col-xl-2">
+    
   </div>
 
   <div class="col-xl-6">
-    <DocumentsPreview v-if="form" :form="form" />
+    <div class="card flex-fill">
+        <div class="card-header">
+          <h4 class="card-title">{{ $t('application.application_form') }}</h4>
+        </div>
 
-    <Inputs v-if="form?.status" :form="form.status" :inputs="statusInputs" :values="form.status.translations" :block-title="'application.form.status_note'" :readonly="true" />
+        <div class="card-body">
+          <form action="#" method="POST" @submit.prevent="update" enctype="multipart/form-data">
+
+            <!-- <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.company') }}</label>
+              <div class="col-lg-9">
+                <select class="form-select" v-model="form.company_uuid" aria-label="Default select example" :placeholder="$t('application.form.company')" @change="companyWasChanged" required>
+                  <option value="" disabled selected>{{ $t('application.form.company') }}</option>
+                  <option
+                    v-for="({ uuid, name }, idx) of companies" :key="idx"
+                    :value="uuid"
+                    >
+                    {{ name }}
+                  </option>
+                </select>
+              </div>
+            </div> -->
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.alias') }}</label>
+              <div class="col-lg-9">
+                <select class="form-select" v-model="form.alias_uuid" :placeholder="$t('application.form.country')" @change="loadData('alias')" disabled>
+                  <option value="" disabled selected>{{ $t('application.form.alias') }}</option>
+                  <option
+                    v-for="({ uuid, value }, idx) of aliases" :key="idx"
+                    :value="uuid"
+                    >
+                    {{ value }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.country') }}</label>
+              <div class="col-lg-9">
+                <select class="form-select" v-model="form.country_uuid" :placeholder="$t('application.form.country')" @change="loadData('country')" disabled>
+                  <option value="" disabled selected>{{ $t('application.form.country') }}</option>
+                  <option
+                    v-for="({ uuid, value }, idx) of countries" :key="idx"
+                    :value="uuid"
+                    >
+                    {{ value }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.language') }}</label>
+              <div class="col-lg-9">
+                <select class="form-select" v-model="form.language_uuid" :placeholder="$t('application.form.language')" @change="loadData('language')" disabled>
+                  <option value="" disabled selected>{{ $t('application.form.language') }}</option>
+                  <option
+                    v-for="({ uuid, value }, idx) of languages" :key="idx"
+                    :value="uuid"
+                    >
+                    {{ value }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.degree') }}</label>
+              <div class="col-lg-9">
+                <select class="form-select" v-model="form.degree_uuid" :placeholder="$t('application.form.degree')" @change="loadData('degree')" disabled>
+                  <option value="" disabled selected>{{ $t('application.form.degree') }}</option>
+                  <option
+                    v-for="({ uuid, value }, idx) of degrees" :key="idx"
+                    :value="uuid"
+                    >
+                    {{ value }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.university') }}</label>
+              <div class="col-lg-9">
+                <select class="form-select" v-model="form.university_uuid" @change="loadData('university')" disabled>
+                  <option value="" disabled selected>{{ $t('application.form.university') }}</option>
+                  <option
+                    v-for="({ uuid, name }, idx) of universities" :key="idx"
+                    :value="uuid"
+                    >
+                    {{ name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.faculties_and_departments') }}</label>
+              <div class="col-lg-9">
+                <VueMultiselect
+                  v-model="selectedDepartments"
+                  :options="departmentOptions"
+                  :multiple="true"
+
+                  :group-select="true"
+                  group-label="faculty"
+                  group-values="departments"
+                  track-by="name"
+
+                  label="name"
+                  :placeholder="$t('application.form.faculties_and_departments_select.placeholder')"
+
+                  :select-group-label="$t('application.form.faculties_and_departments_select.select_group_label')"
+                  :deselect-group-label="$t('application.form.faculties_and_departments_select.deselect_group_label')"
+                  
+                  :select-label="$t('application.form.faculties_and_departments_select.select_label')"
+                  :deselect-label="$t('application.form.faculties_and_departments_select.deselect_label')"
+                  :selected-label="$t('application.form.faculties_and_departments_select.selected')"
+                >
+                </VueMultiselect>
+              </div>
+            </div>
+
+            <div class="form-group row" v-if="form.status">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.status') }}</label>
+              <div class="col-lg-9">
+                <select class="form-select" v-model="form.status.value" disabled>
+                  <option value="" disabled selected>{{ $t('application.form.status') }}</option>
+                  <option
+                    v-for="(value, idx) of statuses" :key="idx"
+                    :value="value"
+                    :selected="value === form.status.value"
+                  >
+                    {{ value }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <button type="submit" class="btn btn-primary">{{ $t('system.save_changes') }}</button>
+              <button type="submit" class="btn btn-danger ms-2" @click="clear">{{ $t('system.clear') }}</button>
+            </div>
+          </form>
+        </div>
+    </div>
+  </div>
+
+  <div class="col-xl-4">
+    <Inputs v-if="form?.status" :form="form.status" :inputs="statusInputs" :values="form.status.translations" :block-title="'application.form.status_note'" readonly />
   </div>
 </template>
 
 <script setup>
+  import VueMultiselect from 'vue-multiselect'
   import Inputs from '../../../components/InputCard/Index.vue'
-  import DocumentsPreview from '../partials/documents/preview/Index.vue'
-  import userEdit from './userEdit';
+  import useIndex from './useIndex';
 
   const {
     form,
+    aliases,
+    languages,
+    degrees,
+    // companies,
+    countries,
+    universities,
+    statuses,
     statusInputs,
-    facultiesAndDepartments,
-  } = userEdit();
+
+    selectedDepartments,
+    departmentOptions,
+
+    loadData,
+    clear,
+    update,
+  } = useIndex();
 </script>
 
 <style scoped>
-.block-university-and-departments {
-  padding-left: 1rem
-}
-
-.logo {
-  margin-right: 6px;
-}
+  @import '@/assets/css/admin/vue-multiselect.css';
 </style>

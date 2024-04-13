@@ -1,7 +1,8 @@
 import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
-import { onMounted, reactive, ref } from "vue"
+import { onMounted, ref } from "vue"
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
+import { useAlias, useCountry, useLanguage, useDegree, useUniversity, useFaculty, useDepartment } from '../useCases/usePartials'
 import Tr from '@/services/translations/translation'
 
 export default () => {
@@ -9,82 +10,25 @@ export default () => {
   const router = useRouter();
   const store = useStore();
   const route = useRoute();
-  const { image } = useUrlPattern();
 
-  const { uuid } = route.params;
+  const { student_uuid } = route.params;
 
-  const companies = ref([]);
-  const universities = ref([]);
-  const departments = ref([]);
-  const faculties = ref([]);
-  const countries = ref([]);
-  const statuses = ref([]);
-  const additionalDocuments = reactive([]);
+  const { aliases, loadAliases } = useAlias()
+  const { languages, loadLanguages } = useLanguage()
+  const { degrees, loadDegrees } = useDegree()
+  const { universities, loadUniversities } = useUniversity()
+  const { departments, loadDepartments } = useDepartment()
+  const { faculties, loadFaculties } = useFaculty()
+  const { countries, loadCountries } = useCountry()
 
   const form = ref({
-    full_name: '',
-    birthday: '',
-    father_name: '',
-    mother_name: '',
-    passport_number: '',
-    phone: '',
-    friend_phone: '',
-    home_address: '',
-    email: '',
-    company_uuid: '',
+    student_uuid: '',
+    alias_uuid: '',
+    language_uuid: '',
+    degree_uuid: '',
     country_uuid: '',
     university_uuid: '',
-    faculty_uuid: '',
-    status: '',
-    note: '',
   });
-  
-  const activityOptions = {
-    active: true,
-    notActive: false,
-  }
-
-  const loadFaculties = universityUuid => {
-    store.dispatch('faculty/loadFacultyListAsync', { params: { filters: { university_uuids: [universityUuid] } } }).then(response => {
-      faculties.value = response.data;
-    })
-  }
-
-  const loadUniversities = companyUuid => {
-    store.dispatch('university/loadUniversityListAsync', {
-      params: {
-        filters: {
-          company_uuid: companyUuid,
-        }
-      },
-    }).then(response => {
-      universities.value = response.data.map(({ uuid, name }) => ({ uuid, name }));
-    })
-  }
-
-  const loadCompanies = () => {
-    store.dispatch('company/loadCompanyListAsync', {}).then(response => {
-      companies.value = response.data;
-    })
-  }
-
-  const loadCountries = companyUuid => {
-    store.dispatch('country/loadCountryListAsync', {
-      params: {
-        filters: {
-          company_uuid: companyUuid,
-        }
-      }
-    }).then(response => {
-      countries.value = response.data;
-    })
-  }
-
-  const loadStatuses = () => {
-    store.dispatch('application/loadApplicationStatusesListAsync').then(response => {
-      statuses.value = response.data;
-    })
-  }
 
   // #region Department
   const selectedDepartments = ref([]);
@@ -92,16 +36,21 @@ export default () => {
 
   const makeDepartmentOptions = () => {
     const res = [];
+    selectedDepartments.value = [];
 
     faculties.value.forEach(faculty => {
       departments.value.filter
       res.push({
-        faculty: faculty.name,
-        departments: departments.value.filter(dep => dep.faculty_uuid === faculty.uuid).map(d => ({
-          uuid: d.uuid,
-          name: d.name,
-          category: 'category',
-        }))
+        faculty: faculty.name?.value,
+        departments: departments.value.filter(dep => dep.faculty_uuid === faculty.uuid).map(d => {
+
+
+          return {
+            uuid: d.uuid,
+            name: d.name?.value,
+            category: 'category',
+          }
+        })
       })
     });
 
@@ -109,29 +58,64 @@ export default () => {
   }
   // #endregion
 
-  const loadDepartments = universityUuid => {
-    store.dispatch('department/loadDepartmentListAsync', { 
-      params: { 
-        filters: { 
-          university_uuids: [universityUuid],
-         },
-       },
-    }).then(response => {
-      departments.value = response.data.map(({ uuid, name, faculty_uuid }) => ({
-        uuid,
-        name,
-        faculty_uuid,
-      }));
-    })
+  const makePromiseValues = (changed, params) => {
+    const value = [];
+
+    value.push(loadCountries(params));
+    value.push(loadLanguages(params));
+    value.push(loadDegrees(params));
+    value.push(loadUniversities(params));
+    value.push(loadFaculties(params));
+    value.push(loadDepartments(params));
+
+    // switch (changed) {
+    //   case 'alias':
+    //     value.push(loadCountries(params));
+    //     value.push(loadLanguages(params));
+    //     value.push(loadDegrees(params));
+    //     value.push(loadUniversities(params));
+    //     value.push(loadFaculties(params));
+    //     value.push(loadDepartments(params));
+    //     break;
+    //   case 'country':
+    //     value.push(loadLanguages(params));
+    //     value.push(loadDegrees(params));
+    //     value.push(loadUniversities(params));
+    //     value.push(loadFaculties(params));
+    //     value.push(loadDepartments(params));
+    //     break;
+    //   case 'language':
+    //     value.push(loadDegrees(params));
+    //     value.push(loadUniversities(params));
+    //     value.push(loadFaculties(params));
+    //     value.push(loadDepartments(params));
+    //     break;
+    //     case 'degree':
+    //     value.push(loadUniversities(params));
+    //     value.push(loadFaculties(params));
+    //     value.push(loadDepartments(params));
+    //     break;
+    //   case 'university':
+    //     value.push(loadFaculties(params));
+    //     value.push(loadDepartments(params));
+    //     break;
+    // }
+
+    return value;
   }
 
-  const universityWasChanged = event => {
-    const { name, value } = event.target;
+  const loadData = changed => {
+    const params = {
+      filters: {
+        alias_uuids: form.value.alias_uuid.length ? [form.value.alias_uuid] : [],
+        country_uuids: form.value.country_uuid.length ? [form.value.country_uuid] : [],
+        language_uuids: form.value.language_uuid.length ? [form.value.language_uuid] : [],
+        university_uuids: form.value.university_uuid.length ? [form.value.university_uuid] : [],
+        degree_uuids: form.value.degree_uuid.length ? [form.value.degree_uuid] : [],
+      },
+    }
 
-    Promise.all([
-      loadFaculties(value),
-      loadDepartments(value),
-    ]).then(values => {
+    Promise.all(makePromiseValues(changed, params)).then(() => {
       setTimeout(makeDepartmentOptions, 1000);
     });
   }
@@ -150,64 +134,53 @@ export default () => {
       formData.append(`department_uuids[${idx}]`, uuid);
     });
 
-    formData.append(`additional_documents[]`, []);
-    additionalDocuments.forEach(({ document, description }, idx) => {
-      formData.append(`additional_documents[${idx}][document]`, document);
-      formData.append(`additional_documents[${idx}][description]`, description);
-    });
-
     return formData;
   };
-
-  const clearSelects = () => {
-    form.value.country_uuid = null;
-    form.value.university_uuid = null;
-    form.value.faculty_uuid = null;
-  }
-
-  const companyWasChanged = event => {
-    const uuid = event.target.value;
-
-    clearSelects()
-    universities.value = [];
-    faculties.value = [];
-
-    loadCountries(uuid);
-    loadUniversities(uuid);
-  }
 
   const create = () => {
     store.dispatch('application/createApplicationAsync', { uuid: form.value.uuid, data: getData() })
       .then(response => {
         const { uuid } = response.data
-        router.push(Tr.makeRoute({ name: 'application-show', params: { uuid } }))
+        router.push(Tr.makeRoute({ name: 'student-show', params: { uuid: student_uuid } }))
       })
   }
 
+  const clear = () => {
+    for (const key in form.value) {
+      if (Object.hasOwnProperty.call(form.value, key)) {
+        form.value[key] = '';
+      }
+    }
+
+    form.value.student_uuid = student_uuid
+
+    loadAliases()
+    loadLanguages()
+    loadDegrees()
+    loadCountries()
+    loadUniversities()
+  }
+
   onMounted(() => {
-    // loadFaculties()
-    loadCompanies()
-    // loadCountries()
-    // loadUniversities()
-    loadStatuses()
+    form.value.student_uuid = student_uuid
+    clear()
   })
 
   return {
     form,
-    activityOptions,
-    companies,
+    aliases,
+    languages,
+    degrees,
     countries,
     universities,
     faculties,
-    statuses,
-    additionalDocuments,
 
     selectedDepartments,
     departmentOptions,
 
-    companyWasChanged,
-    universityWasChanged,
+    loadData,
     loadFaculties,
+    clear,
     create,
   }
 }

@@ -11,7 +11,10 @@
     "extension": "Расширение",
     "file_name": "Имя файла",
     "form": {
-        "full_name": "Полное имя",
+        "student": "Студент",
+        "alias": "Псевдоним",
+        "language": "Язык",
+        "degree": "Степень",
         "birthday": "День рождения",
         "father_name": "Имя отца",
         "mother_name": "Имя матери",

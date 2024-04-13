@@ -8,9 +8,23 @@
         <div class="card-body">
             <form action="#" method="POST" @submit.prevent="update" enctype="multipart/form-data">
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label">{{ $t('country.form.iso') }}</label>
-                    <div class="col-lg-9">
-                        <input type="text" v-model="form.iso" class="form-control" maxlength="3" required>
+                    <label class="col-lg-3 col-form-label">{{ $t('country.form.flag_prefix') }}</label>
+
+                    <div class="col-lg-7">
+                      <input type="text" v-model="form.iso" class="form-control" maxlength="2" :placeholder="$t('country.form.flag_prefix')" required>
+                      <div class="valid">
+                        <small class="text-secondary">
+                          <a href="https://flagicons.lipis.dev" target="blank" class="text-success">
+                            <em>Flag prefixes</em>
+                          </a>
+                        </small>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-2">
+                      <p class="h2">
+                        <i :class="`fi fi-${form.iso}`" width="100"></i>
+                      </p>
                     </div>
                 </div>
 

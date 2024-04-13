@@ -4,6 +4,10 @@ import router from './services/router';
 import translation from './services/translations/index.js';
 import globalVariables from './services/globalVariables/index'
 import VueYtframe from "vue3-ytframe"
+
+// flag-icons styles
+import "/node_modules/flag-icons/css/flag-icons.min.css";
+
 // import CKEditor from '@ckeditor/ckeditor5-vue';
 
 // Table

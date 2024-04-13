@@ -11,7 +11,10 @@
     "extension": "Extension",
     "file_name": "File name",
     "form": {
-        "full_name": "Full name",
+        "student": "Student",
+        "alias": "Alias",
+        "language": "Language",
+        "degree": "Degree",
         "birthday": "Birthday",
         "father_name": "Father name",
         "mother_name": "Mother name",

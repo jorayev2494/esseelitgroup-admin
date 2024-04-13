@@ -2,6 +2,7 @@
   "context_title": "Yurtlar",
   "form": {
     "name": "Ady",
-    "iso": "ISO"
+    "flag_prefix": "Baýdak prefiksi",
+    "flag": "Baýdak"
   }
 }

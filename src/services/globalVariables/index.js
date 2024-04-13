@@ -1,9 +1,12 @@
 // import axios from '@/services/';
 // import ws from './webSocket/index.js';
+// Load the full build.
+var _ = require('lodash');
 import Tr from '@/services/translations/translation.js';
 
 const services = {
     install(Vue) {
+        Vue.config.globalProperties.$_ = _;
         // Vue.config.globalProperties.$axios = window.axios = axios;
         // Vue.config.globalProperties.$ws = window.ws = ws;
         // Vue.config.globalProperties.$tMakeRoute = Tr.route;

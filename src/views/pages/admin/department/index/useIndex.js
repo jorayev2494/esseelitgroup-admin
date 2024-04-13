@@ -17,7 +17,10 @@ export default function useIndex() {
   const items = ref([]);
   const columns = [
     { field: 'name.value', title: t('department.form.name') },
+    { field: 'university.name', title: t('department.form.university') },
+    { field: 'faculty.name.value', title: t('department.form.faculty') },
     { field: 'degree.value', title: t('department.form.degree') },
+    { field: 'language', title: t('department.form.language') },
     { field: 'is_filled', title: t('department.form.is_filled') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
     { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },

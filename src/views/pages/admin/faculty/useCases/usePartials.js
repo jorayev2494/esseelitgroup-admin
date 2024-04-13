@@ -2,11 +2,11 @@ import { ref } from "vue";
 import { useStore } from "vuex"
 
 export const useInputs = () => [
-  {
-    field: 'name',
-    tLabel: 'faculty.form.name',
-    type: 'text',
-  },
+  // {
+  //   field: 'name',
+  //   tLabel: 'faculty.form.name',
+  //   type: 'text',
+  // },
   // {
   //   field: 'label',
   //   tLabel: 'faculty.form.label',
