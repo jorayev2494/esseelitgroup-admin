@@ -12,11 +12,11 @@
 
       <div class="card-body">
 
-        <div class="mb-2">
+        <!-- <div class="mb-2">
           <router-link class="btn btn-primary btn-sm me-2" :to="$tMakeRoute({ name: 'application-create' })">
             <i class="fa fa-plus"></i> {{ $t('system.create') }}
           </router-link>
-        </div>
+        </div> -->
 
         <data-table
           :rows="items"
@@ -32,6 +32,47 @@
 
           @change="changeServer"
         >
+          <template #student="data">
+            <div class="d-flex flex-row" v-if="data.value.student">
+
+              <div class="avatar-showcase me-3" v-if="data.value.student.avatar">
+                <div class="avatars">
+                  <div class="avatar">
+                    <img class="img-50 b-r-15" :src="data.value.student.avatar.url" :alt="data.value.student.avatar.url">
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-1">
+                <div>
+                  <span class="text-dark">{{ data.value.student.full_name }}</span>
+                </div>
+                <div>
+                  <span class="text-muted">{{ data.value.student.email }}</span>
+                </div>
+              </div>
+
+            </div>
+          </template>
+
+          <template #country="data">            
+            <div class="d-flex flex-row" v-if="data.value.country">
+              <p class="h3">
+                <i :class="`fi fi-${data.value.country.iso}`" width="300"></i>
+              </p>
+              <div class="m-2">{{ data.value.country.value }}</div>
+            </div>
+          </template>
+
+          <template #language="data">            
+            <div class="d-flex flex-row" v-if="data.value.language">
+              <p class="h3">
+                <i :class="`fi fi-${data.value.language.iso}`" width="300"></i>
+              </p>
+              <div class="m-2">{{ data.value.language.value }}</div>
+            </div>
+          </template>
+
           <template #university="data">
             <div class="d-flex flex-row" v-if="data.value.university">
               <img :src="data.value.university.logo.url" alt="user-profile" width="35" />

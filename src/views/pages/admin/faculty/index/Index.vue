@@ -47,7 +47,7 @@
 
               <div class="m-2">
                 <div>
-                  <span class="text-dark">{{ data.value.name.value }}</span>
+                  <span class="text-dark">{{ data.value.name?.value }}</span>
                 </div>
               </div>
 

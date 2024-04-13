@@ -4,6 +4,20 @@
         "ru": "Русский",
         "tm": "Türkmençe"
     },
+    "gender": {
+        "label": "Jyns",
+        "items": {
+            "male": "Erkek",
+            "female": "Aýal"
+        }
+    },
+    "marital_status": {
+        "label": "Maşgala ýagdaýy",
+        "items": {
+            "single": "Leeke",
+            "married": "Öýlenen"
+        }
+    },
     "translations": "Terjimeleri",
     "actions": "Hereketler",
     "create": "Döret",
@@ -13,5 +27,6 @@
     "send": "Iber",
     "save": "Saklaň",
     "save_changes": "Üýtgetmeleri ýatda sakla",
-    "created_at": "Döredildi"
+    "created_at": "Döredildi",
+    "clear": "Arassala"
 }

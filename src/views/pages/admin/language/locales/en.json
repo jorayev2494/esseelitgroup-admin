@@ -1,6 +1,7 @@
 {
   "context_title": "Languages",
   "form": {
-    "name": "Name"
+    "name": "Name",
+    "flag": "Flag"
   }
 }

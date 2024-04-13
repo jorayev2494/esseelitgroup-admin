@@ -4,6 +4,20 @@
         "ru": "Русский",
         "tm": "Türkmençe"
     },
+    "gender": {
+        "label": "Gender",
+        "items": {
+            "male": "Male",
+            "female": "Female"
+        }
+    },
+    "marital_status": {
+        "label": "Marital Status",
+        "items": {
+            "single": "Single",
+            "married": "Married"
+        }
+    },
     "translations": "Translates",
     "actions": "Actions",
     "create": "Create",
@@ -13,5 +27,6 @@
     "send": "Send",
     "save": "Save",
     "save_changes": "Save changes",
-    "created_at": "Created at"
+    "created_at": "Created at",
+    "clear": "Clear"
 }

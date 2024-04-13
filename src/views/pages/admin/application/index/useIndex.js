@@ -15,11 +15,11 @@ export default function useIndex() {
   const loading = ref(true);
   const items = ref([]);
   const columns = [
-    { field: 'full_name', title: t('application.form.full_name') },
-    { field: 'email', title: t('application.form.email') },
-    { field: 'company.name', title: t('application.form.company') },
+    { field: 'student', title: t('application.form.student') },
+    { field: 'language', title: t('application.form.language') },
+    { field: 'degree.value', title: t('application.form.degree') },
+    { field: 'country', title: t('application.form.country') },
     { field: 'university', title: t('application.form.university') },
-    // { field: 'faculty.name', title: t('application.form.faculty') },
     { field: 'status', title: t('application.form.status') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
     { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },

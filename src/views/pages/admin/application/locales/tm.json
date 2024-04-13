@@ -11,7 +11,10 @@
     "extension": "Formaty",
     "file_name": "Faýlyň ady",
     "form": {
-        "full_name": "Doly ady",
+        "student": "Student",
+        "alias": "Alias",
+        "language": "Dil",
+        "degree": "Dereje",
         "birthday": "Doglan gün",
         "father_name": "Kakasynyň ady",
         "mother_name": "Ejesiniň ady",

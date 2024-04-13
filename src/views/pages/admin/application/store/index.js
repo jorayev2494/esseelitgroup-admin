@@ -21,6 +21,15 @@ const actions = {
     })
   },
 
+  async loadStudentApplicationsAsync(_, { studentUuid, params }) {
+    console.log('studentUuid: ', studentUuid);
+    return await new Promise((resolve, reject) => {
+      return httpClient.get(`/applications/${studentUuid}/applications`, { params })
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    })
+  },
+
   async createApplicationAsync(_, { data }) {
     return await new Promise((resolve, reject) => {
       return httpClient.post('/applications', data)

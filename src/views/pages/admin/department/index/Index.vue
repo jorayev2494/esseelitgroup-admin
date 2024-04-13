@@ -81,6 +81,15 @@
             </div>
           </template>
 
+          <template #language="data">            
+            <div class="d-flex flex-row" v-if="data.value.language">
+              <p class="h3">
+                <i :class="`fi fi-${data.value.language.iso}`" width="300"></i>
+              </p>
+              <div class="m-2">{{ data.value.language.value }}</div>
+            </div>
+          </template>
+
           <template #actions="data">
             <!-- <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'department-show', params: { uuid: data.value.uuid } })">
               <i class="fa fa-info-circle"></i> {{ $t('system.show') }}

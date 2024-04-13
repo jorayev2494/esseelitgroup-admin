@@ -31,6 +31,16 @@
           @change="changeServer"
         >
 
+          <template #country="data">
+            <span class="h4">
+              <i :class="`fi fi-${data.value.country.iso}`" width="300"></i>
+            </span>
+
+            <span class="m-2">
+              {{ data.value.country.value }}
+            </span>
+          </template>
+
           <template #actions="data">
             <!-- <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'city-show', params: { uuid: data.value.uuid } })">
               <i class="fa fa-info-circle"></i> {{ $t('system.show') }}

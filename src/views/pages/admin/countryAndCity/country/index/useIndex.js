@@ -16,7 +16,7 @@ export default function useIndex() {
   const items = ref([]);
   const columns = [
     { field: 'value', title: t('country.form.name') },
-    { field: 'iso', title: t('country.form.iso') },
+    { field: 'iso', title: t('country.form.flag') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
     { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
   ];

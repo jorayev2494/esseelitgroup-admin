@@ -25,7 +25,7 @@ const routes = [
     },
   },
   {
-    path: 'applications/create',
+    path: 'applications/create/:student_uuid',
     name: 'application-create',
     component: () => import('./create/Index.vue'),
     meta: {

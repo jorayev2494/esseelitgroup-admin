@@ -2,6 +2,7 @@
   "context_title": "Страны",
   "form": {
     "name": "Название",
-    "iso": "ISO"
+    "flag_prefix": "Префикс флага",
+    "flag": "Флага"
   }
 }

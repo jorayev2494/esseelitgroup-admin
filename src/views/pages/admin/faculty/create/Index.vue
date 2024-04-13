@@ -82,7 +82,7 @@
             <img class="avatar-img rounded-circle" alt="User Image" :src="logoPreview">
           </div>
         </div>
-    </center>
+      </center>
     </div>
   </div>
 

@@ -13,6 +13,7 @@ import alias from '@/views/pages/admin/alias/locales/en.json'
 import language from '@/views/pages/admin/language/locales/en.json'
 import facultyName from '@/views/pages/admin/facultyName/locales/en.json'
 import departmentName from '@/views/pages/admin/departmentName/locales/en.json'
+import student from '@/views/pages/admin/student/locales/en.json'
 
 export default {
   system,
@@ -30,4 +31,5 @@ export default {
   language,
   facultyName,
   departmentName,
+  student,
 }
