@@ -70,7 +70,7 @@ const actions = {
 
   async loadApplicationStatusesListAsync(_, payload) {
     return await new Promise((resolve, reject) => {
-      return httpClient.get('/applications/status-list')
+      return httpClient.get('/applications/statuses/list')
         .then(response => resolve(response))
         .catch(error => reject(error));
     })

@@ -95,7 +95,7 @@
     paginator,
 
     changeServer,
-    getStatusClassName,
+    getStatusStyle,
   } = useIndex();  
 </script>
 

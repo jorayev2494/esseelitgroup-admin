@@ -58,8 +58,8 @@
           </template>
 
           <template #status="data">
-            <span class="badge" :class="getStatusClassName(data.value.status.value)">
-                {{ $t(`application.statuses.${data.value.status.value}`) }}
+            <span class="badge" :style="getStatusStyle(data.value.status.value)">
+              {{ data.value.status.value.value }}
             </span>
           </template>
 
@@ -107,7 +107,7 @@
     paginator,
 
     changeServer,
-    getStatusClassName,
+    getStatusStyle,
   } = useIndex({ props });  
 </script>
 

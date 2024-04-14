@@ -8,9 +8,9 @@
       <center>
         <label for="avatar">
           <div class="card-body mb-4">
-            <div class="avatar avatar-xxl mr-2">
-              <img class="avatar-img rounded" role="button" alt="User Image" :src="avatarPreview" width="500">
-            </div>
+            <!-- <div class="avatar avatar-xxl mr-2"> -->
+              <img class="avatar-img rounded" role="button" alt="Client Avatar" :src="avatarPreview" width="100%">
+            <!-- </div> -->
           </div>
         </label>
       </center>

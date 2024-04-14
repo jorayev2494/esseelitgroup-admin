@@ -345,15 +345,15 @@
           class: '',
           items: [
             {
-              label: 'degree',
-              route: {
-                name: 'degrees',
-              },
-            },
-            {
               label: 'alias',
               route: {
                 name: 'aliases',
+              },
+            },
+            {
+              label: 'degree',
+              route: {
+                name: 'degrees',
               },
             },
 
@@ -424,6 +424,12 @@
               label: 'student',
               route: {
                 name: 'students',
+              },
+            },
+            {
+              label: 'applicationStatusValue',
+              route: {
+                name: 'application-statuses',
               },
             },
             {

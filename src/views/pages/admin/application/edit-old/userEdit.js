@@ -5,7 +5,7 @@ import { useI18n } from "vue-i18n";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { toast } from "vue3-toastify";
-import { useStatusInputs, getStatusClassName } from "../useCases/usePartials";
+import { useStatusInputs, getStatusStyle } from "../useCases/usePartials";
 
 export default function userEdit() {
 
@@ -234,6 +234,6 @@ export default function userEdit() {
     companyWasChanged,
     loadFaculties,
     update,
-    getStatusClassName,
+    getStatusStyle,
   }
 }
