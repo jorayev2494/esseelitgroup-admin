@@ -3,7 +3,7 @@ import { usePaginator } from '@/views/pages/utils/paginator';
 import { onMounted, ref, toRefs } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
-import { getStatusClassName } from "../useCases/usePartials";
+import { getStatusStyle } from "../useCases/usePartials";
 
 export default function useIndex({ props }) {
 
@@ -78,6 +78,6 @@ export default function useIndex({ props }) {
     paginator,
 
     changeServer,
-    getStatusClassName,
+    getStatusStyle,
   }
 }

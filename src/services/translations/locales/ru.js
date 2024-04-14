@@ -14,6 +14,7 @@ import language from '@/views/pages/admin/language/locales/ru.json'
 import facultyName from '@/views/pages/admin/facultyName/locales/ru.json'
 import departmentName from '@/views/pages/admin/departmentName/locales/ru.json'
 import student from '@/views/pages/admin/student/locales/ru.json'
+import applicationStatusValue from '@/views/pages/admin/applicationStatusValue/locales/ru.json'
 
 export default {
   system,
@@ -32,4 +33,5 @@ export default {
   facultyName,
   departmentName,
   student,
+  applicationStatusValue,
 }

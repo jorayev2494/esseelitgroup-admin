@@ -132,16 +132,19 @@
             <div class="form-group row" v-if="form.status">
               <label class="col-lg-3 col-form-label">{{ $t('application.form.status') }}</label>
               <div class="col-lg-9">
-                <select class="form-select" v-model="form.status.value" required>
+
+                <select class="form-select" v-model="form.status_value_uuid" required>
                   <option value="" disabled selected>{{ $t('application.form.status') }}</option>
                   <option
-                    v-for="(value, idx) of statuses" :key="idx"
-                    :value="value"
-                    :selected="value === form.status.value"
+                    v-for="(status, idx) of statuses" :key="idx"
+                    :value="status.uuid"
+                    :selected="status.uuid === form.status_value_uuid"
+                    :style="getStatusStyle(status)"
                   >
-                    {{ value }}
+                    {{ status.value }}
                   </option>
                 </select>
+
               </div>
             </div>
 
@@ -178,6 +181,7 @@
     selectedDepartments,
     departmentOptions,
 
+    getStatusStyle,
     loadData,
     clear,
     update,

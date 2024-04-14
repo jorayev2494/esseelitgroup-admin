@@ -10,14 +10,17 @@ export const useStatusInputs = () => [
   },
 ]
 
-export const getStatusClassName = status => {
+export const getStatusStyle = (status, hasBorderRadius = false) => {
   const statusClasses = {
-    new: 'bg-success-light',
-    pending: 'bg-primary-light',
-    viewed: 'bg-warning-light'
+    color: status.text_color,
+    backgroundColor: status.background_color,
   }
 
-  return statusClasses[status] ?? 'badge-primary';
+  // if (hasBorderRadius) {
+    statusClasses.borderRadius = '5px';
+  // }
+
+  return statusClasses;
 }
 
 export const useCompany = () => {

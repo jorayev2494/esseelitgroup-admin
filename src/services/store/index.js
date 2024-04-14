@@ -15,6 +15,7 @@ import language from '@/views/pages/admin/language/store/index.js';
 import facultyName from '@/views/pages/admin/facultyName/store/index.js';
 import departmentName from '@/views/pages/admin/departmentName/store/index.js';
 import student from '@/views/pages/admin/student/store/index.js';
+import applicationStatusValue from '@/views/pages/admin/applicationStatusValue/store/index.js';
 
 export default createStore({
   state: {
@@ -57,5 +58,6 @@ export default createStore({
     facultyName,
     departmentName,
     student,
+    applicationStatusValue,
   }
 });
