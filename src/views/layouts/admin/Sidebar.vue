@@ -318,12 +318,6 @@
               },
             },
             {
-              label: 'company',
-              route: {
-                name: 'companies',
-              },
-            },
-            {
               label: 'country',
               route: {
                 name: 'countries',
@@ -336,6 +330,26 @@
               },
             },
 
+          ],
+        },
+
+        {
+          label: 'Company',
+          icon: 'building',
+          class: '',
+          items: [
+            {
+              label: 'company',
+              route: {
+                name: 'companies',
+              },
+            },
+            {
+              label: 'employee',
+              route: {
+                name: 'employees',
+              },
+            },
           ],
         },
 
