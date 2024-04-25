@@ -15,16 +15,15 @@ export default function useIndex() {
   const loading = ref(true);
   const items = ref([]);
   const columns = [
-    { field: 'full_name', title: t('student.form.full_name') },
-    { field: 'gender', title: t('system.gender.label') },
-    { field: 'company.name', title: t('student.form.company') },
+    { field: 'full_name', title: t('employee.form.full_name') },
+    { field: 'company.name', title: t('employee.form.company') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
     { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
   ];
 
   const reloadData = () => {
     items.value = [];
-    loadStudents();
+    loadItems();
   }
 
   const studentMapper = student => {
@@ -33,10 +32,10 @@ export default function useIndex() {
     return student;
   }
 
-  const loadStudents = () => {
+  const loadItems = () => {
     loading.value = true;
 
-    store.dispatch('student/loadStudentsAsync', { params: { ...paginator.toQueryParams(), } })
+    store.dispatch('employee/loadEmployeesAsync', { params: { ...paginator.toQueryParams(), } })
       .then(response => {
         const { data } = response;
 
@@ -48,10 +47,10 @@ export default function useIndex() {
   };
 
   const remove = data => {
-    const confirmed = confirm(`Do you want delete the student '${data.value.full_name}'`);
+    const confirmed = confirm(`Do you want delete the employee '${data.value.full_name}'`);
 
     if (confirmed) {
-      store.dispatch('student/deleteStudentAsync', { uuid: data.value.uuid }).then(reloadData);
+      store.dispatch('employee/deleteEmployeeAsync', { uuid: data.value.uuid }).then(reloadData);
     }
   }
 

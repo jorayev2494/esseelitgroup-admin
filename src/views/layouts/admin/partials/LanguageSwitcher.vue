@@ -2,6 +2,7 @@
   <li class="nav-item dropdown has-arrow">
     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
       <span class="p-1">
+        <i :class="`fi fi-${getLocaleFlag(locale)} me-1`" width="300"></i>
         {{ $t(`system.supported-locales.${locale}`) }}
       </span>
     </a>
@@ -13,6 +14,7 @@
         :class="{ 'active': sLocale === locale }"
         @click="switchLanguage(sLocale)"
       >
+        <i :class="`fi fi-${getLocaleFlag(sLocale)} me-1`" width="300"></i>
         {{ $t(`system.supported-locales.${sLocale}`) }}
       </a>
     </div>
@@ -25,7 +27,7 @@
   import { useRouter } from 'vue-router';
 
   const router = useRouter();
-  const { t, locale } = useI18n();
+  const { locale } = useI18n();
   const supportedLocales = Tr.supportedLocales
   console.log('Supported Locales: ', Tr.supportedLocales);
 
@@ -38,6 +40,18 @@
       console.error(error);
       router.push('/');
     }
+
+    window.location.reload();
+  }
+
+  const getLocaleFlag = flag => {
+    const flags = {
+      en: 'us',
+      ru: 'ru',
+      tm: 'tm',
+    }
+
+    return flags[flag] ?? flag
   }
 
 </script>

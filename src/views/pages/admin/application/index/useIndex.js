@@ -6,7 +6,6 @@ import { useStore } from 'vuex';
 import { getStatusStyle } from "../useCases/usePartials";
 
 export default function useIndex() {
-
   const store = useStore();
   const paginator = usePaginator();
   const { image } = useUrlPattern();
