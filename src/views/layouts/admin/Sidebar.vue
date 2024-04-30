@@ -329,7 +329,12 @@
                 name: 'languages',
               },
             },
-
+            {
+              label: 'announcement',
+              route: {
+                name: 'announcements',
+              },
+            },
           ],
         },
 
