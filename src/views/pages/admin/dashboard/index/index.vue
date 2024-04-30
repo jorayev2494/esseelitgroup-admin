@@ -1,5 +1,8 @@
 <template>
     <div class="content container-fluid">
+        <div class="row">
+            <Announcement />
+        </div>
 
         <div class="row">
             <div class="col-xl-3 col-sm-6 col-12">
@@ -274,6 +277,7 @@
 </template>
 
 <script>
+    import Announcement from '../../announcement/components/list/Index.vue'
     import mentorlist from '@/assets/json/admin/AdminIndex/mentorlist.json'
     import menteelist from '@/assets/json/admin/AdminIndex/menteelist.json'
     import bookinglist from '@/assets/json/admin/AdminIndex/bookinglist.json'
@@ -415,6 +419,9 @@
             return {
 
             }
+        },
+        components: {
+            Announcement,
         },
     }
 </script>
