@@ -35,13 +35,13 @@
       <li class="nav-item dropdown has-arrow">
         <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
           <span class="user-img">
-            <img class="rounded-circle" :src="authData.avatar?.url" width="31" alt="Avatar" />
+            <img class="rounded-circle" :src="avatarPreview" width="31" alt="Avatar" />
           </span>
         </a>
         <div class="dropdown-menu">
           <div class="user-header">
             <div class="avatar avatar-sm">
-              <img  :src="authData.avatar?.url" alt="User Image" class="avatar-img rounded-circle" />
+              <img  :src="avatarPreview" alt="User Image" class="avatar-img rounded-circle" />
             </div>
             <div class="user-text">
               <h6>{{ $store.getters['auth/getAuthDataProperty']('full_name') }}</h6>
@@ -78,6 +78,7 @@
       const router = useRouter();
       const store = useStore();
 
+      const avatarPreview = ref(null);
       const authData = ref(store.getters['auth/getAuthData']);
 
       const logout = () => {
@@ -91,10 +92,11 @@
       onMounted(() => {
         feather.replace();
 
-        authData.value.avatar.url = authData.value.avatar?.url ?? defaultImage('logo')
+        avatarPreview.value = authData.value.avatar?.url ?? defaultImage('logo')
       });
 
       return {
+        avatarPreview,
         authData,
 
         logout,
