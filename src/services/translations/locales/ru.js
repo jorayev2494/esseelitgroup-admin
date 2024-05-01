@@ -17,6 +17,8 @@ import student from '@/views/pages/admin/student/locales/ru.json'
 import applicationStatusValue from '@/views/pages/admin/applicationStatusValue/locales/ru.json'
 import employee from '@/views/pages/admin/employee/locales/ru.json'
 import announcement from '@/views/pages/admin/announcement/locales/ru.json'
+import manager from '@/views/pages/admin/manager/locales/ru.json'
+import profile from '@/views/pages/admin/profile/locales/ru.json'
 
 export default {
   system,
@@ -38,4 +40,6 @@ export default {
   applicationStatusValue,
   employee,
   announcement,
+  manager,
+  profile,
 }

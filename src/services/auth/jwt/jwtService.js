@@ -117,12 +117,12 @@ export default class JwtService {
         const {
           access_token: accessToken,
           refresh_token: refreshToken,
-          // auth_data: authData,
+          auth_data: authData,
         } = response.data;
 
         this.setAccessToken(accessToken);
         this.setRefreshToken(refreshToken);
-        // this.setAuthData();
+        this.setAuthData(authData);
 
         // userData.role.permissions = [...userData.role.permissions, ...initialAbility, ...profileAbility]
         // localStorage.setItem('userData', JSON.stringify(userData))
@@ -165,6 +165,7 @@ export default class JwtService {
       this.jwtConfig.storageTokenKeyName,
       this.jwtConfig.storageRefreshTokenKeyName,
       this.jwtConfig.storageAuthDataKeyName,
+      store.getters['auth/getKeyName'],
     ];
 
     authClearKeys.forEach(key => localStorage.removeItem(key));
@@ -175,5 +176,9 @@ export default class JwtService {
     // });
 
     return serverResponse;
+  }
+
+  setAuthData(payload) {
+    store.commit('auth/setAuthData', payload)
   }
 }
