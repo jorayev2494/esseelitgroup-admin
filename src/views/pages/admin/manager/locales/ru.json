@@ -1,0 +1,10 @@
+{
+  "context_title": "Менеджеры",
+  "form": {
+    "full_name": "Полное имя",
+    "first_name": "Имя",
+    "last_name": "Фамилия",
+    "avatar": "Аватар",
+    "email": "Эл. почта"
+  }
+}

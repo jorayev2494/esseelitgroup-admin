@@ -69,6 +69,8 @@ import student from '@/views/pages/admin/student/routes';
 import applicationStatusValue from '@/views/pages/admin/applicationStatusValue/routes';
 import employee from '@/views/pages/admin/employee/routes';
 import announcement from '@/views/pages/admin/announcement/routes';
+import manager from '@/views/pages/admin/manager/routes';
+import profile from '@/views/pages/admin/profile/routes';
 
 const routes = [
   ...auth,
@@ -96,6 +98,8 @@ const routes = [
       ...applicationStatusValue,
       ...employee,
       ...announcement,
+      ...manager,
+      ...profile,
     ],
     meta: {
       middleware: [

@@ -3,11 +3,13 @@ import { useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInputs } from '../../useCases/usePartials'
 import useStatus from "../../useCases/useStatus";
+import { useDate } from "@/views/pages/utils/helpers";
 
 export default function useCreate() {
 
   const store = useStore();
   const router = useRouter();
+  const { dateTimeFromTimestamp } = useDate();
   const { statusSelectedPreview, statuses, loadStatusList } = useStatus();
 
   const inputs = useInputs();
@@ -19,7 +21,7 @@ export default function useCreate() {
     translations: {
 
     },
-    is_active: '',
+    is_active: true,
   });
 
   const getData = () => {
@@ -35,7 +37,11 @@ export default function useCreate() {
   }
 
   onMounted(() => {
-    loadStatusList()
+    loadStatusList();
+
+    if ('start_time' in form.value) {
+      form.value.start_time = dateTimeFromTimestamp(Math.floor(Date.now() / 1000));
+    }
   })
 
   return {

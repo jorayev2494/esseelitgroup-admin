@@ -335,6 +335,12 @@
                 name: 'announcements',
               },
             },
+            {
+              label: 'manager',
+              route: {
+                name: 'managers',
+              },
+            },
           ],
         },
 
