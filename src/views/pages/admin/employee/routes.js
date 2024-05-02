@@ -29,7 +29,7 @@ const routes = [
     name: 'employee-create',
     component: () => import('./pages/create/Index.vue'),
     meta: {
-      title: 'department.context_title',
+      title: 'employee.context_title',
       middleware: [
         'auth',
       ],

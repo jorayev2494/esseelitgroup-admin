@@ -29,7 +29,7 @@ const routes = [
     name: 'manager-create',
     component: () => import('./pages/create/Index.vue'),
     meta: {
-      title: 'department.context_title',
+      title: 'manager.context_title',
       middleware: [
         'auth',
       ],
