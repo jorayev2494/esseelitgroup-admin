@@ -22,12 +22,13 @@ const services = {
         Vue.config.globalProperties.$supportedLocales = [
             'en',
             'ru',
+            'tm',
         ];
 
         Vue.config.globalProperties.$clientSupportedLocales = [
             'en',
             'ru',
-            // 'tm',
+            'tm',
         ];
 
         Vue.config.globalProperties.$clientDefaultLocale = 'en';
