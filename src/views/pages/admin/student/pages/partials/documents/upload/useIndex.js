@@ -79,14 +79,14 @@ export default function useIndex({ props }) {
     { field: 'accept', title: t('application.extension') },
     // { field: 'extension', title: 'Extension' },
     // { field: 'file_original_name', title: 'File name' },
-    { field: 'actions', title: t('system.actions'), sort: false },
+    { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
   ];
 
   const additionalDocumentColumns = [
     { field: 'description', title: t('application.document_name') },
-    { field: 'document', title: t('application.document') },
+    { field: 'document', title: t('application.document'), width: '50px' },
     // { field: 'file_original_name', title: 'File name' },
-    { field: 'actions', title: t('system.actions'), sort: false },
+    { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
   ]
 
   // const documentItems = ref([]);

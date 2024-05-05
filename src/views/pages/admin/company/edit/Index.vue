@@ -22,17 +22,20 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label">{{ $t('company.form.domain') }}</label>
-                    <div class="col-lg-9">
-                        <input type="text" v-model="form.domain" class="form-control" :placeholder="$t('company.form.domain')" required>
-                    </div>
-                </div>
-
-                <div class="form-group row">
                     <label class="col-lg-3 col-form-label">{{ $t('company.form.logo') }}</label>
                     <div class="col-lg-9">
                         <input class="form-control" type="file" accept="image/*" @change="uploadLogo">
                     </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label">{{ $t('company.form.is_main') }}</label>
+                  <div class="col-lg-9">
+                    <div class="status-toggle d-flex justify-content-left">
+                      <input type="checkbox" id="is_main" name="is_main" v-model="form.is_main" class="check">
+                      <label for="is_main" class="checktoggle m-0">checkbox</label>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="text-right">

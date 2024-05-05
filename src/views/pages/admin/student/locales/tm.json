@@ -1,5 +1,5 @@
 {
-    "context_title": "Studentlar",
+    "context_title": "Studentler",
     "application_form": "Anketa",
     "documents": "Resminamalar",
     "additional_documents": "Goşmaça resminamalar",
@@ -24,7 +24,9 @@
         "passport_date_of_expiry": "Möhleti gutarýan senesi",
         "phone": "Telefon",
         "friend_phone": "Dostyn telefon",
-        "country_of_residence": "Residenceaşaýan ýurdy",
+        "gender": "Jyns",
+        "marital_type": "Maşgala ýagdaýy",
+        "country_of_residence": "Yasaýan ýurdy",
         "father_name": "Kakasynyň ady",
         "mother_name": "Ejesiniň ady",
         "high_school_country": "Orta mekdep ýurdy",

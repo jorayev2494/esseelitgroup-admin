@@ -43,63 +43,63 @@ export default () => {
 
   const showInfo = [
     {
-      label: 'Nationality',
+      label: 'student.form.nationality',
       icon: 'fa fa-globe',
       key: 'nationality.value',
     },
     {
-      label: 'Mail',
+      label: 'student.form.email',
       icon: 'fa fa-envelope',
       key: 'email',
     },
     {
-      label: 'Phone',
+      label: 'student.form.phone',
       icon: 'fa fa-phone',
       key: 'phone',
     },
 
     {
-      label: 'Birthday',
+      label: 'student.form.birthday',
       icon: 'fa fa-birthday-cake',
       key: 'birthday',
     },
     {
-      label: 'Residence country',
+      label: 'student.form.country_of_residence',
       icon: 'fa fa-child',
       key: 'country_of_residence.value',
     },
     {
-      label: 'Passport ID',
+      label: 'student.form.passport_number',
       icon: 'fa fa-id-card',
       key: 'passport_number',
     },
     {
-      label: 'Issue Date',
+      label: 'student.form.passport_date_of_issue',
       icon: 'fa fa-calendar-check',
       key: 'passport_date_of_issue',
     },
     {
-      label: 'Expiry Date',
+      label: 'student.form.passport_date_of_expiry',
       icon: 'fa fa-calendar-times',
       key: 'passport_date_of_expiry',
     },
     {
-      label: 'Gender',
+      label: 'student.form.gender',
       icon: 'fa fa-venus-mars',
       key: 'gender',
     },
     {
-      label: 'Marital Status',
+      label: 'student.form.marital_type',
       icon: 'fa fa-user-circle',
       key: 'marital_type',
     },
     {
-      label: 'Father',
+      label: 'student.form.father_name',
       icon: 'fa fa-male',
       key: 'father_name',
     },
     {
-      label: 'Mother',
+      label: 'student.form.mother_name',
       icon: 'fa fa-female',
       key: 'mother_name',
     },

@@ -24,6 +24,8 @@
         "passport_date_of_expiry": "Дата истечения срока",
         "phone": "Телефон",
         "friend_phone": "Телефон друга",
+        "gender": "Пол",
+        "marital_type": "Тип брака",
         "country_of_residence": "Страна проживания",
         "father_name": "Имя отца",
         "mother_name": "Имя матери",

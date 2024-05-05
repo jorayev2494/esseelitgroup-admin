@@ -14,8 +14,8 @@ export default function useCreate() {
   const form = ref({
     name: '',
     email: '',
-    domain: '',
     logo: '',
+    is_main: false,
   });
 
   const uploadLogo = event => {
