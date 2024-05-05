@@ -22,18 +22,29 @@
           </template>
 
           <template #actions="data">
-            <span>
-              <!-- <div class="me-2 text-success" role="button" v-if="!isEdit && form[data.value.document_type]">
-                <i class="fa fa-check-square"></i>                
-              </div> -->
 
-              <label :for="data.value.document_type" @click.stop>
-                <div class="me-2" role="button">
-                  <i class="fa" v-if="!isEdit" :class="form[data.value.document_type] ? 'fa-check-square text-success' : 'fa-plus-square text-warning'"></i>
-                  <span v-else>
-                    <i class="fa" :class="form[data.value.document_type]?.uuid ? 'fa-pencil text-warning' : 'fa-check-square text-success'"></i>
-                  </span>
-                </div>
+            <span v-if="isEdit">
+              <a class="btn btn-sm btn-outline-primary me-2" :href="form[data.value.document_type]?.url" target="blank" @click.stop>
+                <i class="fa fa-eye"></i>
+              </a>
+            </span>
+
+            <span>
+              <label :for="data.value.document_type" class="m-0" @click.stop>
+                <span
+                  v-if="!isEdit"
+                  class="btn btn-sm"
+                  :class="form[data.value.document_type] ? 'btn-outline-success' : 'btn-outline-warning'"
+                >
+                  <i class="fa" :class="form[data.value.document_type] ? 'fa-check text-success' : 'fa-plus text-warning'"></i>
+                </span>
+                <span
+                  v-else
+                  class="btn btn-sm"
+                  :class="form[data.value.document_type]?.url ? 'btn-outline-warning' : 'btn-outline-success'"
+                >
+                  <i class="fa" :class="form[data.value.document_type]?.url ? 'fa-plus text-warning' : 'fa-check text-success'"></i>
+                </span>
               </label>
               
               <input
@@ -48,27 +59,10 @@
               >
             </span>
 
-            <span v-if="isEdit">
-              <a class="me-2" :href="form[data.value.document_type]?.url" target="blank" @click.stop>
-                <i class="fa fa-eye"></i>
-              </a>
-            </span>
-
-            <!-- <a class="me-2" :href="data.value.url"> -->
-              <!-- <i class="fa fa-eye"></i> -->
-              <!-- {{ $t('system.show') }} -->
-            <!-- </a> -->
-
-            <!-- <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'company-edit', params: { uuid: data.value.uuid } })">
-              <i class="fa fa-edit"></i> {{ $t('system.edit') }}
-            </router-link> -->
           </template>
         </data-table>
 
         <h4 class="mt-5">{{ $t('application.additional_documents') }}</h4>
-
-        <!-- <pre>{{ form.additional_documents }}</pre> -->
-        <!-- <pre>{{ additionalDocuments }}</pre> -->
 
         <data-table
           v-if="additionalDocuments.length"

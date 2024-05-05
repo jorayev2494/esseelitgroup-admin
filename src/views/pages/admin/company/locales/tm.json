@@ -3,8 +3,8 @@
     "form": {
       "name": "Ady",
       "email": "E-pocta",
-      "domain": "Domen",
       "logo": "Logotip",
+      "is_main": "Esasy",
       "status": "Status"
     }
 }

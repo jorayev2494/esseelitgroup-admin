@@ -25,8 +25,14 @@
           </template>
 
           <template #actions="data">
-            <span>
+            <!-- <span>
               <a class="me-2" :href="data.value.url" target="blank" @click.stop>
+                <i class="fa fa-eye"></i>
+              </a>
+            </span> -->
+
+            <span>
+              <a class="btn btn-sm btn-outline-primary" :href="data.value.url" target="blank" @click.stop>
                 <i class="fa fa-eye"></i>
               </a>
             </span>
@@ -52,11 +58,17 @@
           :pagination="false"
         >
           <template #actions="data">
-            <div>
+            <!-- <div>
               <a class="me-2" :href="data.value.url" target="blank" @click.stop>
                 <i class="fa fa-eye"></i>
               </a>
-            </div>
+            </div> -->
+
+            <span>
+              <a class="btn btn-sm btn-outline-primary" :href="data.value.url" target="blank" @click.stop>
+                <i class="fa fa-eye"></i>
+              </a>
+            </span>
 
             <!-- <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'company-edit', params: { uuid: data.value.uuid } })">
               <i class="fa fa-edit"></i> {{ $t('system.edit') }}

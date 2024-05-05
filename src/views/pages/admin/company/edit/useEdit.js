@@ -15,7 +15,7 @@ export default function useCreate() {
   const form = ref({
     name: '',
     email: '',
-    domain: '',
+    is_main: '',
     logo: '',
   });
 

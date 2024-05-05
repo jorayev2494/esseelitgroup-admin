@@ -3,8 +3,8 @@
   "form": {
     "name": "Name",
     "email": "Email",
-    "domain": "Domain",
     "logo": "Logo",
+    "is_main": "Main",
     "status": "Status"
   }
 }

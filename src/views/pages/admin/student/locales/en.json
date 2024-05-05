@@ -24,6 +24,8 @@
         "passport_date_of_expiry": "Date of Expiry",
         "phone": "Phone",
         "friend_phone": "Friend phone",
+        "gender": "Gender",
+        "marital_type": "Marital type",
         "country_of_residence": "Country of residence",
         "father_name": "Father name",
         "mother_name": "Mother name",

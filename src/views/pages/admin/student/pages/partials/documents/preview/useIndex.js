@@ -32,16 +32,16 @@ export default function useIndex({ props }) {
 
   const documentColumns = [
     { field: 'document_type', title: 'Document type' },
-    { field: 'extension', title: 'Extension' },
-    { field: 'file_original_name', title: 'File name' },
-    { field: 'actions', title: t('system.actions'), sort: false },
+    // { field: 'extension', title: 'Extension' },
+    // { field: 'file_original_name', title: 'File name' },
+    { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
   ];
 
   const additionalDocumentColumns = [
     { field: 'description', title: 'Description' },
-    { field: 'extension', title: 'Extension' },
+    // { field: 'extension', title: 'Extension' },
     { field: 'file_original_name', title: 'File name' },
-    { field: 'actions', title: t('system.actions'), sort: false },
+    { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
   ]
 
   const documentItems = ref([]);

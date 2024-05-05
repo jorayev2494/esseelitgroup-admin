@@ -18,7 +18,7 @@ export default function useIndex() {
   const columns = [
     { field: 'logo', title: t('company.form.logo') },
     { field: 'name', title: t('company.form.name') },
-    { field: 'domain', title: t('company.form.domain') },
+    { field: 'is_main', title: t('company.form.is_main') },
     // { field: 'status.value', title: t('company.form.status') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
     { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },

@@ -28,5 +28,7 @@
     "save": "Save",
     "save_changes": "Save changes",
     "created_at": "Created at",
-    "clear": "Clear"
+    "clear": "Clear",
+    "upload": "Upload",
+    "uploaded": "Uploaded"
 }
