@@ -9,6 +9,7 @@ import { useUniversity } from "../useCases/useUniversity";
 import { useFaculty } from "../useCases/useFaculty";
 import { useLanguage } from "../useCases/useLanguage";
 import useDegree from "../useCases/useDegree";
+import useCurrency from "../useCases/useCurrency";
 
 export default function useCreate() {
 
@@ -21,6 +22,7 @@ export default function useCreate() {
   const { facultiesPreview, faculties, loadFaculties } = useFaculty();
   const { languagesPreview, languages, loadLanguages } = useLanguage();
   const { degreesPreviews, degrees, loadDegrees } = useDegree();
+  const { currenciesPreviews, currencies, loadCurrencies } = useCurrency();
 
   const logoPreview = ref(null);
 
@@ -38,6 +40,8 @@ export default function useCreate() {
     language_uuid: '',
     degree_uuid: '',
     translations: {},
+    price: '',
+    price_currency_uuid: '',
     is_filled: false,
     is_active: '',
   });
@@ -97,6 +101,7 @@ export default function useCreate() {
     loadFaculties()
     loadLanguages()
     loadDegrees()
+    loadCurrencies()
     logoPreview.value = image(logoPreview.value)
     makeTranslationsForm(form, translations)
   })
@@ -118,6 +123,8 @@ export default function useCreate() {
     logoPreview,
     degrees,
     degreesPreviews,
+    currenciesPreviews,
+    currencies,
     nameSelectedPreview,
     
     uploadLogo,

@@ -11,6 +11,8 @@
     "description": "Description",
     "degree": "Degree",
     "language": "Language",
+    "price": "Price",
+    "currency": "Currency",
     "is_filled": "Is filled"
   }
 }

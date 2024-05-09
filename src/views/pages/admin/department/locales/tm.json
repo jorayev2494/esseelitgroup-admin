@@ -11,6 +11,8 @@
     "description": "Düşündiriş",
     "degree": "Dereje",
     "language": "Dil",
+    "price": "Bahasy",
+    "currency": "Walyuta",
     "is_filled": "Doldy"
   }
 }
