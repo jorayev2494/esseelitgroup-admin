@@ -1,6 +1,7 @@
 {
   "context_title": "Bölümleretiň atlary",
   "form": {
-    "name": "Ady"
+    "name": "Ady",
+    "description": "Düşündiriş"
   }
 }

@@ -21,6 +21,7 @@ export default function useIndex() {
     { field: 'faculty.name.value', title: t('department.form.faculty') },
     { field: 'degree.value', title: t('department.form.degree') },
     { field: 'language', title: t('department.form.language') },
+    { field: 'price', title: t('department.form.price') },
     { field: 'is_filled', title: t('department.form.is_filled') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
     { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },

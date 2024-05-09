@@ -11,6 +11,8 @@
     "description": "Описание",
     "degree": "Степен",
     "language": "Язык",
+    "price": "Цена",
+    "currency": "Валюта",
     "is_filled": "Заполнен"
   }
 }

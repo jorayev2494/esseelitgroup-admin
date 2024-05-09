@@ -90,6 +90,15 @@
             </div>
           </template>
 
+          <template #price="data">
+            <div class="d-flex flex-row">
+              <p class="mt-2">
+                {{ data.value.price }}
+                {{ data.value.price_currency?.code }}
+              </p>
+            </div>
+          </template>
+
           <template #actions="data">
             <!-- <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'department-show', params: { uuid: data.value.uuid } })">
               <i class="fa fa-info-circle"></i> {{ $t('system.show') }}

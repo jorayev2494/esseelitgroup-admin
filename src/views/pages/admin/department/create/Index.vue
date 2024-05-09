@@ -146,6 +146,32 @@
             </div>
 
             <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('company.form.name') }}</label>
+              <div class="col-lg-6">
+                <input type="text" v-model="form.price" class="form-control" :placeholder="$t('department.form.price')" required>
+              </div>
+              <div class="col-lg-3">
+                <VueMultiselect
+                  v-model="currenciesPreviews"
+                  :options="currencies"
+                  :multiple="false"
+
+                  label="code"
+                  track-by="uuid"
+                  :placeholder="$t('department.form.currency')"
+
+                  :select-label="''"
+                  :deselect-label="''"
+                  :selected-label="''"
+                  
+                  @select="item => form.price_currency_uuid = item.uuid"
+                  @remove="item => form.price_currency_uuid = null"
+                >
+                </VueMultiselect>
+              </div>
+            </div>
+
+            <div class="form-group row">
               <label class="col-lg-3 col-form-label">{{ $t('department.form.is_filled') }}</label>
               <div class="col-lg-9">
 
@@ -205,6 +231,8 @@
     languagesPreview,
     degrees,
     degreesPreviews,
+    currenciesPreviews,
+    currencies,
     nameSelectedPreview,
 
     create,

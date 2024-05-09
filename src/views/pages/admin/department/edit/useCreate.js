@@ -8,6 +8,7 @@ import { useUniversity } from "../useCases/useUniversity";
 import { useFaculty } from "../useCases/useFaculty";
 import { useLanguage } from "../useCases/useLanguage";
 import useDegree from "../useCases/useDegree";
+import useCurrency from "../useCases/useCurrency";
 
 export default function useCreate() {
 
@@ -20,6 +21,7 @@ export default function useCreate() {
   const { facultiesPreview, faculties, loadFaculties } = useFaculty();
   const { languagesPreview, languages, loadLanguages } = useLanguage();
   const { degrees, loadDegrees } = useDegree();
+  const { currenciesPreviews, currencies, loadCurrencies } = useCurrency();
 
   const { uuid } = route.params;
 
@@ -92,6 +94,7 @@ export default function useCreate() {
     loadAliases()
     loadUniversities()
     loadLanguages()
+    loadCurrencies()
     loadDegrees()
   })
 
@@ -107,6 +110,8 @@ export default function useCreate() {
     activityOptions,
     languages,
     translations,
+    currenciesPreviews,
+    currencies,
     nameSelectedPreview,
     degrees,
 
