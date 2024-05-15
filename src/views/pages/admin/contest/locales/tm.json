@@ -1,0 +1,15 @@
+{
+  "context_title": "Bäsleşikler",
+  "translations": "Terjimeler",
+  "form": {
+    "participants_number": "Gatnaşýanlaryň sany",
+    "title": "Ady",
+    "description": "Düşündiriş",
+
+    "application_statuses": "Arza ýagdaýlary",
+    "student_nationalities": "Talyplaryn milletleri",
+    "start_time": "Başlamak wagty",
+    "end_time": "Gutaryan wagt",
+    "is_active": "Aktiwligi"
+  }
+}

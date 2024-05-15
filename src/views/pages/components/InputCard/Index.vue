@@ -126,7 +126,7 @@
   setTimeout(() => {
     isLoaded.value = true;
     setActive(Object.keys(props.form.translations)[0]);
-  }, 1000);
+  }, 500);
   
 </script>
 

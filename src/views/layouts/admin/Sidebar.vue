@@ -341,6 +341,13 @@
                 name: 'managers',
               },
             },
+
+            {
+              label: 'contest',
+              route: {
+                name: 'contests',
+              },
+            },
           ],
         },
 

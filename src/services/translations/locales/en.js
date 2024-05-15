@@ -19,6 +19,8 @@ import employee from '@/views/pages/admin/employee/locales/en.json'
 import announcement from '@/views/pages/admin/announcement/locales/en.json'
 import manager from '@/views/pages/admin/manager/locales/en.json'
 import profile from '@/views/pages/admin/profile/locales/en.json'
+import contest from '@/views/pages/admin/contest/locales/en.json'
+import contestStudent from '@/views/pages/admin/contestStudent/locales/en.json'
 
 export default {
   system,
@@ -42,4 +44,6 @@ export default {
   announcement,
   manager,
   profile,
+  contest,
+  contestStudent,
 }
