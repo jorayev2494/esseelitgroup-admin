@@ -5,7 +5,7 @@ const state = {
 }
 
 const getters = {
-  
+
 }
 
 const mutations = {
@@ -13,25 +13,33 @@ const mutations = {
 }
 
 const actions = {
-  async loadStatusListAsync(_, { params = {} }) {
+  async loadContestsAsync(_, payload) {
     return await new Promise((resolve, reject) => {
-      return httpClient.get('/applications/statuses/list', { params })
+      return httpClient.get('/contests/contests', payload)
         .then(response => resolve(response))
         .catch(error => reject(error));
     })
   },
 
-  async loadStatusesAsync(_, payload) {
+  async loadContestListAsync(_, { params }) {
     return await new Promise((resolve, reject) => {
-      return httpClient.get('/applications/statuses', payload)
+      return httpClient.get('/contests/contests/list', { params })
         .then(response => resolve(response))
         .catch(error => reject(error));
     })
   },
 
-  async createStatusAsync(_, { data }) {
+  async createContestAsync(_, { data }) {
     return await new Promise((resolve, reject) => {
-      return httpClient.post('/applications/statuses', data)
+      return httpClient.post('/contests/contests', data)
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    })
+  },
+
+  async showContestAsync(_, { uuid }) {
+    return await new Promise((resolve, reject) => {
+      return httpClient.get(`/contests/contests/${uuid}`)
         .then(response => {
           return resolve(response);
         })
@@ -39,25 +47,29 @@ const actions = {
     })
   },
 
-  async showStatusAsync(_, { uuid }) {
+  async updateContestAsync(_, { uuid, data }) {
     return await new Promise((resolve, reject) => {
-      return httpClient.get(`/applications/statuses/${uuid}`)
-        .then(response => resolve(response))
+      return httpClient.put(`/contests/contests/${uuid}`, data)
+        .then(response => {
+          return resolve(response);
+        })
         .catch(error => reject(error));
     })
   },
 
-  async updateStatusAsync(_, { uuid, data }) {
+  async deleteContestAsync(_, { uuid }) {
     return await new Promise((resolve, reject) => {
-      return httpClient.put(`/applications/statuses/${uuid}`, data)
-        .then(response => resolve(response))
+      return httpClient.delete(`/contests/contests/${uuid}`)
+        .then(response => {
+          return resolve(response);
+        })
         .catch(error => reject(error));
     })
   },
 
-  async deleteStatusAsync(_, { uuid }) {
+  async loadParticipantsAsync(_, { params }) {
     return await new Promise((resolve, reject) => {
-      return httpClient.delete(`/applications/statuses/${uuid}`)
+      return httpClient.get('/contests/contests/participants', { params })
         .then(response => resolve(response))
         .catch(error => reject(error));
     })

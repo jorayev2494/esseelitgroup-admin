@@ -21,6 +21,8 @@ import announcement from '@/views/pages/admin/announcement/store/index.js';
 import manager from '@/views/pages/admin/manager/store/index.js';
 import profile from '@/views/pages/admin/profile/store/index.js';
 import currency from '@/views/pages/admin/currency/store/index.js';
+import contest from '@/views/pages/admin/contest/store/index.js';
+import contestStudent from '@/views/pages/admin/contestStudent/store/index.js';
 
 export default createStore({
   state: {
@@ -69,5 +71,7 @@ export default createStore({
     manager,
     profile,
     currency,
+    contest,
+    contestStudent,
   }
 });
