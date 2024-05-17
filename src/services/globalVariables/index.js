@@ -29,6 +29,7 @@ const services = {
             'en',
             'ru',
             'tm',
+            'tr',
         ];
 
         Vue.config.globalProperties.$clientDefaultLocale = 'en';
@@ -39,9 +40,6 @@ const services = {
                 separator: (value, to, from = '/') => value.replace(from, to),
             },
         };
-        
-
-        console.log('global service: ', Vue)
         
     }
 };

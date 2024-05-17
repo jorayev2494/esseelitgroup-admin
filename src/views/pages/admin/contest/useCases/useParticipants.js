@@ -7,12 +7,16 @@ export default () => {
 
   const participants = ref(null);
 
-  const loadParticipants = (params = {}) => {
+  const loadParticipants = async (params = {}) => {
+    return await new Promise((resolve, reject) => {
+      store.dispatch('contest/loadParticipantsAsync', { params })
+        .then(response => {
+          participants.value = response
 
-    store.dispatch('contest/loadParticipantsAsync', { params })
-      .then(response => {
-        participants.value = response
-      })
+          return resolve(response);
+        })
+        .catch(reject)
+    })
   }
 
   return {
