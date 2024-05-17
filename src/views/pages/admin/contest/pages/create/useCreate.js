@@ -40,24 +40,26 @@ export default function useCreate() {
     return form;
   };
 
-  const create = () => {
+  const create = async () => {
     const param = {
-      application_status_uuids: [],
-      student_nationality_uuids: [],
+      application_status_uuids: form.application_status_uuids,
+      student_nationality_uuids: form.student_nationality_uuids,
     }
 
-    loadParticipants(param);
+    await loadParticipants(param).then(response => {
+      if (response.data.total < form.participants_number) {
+        alert(`Participants counts ${response.data.total} less than need participants number ${form.participants_number}`)
+  
+        return
+      }
 
-    if (participants.total < form.participants_number) {
-      alert(`Participants counts ${participants.total} less than need participants number ${form.participants_number}`)
-
-      return
-    }
-
-    store.dispatch('contest/createContestAsync', { data: getData() })
-      .then(() => {
-        router.push({ name: 'contests' });
-      })
+      store.dispatch('contest/createContestAsync', { data: getData() })
+        .then(() => {
+          router.push({ name: 'contests' });
+        })
+    }).catch((err) => {
+      
+    });
   }
 
   onMounted(() => {

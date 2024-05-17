@@ -15,6 +15,7 @@
             :class="idx === 0 ? 'active' : ''"
             @click="setActive(locale)"
           >
+            <i :class="`fi fi-${getLocaleFlag(locale)} me-1`" width="300"></i>
             {{ $t(`system.supported-locales.${locale}`) }}
           </a>
         </li>
@@ -110,6 +111,17 @@
       default: () => false,
     },
   });
+
+  const getLocaleFlag = flag => {
+    const flags = {
+      en: 'us',
+      ru: 'ru',
+      tm: 'tm',
+      tr: 'tr',
+    }
+
+    return flags[flag] ?? flag
+  }
 
   const activeLocale = ref('');
   const isLoaded = ref(false);

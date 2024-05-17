@@ -5,6 +5,7 @@ import { useInputs } from '../../useCases/usePartials'
 import useApplicationStatus from "../../useCases/useApplicationStatus";
 import useStudentNationality from "../../useCases/useStudentNationality";
 import { useDate } from "@/views/pages/utils/helpers";
+import useParticipants from "../../useCases/useParticipants";
 
 export default function useCreate() {
 
@@ -16,6 +17,7 @@ export default function useCreate() {
   const { dateTimeFromTimestamp } = useDate();
   const { applicationStatusPreview, applicationStatuses, loadApplicationStatuses } = useApplicationStatus();
   const { studentNationalityPreview, studentNationalities, loadStudentNationalities } = useStudentNationality();
+  const { participants, loadParticipants } = useParticipants();
 
   const inputs = useInputs();
 
@@ -41,6 +43,25 @@ export default function useCreate() {
     }
 
     return item
+  }
+
+  const tryToUpdate = async () => {
+    const param = {
+      application_status_uuids: form.value.application_status_uuids,
+      student_nationality_uuids: form.value.student_nationality_uuids,
+    }
+
+    await loadParticipants(param).then(response => {
+      if (response.data.total < form.value.participants_number) {
+        alert(`Participants counts ${response.data.total} less than need participants number ${form.value.participants_number}`)
+  
+        return
+      }
+
+      update()
+    }).catch((err) => {
+      
+    });
   }
 
   const update = () => {
@@ -78,6 +99,6 @@ export default function useCreate() {
 
     activityOptions,
 
-    update,
+    tryToUpdate,
   }
 }

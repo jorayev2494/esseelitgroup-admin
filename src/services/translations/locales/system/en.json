@@ -2,7 +2,8 @@
     "supported-locales": {
         "en": "English",
         "ru": "Русский",
-        "tm": "Türkmençe"
+        "tm": "Türkmençe",
+        "tr": "Türkçe"
     },
     "gender": {
         "label": "Gender",
