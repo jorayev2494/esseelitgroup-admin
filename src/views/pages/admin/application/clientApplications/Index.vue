@@ -39,6 +39,13 @@
             </div>
           </template>
 
+          <template #company="data">
+            <div class="d-flex flex-row" v-if="data.value?.student?.company">
+              <img :src="data.value?.student?.company?.logo.url" alt="user-profile" width="35" />
+              <div class="m-2">{{ data.value?.student?.company.name }}</div>
+            </div>
+          </template>
+
           <template #country="data">            
             <div class="d-flex flex-row" v-if="data.value.country">
               <p class="h3">

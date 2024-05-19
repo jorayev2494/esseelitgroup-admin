@@ -63,8 +63,8 @@ export default function useEdit() {
 
             }
           }
-          continue;
-        }
+continue;
+    }
 
         console.log('Key: ', key, 'Value: ', value)
 

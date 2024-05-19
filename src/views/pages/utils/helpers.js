@@ -33,3 +33,52 @@ export function useDate() {
     dateTimeFromTimestamp,
   }
 }
+
+/**
+ * 
+ * @param {FormData} formData 
+ * @param {Object} form 
+ * @param {Array} except
+ * @returns 
+ */
+export function formDataTranslations(formData, form, except = []) {
+
+  for (const key in form.value) {
+    if (Object.hasOwnProperty.call(form.value, key)) {
+      const value = form.value[key];
+
+      // if (key === 'logo' && ! (value instanceof File)) {
+      //   formData.append(key, '');
+      //   continue;
+      // }
+
+      if (except.includes(key)) {
+        continue;
+      }
+
+      console.log('translations: ', key, value)
+      
+      if (key === 'translations') {
+        for (const kk in value) {
+          if (Object.hasOwnProperty.call(value, kk)) {
+            const vv = value[kk];
+            for (const k in vv) {
+              if (Object.hasOwnProperty.call(vv, k)) {
+                const v = vv[k];
+                console.log(`translations - ${key}[${kk}][${k}]`, v)
+                formData.append(`${key}[${kk}][${k}]`, v);
+
+              }
+            }
+          }
+        }
+        continue;
+      }
+
+      // formData.append(key, value);
+    }
+
+  }
+
+  return formData
+}

@@ -16,6 +16,7 @@ export default function useIndex() {
   const columns = [
     { field: 'student', title: t('application.form.student') },
     { field: 'language', title: t('application.form.language') },
+    { field: 'company', title: t('application.form.company') },
     { field: 'degree.value', title: t('application.form.degree') },
     { field: 'country', title: t('application.form.country') },
     { field: 'university', title: t('application.form.university') },

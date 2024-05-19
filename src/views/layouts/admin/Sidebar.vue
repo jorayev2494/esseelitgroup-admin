@@ -256,9 +256,9 @@
               },
             },
             {
-              label: 'Settings',
+              label: 'Setting',
               route: {
-                name: 'settings',
+                name: 'setting',
               },
             },
             {
@@ -348,6 +348,13 @@
                 name: 'contests',
               },
             },
+            {
+              label: 'setting',
+              route: {
+                name: 'settings',
+              },
+            },
+
           ],
         },
 

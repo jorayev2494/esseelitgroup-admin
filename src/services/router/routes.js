@@ -73,6 +73,7 @@ import manager from '@/views/pages/admin/manager/routes';
 import profile from '@/views/pages/admin/profile/routes';
 import contest from '@/views/pages/admin/contest/routes';
 import contestStudent from '@/views/pages/admin/contestStudent/routes';
+import setting from '@/views/pages/admin/setting/routes';
 
 const routes = [
   ...auth,
@@ -104,6 +105,7 @@ const routes = [
       ...profile,
       ...contest,
       ...contestStudent,
+      ...setting,
     ],
     meta: {
       middleware: [
@@ -139,8 +141,8 @@ const routes = [
     component: Transactionlist
   },
   {
-    path: 'settings',
-    name: 'settings',
+    path: 'setting',
+    name: 'setting',
     component: Settings
   },
   {

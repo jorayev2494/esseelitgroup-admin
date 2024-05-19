@@ -23,6 +23,8 @@ import profile from '@/views/pages/admin/profile/store/index.js';
 import currency from '@/views/pages/admin/currency/store/index.js';
 import contest from '@/views/pages/admin/contest/store/index.js';
 import contestStudent from '@/views/pages/admin/contestStudent/store/index.js';
+import setting from '@/views/pages/admin/setting/store/index.js';
+import staticPage from './staticPage.js'
 
 export default createStore({
   state: {
@@ -73,5 +75,7 @@ export default createStore({
     currency,
     contest,
     contestStudent,
+    setting,
+    staticPage,
   }
 });

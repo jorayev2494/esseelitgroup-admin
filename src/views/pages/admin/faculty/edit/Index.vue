@@ -56,14 +56,14 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-lg-3 col-form-label">{{ $t('faculty.form.logo') }}</label>
-                <div class="col-lg-9">
-                    <input class="form-control" type="file" accept="image/*" @change="uploadLogo">
-                </div>
+              <label class="col-lg-3 col-form-label">{{ $t('faculty.form.logo') }}</label>
+              <div class="col-lg-9">
+                <input class="form-control" type="file" accept="image/*" @change="uploadLogo">
+              </div>
             </div>
 
             <div class="text-right">
-                <button type="submit" class="btn btn-primary">{{ $t('system.save_changes') }}</button>
+              <button type="submit" class="btn btn-primary">{{ $t('system.save_changes') }}</button>
             </div>
           </form>
         </div>
