@@ -1,0 +1,14 @@
+{
+  "context_title": "Sazlamalar",
+  "tabs": {
+    "general_settings": "Baş sazlamalar",
+    "about_us": "Biz hakynda"
+  },
+  "form": {
+    "about_us": {
+      "title": "Ady",
+      "content": "Mazmuny",
+      "cover": "Örtük"
+    }
+  }
+}
