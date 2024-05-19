@@ -1,0 +1,14 @@
+{
+  "context_title": "Settings",
+  "tabs": {
+    "general_settings": "General Settings",
+    "about_us": "About us"
+  },
+  "form": {
+    "about_us": {
+      "title": "Title",
+      "content": "Content",
+      "cover": "Cover"
+    }
+  }
+}

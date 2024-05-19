@@ -21,6 +21,7 @@ import manager from '@/views/pages/admin/manager/locales/ru.json'
 import profile from '@/views/pages/admin/profile/locales/ru.json'
 import contest from '@/views/pages/admin/contest/locales/ru.json'
 import contestStudent from '@/views/pages/admin/contestStudent/locales/ru.json'
+import setting from '@/views/pages/admin/setting/locales/ru.json'
 
 export default {
   system,
@@ -46,4 +47,5 @@ export default {
   profile,
   contest,
   contestStudent,
+  setting,
 }

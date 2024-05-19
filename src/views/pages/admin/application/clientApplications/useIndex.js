@@ -19,6 +19,7 @@ export default function useIndex({ props }) {
     { field: 'university', title: t('application.form.university') },
     { field: 'country', title: t('application.form.country') },
     { field: 'language', title: t('application.form.language') },
+    { field: 'company', title: t('application.form.company') },
     { field: 'degree.value', title: t('application.form.degree') },
     { field: 'status', title: t('application.form.status') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },

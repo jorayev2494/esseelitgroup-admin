@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary">{{ $t('system.save') }}</button>
+                  <button type="submit" class="btn btn-primary">{{ $t('system.save') }}</button>
                 </div>
             </form>
         </div>

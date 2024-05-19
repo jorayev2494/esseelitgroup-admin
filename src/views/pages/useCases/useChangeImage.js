@@ -10,7 +10,6 @@ export default function useChangeImage()
     const [image] = event.target.files;
 
     if (image) {
-      console.log('Uploaded image: ', image);
       callback(image)
       imagePreview.value = URL.createObjectURL(image);
     }
