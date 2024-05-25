@@ -1,0 +1,10 @@
+{
+  "context_title": "Documentler",
+  "form": {
+    "title": "Ady",
+    "type": "Type",
+    "file": "Fayl",
+    "downloaded_count": "Yuklenilen sany",
+    "is_active": "Aktivligi"
+  }
+}

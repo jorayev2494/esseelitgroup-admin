@@ -22,6 +22,7 @@ import profile from '@/views/pages/admin/profile/locales/ru.json'
 import contest from '@/views/pages/admin/contest/locales/ru.json'
 import contestStudent from '@/views/pages/admin/contestStudent/locales/ru.json'
 import setting from '@/views/pages/admin/setting/locales/ru.json'
+import document from '@/views/pages/admin/document/locales/ru.json'
 
 export default {
   system,
@@ -48,4 +49,5 @@ export default {
   contest,
   contestStudent,
   setting,
+  document,
 }

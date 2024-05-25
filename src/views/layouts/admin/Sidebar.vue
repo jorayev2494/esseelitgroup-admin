@@ -354,6 +354,12 @@
                 name: 'settings',
               },
             },
+            {
+              label: 'document',
+              route: {
+                name: 'documents',
+              },
+            },
 
           ],
         },
