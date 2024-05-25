@@ -39,7 +39,7 @@
       <hr>
 
       <span v-for="(item, idx) of showInfo" :key="idx">
-        <div class="mx-3 mb-0 text-secondary">
+        <div class="mx-3 mb-2 text-secondary">
           <span class="text-secondary">
             <i :class="item.icon" aria-hidden="true"></i>
             <small class="ms-2">{{ $t(item.label) }}</small>
