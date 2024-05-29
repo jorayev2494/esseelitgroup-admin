@@ -1,4 +1,13 @@
 <template>
+
+  <div class="col-xl-12">
+    <div class="mb-2">
+      <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'application-edit', params: { uuid: $route.params.uuid } })">
+        <i class="fa fa-edit"></i> {{ $t('system.edit') }}
+      </router-link>
+    </div>
+  </div>
+
   <div class="col-xl-2">
     
   </div>
@@ -135,20 +144,20 @@
                 <select class="form-select" v-model="form.status.value" disabled>
                   <option value="" disabled selected>{{ $t('application.form.status') }}</option>
                   <option
-                    v-for="(value, idx) of statuses" :key="idx"
-                    :value="value"
-                    :selected="value === form.status.value"
+                    v-for="(status, idx) of statuses" :key="idx"
+                    :value="status"
+                    :selected="status.uuid === form.status.value.uuid"
                   >
-                    {{ value }}
+                    {{ status.value }}
                   </option>
                 </select>
               </div>
             </div>
 
-            <div>
+            <!-- <div>
               <button type="submit" class="btn btn-primary">{{ $t('system.save_changes') }}</button>
               <button type="submit" class="btn btn-danger ms-2" @click="clear">{{ $t('system.clear') }}</button>
-            </div>
+            </div> -->
           </form>
         </div>
     </div>
