@@ -29,7 +29,7 @@ const actions = {
   },
   async showContestStudentAsync(_, { contestUuid, code }) {
     return await new Promise((resolve, reject) => {
-      return httpClient.get(`/contests/contests/${contestUuid}/students/${code}`)
+      return httpClient.get(`/contests/contests/${contestUuid}/students/${code}/code`)
         .then(resolve)
         .catch(reject);
     })
