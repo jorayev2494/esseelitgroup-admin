@@ -28,6 +28,14 @@ const actions = {
         .catch(error => reject(error));
     })
   },
+
+  async changePasswordAsync(_, { data }) {
+    return await new Promise((resolve, reject) => {
+      return httpClient.post(`/profile/profiles/change-password`, data)
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    })
+  },
 }
 
 export default {
