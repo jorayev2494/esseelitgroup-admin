@@ -166,6 +166,7 @@ export default class JwtService {
       this.jwtConfig.storageRefreshTokenKeyName,
       this.jwtConfig.storageAuthDataKeyName,
       store.getters['auth/getKeyName'],
+      'who',
     ];
 
     authClearKeys.forEach(key => localStorage.removeItem(key));

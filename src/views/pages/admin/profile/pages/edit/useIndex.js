@@ -3,15 +3,16 @@ import { onMounted, ref } from "vue"
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useCompany } from '../../useCases/usePartials' 
-import Tr from '@/services/translations/translation'
 import useChangeImage from "@/views/pages/useCases/useChangeImage";
+import { toast } from "vue3-toastify";
+import { useI18n } from "vue-i18n";
 
 export default () => {
 
   const route = useRoute();
-  const router = useRouter();
   const store = useStore();
   const { image } = useUrlPattern();
+  const { t } = useI18n();
 
   const { uuid } = route.params;
 
@@ -37,7 +38,7 @@ export default () => {
   const update = () => {
     store.dispatch('profile/updateProfileAsync', { uuid, data: getData() })
       .then(() => {
-        // router.push(Tr.makeRoute({ name: 'managers' }))
+        toast.success(t('profile.flash_messages.success.profile_was_updated'))
       })
   }
 
