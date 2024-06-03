@@ -16,7 +16,7 @@ const makeDeviceIdHash = () => {
 }
 
 const request = config => {
-  let accessToken = store.getters['auth/getAccessToken'];
+  const accessToken = store.getters['auth/getAccessToken'];
   window.console.log(`Interceptor (request)  => { method: ${config.method}, url: ${config.url} }: `);
     
   if (accessToken) {
