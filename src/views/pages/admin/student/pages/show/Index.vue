@@ -5,6 +5,10 @@
         <i class="fa fa-edit"></i> {{ $t('system.edit') }}
       </router-link>
 
+      <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'student-pdf-preview', params: { uuid: $route.params.uuid } })">
+        <i class="fa fa-file-pdf"></i> {{ $t('student.generate_pdf') }}
+      </router-link>
+
       <!-- <router-link class="btn btn-primary btn-sm me-2" :to="$tMakeRoute({ name: 'application-create', params: { student_uuid: $route.params.uuid } })">
         <i class="fa fa-plus"></i> {{ $t('system.create') }}
       </router-link> -->

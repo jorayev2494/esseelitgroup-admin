@@ -108,6 +108,34 @@ const routes = [
       ],
     },
   },
+  {
+    path: 'students/pdf/preview/:uuid',
+    name: 'student-pdf-preview',
+    component: () => import('./pages/pdfPreview/Index.vue'),
+    meta: {
+      title: 'department.context_title',
+      middleware: [
+        'auth',
+      ],
+      breadcrumbs: [
+        {
+          label: 'dashboard.context_title',
+          route: {
+            name: 'dashboard',
+          },
+        },
+        {
+          label: 'student.context_title',
+          route: {
+            name: 'students',
+          },
+        },
+        {
+          label: 'system.create',
+        },
+      ],
+    },
+  },
 ]
 
 export default routes;

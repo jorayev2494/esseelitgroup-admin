@@ -10,6 +10,7 @@
     "document_name": "Document name",
     "extension": "Extension",
     "file_name": "File name",
+    "generate_pdf": "Generate PDF",
     "form": {
         "company": "Company",
         "full_name": "Full name",

@@ -40,5 +40,5 @@ const httpClient = axios.create({
 
 httpClient.interceptors.request.use(request.request, request.requestError);
 httpClient.interceptors.response.use(response.response, response.responseError);
-  
+
 export default httpClient;

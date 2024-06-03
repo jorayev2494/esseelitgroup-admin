@@ -10,6 +10,7 @@
     "document_name": "Название документа",
     "extension": "Расширение",
     "file_name": "Имя файла",
+    "generate_pdf": "Генерировать PDF",
     "form": {
         "company": "Компания",
         "full_name": "Полное имя",
