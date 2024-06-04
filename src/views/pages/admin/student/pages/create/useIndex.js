@@ -2,7 +2,7 @@ import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { onMounted, reactive, ref } from "vue"
 import { useRouter } from "vue-router";
 import { useStore } from "vuex"
-import { useCompany, useNationality, useCountryOfResidence, useHighSchoolCountry } from '../../useCases/usePartials' 
+import { useCompany, useNationality, useCountryOfResidence, useHighSchoolCountry, useLanguage } from '../../useCases/usePartials' 
 import Tr from '@/services/translations/translation'
 import useGender from "@/views/pages/useCases/useGender";
 import useMaritalStatus from "@/views/pages/useCases/useMaritalStatus";
@@ -21,6 +21,7 @@ export default () => {
   const { highSchoolCountryPreview, highSchoolCountries, loadHighSchoolCountries } = useHighSchoolCountry();
   const { genderPreview, genders } = useGender();
   const { maritalStatusPreview, maritalStatuses } = useMaritalStatus();
+  const { languagePreview, languages, loadLanguages } = useLanguage();
 
   const additionalDocuments = reactive([]);
 
@@ -42,6 +43,7 @@ export default () => {
     high_school_country_uuid: '',
     high_school_grade_average: '',
     company_uuid: '',
+    communication_language_uuid: '',
     home_address: '',
     friend_phone: '',
     gender: '',
@@ -79,6 +81,7 @@ export default () => {
     loadNationalities();
     loadCountryOfResidences();
     loadHighSchoolCountries();
+    loadLanguages();
   })
 
   return {
@@ -103,6 +106,9 @@ export default () => {
 
     highSchoolCountryPreview,
     highSchoolCountries,
+
+    languagePreview,
+    languages,
 
     additionalDocuments,
 

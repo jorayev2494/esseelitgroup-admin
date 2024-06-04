@@ -81,3 +81,23 @@ export const useHighSchoolCountry = () => {
     loadHighSchoolCountries,
   }
 }
+
+export const useLanguage = () => {
+  const store = useStore()
+  
+  const languagePreview = ref(null);
+  const languages = ref([]);
+
+  const loadLanguages = (params = {}) => {
+    store.dispatch('language/loadLanguagesListAsync', { params }).then(response => {
+      languages.value = response.data
+    })
+  }
+
+  return {
+    languagePreview,
+    languages,
+
+    loadLanguages,
+  }
+}
