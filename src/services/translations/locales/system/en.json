@@ -31,5 +31,7 @@
     "created_at": "Created at",
     "clear": "Clear",
     "upload": "Upload",
-    "uploaded": "Uploaded"
+    "uploaded": "Uploaded",
+    "all": "All",
+    "search_btn": "Search"
 }

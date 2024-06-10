@@ -10,6 +10,7 @@ export default function useIndex() {
   const paginator = usePaginator();
   const { image } = useUrlPattern();
   const { t, d } = useI18n();
+  const { defaultImage } = useUrlPattern();
 
   const loading = ref(true);
   const items = ref([]);
@@ -25,28 +26,46 @@ export default function useIndex() {
     { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
   ];
 
-  const reloadData = () => {
+  const reloadData = (params = {}) => {
     items.value = [];
-    loadApplications();
+    loadApplications(params);
   }
 
   const applicationMapper = application => {
+    if (application.student.avatar?.url === undefined) {
+      application.student.avatar = {
+        url: defaultImage('avatar'),
+      };
+    }
+
     application.created_at = d(new Date(application.created_at * 1000), 'short');
 
     return application;
   }
 
-  const loadApplications = () => {
+  const statusSelected = ({ uuid, application_count }) => {
+    if (application_count <= 0) {
+      return
+    }
+
+    reloadData({
+      filters: {
+        status_value_uuids: [uuid],
+      },
+    })
+  }
+
+  const clearSelected = () => reloadData()
+
+  const loadApplications = (params = {}) => {
     loading.value = true;
 
-    store.dispatch('application/loadApplicationsAsync', { params: { ...paginator.toQueryParams(), } })
+    store.dispatch('application/loadApplicationsAsync', { params: { ...paginator.toQueryParams(), ...params } })
       .then(response => {
         const { data } = response;
-        console.log('Data: ', data, 'response: ', response)
 
         paginator.setMetaData(data);
         items.value = data.data.map(applicationMapper);
-        console.log('Department data: ', data.data)
       })
       .catch(error => error)
       .finally(() => loading.value = false);
@@ -80,5 +99,7 @@ export default function useIndex() {
 
     changeServer,
     getStatusStyle,
+    statusSelected,
+    clearSelected,
   }
 }

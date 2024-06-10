@@ -9,7 +9,7 @@ export default function useIndex() {
 
   const store = useStore();
   const paginator = usePaginator();
-  const { image } = useUrlPattern();
+  const { defaultImage } = useUrlPattern();
   const { t, d } = useI18n();
 
   const loading = ref(true);
@@ -26,6 +26,12 @@ export default function useIndex() {
   }
 
   const managerMapper = manager => {
+    if (manager.avatar?.url === undefined) {
+      manager.avatar = {
+        url: defaultImage('avatar'),
+      };
+    }
+
     manager.created_at = d(new Date(manager.created_at * 1000), 'short');
 
     return manager;
