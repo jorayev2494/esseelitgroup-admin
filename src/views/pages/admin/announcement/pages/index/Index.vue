@@ -46,7 +46,7 @@
               <div class="avatar-showcase me-3" v-if="data.value.author.avatar">
                 <div class="avatars">
                   <div class="avatar">
-                    <img class="img-50 b-r-15" :src="data.value.author.avatar.url" :alt="data.value.author.avatar.url">
+                    <img class="img-50 avatar-img rounded b-r-15" :src="data.value.author.avatar.url" :alt="data.value.author.avatar.url">
                   </div>
                 </div>
               </div>
@@ -65,15 +65,15 @@
 
           <template #actions="data">
             <!-- <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'announcement-show', params: { uuid: data.value.uuid } })">
-              <i class="fa fa-info-circle"></i> {{ $t('system.show') }}
+              <i class="fa fa-info-circle"></i>
             </router-link> -->
 
             <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'announcement-edit', params: { uuid: data.value.uuid } })">
-              <i class="fa fa-edit"></i> {{ $t('system.edit') }}
+              <i class="fa fa-edit"></i>
             </router-link>
             
             <span class="btn btn-sm bg-danger-light" @click="remove(data)">
-              <i class="fa fa-trash"></i> {{ $t('system.delete') }}
+              <i class="fa fa-trash"></i>
             </span>
           </template>
 

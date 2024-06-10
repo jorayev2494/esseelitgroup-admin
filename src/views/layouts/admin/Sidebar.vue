@@ -477,12 +477,12 @@
                 name: 'application-statuses',
               },
             },
-            {
-              label: 'application',
-              route: {
-                name: 'applications',
-              },
-            },
+            // {
+            //   label: 'application',
+            //   route: {
+            //     name: 'applications',
+            //   },
+            // },
           ],
         },
 

@@ -11,6 +11,7 @@
     "extension": "Расширение",
     "file_name": "Имя файла",
     "generate_pdf": "Генерировать PDF",
+    "search_placeholder_full_name": "Полное имя студента",
     "form": {
         "company": "Компания",
         "full_name": "Полное имя",
@@ -59,5 +60,16 @@
             "school_attestat_translation": "Перевод школьного аттестата",
             "biometric_photo": "Биометрическое фото"
         }
+    },
+    "application": {
+        "language": "Язык",
+        "degree": "Степень",
+        "country": "Страна",
+        "university": "Университет",
+        "faculty": "Факультет",
+        "department": "Специальность",
+        "departments": "Специальности",
+        "faculties_and_departments": "Факультеты и специальности",
+        "status": "Статус"
     }
 }

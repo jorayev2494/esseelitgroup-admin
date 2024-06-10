@@ -11,6 +11,7 @@
     "extension": "Extension",
     "file_name": "File name",
     "generate_pdf": "Generate PDF",
+    "search_placeholder_full_name": "Student full name",
     "form": {
         "company": "Company",
         "full_name": "Full name",
@@ -59,5 +60,16 @@
             "school_attestat_translation": "School attestat translation",
             "biometric_photo": "Biometric photo"
         }
+    },
+    "application": {
+      "language": "Language",
+      "degree": "Degree",
+      "country": "Country",
+      "university": "University",
+      "faculty": "Faculty",
+      "department": "Department",
+      "departments": "Departments",
+      "faculties_and_departments": "Faculties & Departments",
+      "status": "Status"
     }
 }

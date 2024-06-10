@@ -1,5 +1,7 @@
 <template>
   <div class="col-sm-12">
+    <WidgetStatusValues @click="statusSelected" @clear="clearSelected" />
+
     <div class="card">
 
       <div class="card-header">
@@ -38,7 +40,7 @@
               <div class="avatar-showcase me-3" v-if="data.value.student.avatar">
                 <div class="avatars">
                   <div class="avatar">
-                    <img class="img-50 b-r-15" :src="data.value.student.avatar.url" :alt="data.value.student.avatar.url">
+                    <img class="img-50 avatar-img rounded b-r-15" :src="data.value.student.avatar.url" :alt="data.value.student.avatar.url">
                   </div>
                 </div>
               </div>
@@ -95,15 +97,15 @@
 
           <template #actions="data">
             <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'application-show', params: { uuid: data.value.uuid } })">
-              <i class="fa fa-eye"></i> {{ $t('system.show') }}
+              <i class="fa fa-eye"></i>
             </router-link>
 
             <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'application-edit', params: { uuid: data.value.uuid } })">
-              <i class="fa fa-edit"></i> {{ $t('system.edit') }}
+              <i class="fa fa-edit"></i>
             </router-link>
             
             <span class="btn btn-sm bg-danger-light" @click="remove(data)">
-              <i class="fa fa-trash"></i> {{ $t('system.delete') }}
+              <i class="fa fa-trash"></i>
             </span>
           </template>
 
@@ -116,6 +118,7 @@
 
 <script setup>
   import useIndex from './useIndex.js';
+  import WidgetStatusValues from '../../applicationStatusValue/components/widgetList/Index.vue'
 
   const {
     items,
@@ -127,6 +130,8 @@
 
     changeServer,
     getStatusStyle,
+    statusSelected,
+    clearSelected,
   } = useIndex();  
 </script>
 

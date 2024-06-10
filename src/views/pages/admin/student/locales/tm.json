@@ -11,6 +11,7 @@
     "extension": "Formaty",
     "file_name": "Faýlyň ady",
     "generate_pdf": "PDF dörediň",
+    "search_placeholder_full_name": "Talybyň doly ady",
     "form": {
         "company": "Kompaniýa",
         "full_name": "Doly ady",
@@ -59,5 +60,16 @@
             "school_attestat_translation": "Mekdep attestatyn terjimesi",
             "biometric_photo": "Biometrik surat"
         }
+    },
+    "application": {
+      "language": "Dil",
+      "degree": "Dereje",
+      "country": "Yurt",
+      "university": "Uniwersitet",
+      "faculty": "Fakultet",
+      "department": "Bölüm",
+      "departments": "Bölümler",
+      "faculties_and_departments": "Fakultetler we bölümler",
+      "status": "Status"
     }
 }

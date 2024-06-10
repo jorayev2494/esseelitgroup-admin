@@ -13,7 +13,7 @@ export default () => {
   const token = ref(null);
 
   const loadPdfPreview = () => {
-    token.value ??= store.getters['auth/getAccessToken'];
+    token.value = store.getters['auth/getAccessToken'];
 
     src.value = httpClient.getUri();
     src.value = src.value.substring(0, src.value.indexOf('/api'))

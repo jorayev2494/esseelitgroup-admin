@@ -101,3 +101,22 @@ export const useLanguage = () => {
     loadLanguages,
   }
 }
+
+export const useUniversity = () => {
+  const store = useStore();
+
+  const universities = ref([]);
+
+  const loadUniversities = (params = {}) => {
+    universities.value = []
+    store.dispatch('university/loadUniversityListAsync', { params }).then(response => {
+      universities.value = response.data.map(({ uuid, name }) => ({ uuid, name }));
+    })
+  }
+
+  return {
+    universities,
+
+    loadUniversities,
+  }
+}
