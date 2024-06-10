@@ -3,7 +3,7 @@
     <div class="row">
 
       <div class="col-md-10 col-lg-10 col-xl-10">
-        <input class="form-control" type="search" v-model="form.search" @ :placeholder="$t(placeholder)" @keyup.enter="searchHandler" aria-label="Search">
+        <input class="form-control" type="search" v-model="form.search" :placeholder="$t(placeholder)" @keyup.enter="searchHandler" aria-label="Search">
       </div>
 
       <div class="col-md-2 col-2">

@@ -28,7 +28,7 @@
         <div class="card-body">
           <form action="#" method="POST" @submit.prevent="update" enctype="multipart/form-data">
 
-            <div class="form-group row" v-if="false">
+            <div class="form-group row">
               <label class="col-lg-3 col-form-label">{{ $t('student.form.company') }}</label>
               <div class="col-lg-9">
                 <VueMultiselect
