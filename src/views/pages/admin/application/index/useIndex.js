@@ -43,11 +43,7 @@ export default function useIndex() {
     return application;
   }
 
-  const statusSelected = ({ uuid, application_count }) => {
-    if (application_count <= 0) {
-      return
-    }
-
+  const statusSelected = ({ uuid }) => {
     reloadData({
       filters: {
         status_value_uuids: [uuid],

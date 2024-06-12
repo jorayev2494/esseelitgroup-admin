@@ -29,10 +29,6 @@ export default function ({ emit }) {
       return;
     }
 
-    if (item.application_count <= 0) {
-      clearClicked()
-    }
-
     clickedItem.value = item;
 
     emit('click', item);
