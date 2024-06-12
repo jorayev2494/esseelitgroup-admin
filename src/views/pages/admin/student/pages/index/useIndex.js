@@ -50,11 +50,7 @@ export default function useIndex() {
     return student;
   }
 
-  const statusSelected = ({ uuid, application_count }) => {
-    if (application_count <= 0) {
-      return
-    }
-
+  const statusSelected = ({ uuid }) => {
     reloadData({
       filters: {
         status_value_uuids: [uuid],
