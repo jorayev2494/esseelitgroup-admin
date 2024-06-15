@@ -47,10 +47,5 @@
             "school_attestat_translation": "School attestat translation",
             "biometric_photo": "Biometric photo"
         }
-    },
-    "statuses": {
-        "new": "New",
-        "pending": "Pending",
-        "viewed": "Viewed"
     }
 }

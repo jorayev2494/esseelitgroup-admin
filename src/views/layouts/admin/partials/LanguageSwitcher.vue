@@ -29,7 +29,6 @@
   const router = useRouter();
   const { locale } = useI18n();
   const supportedLocales = Tr.supportedLocales
-  console.log('Supported Locales: ', Tr.supportedLocales);
 
   const switchLanguage = async locale => {
     await Tr.switchLanguage(locale);
@@ -49,6 +48,7 @@
       en: 'us',
       ru: 'ru',
       tm: 'tm',
+      tr: 'tr',
     }
 
     return flags[flag] ?? flag

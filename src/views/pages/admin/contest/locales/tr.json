@@ -1,0 +1,15 @@
+{
+  "context_title": "Yarışmalar",
+  "translations": "Çeviriler",
+  "form": {
+    "participants_number": "Katılımcı sayısı",
+    "title": "Başlık",
+    "description": "Açıklama",
+
+    "application_statuses": "Başvuru Durumları",
+    "student_nationalities": "Öğrenci Milliyetleri",
+    "start_time": "Başlangıç ​​saati",
+    "end_time": "Bitiş zamanı",
+    "is_active": "Etkinlik"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "context_title": "Ayarlar",
+  "tabs": {
+    "general_settings": "Genel Ayarlar",
+    "about_us": "Hakkımızda"
+  },
+  "form": {
+    "about_us": {
+      "title": "Başlık",
+      "content": "İçerik",
+      "cover": "Küçük resim"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "context_title": "Şirketler",
+  "form": {
+    "name": "Ad",
+    "email": "E-posta",
+    "logo": "Logo",
+    "is_main": "Ana",
+    "status": "Durum"
+  }
+}

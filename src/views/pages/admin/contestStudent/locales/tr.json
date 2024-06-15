@@ -1,0 +1,24 @@
+{
+    "context_title": "Öğrenciler",
+    "application_form": "Başvuru Formu",
+    "documents": "Belgeler",
+    "additional_documents": "Ek belgeler",
+    "add_additional_document": "Ek belge ekle",
+    "save_changes": "Değişiklikleri Kaydet",
+    "document": "Belge",
+    "document_type": "Belge Türü",
+    "document_name": "Belge adı",
+    "extension": "Uzantı",
+    "file_name": "Dosya adı",
+    "code": "Kod",
+    "student": "Öğrenci",
+    "form": {
+        "gift_given_at": "Hediye şu tarihte verildi",
+        "note": "Not",
+        "student": {
+            "full_name": "Ad Soyad",
+            "first_name": "İlk adı",
+            "avatar": "avatar"
+        }
+    }
+}
