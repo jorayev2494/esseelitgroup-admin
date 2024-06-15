@@ -1,0 +1,51 @@
+{
+    "context_title": "Başvurular",
+    "application_form": "Başvuru Formu",
+    "documents": "Belgeler",
+    "additional_documents": "Ek belgeler",
+    "add_additional_document": "Ek belge ekle",
+    "save_changes": "Değişiklikleri Kaydet",
+    "document": "Belge",
+    "document_type": "Belge Türü",
+    "document_name": "Belge adı",
+    "extension": "Uzantı",
+    "file_name": "Dosya adı",
+    "form": {
+        "student": "Öğrenci",
+        "alias": "Takma ad",
+        "language": "Dil",
+        "degree": "Derece",
+        "birthday": "Doğum günü",
+        "father_name": "Baba adı",
+        "mother_name": "Anne adı",
+        "passport_number": "Pasaport numarası",
+        "phone": "Telefon",
+        "friend_phone": "Arkadaş telefonu",
+        "home_address": "Ev Adresi",
+        "email": "E-posta",
+        "company": "Şirket",
+        "country": "Ülke",
+        "university": "Üniversite",
+        "faculties_and_departments": "Fakülteler ve Bölümler",
+        "status": "Durum",
+        "status_note": "Durum notu",
+        "faculties_and_departments_select": {
+            "placeholder": "Fakülteler ve Bölümler",
+            "select_group_label": "Grubu seçmek için enter tuşuna basın",
+            "deselect_group_label": "Grubun seçimini kaldırmak için enter tuşuna basın",
+            "select_label": "Seçmek için enter tuşuna basın",
+            "deselect_label": "Kaldırmak için enter tuşuna basın",
+            "selected": "Seçildi"
+        },
+        "documents": {
+            "passport": "Pasaport",
+            "school_attestat": "Orta okul diplomasi",
+            "equivalence_document": "Denklik belgesi",
+            "passport_translation": "Pasaport tercümesi",
+            "transcript": "Transcript",
+            "transcript_translation": "Transkript çevirisi",
+            "school_attestat_translation": "Orta okul diploma tercümesi",
+            "biometric_photo": "Biyometrik fotoğraf"
+        }
+    }
+}

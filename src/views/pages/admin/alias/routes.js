@@ -2,7 +2,7 @@ const routes = [
   {
     path: 'aliases',
     name: 'aliases',
-    component: () => import('./index/Index.vue'),
+    component: () => import('./pages/index/Index.vue'),
     meta: {
       title: 'alias.context_title',
       middleware: [
@@ -28,7 +28,7 @@ const routes = [
   {
     path: 'aliases/create',
     name: 'alias-create',
-    component: () => import('./create/Index.vue'),
+    component: () => import('./pages/create/Index.vue'),
     meta: {
       title: 'system.create',
       middleware: [
@@ -60,7 +60,7 @@ const routes = [
   {
     path: 'aliases/edit/:uuid',
     name: 'alias-edit',
-    component: () => import('./edit/Index.vue'),
+    component: () => import('./pages/edit/Index.vue'),
     meta: {
       title: 'system.edit',
       middleware: [

@@ -1,0 +1,16 @@
+{
+    "context_title": "Üniversiteler",
+    "form": {
+        "company": "Şirket",
+        "country": "Ülke",
+        "city": "Şehir",
+        "logo": "Logo",
+        "cover": "Küçük resim",
+        "youtube_video_id": "Youtube video ID - si",
+        "youtube_video": "YouTube video",
+        "name": "Ad",
+        "label": "Etiket",
+        "description": "Açıklama",
+        "is_on_the_country_list": "Ülke listesinde var"
+    }
+}

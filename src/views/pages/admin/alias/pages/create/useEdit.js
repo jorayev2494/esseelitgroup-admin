@@ -1,7 +1,7 @@
 import { ref } from "vue"
 import { useRouter } from "vue-router";
 import { useStore } from "vuex"
-import { useInput } from "../useCases/useInput";
+import { useInput } from "../../useCases/useInput";
 
 
 export default function useEdit() {

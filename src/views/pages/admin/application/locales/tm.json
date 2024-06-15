@@ -47,10 +47,5 @@
             "school_attestat_translation": "Mekdep attestatyn terjimesi",
             "biometric_photo": "Biometrik surat"
         }
-    },
-    "statuses": {
-        "new": "Täze",
-        "pending": "Garaşylýar",
-        "viewed": "Görüldi"
     }
 }

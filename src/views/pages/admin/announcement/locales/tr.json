@@ -1,0 +1,12 @@
+{
+  "context_title": "Duyurular",
+  "form": {
+    "author": "Yazar",
+    "for": "İçin",
+    "title": "Başlık",
+    "content": "İçerik",
+    "start_time": "Başlangıç ​​saati",
+    "end_time": "Bitiş zamanı",
+    "is_active": "Aktivite"
+  }
+}

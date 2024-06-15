@@ -1,0 +1,10 @@
+{
+  "context_title": "Belgeler",
+  "form": {
+    "title": "Başlık",
+    "type": "Tip",
+    "file": "Dosya",
+    "downloaded_count": "İndirilenlerin sayısı",
+    "is_active": "Aktivite"
+  }
+}

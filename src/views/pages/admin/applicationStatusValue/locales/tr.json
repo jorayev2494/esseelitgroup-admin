@@ -1,0 +1,11 @@
+{
+  "context_title": "Başvuru Durumları",
+  "form": {
+    "value": "Ad",
+    "text_color": "Metin Rengi",
+    "background_color": "Arka plan rengi",
+    "description": "Açıklama",
+    "is_required_note": "Gerekli Not",
+    "is_first": "İlk"
+  }
+}
