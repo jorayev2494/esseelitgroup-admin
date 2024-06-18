@@ -38,19 +38,19 @@
                 </div>
               </div>
 
-              <div class="form-group row">
+              <!-- <div class="form-group row">
                   <label class="col-lg-3 col-form-label">{{ $t('university.form.logo') }}</label>
                   <div class="col-lg-9">
-                      <input class="form-control" type="file" accept="image/*" @change="uploadMedia($event, 'logo')">
+                      <input class="form-control" name="logo" type="file" accept="image/*" @change="uploadMedia">
                   </div>
-              </div>
+              </div> -->
 
-              <div class="form-group row">
+              <!-- <div class="form-group row">
                   <label class="col-lg-3 col-form-label">{{ $t('university.form.cover') }}</label>
                   <div class="col-lg-9">
-                      <input class="form-control" type="file" accept="image/*" @change="uploadMedia($event, 'cover')">
+                      <input class="form-control" name="cover" type="file" accept="image/*" @change="uploadMedia">
                   </div>
-              </div>
+              </div> -->
 
               <div class="form-group row">
                   <label class="col-lg-3 col-form-label">{{ $t('university.form.youtube_video_id') }}</label>
@@ -85,10 +85,16 @@
     <Media
       :logoPreview="logoPreview"
       :coverPreview="coverPreview"
+      @changed="uploadMedia"
     />
 
     <YouTubeFrame :youtube-video-id="form.youtube_video_id" />
   </div>
+
+  <ImageCropper
+    v-bind="modalBindings"
+    @cropped="croppedMedia"
+  />
 
 </template>
 
@@ -97,6 +103,7 @@
   import YouTubeFrame from '../partials/youtubeFrame/Index.vue'
   import useEdit from './useEdit.js';
   import Inputs from '../../../components/InputCard/Index.vue'
+  import ImageCropper from '../../../components/imageCropper/Index.vue'
 
   const {
     form,
@@ -105,9 +112,11 @@
     coverPreview,
     countries,
     cities,
+    modalBindings,
 
     countryChanged,
     uploadMedia,
+    croppedMedia,
     update,
   } = useEdit();
 </script>

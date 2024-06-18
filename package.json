@@ -33,6 +33,7 @@
     "vue-i18n": "^9.9.1",
     "vue-morris": "^1.1.0",
     "vue-multiselect": "^3.0.0-beta.3",
+    "vue-picture-cropper": "^0.7.0",
     "vue-router": "^4.2.5",
     "vue-select": "^4.0.0-beta.6",
     "vue-slick": "^1.1.16",

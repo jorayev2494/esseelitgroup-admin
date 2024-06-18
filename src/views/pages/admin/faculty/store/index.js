@@ -1,11 +1,15 @@
 import httpClient from "@/services/http"
 
 const state = {
-
+  logo: {
+    width: 404,
+    height: 404,
+  },
 }
 
 const getters = {
-
+  getLogo: state => state.logo,
+  getLogoProp: state => prop => state.logo[prop] ?? null,
 }
 
 const mutations = {

@@ -3,13 +3,18 @@
       <div class="card flex-fill">
         <div class="card-header">
           <strong class="card-title">{{ $t('university.form.logo') }} </strong>
-          <!-- <small>{{ imageInfo.logoWidth }} x {{ imageInfo.logoHeight }}</small> -->
         </div>
 
         <center>
           <div class="card-body">
             <div class="avatar avatar-xxl mr-2">
-              <img class="avatar-img rounded-circle" alt="User Image" :src="logoPreview">
+
+              <input id="logo" class="d-none" name="logo" type="file" accept="image/*" @change="$emit('changed', $event)">
+
+              <label for="logo">
+                <img class="img-fluid rounded" :src="logoPreview" alt="logo">
+              </label>
+
             </div>
           </div>
         </center>
@@ -18,12 +23,17 @@
       <div class="card flex-fill">
         <div class="card-header">
           <strong class="card-title">{{ $t('university.form.cover') }} </strong>
-          <!-- <small>{{ imageInfo.coverWidth }} x {{ imageInfo.coverHeight }}</small> -->
         </div>
         <center>
           <div class="card-body">
             <div class="blog-image mb-0">
-              <img class="img-fluid" :src="coverPreview" width="75%" :alt="coverPreview">
+
+              <input id="cover" class="d-none" name="cover" type="file" accept="image/*" @change="$emit('changed', $event)">
+
+              <label for="cover">
+                <img class="img-fluid rounded" :src="coverPreview" width="75%" alt="cover">
+              </label>
+
             </div>
           </div>
         </center>
@@ -32,8 +42,6 @@
 </template>
 
 <script setup>
-  import useIndex from './useIndex'
-
   import { defineProps } from 'vue'
 
   const props = defineProps({
@@ -47,5 +55,4 @@
     },
   });
 
-  const { imageInfo } = useIndex({ props });
 </script>

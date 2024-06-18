@@ -55,12 +55,12 @@
               </div>
             </div>
 
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label class="col-lg-3 col-form-label">{{ $t('faculty.form.logo') }}</label>
               <div class="col-lg-9">
                 <input class="form-control" type="file" accept="image/*" @change="uploadLogo">
               </div>
-            </div>
+            </div> -->
 
             <div class="text-right">
               <button type="submit" class="btn btn-primary">{{ $t('system.save_changes') }}</button>
@@ -77,9 +77,21 @@
       </div>
       <center>
         <div class="card-body mt-4">
-          <div class="avatar avatar-xxl mr-2">
-            <img class="avatar-img rounded-circle" alt="User Image" :src="logoPreview">
-          </div>
+          
+          <input
+            id="input-logo"
+            class="d-none"
+            name="logo"
+            type="file"
+            accept="image/*"
+            :data-crop-width="$store.getters['faculty/getLogoProp']('width')"
+            :data-crop-height="$store.getters['faculty/getLogoProp']('height')"
+            @change="changedImage"
+          >
+          <label for="input-logo">
+            <img class="avatar-img rounded" alt="User Image" :src="imagePreview">
+          </label>
+          
         </div>
     </center>
     </div>
@@ -88,23 +100,30 @@
   <div class="col-xl-6 d-flex">
     <Inputs v-if="form.translations" :form="form" :inputs="inputs" :values="form.translations" />
   </div>
+
+  <ImageCropper
+    v-bind="modalBindings"
+    @cropped="data => croppedImage(form, data)"
+  />
 </template>
 
 <script setup>
   import Inputs from '../../../components/InputCard/Index.vue'
   import VueMultiselect from 'vue-multiselect'
   import useEdit from './useEdit';
+  import ImageCropper from '../../../components/imageCropper/Index.vue'
 
   const {
     form,
     names,
     inputs,
-    logoPreview,
-    universitiesPreview,
+    imagePreview,
     universities,
     nameSelectedPreview,
+    modalBindings,
 
-    uploadLogo,
+    changedImage,
+    croppedImage,
     update,
   } = useEdit();
 </script>
