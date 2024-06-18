@@ -1,19 +1,17 @@
-import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { onMounted, ref, watch } from "vue"
 import { useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInputs } from '../useCases/usePartials'
 import { useCountry } from "../useCases/useCountry";
 import { useCity } from "../useCases/useCity";
+import { useCropper } from '../useCases/useCropper';
 
 export default function useEdit() {
 
   const store = useStore();
   const router = useRouter();
-  const { image } = useUrlPattern();
 
-  
-  const inputs = useInputs()
+  const inputs = useInputs();
 
   const { countries, loadCountries } = useCountry();
   const { cities, loadCities } = useCity();
@@ -31,8 +29,14 @@ export default function useEdit() {
     is_on_the_country_list: false,
   });
 
-  const logoPreview = ref(null);
-  const coverPreview = ref(null);
+  const {
+    logoPreview,
+    coverPreview,
+    modalBindings,
+
+    uploadMedia,
+    croppedMedia,
+  } = useCropper({ form });
 
   const decorateFormData = () => {
     const formData = new FormData();
@@ -50,12 +54,10 @@ export default function useEdit() {
           for (const kk in value) {
             if (Object.hasOwnProperty.call(value, kk)) {
               const vv = value[kk];
-              console.log('Nested: ', kk, 'vv: ', vv);
 
               for (const k in vv) {
                 if (Object.hasOwnProperty.call(vv, k)) {
                   const v = vv[k];
-                  console.log('Nested - Nested: ', k, 'v: ', v);
                   
                   formData.append(`${key}[${kk}][${k}]`, v);
 
@@ -73,40 +75,6 @@ export default function useEdit() {
     }
 
     return formData;
-  }
-
-  const uploadMedia = (event, type) => {
-    const uploadedMedia = event.target.files[0];
-
-    if (uploadedMedia) {
-      form.value[type] = uploadedMedia;
-
-      if (type === 'logo') {
-        logoPreview.value = URL.createObjectURL(uploadedMedia);
-      }
-
-      if (type === 'cover') {
-        coverPreview.value = URL.createObjectURL(uploadedMedia);
-      }      
-    }
-  }
-
-  const uploadLogo = event => {
-    const uploadedLogo = event.target.files[0];
-
-    if (uploadedLogo) {
-      form.value.logo = uploadedLogo;
-      logoPreview.value = URL.createObjectURL(uploadedLogo);
-    }
-  }
-
-  const uploadCover = event => {
-    const uploadedCover = event.target.files[0];
-
-    if (uploadedCover) {
-      form.value.cover = uploadedCover;
-      coverPreview.value = URL.createObjectURL(uploadedCover);
-    }
   }
 
   const create = () => {
@@ -128,8 +96,6 @@ export default function useEdit() {
 
   onMounted(() => {
     loadCountries();
-    logoPreview.value = image(logoPreview.value)
-    coverPreview.value = image(coverPreview.value, 1200, 800, 'cover')
   })
 
   return {
@@ -140,9 +106,8 @@ export default function useEdit() {
     logoPreview,
     coverPreview,
     uploadMedia,
-
-    uploadLogo,
-    uploadCover,
+    croppedMedia,
+    modalBindings,
 
     countryChanged,
     create,

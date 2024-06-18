@@ -56,15 +56,8 @@
               </div>
             </div>
 
-            <div class="form-group row">
-                <label class="col-lg-3 col-form-label">{{ $t('faculty.form.logo') }}</label>
-                <div class="col-lg-9">
-                    <input class="form-control" type="file" accept="image/*" @change="uploadLogo" required>
-                </div>
-            </div>
-
             <div class="text-right">
-                <button type="submit" class="btn btn-primary">{{ $t('system.save') }}</button>
+              <button type="submit" class="btn btn-primary">{{ $t('system.save') }}</button>
             </div>
           </form>
         </div>
@@ -78,9 +71,19 @@
       </div>
       <center>
         <div class="card-body mt-4">
-          <div class="avatar avatar-xxl mr-2">
-            <img class="avatar-img rounded-circle" alt="User Image" :src="logoPreview">
-          </div>
+          <input id="input-logo"
+            class="d-none"
+            name="logo"
+            type="file"
+            accept="image/*"
+            :data-crop-width="$store.getters['faculty/getLogoProp']('width')"
+            :data-crop-height="$store.getters['faculty/getLogoProp']('height')"
+            required
+            @change="changedImage"
+          >
+          <label for="input-logo">
+            <img class="avatar-img rounded" alt="User Image" :src="imagePreview">
+          </label>
         </div>
       </center>
     </div>
@@ -90,23 +93,31 @@
     <Inputs :form="form" :inputs="inputs" />
   </div>
 
+  <ImageCropper
+    v-bind="modalBindings"
+    @cropped="data => croppedImage(form, data)"
+  />
+
 </template>
 
 <script setup>
   import useCreate from './useCreate';
   import VueMultiselect from 'vue-multiselect'
   import Inputs from '../../../components/InputCard/Index.vue'
+  import ImageCropper from '../../../components/imageCropper/Index.vue'
 
   const {
     form,
     names,
     inputs,
-    logoPreview,
+    imagePreview,
     universitiesPreview,
     universities,
     nameSelectedPreview,
+    modalBindings,
 
-    uploadLogo,
+    changedImage,
+    croppedImage,
     create,
   } = useCreate();
 </script>

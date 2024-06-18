@@ -9,6 +9,6 @@ export const useInput = () => [
     field: 'description',
     tLabel: 'departmentName.form.description',
     type: 'ckeditor',
-    required: true,
+    required: false,
   },
 ]

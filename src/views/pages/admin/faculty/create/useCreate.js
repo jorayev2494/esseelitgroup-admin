@@ -1,10 +1,11 @@
 import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
-import { onMounted, reactive, ref } from "vue"
+import { onMounted, reactive } from "vue"
 import { useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInputs } from '../useCases/usePartials'
 import { useName } from "../useCases/useName";
 import { useUniversity } from "../useCases/useUniversity";
+import coverUseCases from '../../../components/imageCropper/useCases'
 
 export default function useCreate() {
 
@@ -13,8 +14,14 @@ export default function useCreate() {
   const { image } = useUrlPattern();
   const { nameSelectedPreview, names, loadNamesList } = useName();
   const { universitiesPreview, universities, loadUniversities } = useUniversity();
+  const {
+    imagePreview,
+    modalBindings,
 
-  const logoPreview = ref(null);
+    changedImage,
+    croppedImage,
+  } = coverUseCases();
+
   const inputs = useInputs();
 
   const form = reactive({
@@ -22,15 +29,6 @@ export default function useCreate() {
     name_uuid: '',
     translations: {},
   });
-
-  const uploadLogo = event => {
-    const uploadedLogo = event.target.files[0];
-
-    if (uploadedLogo) {
-      form.logo = uploadedLogo;
-      logoPreview.value = URL.createObjectURL(uploadedLogo);
-    }
-  }
 
   const decorateFormData = () => {
     const formData = new FormData();
@@ -43,13 +41,10 @@ export default function useCreate() {
           for (const kk in value) {
             if (Object.hasOwnProperty.call(value, kk)) {
               const vv = value[kk];
-              console.log('Nested: ', kk, 'vv: ', vv);
 
               for (const k in vv) {
                 if (Object.hasOwnProperty.call(vv, k)) {
                   const v = vv[k];
-                  console.log('Nested - Nested: ', k, 'v: ', v);
-                  
                   formData.append(`${key}[${kk}][${k}]`, v);
 
                 }
@@ -78,7 +73,7 @@ export default function useCreate() {
   onMounted(() => {
     loadNamesList()
     loadUniversities()
-    logoPreview.value  = image(logoPreview.value)
+    imagePreview.value  = image()
   })
 
   return {
@@ -87,10 +82,12 @@ export default function useCreate() {
     inputs,
     universitiesPreview,
     universities,
-    logoPreview,
+    imagePreview,
     nameSelectedPreview,
-
-    uploadLogo,
+    modalBindings,
+    
+    changedImage,
+    croppedImage,
     create,
   }
 }

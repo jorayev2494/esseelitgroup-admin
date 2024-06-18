@@ -1,27 +1,32 @@
-import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
-import { onMounted, reactive, ref } from "vue"
+import { onMounted, ref } from "vue"
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInputs } from '../useCases/usePartials'
 import { useCountry } from "../useCases/useCountry";
 import { useCity } from "../useCases/useCity";
+import { useCropper } from '../useCases/useCropper';
 
 export default function useEdit() {
 
   const store = useStore();
   const router = useRouter();
   const route = useRoute();
-  const { image } = useUrlPattern();
   const { uuid } = route.params;
 
   const form = ref({});
   const inputs = useInputs();
 
+  const {
+    logoPreview,
+    coverPreview,
+    modalBindings,
+
+    uploadMedia,
+    croppedMedia,
+  } = useCropper({ form });
+
   const { countries, loadCountries } = useCountry();
   const { cities, loadCities } = useCity();
-
-  const logoPreview = ref(null);
-  const coverPreview = ref(null);
 
   const loadUniversity = () => {
     store.dispatch('university/showUniversityAsync', uuid)
@@ -60,12 +65,10 @@ export default function useEdit() {
           for (const kk in value) {
             if (Object.hasOwnProperty.call(value, kk)) {
               const vv = value[kk];
-              console.log('Nested: ', kk, 'vv: ', vv);
 
               for (const k in vv) {
                 if (Object.hasOwnProperty.call(vv, k)) {
                   const v = vv[k];
-                  console.log('Nested - Nested: ', k, 'v: ', v);
                   
                   formData.append(`${key}[${kk}][${k}]`, v);
 
@@ -83,22 +86,6 @@ export default function useEdit() {
     }
 
     return formData;
-  }
-
-  const uploadMedia = (event, type) => {
-    const uploadedMedia = event.target.files[0];
-
-    if (uploadedMedia) {
-      form.value[type] = uploadedMedia;
-
-      if (type === 'logo') {
-        logoPreview.value = URL.createObjectURL(uploadedMedia);
-      }
-
-      if (type === 'cover') {
-        coverPreview.value = URL.createObjectURL(uploadedMedia);
-      }      
-    }
   }
 
   const uploadLogo = event => {
@@ -135,8 +122,6 @@ export default function useEdit() {
   onMounted(() => {
     loadUniversity()
     loadCountries()
-    // logoPreview.value = image(logoPreview.value)
-    // coverPreview.value = image(coverPreview.value, 1200, 800, 'cover')
   })
 
   return {
@@ -147,6 +132,9 @@ export default function useEdit() {
     uploadMedia,
     countries,
     cities,
+
+    croppedMedia,
+    modalBindings,
 
     countryChanged,
     uploadLogo,
