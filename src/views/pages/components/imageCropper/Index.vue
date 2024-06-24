@@ -123,6 +123,9 @@
     // minCropBoxWidth: 50,
     // minCropBoxHeight: 50,
     zoomable: true,
+    // fillColor: '#fff',
+    // imageSmoothingEnabled: false,
+    // imageSmoothingQuality: 'high',
   })
 
   const presetMode = reactive({
@@ -132,10 +135,10 @@
   })
 
   const setCropBoxData = () => {
-    cropper.setCropBoxData({ 
-      width: width.value,
-      height: height.value,
-    })
+    // cropper.setCropBoxData({ 
+    //   width: width.value,
+    //   height: height.value,
+    // })
 
     options.aspectRatio = width.value / height.value;    
     presetMode.width = width.value;
@@ -148,7 +151,6 @@
    * Get cropping results
    */
   async function crop(event) {
-    console.log('Crop event: ', event);
 
     if (!cropper) return
     setCropBoxData()
