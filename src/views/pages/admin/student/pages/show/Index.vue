@@ -71,7 +71,7 @@
             <div class="card-body">
               <form action="#" method="POST" @submit.prevent="update" enctype="multipart/form-data">
 
-                <div class="form-group row" v-if="false">
+                <div class="form-group row">
                   <label class="col-lg-3 col-form-label">{{ $t('student.form.company') }}</label>
                   <div class="col-lg-9">
                     <VueMultiselect
@@ -81,6 +81,7 @@
                       track-by="uuid"
                       label="name"
                       :placeholder="$t('student.form.company')"
+                      disabled
 
                       @select="item => form.company_uuid = item.uuid"
                       @remove="item => form.company_uuid = null"
@@ -133,6 +134,7 @@
                       track-by="uuid"
                       label="value"
                       :placeholder="$t('student.form.nationality')"
+                      disabled
 
                       @select="item => form.nationality_uuid = item.uuid"
                       @remove="item => form.nationality_uuid = null"
@@ -192,6 +194,7 @@
                       track-by="uuid"
                       label="value"
                       :placeholder="$t('student.form.country_of_residence')"
+                      disabled
 
                       @select="item => form.country_of_residence_uuid = item.uuid"
                       @remove="item => form.country_of_residence_uuid = null"
@@ -223,6 +226,7 @@
                       track-by="value"
                       label="label"
                       :placeholder="$t('system.gender.label')"
+                      disabled
 
                       @select="item => form.gender = item.value"
                       @remove="item => form.gender = null"
@@ -247,6 +251,7 @@
                       track-by="value"
                       label="label"
                       :placeholder="$t('system.marital_status.label')"
+                      disabled
 
                       @select="item => form.marital_type = item.value"
                       @remove="item => form.marital_type = null"
@@ -285,6 +290,7 @@
                       track-by="uuid"
                       label="value"
                       :placeholder="$t('student.form.high_school_country')"
+                      disabled
 
                       @select="item => form.high_school_country_uuid = item.uuid"
                       @remove="item => form.high_school_country_uuid = null" 
@@ -394,6 +400,7 @@
                       track-by="uuid"
                       label="value"
                       :placeholder="$t('student.form.communication_language')"
+                      disabled
 
                       @select="item => form.communication_language_uuid = item.uuid"
                       @remove="item => form.communication_language_uuid = null"
