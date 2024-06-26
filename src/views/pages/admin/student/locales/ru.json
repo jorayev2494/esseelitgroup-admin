@@ -12,6 +12,8 @@
     "file_name": "Имя файла",
     "generate_pdf": "Генерировать PDF",
     "search_placeholder_full_name": "Полное имя студента",
+    "download_documents": "Скачать файлы",
+    "create_application": "Создать приложение",
     "form": {
         "company": "Компания",
         "full_name": "Полное имя",

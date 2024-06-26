@@ -12,6 +12,8 @@
     "file_name": "Dosya adı",
     "generate_pdf": "PDF oluştur",
     "search_placeholder_full_name": "Öğrencinin tam adı",
+    "download_documents": "Dosyalary İndir",
+    "create_application": "Başvuru Oluştur",
     "form": {
         "company": "Şirket",
         "full_name": "Ad Soyad",

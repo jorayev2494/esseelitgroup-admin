@@ -41,6 +41,12 @@
             </div>
           </template>
 
+          <template #is_main="data">
+            <div class="d-flex flex-row">
+              <IndexActivity :isActive="data.value.is_main" />
+            </div>
+          </template>
+
           <template #actions="data">
             <!-- <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'company-show', params: { uuid: data.value.uuid } })">
               <i class="fa fa-info-circle"></i>
@@ -64,6 +70,7 @@
 
 <script setup>
   import useIndex from './useIndex.js';
+  import IndexActivity from '@/views/pages/components/Activity/Index/Index.vue'
 
   const {
     items,
