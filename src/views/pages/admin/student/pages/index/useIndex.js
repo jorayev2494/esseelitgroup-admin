@@ -3,7 +3,7 @@ import { usePaginator } from '@/views/pages/utils/paginator';
 import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
-import { useApplicationStatusStyle } from "../../useCases/useApplicationStatusStyle";
+import { useApplicationStatusStyle } from "../../../../useCases/useApplicationStatusStyle";
 import useFilters from "../../useCases/useFilters";
 import useSearch from "@/views/pages/utils/useSearch";
 

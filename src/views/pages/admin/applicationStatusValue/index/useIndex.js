@@ -3,6 +3,7 @@ import { usePaginator } from '@/views/pages/utils/paginator';
 import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
+import { useApplicationStatusStyle } from "../../../useCases/useApplicationStatusStyle";
 
 export default function useIndex() {
 
@@ -16,7 +17,6 @@ export default function useIndex() {
   const columns = [
     { field: 'value', title: t('applicationStatusValue.form.value') },
     { field: 'text_color', title: t('applicationStatusValue.form.text_color') },
-    { field: 'background_color', title: t('applicationStatusValue.form.background_color') },
     { field: 'is_required_note', title: t('applicationStatusValue.form.is_required_note') },
     { field: 'is_first', title: t('applicationStatusValue.form.is_first') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
@@ -78,5 +78,6 @@ export default function useIndex() {
     paginator,
 
     changeServer,
+    useApplicationStatusStyle,
   }
 }

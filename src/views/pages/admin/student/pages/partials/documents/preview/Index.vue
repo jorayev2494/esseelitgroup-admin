@@ -1,8 +1,23 @@
 <template>
   <div class="col-xl-12 col-md-12">
     <div class="card flex-fill">
-      <div class="card-header">
+
+      <div class="card-header d-flex justify-content-between align-items-center">
         <h4 class="card-title">{{ $t('application.documents') }}</h4>
+        <!-- <div class="status-toggle d-flex justify-content-between align-items-center">
+          <input type="checkbox" id="status_1" class="check">
+          <label for="status_1" class="checktoggle">checkbox</label>
+        </div> -->
+
+        <!-- <span class="btn btn-sm bg-primary-light me-2" @click="downloadStudentArchiveDocuments">
+          '/students/${uuid}/archive_documents'
+          <i class="fa fa-file-archive"></i>
+          Download archive
+        </span> -->
+        <span class="btn btn-sm bg-primary-light me-2" @click="downloadStudentArchiveDocuments(downloadArchiveName)">
+          {{ $t('student.download_documents') }}
+          <i class="fa fa-file-archive"></i>
+        </span>
       </div>
 
       <div class="card-body">
@@ -93,7 +108,11 @@
     form: {
       type: Object,
       required: true,
-    }
+    },
+    downloadArchiveName: {
+      type: String,
+      default: 'DownloadArchiveDocumentName.zip',
+    },
   })
 
   const {
@@ -101,6 +120,7 @@
     documentItems,
     additionalDocumentColumns,
     additionalDocumentItems,
+    downloadStudentArchiveDocuments,
   } = useIndex({ props })
 
 </script>

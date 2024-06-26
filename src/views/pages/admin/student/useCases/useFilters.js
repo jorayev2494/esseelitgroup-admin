@@ -19,7 +19,7 @@ export default () => {
   const filters = ref([
     {
       visibleSelectBox: false,
-      label: 'University',
+      label: 'student.form.university',
       name: 'university_uuids',
       type: 'checkbox',
       // icon: 'fa-university',

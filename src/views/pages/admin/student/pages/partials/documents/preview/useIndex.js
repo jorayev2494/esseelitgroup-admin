@@ -1,9 +1,17 @@
+import { useDate } from "@/views/pages/utils/helpers";
 import { onMounted, ref } from "vue";
 import { useI18n } from "vue-i18n";
+import { useRoute } from "vue-router";
+import { useStore } from "vuex";
 
 export default function useIndex({ props }) {
 
   const { t } = useI18n();
+  const store = useStore();
+  const route = useRoute();
+  const { dateInDdMmYyyyHhMmSs } = useDate();
+
+  const { uuid } = route.params
 
   const { form } = props;
 
@@ -59,6 +67,11 @@ export default function useIndex({ props }) {
     }
   }
 
+  const downloadStudentArchiveDocuments = downloadArchiveName => {
+    downloadArchiveName += ' ' + dateInDdMmYyyyHhMmSs(new Date(), "-", "-");
+    store.dispatch('student/downloadStudentArchiveDocumentsAsync', { uuid, downloadArchiveName })
+  }
+
   onMounted(() => {
     makeDocumentItems()
     additionalDocumentItems.value = additionalDocuments ? additionalDocuments : [];
@@ -69,5 +82,6 @@ export default function useIndex({ props }) {
     documentItems,
     additionalDocumentColumns,
     additionalDocumentItems,
+    downloadStudentArchiveDocuments,
   }
 }

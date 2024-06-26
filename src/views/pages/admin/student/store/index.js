@@ -59,6 +59,26 @@ const actions = {
     })
   },
 
+  async downloadStudentArchiveDocumentsAsync(_, { uuid, downloadArchiveName }) {
+    return await new Promise((resolve, reject) => {
+      return httpClient.get(`/students/${uuid}/archive_documents`, { responseType: 'arraybuffer' })
+        .then(response => {
+
+          const type = response.headers['content-type']
+          const url = window.URL.createObjectURL(new Blob([response.data], { type: type, encoding: 'UTF-8' }))
+          console.log('url url url :>> ', url);
+          const link = document.createElement('a')
+          link.href = url
+          link.setAttribute('download', `${downloadArchiveName}.zip`)
+          document.body.appendChild(link)
+          link.click();
+
+          return resolve(response)
+        })
+        .catch(error => reject(error));
+    })
+  },
+
 }
 
 export default {

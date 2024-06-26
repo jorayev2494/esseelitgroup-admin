@@ -50,11 +50,9 @@ export default function useIndex() {
     store.dispatch('department/loadDepartmentsAsync', { params: { ...paginator.toQueryParams(), ...params } })
       .then(response => {
         const { data } = response;
-        console.log('Data: ', data, 'response: ', response)
 
         paginator.setMetaData(data);
         items.value = data.data.map(departmentMapper);
-        console.log('Department data: ', data.data)
       })
       .catch(error => error)
       .finally(() => loading.value = false);

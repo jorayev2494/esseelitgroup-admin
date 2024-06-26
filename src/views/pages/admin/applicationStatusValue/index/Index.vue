@@ -32,11 +32,25 @@
         >
 
           <template #text_color="data">
-            <input type="color" v-model="data.value.text_color" class="form-control form-control-color" disabled>
+            <span class="badge" :style="useApplicationStatusStyle(data.value)">
+              {{ data.value.value }}
+            </span>
           </template>
 
-          <template #background_color="data">
+          <!-- <template #background_color="data">
             <input type="color" v-model="data.value.background_color" class="form-control form-control-color" disabled>
+          </template>
+
+          <template #is_required_note="data">
+            <div class="d-flex flex-row">
+              <IndexActivity :isActive="data.value.is_required_note" />
+            </div>
+          </template> -->
+
+          <template #is_first="data">
+            <div class="d-flex flex-row">
+              <IndexActivity :isActive="data.value.is_first" />
+            </div>
           </template>
 
           <template #actions="data">
@@ -62,6 +76,7 @@
 
 <script setup>
   import useIndex from './useIndex.js';
+  import IndexActivity from '@/views/pages/components/Activity/Index/Index.vue'
 
   const {
     items,
@@ -72,5 +87,6 @@
     paginator,
 
     changeServer,
+    useApplicationStatusStyle,
   } = useIndex();  
 </script>

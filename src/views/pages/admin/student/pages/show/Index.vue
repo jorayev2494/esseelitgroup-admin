@@ -18,7 +18,8 @@
       </router-link> -->
 
       <router-link class="btn btn-primary btn-sm float-end" :to="$tMakeRoute({ name: 'application-create', params: { student_uuid: $route.params.uuid } })">
-        <i class="fa fa-plus"></i> Create Application
+        <i class="fa fa-plus"></i>
+        {{ $t('student.create_application') }}
         <!-- {{ $t('system.create') }} -->
       </router-link>
     </div>
@@ -424,7 +425,7 @@
       <!-- <pre>{{ form }}</pre> -->
       <div class="col-xl-5 d-flex">
         <!-- <DocumentsUpload v-if="form" :form="form" :additional-documents="additionalDocuments" is-edit /> -->
-        <DocumentsPreview v-if="form" :form="form" />
+        <DocumentsPreview v-if="form" :form="form" :download-archive-name="form.full_name" />
       </div>
     </div>
   </div>

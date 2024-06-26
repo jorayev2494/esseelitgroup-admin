@@ -16,7 +16,7 @@ export default () => {
   const filters = ref([
     {
       visibleSelectBox: false,
-      label: 'University',
+      label: 'department.form.university',
       name: 'university_uuids',
       type: 'checkbox',
       // icon: 'fa-university',
@@ -29,7 +29,7 @@ export default () => {
     },
     {
       visibleSelectBox: false,
-      label: 'Faculty',
+      label: 'department.form.faculty',
       name: 'faculty_uuids',
       type: 'checkbox',
       // icon: 'fa-university',
@@ -42,7 +42,7 @@ export default () => {
     },
     {
       visibleSelectBox: false,
-      label: 'Degree',
+      label: 'department.form.degree',
       name: 'degree_uuids',
       type: 'checkbox',
       // icon: 'fa-university',
@@ -55,7 +55,7 @@ export default () => {
     },
     {
       visibleSelectBox: false,
-      label: 'Language',
+      label: 'department.form.language',
       name: 'language_uuids',
       type: 'checkbox',
       // icon: 'fa-university',

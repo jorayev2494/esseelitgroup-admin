@@ -61,73 +61,73 @@
           </template>
 
           <template #application_language="data">
-        <div v-if="data.value.applications.length">
-          <template v-for="({ language }, idx) of data.value.applications" :key="idx">
-            <div class="d-flex flex-row" v-if="language">
-              <p class="h3">
-                <i :class="`fi fi-${language.iso}`" width="300"></i>
-              </p>
-              <div class="m-2">{{ language.value }}</div>
-            </div>
-          </template>
-        </div>
-      </template>
-
-      <template #application_country="data">
-        <div v-if="data.value.applications.length">
-          <template v-for="({ country }, idx) of data.value.applications" :key="idx">
-            <div class="d-flex flex-row" v-if="country">
-              <p class="h3">
-                <i :class="`fi fi-${country.iso}`" width="300"></i>
-              </p>
-              <div class="m-2">{{ country.value }}</div>
-            </div>
-          </template>
-        </div>
-      </template>
-
-      <template #application_university="data">
-        <div v-if="data.value.applications.length">
-          <template v-for="({ university }, idx) of data.value.applications" :key="idx">
-            <div class="d-flex flex-row" v-if="university">
-              <img :src="university.logo.url" alt="user-profile" width="35" />
-              <div class="m-2">{{ university.name }}</div>
-            </div>
-          </template>
-        </div>        
-      </template>
-
-      <template #application_degree="data">
-        <div v-if="data.value.applications.length">
-          <template v-for="({ degree: { uuid, value } }, aIdx) of data.value.applications" :key="aIdx + uuid">
-            <div class="d-flex flex-row" v-if="value">
-              <div class="m-2">{{ value }}</div>
-            </div>
-          </template>
-        </div>        
-      </template>
-
-      <template #application_departments="data">
-        <div v-if="data.value.applications.length">
-          <template v-for="({ departments }, idx) of data.value.applications" :key="idx">
-            <div class="d-flex flex-row" v-if="departments.length">
-              <template v-for="({ department }, dIdx) of departments" :key="dIdx">
-                <div class="m-2">{{ department?.name?.value }}</div>
+            <div v-if="data.value.applications.length">
+              <template v-for="({ language }, idx) of data.value.applications" :key="idx">
+                <div class="d-flex flex-row" v-if="language">
+                  <p class="h3">
+                    <i :class="`fi fi-${language.iso}`" width="300"></i>
+                  </p>
+                  <div class="m-2">{{ language.value }}</div>
+                </div>
               </template>
             </div>
           </template>
-        </div>        
-      </template>
 
-      <template #application_status="data">
-        <div v-if="data.value.applications.length">
-          <template v-for="({ status }, idx) of data.value.applications" :key="idx">
-            <span class="badge" :style="useApplicationStatusStyle(status.value)" v-if="status" :key="idx">
-              {{ status.value.value }}
-            </span>
+          <template #application_country="data">
+            <div v-if="data.value.applications.length">
+              <template v-for="({ country }, idx) of data.value.applications" :key="idx">
+                <div class="d-flex flex-row" v-if="country">
+                  <p class="h3">
+                    <i :class="`fi fi-${country.iso}`" width="300"></i>
+                  </p>
+                  <div class="m-2">{{ country.value }}</div>
+                </div>
+              </template>
+            </div>
           </template>
-        </div>        
-      </template>
+
+          <template #application_university="data">
+            <div v-if="data.value.applications.length">
+              <template v-for="({ university }, idx) of data.value.applications" :key="idx">
+                <div class="d-flex flex-row" v-if="university">
+                  <img class="avatar-img rounded" :src="university.logo.url" alt="user-profile" width="35" />
+                  <div class="m-2">{{ university.name }}</div>
+                </div>
+              </template>
+            </div>        
+          </template>
+
+          <template #application_degree="data">
+            <div v-if="data.value.applications.length">
+              <template v-for="({ degree: { uuid, value } }, aIdx) of data.value.applications" :key="aIdx + uuid">
+                <div class="d-flex flex-row" v-if="value">
+                  <div class="m-2">{{ value }}</div>
+                </div>
+              </template>
+            </div>        
+          </template>
+
+          <template #application_departments="data">
+            <div v-if="data.value.applications.length">
+              <template v-for="({ departments }, idx) of data.value.applications" :key="idx">
+                <div class="d-flex flex-row" v-if="departments.length">
+                  <template v-for="({ department }, dIdx) of departments" :key="dIdx">
+                    <div class="m-2">{{ department?.name?.value }}</div>
+                  </template>
+                </div>
+              </template>
+            </div>        
+          </template>
+
+          <template #application_status="data">
+            <div v-if="data.value.applications.length">
+              <template v-for="({ status }, idx) of data.value.applications" :key="idx">
+                <span class="badge" :style="useApplicationStatusStyle(status.value)" v-if="status" :key="idx">
+                  {{ status.value.value }}
+                </span>
+              </template>
+            </div>
+          </template>
 
           <template #actions="data">
             <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'student-show', params: { uuid: data.value.uuid } })">

@@ -12,6 +12,8 @@
     "file_name": "File name",
     "generate_pdf": "Generate PDF",
     "search_placeholder_full_name": "Student full name",
+    "download_documents": "Download Files",
+    "create_application": "Create Application",
     "form": {
         "company": "Company",
         "full_name": "Full name",

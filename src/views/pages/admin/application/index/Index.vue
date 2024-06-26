@@ -84,7 +84,7 @@
 
           <template #university="data">
             <div class="d-flex flex-row" v-if="data.value.university">
-              <img :src="data.value.university.logo.url" alt="user-profile" width="35" />
+              <img class="avatar-img rounded" :src="data.value.university.logo.url" alt="user-profile" width="35" />
               <div class="m-2">{{ data.value.university.name }}</div>
             </div>
           </template>
