@@ -2,14 +2,14 @@ import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { onMounted, reactive, ref, getCurrentInstance } from "vue"
 import { useRouter } from "vue-router";
 import { useStore } from "vuex"
-import { useInputs } from '../useCases/usePartials'
-import { useName } from "../useCases/useName";
-import { useAlias } from "../useCases/useAlias";
-import { useUniversity } from "../useCases/useUniversity";
-import { useFaculty } from "../useCases/useFaculty";
-import { useLanguage } from "../useCases/useLanguage";
-import useDegree from "../useCases/useDegree";
-import useCurrency from "../useCases/useCurrency";
+import { useInputs } from '../../useCases/usePartials'
+import { useName } from "../../useCases/useName";
+import { useAlias } from "../../useCases/useAlias";
+import { useUniversity } from "../../useCases/useUniversity";
+import { useFaculty } from "../../useCases/useFaculty";
+import { useLanguage } from "../../useCases/useLanguage";
+import useDegree from "../../useCases/useDegree";
+import useCurrency from "../../useCases/useCurrency";
 
 export default function useCreate() {
 

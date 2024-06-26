@@ -217,7 +217,7 @@
 
 <script setup>
   import useCreate from './useCreate';
-  import Inputs from '../../../components/InputCard/Index.vue'
+  import Inputs from '../../../../components/InputCard/Index.vue'
   import VueMultiselect from 'vue-multiselect'
 
   const {

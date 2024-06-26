@@ -4,12 +4,14 @@ import { usePaginator } from '@/views/pages/utils/paginator';
 import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
+import useFilters from "../../useCases/useFilters";
 
 export default function useIndex() {
 
   const store = useStore();
   const paginator = usePaginator();
   const { image } = useUrlPattern();
+  const { filters } = useFilters();
   const { t, d } = useI18n();
   const { dateFromTimestamp } = useDate();
 
@@ -27,9 +29,13 @@ export default function useIndex() {
     { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
   ];
 
-  const reloadData = () => {
+  const reloadData = (params = {}) => {
     items.value = [];
-    loadDepartments();
+    loadDepartments(params);
+  }
+
+  const loadFilters = filters => {
+    reloadData({ filters })
   }
 
   const departmentMapper = department => {
@@ -38,10 +44,10 @@ export default function useIndex() {
     return department;
   }
 
-  const loadDepartments = () => {
+  const loadDepartments = (params = {}) => {
     loading.value = true;
 
-    store.dispatch('department/loadDepartmentsAsync', { params: { ...paginator.toQueryParams(), } })
+    store.dispatch('department/loadDepartmentsAsync', { params: { ...paginator.toQueryParams(), ...params } })
       .then(response => {
         const { data } = response;
         console.log('Data: ', data, 'response: ', response)
@@ -76,11 +82,13 @@ export default function useIndex() {
     items,
     columns,
     loading,
+    filters,
     remove,
 
     paginator,
     loadDepartments,
 
     changeServer,
+    loadFilters,
   }
 }

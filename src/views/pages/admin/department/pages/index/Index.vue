@@ -1,5 +1,7 @@
 <template>
   <div class="col-sm-12">
+    <TableFilter :filters="filters" @filter="loadFilters" class="mb-3" />
+
     <div class="card">
 
       <div class="card-header">
@@ -122,17 +124,20 @@
 
 <script setup>
   import useIndex from './useIndex.js';
-  import Badge from '../../../components/partials/badge/Index.vue'
+  import Badge from '../../../../components/partials/badge/Index.vue'
+  import TableFilter from '@/views/pages/components/tableFilter/Index.vue'
 
   const {
     items,
     columns,
     loading,
     remove,
+    filters,
 
     paginator,
 
     changeServer,
+    loadFilters,
   } = useIndex();  
 </script>
 
