@@ -55,7 +55,7 @@ const routes = [
   {
     path: 'departments/show/:uuid',
     name: 'department-show',
-    component: () => import('./show/Index.vue'),
+    component: () => import('./pages/show/Index.vue'),
     meta: {
       title: 'department.context_title',
       middleware: [
