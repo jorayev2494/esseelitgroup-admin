@@ -9,7 +9,7 @@ export default function useIndex() {
 
   const store = useStore();
   const paginator = usePaginator();
-  const { defaultImage } = useUrlPattern();
+  const { image } = useUrlPattern();
   const { t, d } = useI18n();
 
   const loading = ref(true);
@@ -27,11 +27,12 @@ export default function useIndex() {
   }
 
   const studentMapper = student => {
-    if (student.avatar?.url === undefined) {
-      student.avatar = {
-        url: defaultImage('avatar'),
-      };
-    }
+    student.avatar = image(student.avatar);
+    // if (student.avatar?.url === undefined) {
+    //   student.avatar = {
+    //     url: defaultImage('avatar'),
+    //   };
+    // }
 
     student.created_at = d(new Date(student.created_at * 1000), 'short');
 

@@ -43,7 +43,7 @@
               <div class="avatar-showcase me-3" v-if="data.value.avatar">
                 <div class="avatars">
                   <div class="avatar">
-                    <img class="img-50 avatar-img rounded b-r-15" :src="data.value.avatar.url" :alt="data.value.avatar.url">
+                    <img class="img-50 avatar-img rounded b-r-15" :src="data.value.avatar" :alt="data.value.avatar">
                   </div>
                 </div>
               </div>
@@ -90,7 +90,7 @@
             <div v-if="data.value.applications.length">
               <template v-for="({ university }, idx) of data.value.applications" :key="idx">
                 <div class="d-flex flex-row" v-if="university">
-                  <img class="avatar-img rounded" :src="university.logo.url" alt="user-profile" width="35" />
+                  <img class="avatar-img rounded" :src="university.logo" :alt="university.logo" width="35" />
                   <div class="m-2">{{ university.name }}</div>
                 </div>
               </template>

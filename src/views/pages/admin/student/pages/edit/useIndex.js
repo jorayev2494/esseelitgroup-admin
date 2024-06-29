@@ -85,7 +85,7 @@ export default () => {
     genderPreview.value = findGender(student.gender);
     maritalStatusPreview.value = findMaritalStatus(student.marital_type);
     
-    avatarPreview.value = student.avatar !== null ? student.avatar.url : avatarPreview.value;
+    avatarPreview.value = student.avatar !== null ? image(student.avatar) : avatarPreview.value;
     student.avatar = '';
 
     // student.additional_documents = [];

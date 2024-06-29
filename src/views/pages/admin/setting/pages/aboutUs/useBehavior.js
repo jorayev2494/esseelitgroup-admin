@@ -8,7 +8,7 @@ import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 export default () => {
   const store = useStore();
 
-  const { defaultImage } = useUrlPattern();
+  const { image } = useUrlPattern();
   const { imagePreview: coverPreview, uploadImage: uploadCover } = useChangeImage();
   const inputs = useAboutUsInput();
 
@@ -16,7 +16,7 @@ export default () => {
   const form = ref(null);
 
   const itemDataMapper = item => {
-    coverPreview.value = item?.cover?.url ?? defaultImage('avatar');
+    coverPreview.value = image(item?.cover);
 
     return item;
   }

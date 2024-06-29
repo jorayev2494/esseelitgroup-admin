@@ -32,6 +32,7 @@ export default function useIndex() {
   }
 
   const announcementMapper = announcement => {
+    announcement.author.avatar = image(announcement.author.avatar)
     announcement.start_time = d(dateFromTimestamp(announcement.start_time), 'long')
     if (announcement.end_time) {
       announcement.end_time = d(dateFromTimestamp(announcement.end_time), 'long')

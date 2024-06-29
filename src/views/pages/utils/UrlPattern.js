@@ -25,8 +25,30 @@ export function useUrlPattern() {
     return defaultImage(prefix, w, h)
   }
 
+  const file = (urlPattern = null) => {
+    if (urlPattern !== null) {
+      let { url_pattern } = urlPattern
+
+      const avatarPatterns = {
+        endpoint: process.env.VUE_APP_STORAGE_URL,
+      }
+
+      for (const key in avatarPatterns) {
+        if (Object.hasOwnProperty.call(avatarPatterns, key)) {
+          const replace = avatarPatterns[key];
+          url_pattern = url_pattern.replaceAll(`{${key}}`, replace)
+        }
+      }
+
+      return url_pattern
+    }
+
+    return null;
+  }
+
   return {
     image,
+    file,
     defaultImage,
   }
 }

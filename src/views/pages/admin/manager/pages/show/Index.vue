@@ -9,7 +9,7 @@
         <label for="avatar">
           <div class="card-body mb-4">
             <!-- <div class="avatar avatar-xxl mr-2"> -->
-              <img class="avatar-img rounded" role="button" alt="Client Avatar" :src="avatarPreview" width="100%">
+              <img class="avatar-img rounded" role="button" :src="avatarPreview" width="100%" :alt="avatarPreview">
             <!-- </div> -->
           </div>
         </label>

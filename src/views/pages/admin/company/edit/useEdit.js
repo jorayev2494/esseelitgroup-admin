@@ -33,8 +33,7 @@ export default function useCreate() {
     store.dispatch('company/showCompanyAsync', uuid)
       .then(response => {
         form.value = response.data;
-        // logoPreview.value = image(response.data.logo);
-        logoPreview.value = response.data.logo.url;
+        logoPreview.value = image(response.data.logo);
       })
   }
 

@@ -39,7 +39,7 @@
               <div class="avatar-showcase me-3" v-if="data.value.avatar">
                 <div class="avatars">
                   <div class="avatar">
-                    <img class="img-50 avatar-img rounded b-r-15" :src="data.value.avatar.url" :alt="data.value.avatar.url">
+                    <img class="img-50 avatar-img rounded b-r-15" :src="data.value.avatar" :alt="data.value.avatar">
                   </div>
                 </div>
               </div>

@@ -54,7 +54,7 @@
       <center>
         <div class="card-body mt-4">
           <div class="avatar avatar-xxl mr-2">
-            <img class="avatar-img rounded-circle" alt="User Image" :src="logoPreview">
+            <img class="avatar-img rounded" alt="User Image" :src="logoPreview">
           </div>
           <!-- <div class="avatar avatar-xxl ml-2">
             <img class="avatar-img rounded" alt="User Image" :src="logoPreview">

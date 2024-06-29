@@ -43,7 +43,7 @@ export default () => {
   }
 
   const studentMapper = student => {    
-    avatarPreview.value = student.avatar !== null ? student.avatar.url : avatarPreview.value;
+    avatarPreview.value = image(student.avatar);
     student.avatar = '';
 
     return student;
