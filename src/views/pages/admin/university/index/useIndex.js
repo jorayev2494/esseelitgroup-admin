@@ -30,8 +30,7 @@ export default function useIndex() {
   }
 
   const universityMapper = university => {
-    // university.logo = image(university.logo, 60, 60);
-    university.logo = university.logo.url;
+    university.logo = image(university.logo);
 
     university.created_at = d(dateFromTimestamp(university.created_at), 'short');
 

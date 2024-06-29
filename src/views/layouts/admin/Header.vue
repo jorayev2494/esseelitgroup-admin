@@ -41,7 +41,7 @@
         <div class="dropdown-menu">
           <div class="user-header">
             <div class="avatar avatar-sm">
-              <img  :src="avatarPreview" alt="User Image" class="avatar-img rounded-circle" />
+              <img :src="avatarPreview" alt="User Image" class="avatar-img rounded-circle" />
             </div>
             <div class="user-text">
               <h6>{{ $store.getters['auth/getAuthDataProperty']('full_name') }}</h6>
@@ -74,7 +74,7 @@
   export default {
     setup() {
 
-      const { defaultImage } = useUrlPattern();
+      const { image } = useUrlPattern();
       const router = useRouter();
       const store = useStore();
 
@@ -92,7 +92,7 @@
       onMounted(() => {
         feather.replace();
 
-        avatarPreview.value = authData.value.avatar?.url ?? defaultImage('logo')
+        avatarPreview.value = image(authData.value.avatar)
       });
 
       return {

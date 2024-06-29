@@ -5,6 +5,7 @@ import { useInputs } from '../useCases/usePartials'
 import { useCountry } from "../useCases/useCountry";
 import { useCity } from "../useCases/useCity";
 import { useCropper } from '../useCases/useCropper';
+import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 
 export default function useEdit() {
 
@@ -12,6 +13,7 @@ export default function useEdit() {
   const router = useRouter();
   const route = useRoute();
   const { uuid } = route.params;
+  const { image } = useUrlPattern();
 
   const form = ref({});
   const inputs = useInputs();
@@ -34,8 +36,8 @@ export default function useEdit() {
         const { logo, cover, country_uuid } = response.data
         form.value = response.data;
 
-        logoPreview.value = logo.url
-        coverPreview.value = cover.url
+        logoPreview.value = image(logo)
+        coverPreview.value = image(cover)
 
         loadCities({ filters: { country_uuids: [country_uuid] } })
       })

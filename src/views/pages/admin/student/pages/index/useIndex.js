@@ -13,7 +13,7 @@ export default function useIndex() {
   const paginator = usePaginator();
   const { t, d } = useI18n();
   const { filters } = useFilters();
-  const { defaultImage } = useUrlPattern();
+  const { image } = useUrlPattern();
   const { form: searchForm, toQueryParams } = useSearch('full_name');
 
   const loading = ref(true);
@@ -40,11 +40,17 @@ export default function useIndex() {
   }
 
   const studentMapper = student => {
-    if (student.avatar?.url === undefined) {
-      student.avatar = {
-        url: defaultImage('avatar'),
-      };
-    }
+    student.avatar = image(student.avatar);
+    student.applications.forEach(application => {
+      application.university.logo = image(application.university.logo);
+    });
+
+    // if (student.avatar?.url === undefined) {
+    //   student.avatar = {
+    //     url: defaultImage('avatar'),
+    //   };
+    // }
+
     student.created_at = d(new Date(student.created_at * 1000), 'short');
 
     return student;

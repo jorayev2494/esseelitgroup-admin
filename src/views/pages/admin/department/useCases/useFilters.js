@@ -1,17 +1,17 @@
 import { onMounted, ref } from "vue"
 import { useUniversity } from "./useUniversity"
-import { useFaculty } from "./useFaculty"
+import { useFacultyName } from "./useFacultyName"
 import useDegree from "./useDegree"
 import { useLanguage } from "./useLanguage"
 
 export default () => {
 
   const { universities, loadUniversities } = useUniversity();
-  const { faculties, loadFaculties } = useFaculty();
+  const { facultyNames, loadFacultyNames } = useFacultyName();
   const { degrees, loadDegrees } = useDegree();
   const { languages, loadLanguages } = useLanguage();
 
-  const facultyOptions = ref([]);
+  // const facultyOptions = ref([]);
 
   const filters = ref([
     {
@@ -30,15 +30,15 @@ export default () => {
     {
       visibleSelectBox: false,
       label: 'department.form.faculty',
-      name: 'faculty_uuids',
+      name: 'faculty_name_uuids',
       type: 'checkbox',
       // icon: 'fa-university',
       searchable: false,
       searchLabel: 'Faculty',
-      labelKey: 'label',
-      valueKey: 'value',
+      labelKey: 'value',
+      valueKey: 'uuid',
       value: [],
-      items: facultyOptions,
+      items: facultyNames,
     },
     {
       visibleSelectBox: false,
@@ -68,22 +68,22 @@ export default () => {
     },
   ])
 
-  const makeFacultyOptions = () => {
-    faculties.value.forEach(faculty => {
-      facultyOptions.value.push({
-        label: faculty.name?.value,
-        value: faculty.uuid,
-      });
-    });
-  }
+  // const makeFacultyOptions = () => {
+  //   facultyNames.value.forEach(faculty => {
+  //     facultyOptions.value.push({
+  //       label: faculty.name?.value,
+  //       value: faculty.uuid,
+  //     });
+  //   });
+  // }
 
   onMounted(() => {
     loadUniversities()
-    loadFaculties()
+    loadFacultyNames()
     loadDegrees()
     loadLanguages()
 
-    setTimeout(makeFacultyOptions, 2200);
+    // setTimeout(makeFacultyOptions, 2200);
   })
 
   return {

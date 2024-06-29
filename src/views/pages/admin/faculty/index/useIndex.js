@@ -28,8 +28,7 @@ export default function useIndex() {
   }
 
   const facultyMapper = faculty => {
-    // faculty.logo = image(faculty.logo, 60, 60);
-    faculty.logo = faculty.logo.url;
+    faculty.logo = image(faculty.logo);
 
     faculty.created_at = d(dateFromTimestamp(faculty.created_at), 'short');
 

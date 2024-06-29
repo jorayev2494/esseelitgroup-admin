@@ -5,12 +5,14 @@ import { useInputs } from '../useCases/usePartials'
 import { useName } from "../useCases/useName";
 import { useUniversity } from "../useCases/useUniversity";
 import coverUseCases from '../../../components/imageCropper/useCases'
+import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 
 export default function useEdit() {
 
   const store = useStore();
   const router = useRouter();
   const route = useRoute();
+  const { image } = useUrlPattern();
   const inputs = useInputs();
   const { nameSelectedPreview, names, loadNamesList, makeNameSelectedPreview } = useName()
   const { universities, loadUniversities } = useUniversity();
@@ -66,7 +68,7 @@ export default function useEdit() {
   const mapFaculty = faculty => {
     const { name_uuid, logo } = faculty
     form.value = faculty;
-    imagePreview.value = logo.url
+    imagePreview.value = image(logo)
     makeNameSelectedPreview(item => item.uuid === name_uuid)
 
     return faculty;

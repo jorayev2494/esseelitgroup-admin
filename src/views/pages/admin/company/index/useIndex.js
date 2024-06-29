@@ -31,7 +31,7 @@ export default function useIndex() {
 
   const companyMapper = company => {
     // company.logo = image(company.logo, 60, 60);
-    company.logo = company?.logo?.url ?? defaultImage('logo');
+    company.logo = image(company?.logo);
     company.created_at = d(dateFromTimestamp(company.created_at), 'short');
 
     return company;

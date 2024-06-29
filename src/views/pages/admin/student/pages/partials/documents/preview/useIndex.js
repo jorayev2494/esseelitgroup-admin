@@ -1,3 +1,4 @@
+import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { useDate } from "@/views/pages/utils/helpers";
 import { onMounted, ref } from "vue";
 import { useI18n } from "vue-i18n";
@@ -10,6 +11,7 @@ export default function useIndex({ props }) {
   const store = useStore();
   const route = useRoute();
   const { dateInDdMmYyyyHhMmSs } = useDate();
+  const { file } = useUrlPattern();
 
   const { uuid } = route.params
 
@@ -59,6 +61,7 @@ export default function useIndex({ props }) {
     for (const key in documents) {
       if (Object.hasOwnProperty.call(documents, key)) {
         const document = documents[key];
+        document.url = file(document)
         documentItems.value.push({
           ...document,
           document_type: key,
@@ -72,9 +75,21 @@ export default function useIndex({ props }) {
     store.dispatch('student/downloadStudentArchiveDocumentsAsync', { uuid, downloadArchiveName })
   }
 
-  onMounted(() => {
-    makeDocumentItems()
+  const makeAdditionalDocuments = () => {
     additionalDocumentItems.value = additionalDocuments ? additionalDocuments : [];
+    for (const key in additionalDocumentItems.value) {
+      if (Object.hasOwnProperty.call(additionalDocumentItems.value, key)) {
+        const document = additionalDocumentItems.value[key];
+        document.url = file(document)
+      }
+    }
+  }
+
+  onMounted(() => {
+    setTimeout(() => {
+      makeDocumentItems()
+      makeAdditionalDocuments()
+    }, 2000)
   })
 
   return {

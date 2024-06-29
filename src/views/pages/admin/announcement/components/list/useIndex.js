@@ -57,6 +57,7 @@ export default function useIndex() {
       announcement.end_time = d(dateFromTimestamp(announcement.end_time), 'long')
     }
 
+    announcement.author.avatar = image(announcement.author.avatar);
     announcement.created_at = d(dateFromTimestamp(announcement.created_at), 'short')
 
     return announcement;

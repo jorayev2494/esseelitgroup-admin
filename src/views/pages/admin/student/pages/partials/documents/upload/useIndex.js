@@ -1,3 +1,4 @@
+import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { onMounted, reactive, computed, ref, toRefs } from "vue";
 import { useI18n } from "vue-i18n";
 
@@ -6,6 +7,7 @@ export default function useIndex({ props }) {
   const { t } = useI18n();
 
   const { form, additionalDocuments, } = toRefs(props);
+  const { file } = useUrlPattern();
 
   const icons = [
     {
@@ -134,6 +136,16 @@ export default function useIndex({ props }) {
 
   const canAddNewAdditionalColumn = computed(() => additionalDocuments.value.length >= maxCountAdditionalDocuments)
   // #endregion
+
+  const mapDocuments = () => {
+    uploadFiles.forEach(element => {
+      form.value[element.document_type].url = file(form.value[element.document_type]);
+    });
+  }
+
+  onMounted(() => {
+    setTimeout(mapDocuments, 1000)
+  })
 
   return {
     documentColumns,
