@@ -12,6 +12,7 @@
     "degree": "Derece",
     "language": "Dil",
     "price": "Fiyat",
+    "discount_price": "Discount price",
     "currency": "Para birimi",
     "is_filled": "Kontenjan"
   }

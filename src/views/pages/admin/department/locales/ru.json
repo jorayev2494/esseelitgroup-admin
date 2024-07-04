@@ -12,6 +12,7 @@
     "degree": "Степен",
     "language": "Язык",
     "price": "Цена",
+    "discount_price": "Цена со скидкой",
     "currency": "Валюта",
     "is_filled": "Kвота"
   }

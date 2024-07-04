@@ -45,20 +45,27 @@ export function useDate() {
     );
   }
 
-  function dateInDdMmYyyyHhMmSs(date, dateDiveder = "-", hoursAndMinuteDiveder = ":") {
+  const dateInDdMmYyyyHhMmSs = (date, dateDiveder = "-", hoursAndMinuteDiveder = ":") =>  dateInDdMmYyyy(date, dateDiveder) + " " + dateInHhMmSs(date, hoursAndMinuteDiveder);
+
+  function dateInHhMmSs(date, hoursAndMinuteDiveder = ":") {
+    
+    return (
+      [
+        padTwoDigits(date.getHours()),
+        padTwoDigits(date.getMinutes()),
+        padTwoDigits(date.getSeconds()),
+      ].join(hoursAndMinuteDiveder)
+    );
+  }
+
+  function dateInDdMmYyyy(date, dateDiveder = "-") {
     
     return (
       [
         padTwoDigits(date.getDate()),
         padTwoDigits(date.getMonth() + 1),
         date.getFullYear(),
-      ].join(dateDiveder) +
-      " " +
-      [
-        padTwoDigits(date.getHours()),
-        padTwoDigits(date.getMinutes()),
-        padTwoDigits(date.getSeconds()),
-      ].join(hoursAndMinuteDiveder)
+      ].join(dateDiveder)
     );
   }
 
@@ -72,6 +79,8 @@ export function useDate() {
     convertToDateTimeLocalString,
     dateInYyyyMmDdHhMmSs,
     dateInDdMmYyyyHhMmSs,
+    dateInDdMmYyyy,
+    dateInHhMmSs,
   }
 }
 

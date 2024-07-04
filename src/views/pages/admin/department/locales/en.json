@@ -12,6 +12,7 @@
     "degree": "Degree",
     "language": "Language",
     "price": "Price",
+    "discount_price": "Discount price",
     "currency": "Currency",
     "is_filled": "Quota"
   }
