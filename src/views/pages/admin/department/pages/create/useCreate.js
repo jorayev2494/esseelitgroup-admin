@@ -41,6 +41,7 @@ export default function useCreate() {
     degree_uuid: '',
     translations: {},
     price: '',
+    discount_price: '',
     price_currency_uuid: '',
     is_filled: false,
     is_active: '',

@@ -95,8 +95,28 @@
           <template #price="data">
             <div class="d-flex flex-row">
               <p class="mt-2">
-                {{ data.value.price }}
-                {{ data.value.price_currency?.code }}
+                <span>
+                  <p v-if="!data.value.discount_price" class="text-success mb-1">
+                    <strong>
+                      {{ data.value.price }}
+                      {{ data.value.price_currency?.code }}
+                    </strong>
+                  </p>
+                  <p v-else class="text-danger mb-1">
+                    <em>
+                      <del>
+                        {{ data.value.price }}
+                        {{ data.value.price_currency?.code }}
+                      </del>
+                    </em>
+                  </p>
+                </span>
+                <span v-if="data.value.discount_price" class="text-success">
+                  <strong>
+                    {{ data.value.discount_price }}
+                    {{ data.value.price_currency?.code }}
+                  </strong>
+                </span>
               </p>
             </div>
           </template>

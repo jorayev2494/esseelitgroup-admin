@@ -12,6 +12,7 @@
     "degree": "Dereje",
     "language": "Dil",
     "price": "Bahasy",
+    "discount_price": "İndirimli fiyat",
     "currency": "Walyuta",
     "is_filled": "Kwota"
   }

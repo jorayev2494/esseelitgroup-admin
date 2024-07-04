@@ -11,8 +11,13 @@
                         <router-view />
                    </div>
                </div>
+               <HorizontalLanguageSwitcher />
            </div>
        </div>
    </div>
    <!-- /Main Wrapper -->   
 </template>
+
+<script setup>
+import HorizontalLanguageSwitcher from '@/views/pages/components/horizontalLanguageSwitcher/Index.vue'
+</script>

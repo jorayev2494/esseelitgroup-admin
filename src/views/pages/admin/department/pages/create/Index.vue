@@ -147,8 +147,11 @@
 
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">{{ $t('company.form.name') }}</label>
-              <div class="col-lg-6">
+              <div class="col-lg-3">
                 <input type="text" v-model="form.price" class="form-control" :placeholder="$t('department.form.price')" required>
+              </div>
+              <div class="col-lg-3">
+                <input type="text" v-model="form.discount_price" class="form-control" :placeholder="$t('department.form.discount_price')">
               </div>
               <div class="col-lg-3">
                 <VueMultiselect
