@@ -19,6 +19,9 @@
             "married": "Married"
         }
     },
+    "pagination": {
+        "info": "Showing {zero} to {first} of {two} entries"
+    },
     "translations": "Translates",
     "actions": "Actions",
     "create": "Create",

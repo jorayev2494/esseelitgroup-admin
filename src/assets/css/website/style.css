@@ -6281,8 +6281,8 @@ span.rate-point.three-rate {
 	color: #4C5276;
 }
 .course-categories-three .bg-explore {
-    background-color: #5754F7;
-    border: 1px solid #5754F7;
+    background-color: #0f271a;
+    border: 1px solid #0f271a;
 	padding: 15px 26px;
 }
 .course-categories-three .categories-text {
@@ -6502,8 +6502,8 @@ span.rate-point.three-rate {
     margin-left: 5px;
 }
 .trending-courses-three .bg-explore {
-    background-color: #5754F7;
-    border: 1px solid #5754F7;
+    background-color: #0f271a;
+    border: 1px solid #0f271a;
 	padding: 15px 26px;
 }
 .trending-courses-three .bg-explore:hover {
@@ -6592,7 +6592,7 @@ span.rate-point.three-rate {
 	display: none;
 }
 .popular-course-three .course-info {
-	background: #5754F7;
+	background: #0f271a;
 	border: 0;
 }
 .popular-course-three .tab-content {
@@ -19681,13 +19681,13 @@ div.dataTables_wrapper div.dataTables_filter input{
 		background-color: #fff;
 	}
 	.header-three .main-menu-wrapper {
-		background-color: #5754F7;
+		background-color: #0f271a;
 	}
 	.header-three .main-nav > li {
-		border-bottom: 1px solid #4643d5;										
+		border-bottom: 1px solid #47b57a;										
 	}
 	.header-three .main-nav ul {
-		background-color: #4643d5;
+		background-color: #47b57a;
 	}
 	.home-slide-three {
 		min-height: 350px

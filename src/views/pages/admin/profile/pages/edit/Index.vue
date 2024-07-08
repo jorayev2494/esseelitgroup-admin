@@ -4,7 +4,7 @@
     <div class="profile-menu">
       <ul class="nav nav-tabs nav-tabs-solid">
         <li class="nav-item">
-            <a class="nav-link active" data-bs-toggle="tab" href="#per_details_tab">{{ $t('profile.context_title') }}</a>
+          <a class="nav-link active" data-bs-toggle="tab" href="#per_details_tab">{{ $t('profile.context_title') }}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="tab" href="#password_tab">{{ $t('profile.partials.change_password.label') }}</a>
@@ -40,7 +40,7 @@
           <div class="col-xl-6 d-flex">
             <div class="card flex-fill">
                 <div class="card-header">
-                  <h4 class="card-title">{{ $t('manager.context_title') }}</h4>
+                  <h4 class="card-title">{{ $t('profile.context_title') }}</h4>
                 </div>
 
                 <div class="card-body">

@@ -1,6 +1,6 @@
 import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { useDate } from "@/views/pages/utils/helpers";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, toRefs } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
@@ -15,30 +15,22 @@ export default function useIndex({ props }) {
 
   const { uuid } = route.params
 
-  const { form } = props;
+  const { form } = toRefs(props);
 
   const {
-    passport,
-    school_attestat,
-    equivalence_document,
-    passport_translation,
-    transcript,
-    transcript_translation,
-    school_attestat_translation,
-    biometric_photo,
     additional_documents: additionalDocuments,
-  } = form;
+  } = form.value;
 
-  const documents = {
-    passport,
-    school_attestat,
-    equivalence_document,
-    passport_translation,
-    transcript,
-    transcript_translation,
-    school_attestat_translation,
-    biometric_photo,
-  }
+  const documentKeys = [
+    'passport',
+    'school_attestat',
+    'equivalence_document',
+    'passport_translation',
+    'transcript',
+    'transcript_translation',
+    'school_attestat_translation',
+    'biometric_photo',
+  ]
 
   const documentColumns = [
     { field: 'document_type', title: 'Document type' },
@@ -58,16 +50,15 @@ export default function useIndex({ props }) {
   const additionalDocumentItems = ref([]);
 
   const makeDocumentItems = () => {
-    for (const key in documents) {
-      if (Object.hasOwnProperty.call(documents, key)) {
-        const document = documents[key];
-        document.url = file(document)
-        documentItems.value.push({
-          ...document,
-          document_type: key,
-        })
-      }
-    }
+    documentKeys.forEach(key => {
+      const document = form.value[key];
+
+      document.url = file(document)
+      documentItems.value.push({
+        ...document,
+        document_type: key,
+      })
+    })
   }
 
   const downloadStudentArchiveDocuments = downloadArchiveName => {

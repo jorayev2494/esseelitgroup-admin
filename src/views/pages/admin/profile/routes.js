@@ -46,7 +46,7 @@ const routes = [
         {
           label: 'profile.context_title',
           route: {
-            name: 'profile',
+            name: 'profile-show',
           },
         },
         {
