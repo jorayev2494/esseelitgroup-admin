@@ -19,6 +19,9 @@
             "married": "Evli"
         }
     },
+    "pagination": {
+        "info": "{two} girişten {zero} ila {first} arası gösteriliyor"
+    },
     "translations": "Çeviriler",
     "actions": "Hareketler",
     "create": "Oluştur",

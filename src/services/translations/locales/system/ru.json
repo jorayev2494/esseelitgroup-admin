@@ -19,6 +19,9 @@
             "married": "Женатый"
         }
     },
+    "pagination": {
+        "info": "Показаны с {zero} по {first} из {two} записей"
+    },
     "translations": "Переводы",
     "actions": "Действи",
     "create": "Создать",

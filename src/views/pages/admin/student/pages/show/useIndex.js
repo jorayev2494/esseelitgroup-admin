@@ -110,37 +110,6 @@ export default () => {
   
   const additionalDocuments = reactive([]);
 
-  const getData = () => {
-    const formData = new FormData();
-
-    for (const key in form.value) {
-      if (Object.hasOwnProperty.call(form.value, key)) {
-        const value = form.value[key];
-
-        if (documents.includes(key) && !(value instanceof File)) {
-          continue;
-        }
-
-        formData.append(key, value);
-      }
-    }
-
-    formData.append(`additional_documents[]`, []);
-    additionalDocuments.forEach(({ document, description }, idx) => {
-      formData.append(`additional_documents[${idx}][document]`, document);
-      formData.append(`additional_documents[${idx}][description]`, description);
-    });
-
-    return formData;
-  };
-
-  const update = () => {
-    store.dispatch('student/updateStudentAsync', { uuid, data: getData() })
-      .then(() => {
-        router.push(Tr.makeRoute({ name: 'students' }))
-      })
-  }
-
   const studentMapper = student => {
     student.birthday = formatDate(dateFromTimestamp(student.birthday));
     student.passport_date_of_expiry = formatDate(dateFromTimestamp(student.passport_date_of_expiry));
@@ -199,7 +168,5 @@ export default () => {
     languages,
 
     additionalDocuments,
-
-    update,
   }
 }
