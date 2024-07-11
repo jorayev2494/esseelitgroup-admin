@@ -13,13 +13,11 @@ const getBackendAddress = () => {
   return addresses[process.env.NODE_ENV] ?? addresses['local']
 }
 
-console.log('process.env.NODE_ENV: ', process.env.NODE_ENV)
-
 const addresses = {
   local: 'http://127.0.0.1:8088',
   develop: 'http://212.24.101.35:8088',
   development: 'http://212.24.101.35:8088',
-  production: 'http://127.0.0.1:8088',
+  production: 'http://31.131.17.136:8088',
 }
 
 // return addresses[process.env.NODE_ENV] ?? addresses['local']
@@ -27,6 +25,8 @@ const addresses = {
 // const backendAddress = getBackendAddress();
 const backendAddress = addresses[process.env.NODE_ENV] ?? addresses['local'];
 const baseURL = `${backendAddress}/api/admin`;
+
+console.log('MODE process.env.NODE_ENV: ', `${process.env.NODE_ENV},`, 'baseURL: ', baseURL)
 
 const httpClient = axios.create({
   baseURL,
