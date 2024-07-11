@@ -1,0 +1,24 @@
+{
+    "context_title": "Студенты",
+    "application_form": "Форма заявки",
+    "documents": "Документы",
+    "additional_documents": "Дополнительные документы",
+    "add_additional_document": "Добавить дополнительный документ",
+    "save_changes": "Сохранить изменения",
+    "document": "Документ",
+    "document_type": "Тип документа",
+    "document_name": "Название документа",
+    "extension": "Расширение",
+    "file_name": "Имя файла",
+    "code": "Код",
+    "student": "Студент",
+    "form": {
+        "gift_given_at": "Подарок вручен в",
+        "note": "Заметка",
+        "student": {
+            "first_name": "Имя",
+            "last_name": "Фамилия",
+            "avatar": "Аватар"
+        }
+    }
+}

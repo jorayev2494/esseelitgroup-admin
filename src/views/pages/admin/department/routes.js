@@ -2,7 +2,7 @@ const routes = [
   {
     path: 'departments',
     name: 'departments',
-    component: () => import('./index/Index.vue'),
+    component: () => import('./pages/index/Index.vue'),
     meta: {
       title: 'department.context_title',
       middleware: [
@@ -27,7 +27,7 @@ const routes = [
   {
     path: 'departments/create',
     name: 'department-create',
-    component: () => import('./create/Index.vue'),
+    component: () => import('./pages/create/Index.vue'),
     meta: {
       title: 'department.context_title',
       middleware: [
@@ -55,7 +55,7 @@ const routes = [
   {
     path: 'departments/show/:uuid',
     name: 'department-show',
-    component: () => import('./show/Index.vue'),
+    component: () => import('./pages/show/Index.vue'),
     meta: {
       title: 'department.context_title',
       middleware: [
@@ -83,7 +83,7 @@ const routes = [
   {
     path: 'departments/edit/:uuid',
     name: 'department-edit',
-    component: () => import('./edit/Index.vue'),
+    component: () => import('./pages/edit/Index.vue'),
     meta: {
       title: 'department.context_title',
       middleware: [

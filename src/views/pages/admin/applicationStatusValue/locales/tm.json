@@ -1,0 +1,11 @@
+{
+  "context_title": "Goýmalaryn statusraty",
+  "form": {
+    "value": "Ady",
+    "text_color": "Цвет текста",
+    "background_color": "Arka reňki",
+    "description": "Düşündiriş",
+    "is_required_note": "Gerekli bellik",
+    "is_first": "Birinjidir"
+  }
+}

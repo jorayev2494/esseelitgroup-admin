@@ -1,3 +1,10 @@
 {
-    "context_title": "Companies"
+  "context_title": "Companies",
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "logo": "Logo",
+    "is_main": "Main",
+    "status": "Status"
+  }
 }

@@ -1,0 +1,31 @@
+{
+  "context_title": "Profile",
+  "form": {
+    "full_name": "Full name",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "avatar": "Avatar",
+    "email": "Email"
+  },
+  "flash_messages": {
+    "success": {
+      "profile_was_updated": "Profile was updated"
+    }
+  },
+  "partials": {
+    "change_password": {
+      "label": "Password",
+      "title": "Change password",
+      "form": {
+        "current_password": "Current password",
+        "new_password": "New password",
+        "new_password_confirmation": "New password confirmation"
+      },
+      "flash_messages": {
+        "success": {
+          "password_was_changed": "Password was changed"
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,10 @@
 {
-    "context_title": "Kompaniýalar"
+    "context_title": "Kompaniýalar",
+    "form": {
+      "name": "Ady",
+      "email": "E-pocta",
+      "logo": "Logotip",
+      "is_main": "Esasy",
+      "status": "Status"
+    }
 }

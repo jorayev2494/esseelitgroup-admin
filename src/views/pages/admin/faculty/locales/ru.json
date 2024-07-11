@@ -1,3 +1,10 @@
 {
-    "context_title": "Факультеты"
+  "context_title": "Факультеты",
+  "form": {
+    "university": "Университет",
+    "logo": "Логотип",
+    "name": "Называние",
+    "label": "Этикетка",
+    "description": "Описание"
+  }
 }

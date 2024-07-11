@@ -1,160 +1,198 @@
 <template>
-  <!-- <pre>{{ form }}</pre>
-  <pre>{{ universities }}</pre> -->
-  <div class="col-xl-6 d-flex" v-if="form">
 
-    <div class="card flex-fill">
-      <div class="card-header">
-          <h4 class="card-title">Basic Form</h4>
-      </div>
-
-      <div class="card-body">
-        <div class="mb-2">
-          <router-link class="btn btn-sm bg-success-light me-2" :to="{ name: 'application-edit', params: { uuid: form.uuid } }">
-            <i class="fa fa-edit"></i> {{ $t('system.edit') }}
-          </router-link>
-        </div>
-
-        <form action="#" method="POST" @submit.prevent="update" enctype="multipart/form-data">
-
-          <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Full name</label>
-            <div class="col-lg-9">
-                <input type="text" v-model="form.full_name" class="form-control" disabled />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Birthday</label>
-            <div class="col-lg-9">
-                <input type="date" v-model="form.birthday" class="form-control" disabled />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Father name</label>
-            <div class="col-lg-9">
-                <input type="text" v-model="form.father_name" class="form-control" disabled />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Mother name</label>
-            <div class="col-lg-9">
-                <input type="text" v-model="form.mother_name" class="form-control" disabled />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Passport number</label>
-            <div class="col-lg-9">
-                <input type="text" v-model="form.passport_number" class="form-control" disabled />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Phone</label>
-            <div class="col-lg-9">
-                <input type="text" v-model="form.phone" class="form-control" disabled />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Friend phone</label>
-            <div class="col-lg-9">
-                <input type="text" v-model="form.friend_phone" class="form-control" disabled />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Home address</label>
-            <div class="col-lg-9">
-                <input type="text" v-model="form.home_address" class="form-control" disabled />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Email</label>
-            <div class="col-lg-9">
-                <input type="text" v-model="form.email" class="form-control" disabled />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Universities</label>
-            <div class="col-lg-9">
-              <select class="form-select" v-model="form.university_uuid" aria-label="Default select example" disabled>
-                <option selected>Open this select menu</option>
-                <option
-                  v-for="({ uuid, name }, idx) of universities" :key="idx"
-                  :value="uuid"
-                  >
-                  {{ name }}
-                </option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Faculties</label>
-            <div class="col-lg-9">
-              <select class="form-select" v-model="form.faculty_uuid" aria-label="Default select example" disabled>
-                <option selected>Open this select menu</option>
-                <option
-                  v-for="({ uuid, name }, idx) of faculties" :key="idx"
-                  :value="uuid"
-                  >
-                  {{ name }}
-                </option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Status {{ form.status.value }}</label>
-            <div class="col-lg-9">
-              <select class="form-select" aria-label="Default select example" disabled>
-                <option
-                  v-for="(value, idx) of statuses" :key="idx"
-                  :value="value"
-                  :selected="value === form.status.value"
-                >
-                  {{ value }}
-                </option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Note</label>
-            <div class="col-lg-9">
-                <input type="text" v-model="form.note" class="form-control" disabled />
-            </div>
-          </div>
-
-          <div class="text-right">
-              <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
-      </div>
+  <div class="col-xl-12">
+    <div class="mb-2">
+      <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'application-edit', params: { uuid: $route.params.uuid } })">
+        <i class="fa fa-edit"></i> {{ $t('system.edit') }}
+      </router-link>
     </div>
   </div>
 
-  <div class="col-xl-6 d-flex">
-    <DocumentsPreview v-if="form" :form="form" />
+  <div class="col-xl-2">
+    
+  </div>
+
+  <div class="col-xl-6">
+    <div class="card flex-fill">
+        <div class="card-header">
+          <h4 class="card-title">{{ $t('application.application_form') }}</h4>
+        </div>
+
+        <div class="card-body">
+          <form action="#" method="POST" @submit.prevent="update" enctype="multipart/form-data">
+
+            <!-- <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.company') }}</label>
+              <div class="col-lg-9">
+                <select class="form-select" v-model="form.company_uuid" aria-label="Default select example" :placeholder="$t('application.form.company')" @change="companyWasChanged" required>
+                  <option value="" disabled selected>{{ $t('application.form.company') }}</option>
+                  <option
+                    v-for="({ uuid, name }, idx) of companies" :key="idx"
+                    :value="uuid"
+                    >
+                    {{ name }}
+                  </option>
+                </select>
+              </div>
+            </div> -->
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.alias') }}</label>
+              <div class="col-lg-9">
+                <select class="form-select" v-model="form.alias_uuid" :placeholder="$t('application.form.country')" @change="loadData('alias')" disabled>
+                  <option value="" disabled selected>{{ $t('application.form.alias') }}</option>
+                  <option
+                    v-for="({ uuid, value }, idx) of aliases" :key="idx"
+                    :value="uuid"
+                    >
+                    {{ value }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.country') }}</label>
+              <div class="col-lg-9">
+                <select class="form-select" v-model="form.country_uuid" :placeholder="$t('application.form.country')" @change="loadData('country')" disabled>
+                  <option value="" disabled selected>{{ $t('application.form.country') }}</option>
+                  <option
+                    v-for="({ uuid, value }, idx) of countries" :key="idx"
+                    :value="uuid"
+                    >
+                    {{ value }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.language') }}</label>
+              <div class="col-lg-9">
+                <select class="form-select" v-model="form.language_uuid" :placeholder="$t('application.form.language')" @change="loadData('language')" disabled>
+                  <option value="" disabled selected>{{ $t('application.form.language') }}</option>
+                  <option
+                    v-for="({ uuid, value }, idx) of languages" :key="idx"
+                    :value="uuid"
+                    >
+                    {{ value }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.degree') }}</label>
+              <div class="col-lg-9">
+                <select class="form-select" v-model="form.degree_uuid" :placeholder="$t('application.form.degree')" @change="loadData('degree')" disabled>
+                  <option value="" disabled selected>{{ $t('application.form.degree') }}</option>
+                  <option
+                    v-for="({ uuid, value }, idx) of degrees" :key="idx"
+                    :value="uuid"
+                    >
+                    {{ value }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.university') }}</label>
+              <div class="col-lg-9">
+                <select class="form-select" v-model="form.university_uuid" @change="loadData('university')" disabled>
+                  <option value="" disabled selected>{{ $t('application.form.university') }}</option>
+                  <option
+                    v-for="({ uuid, name }, idx) of universities" :key="idx"
+                    :value="uuid"
+                    >
+                    {{ name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.faculties_and_departments') }}</label>
+              <div class="col-lg-9">
+                <VueMultiselect
+                  v-model="selectedDepartments"
+                  :options="departmentOptions"
+                  :multiple="true"
+
+                  :group-select="true"
+                  group-label="faculty"
+                  group-values="departments"
+                  track-by="name"
+
+                  label="name"
+                  :placeholder="$t('application.form.faculties_and_departments_select.placeholder')"
+
+                  :select-group-label="$t('application.form.faculties_and_departments_select.select_group_label')"
+                  :deselect-group-label="$t('application.form.faculties_and_departments_select.deselect_group_label')"
+                  
+                  :select-label="$t('application.form.faculties_and_departments_select.select_label')"
+                  :deselect-label="$t('application.form.faculties_and_departments_select.deselect_label')"
+                  :selected-label="$t('application.form.faculties_and_departments_select.selected')"
+                >
+                </VueMultiselect>
+              </div>
+            </div>
+
+            <div class="form-group row" v-if="form.status">
+              <label class="col-lg-3 col-form-label">{{ $t('application.form.status') }}</label>
+              <div class="col-lg-9">
+                <select class="form-select" v-model="form.status.value" disabled>
+                  <option value="" disabled selected>{{ $t('application.form.status') }}</option>
+                  <option
+                    v-for="(status, idx) of statuses" :key="idx"
+                    :value="status"
+                    :selected="status.uuid === form.status.value.uuid"
+                  >
+                    {{ status.value }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <!-- <div>
+              <button type="submit" class="btn btn-primary">{{ $t('system.save_changes') }}</button>
+              <button type="submit" class="btn btn-danger ms-2" @click="clear">{{ $t('system.clear') }}</button>
+            </div> -->
+          </form>
+        </div>
+    </div>
+  </div>
+
+  <div class="col-xl-4">
+    <Inputs v-if="form?.status" :form="form.status" :inputs="statusInputs" :values="form.status.translations" :block-title="'application.form.status_note'" readonly />
   </div>
 </template>
 
 <script setup>
-  import DocumentsPreview from '../partials/documents/preview/Index.vue'
-  import userEdit from './userEdit';
+  import VueMultiselect from 'vue-multiselect'
+  import Inputs from '../../../components/InputCard/Index.vue'
+  import useIndex from './useIndex';
 
   const {
     form,
-    activityOptions,
-    faculties,
+    aliases,
+    languages,
+    degrees,
+    // companies,
+    countries,
     universities,
     statuses,
+    statusInputs,
+
+    selectedDepartments,
+    departmentOptions,
+
+    loadData,
+    clear,
     update,
-  } = userEdit();
+  } = useIndex();
 </script>
+
+<style scoped>
+  @import '@/assets/css/admin/vue-multiselect.css';
+</style>

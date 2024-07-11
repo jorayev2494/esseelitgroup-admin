@@ -1,3 +1,19 @@
 {
-    "context_title": "Departments"
+  "context_title": "Departments",
+  "translations": "Translates",
+  "form": {
+    "company": "Company",
+    "alias": "Alias",
+    "university": "University",
+    "faculty": "Faculty",
+    "activity": "Activity",
+    "name": "Name",
+    "description": "Description",
+    "degree": "Degree",
+    "language": "Language",
+    "price": "Price",
+    "discount_price": "Discount price",
+    "currency": "Currency",
+    "is_filled": "Quota"
+  }
 }

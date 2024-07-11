@@ -1,7 +1,11 @@
-import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
-import { onMounted, reactive, ref, getCurrentInstance } from "vue"
+import { onMounted, ref } from "vue"
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
+import { useInputs } from '../useCases/usePartials'
+import { useName } from "../useCases/useName";
+import { useUniversity } from "../useCases/useUniversity";
+import coverUseCases from '../../../components/imageCropper/useCases'
+import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 
 export default function useEdit() {
 
@@ -9,33 +13,20 @@ export default function useEdit() {
   const router = useRouter();
   const route = useRoute();
   const { image } = useUrlPattern();
+  const inputs = useInputs();
+  const { nameSelectedPreview, names, loadNamesList, makeNameSelectedPreview } = useName()
+  const { universities, loadUniversities } = useUniversity();
+  const {
+    imagePreview,
+    modalBindings,
+
+    changedImage,
+    croppedImage,
+  } = coverUseCases();
 
   const { uuid } = route.params;
 
-  const logoPreview = ref(null);
-
-  const universities = ref([]);
-
-  const form = ref({
-    logo: '',
-    university_uuid: '',
-    translations: {},
-  });
-
-  const uploadLogo = event => {
-    const uploadedLogo = event.target.files[0];
-
-    if (uploadedLogo) {
-      form.logo = uploadedLogo;
-      logoPreview.value = URL.createObjectURL(uploadedLogo);
-    }
-  }
-
-  const loadUniversities = () => {
-    store.dispatch('university/loadUniversityListAsync').then(response => {
-      universities.value = response.data;
-    })
-  }
+  const form = ref({});
 
   const decorateFormData = () => {
     const formData = new FormData();
@@ -43,20 +34,20 @@ export default function useEdit() {
     for (const key in form.value) {
       if (Object.hasOwnProperty.call(form.value, key)) {
         const value = form.value[key];
+
+        if (key === 'logo' && ! (value instanceof File)) {
+          formData.append(key, '');
+          continue;
+        }
         
         if (key === 'translations') {
-          console.log('aaa key: ', key, 'Value: ', form.value, 'value: ', value);
           for (const kk in value) {
-            console.log('aaa kk: ', kk, 'value: ', value)
             if (Object.hasOwnProperty.call(value, kk)) {
               const vv = value[kk];
-              console.log('Nested: ', kk, 'vv: ', vv);
 
               for (const k in vv) {
                 if (Object.hasOwnProperty.call(vv, k)) {
                   const v = vv[k];
-                  console.log('Nested - Nested: ', k, 'v: ', v);
-                  
                   formData.append(`${key}[${kk}][${k}]`, v);
 
                 }
@@ -67,7 +58,6 @@ export default function useEdit() {
           continue;
         }
 
-
         formData.append(key, value);
       }
     }
@@ -75,10 +65,18 @@ export default function useEdit() {
     return formData;
   }
 
+  const mapFaculty = faculty => {
+    const { name_uuid, logo } = faculty
+    form.value = faculty;
+    imagePreview.value = image(logo)
+    makeNameSelectedPreview(item => item.uuid === name_uuid)
+
+    return faculty;
+  }
+
   const loadFaculty = () => {
     store.dispatch('faculty/showFacultyAsync', { uuid }).then(response => {
-      console.log('Response: ', response)
-      form.value = response.data;
+      form.value = mapFaculty(response.data)
     })
   }
 
@@ -91,16 +89,21 @@ export default function useEdit() {
 
   onMounted(() => {
     loadFaculty()
+    loadNamesList()
     loadUniversities()
-    logoPreview.value = image(logoPreview.value)
   })
 
   return {
     form,
+    names,
+    inputs,
     universities,
-    logoPreview,
+    imagePreview,
+    nameSelectedPreview,
+    modalBindings,
 
-    uploadLogo,
+    changedImage,
+    croppedImage,
     update,
   }
 }

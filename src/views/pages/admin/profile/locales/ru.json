@@ -1,0 +1,31 @@
+{
+  "context_title": "Профиль",
+  "form": {
+    "full_name": "Полное имя",
+    "first_name": "Имя",
+    "last_name": "Фамилия",
+    "avatar": "Аватар",
+    "email": "Эл. почта"
+  },
+  "flash_messages": {
+    "success": {
+      "profile_was_updated": "Профиль обновлен"
+    }
+  },
+  "partials": {
+    "change_password": {
+      "label": "Пароль",
+      "title": "Изменить пароль",
+      "form": {
+        "current_password": "Текущий пароль",
+        "new_password": "Новый пароль",
+        "new_password_confirmation": "Подтверждение нового пароля"
+      },
+      "flash_messages": {
+        "success": {
+          "password_was_changed": "Пароль был изменен"
+        }
+      }
+    }
+  }
+}

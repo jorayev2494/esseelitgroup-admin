@@ -2,6 +2,7 @@
   <li class="nav-item dropdown has-arrow">
     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
       <span class="p-1">
+        <i :class="`fi fi-${getLocaleFlag(locale)} me-1`" width="300"></i>
         {{ $t(`system.supported-locales.${locale}`) }}
       </span>
     </a>
@@ -13,6 +14,7 @@
         :class="{ 'active': sLocale === locale }"
         @click="switchLanguage(sLocale)"
       >
+        <i :class="`fi fi-${getLocaleFlag(sLocale)} me-1`" width="300"></i>
         {{ $t(`system.supported-locales.${sLocale}`) }}
       </a>
     </div>
@@ -22,15 +24,13 @@
 <script setup>
   import { useI18n } from 'vue-i18n';
   import Tr from '@/services/translations/translation'
-import { useRouter } from 'vue-router';
+  import { useRouter } from 'vue-router';
 
   const router = useRouter();
-  const { t, locale } = useI18n();
+  const { locale } = useI18n();
   const supportedLocales = Tr.supportedLocales
-  console.log('Supported Locales: ', Tr.supportedLocales);
 
   const switchLanguage = async locale => {
-    console.log('Locale: ', locale);
     await Tr.switchLanguage(locale);
 
     try {
@@ -40,6 +40,18 @@ import { useRouter } from 'vue-router';
       router.push('/');
     }
 
+    window.location.reload();
+  }
+
+  const getLocaleFlag = flag => {
+    const flags = {
+      en: 'us',
+      ru: 'ru',
+      tm: 'tm',
+      tr: 'tr',
+    }
+
+    return flags[flag] ?? flag
   }
 
 </script>

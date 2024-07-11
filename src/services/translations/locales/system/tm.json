@@ -2,11 +2,39 @@
     "supported-locales": {
         "en": "English",
         "ru": "Русский",
-        "tm": "Türkmençe"
+        "tm": "Türkmençe",
+        "tr": "Türkçe"
     },
+    "gender": {
+        "label": "Jyns",
+        "items": {
+            "male": "Erkek",
+            "female": "Aýal"
+        }
+    },
+    "marital_status": {
+        "label": "Maşgala ýagdaýy",
+        "items": {
+            "single": "Leeke",
+            "married": "Öýlenen"
+        }
+    },
+    "pagination": {
+        "info": "{two} ýazgydan {zero}-den {first}-e çenli görkezilýär"
+    },
+    "translations": "Terjimeleri",
+    "actions": "Hereketler",
     "create": "Döret",
     "edit": "Redaktirle",
     "show": "Görkez",
     "delete": "Öçür",
-    "send": "Iber"
+    "send": "Iber",
+    "save": "Saklaň",
+    "save_changes": "Üýtgetmeleri ýatda sakla",
+    "created_at": "Döredildi",
+    "clear": "Arassala",
+    "upload": "Yükle",
+    "uploaded": "Yüklendi",
+    "all": "Ählisi",
+    "search_btn": "Gözläň"
 }

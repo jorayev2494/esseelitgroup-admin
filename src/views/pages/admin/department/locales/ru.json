@@ -1,3 +1,19 @@
 {
-    "context_title": "Департаменты"
+  "context_title": "Департаменты",
+  "translations": "Переводы",
+  "form": {
+    "company": "Компания",
+    "alias": "Псевдоним",
+    "university": "Университет",
+    "faculty": "Факультет",
+    "activity": "Активность",
+    "name": "Название",
+    "description": "Описание",
+    "degree": "Степен",
+    "language": "Язык",
+    "price": "Цена",
+    "discount_price": "Цена со скидкой",
+    "currency": "Валюта",
+    "is_filled": "Kвота"
+  }
 }

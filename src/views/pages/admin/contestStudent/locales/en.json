@@ -1,0 +1,24 @@
+{
+    "context_title": "Students",
+    "application_form": "Application Form",
+    "documents": "Documents",
+    "additional_documents": "Additional documents",
+    "add_additional_document": "Add additional document",
+    "save_changes": "Save changes",
+    "document": "Document",
+    "document_type": "Document type",
+    "document_name": "Document name",
+    "extension": "Extension",
+    "file_name": "File name",
+    "code": "Code",
+    "student": "Student",
+    "form": {
+        "gift_given_at": "Gift given at",
+        "note": "Note",
+        "student": {
+            "full_name": "Full name",
+            "first_name": "First name",
+            "avatar": "Avatar"
+        }
+    }
+}

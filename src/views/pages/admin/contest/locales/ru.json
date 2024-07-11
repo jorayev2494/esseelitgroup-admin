@@ -1,0 +1,15 @@
+{
+  "context_title": "Конкурсы",
+  "translations": "Переводы",
+  "form": {
+    "participants_number": "Количество участников",
+    "title": "Заголовок",
+    "description": "Описание",
+
+    "application_statuses": "Статусы приложений",
+    "student_nationalities": "Студенческие национальности",
+    "start_time": "Время начала",
+    "end_time": "Время окончания",
+    "is_active": "Активность"
+  }
+}

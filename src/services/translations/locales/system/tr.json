@@ -1,0 +1,40 @@
+{
+    "supported-locales": {
+        "en": "English",
+        "ru": "Русский",
+        "tm": "Türkmençe",
+        "tr": "Türkçe"
+    },
+    "gender": {
+        "label": "Cinsiyet",
+        "items": {
+            "male": "Erkek",
+            "female": "Bayan"
+        }
+    },
+    "marital_status": {
+        "label": "Medeni",
+        "items": {
+            "single": "Tek",
+            "married": "Evli"
+        }
+    },
+    "pagination": {
+        "info": "{two} girişten {zero} ila {first} arası gösteriliyor"
+    },
+    "translations": "Çeviriler",
+    "actions": "Hareketler",
+    "create": "Oluştur",
+    "edit": "Düzenle",
+    "show": "Göster",
+    "delete": "Sil",
+    "send": "Göndermek",
+    "save": "Kaydet",
+    "save_changes": "Değişiklikleri Kaydet",
+    "created_at": "Oluşturulma tarihi",
+    "clear": "Temizle",
+    "upload": "Yükle",
+    "uploaded": "Yüklendi",
+    "all": "Tümü",
+    "search_btn": "Aramak"
+}

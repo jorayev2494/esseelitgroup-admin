@@ -2,11 +2,39 @@
     "supported-locales": {
         "en": "English",
         "ru": "Русский",
-        "tm": "Türkmençe"
+        "tm": "Türkmençe",
+        "tr": "Türkçe"
     },
+    "gender": {
+        "label": "Gender",
+        "items": {
+            "male": "Male",
+            "female": "Female"
+        }
+    },
+    "marital_status": {
+        "label": "Marital Status",
+        "items": {
+            "single": "Single",
+            "married": "Married"
+        }
+    },
+    "pagination": {
+        "info": "Showing {zero} to {first} of {two} entries"
+    },
+    "translations": "Translates",
+    "actions": "Actions",
     "create": "Create",
     "edit": "Edit",
     "show": "Show",
     "delete": "Delete",
-    "send": "Send"
+    "send": "Send",
+    "save": "Save",
+    "save_changes": "Save changes",
+    "created_at": "Created at",
+    "clear": "Clear",
+    "upload": "Upload",
+    "uploaded": "Uploaded",
+    "all": "All",
+    "search_btn": "Search"
 }

@@ -18,6 +18,7 @@ const Trans = {
     localStorage.setItem('user-locale', newLocale);
   },
   isLocaleSupported(locale) {
+    console.log('Trans.supportedLocales: ', Trans.supportedLocales);
     return Trans.supportedLocales.includes(locale)
   },
   getUserLocale() {
@@ -65,7 +66,7 @@ const Trans = {
     return Trans.defaultLocale;
   },
   async routeMiddleware(to, _from, next) {
-    const paramLocale = to.params.locale;
+    const paramLocale = to.params.locale ;
 
     if (!Trans.isLocaleSupported(paramLocale)) {
       return next(Trans.guessDefaultLocale());
@@ -100,6 +101,9 @@ const Trans = {
         ...to.params
       }
     }
+  },
+  makeRoute(to) {
+    return this.route(to)
   },
 }
 

@@ -1,0 +1,31 @@
+{
+  "context_title": "Profil",
+  "form": {
+    "full_name": "Doly ady",
+    "first_name": "Ady",
+    "last_name": "Familyasy",
+    "avatar": "Awatar",
+    "email": "E-poçta"
+  },
+  "flash_messages": {
+    "success": {
+      "profile_was_updated": "Profil uytgedildi"
+    }
+  },
+  "partials": {
+    "change_password": {
+      "label": "Parol",
+      "title": "Paroly çalyş",
+      "form": {
+        "current_password": "Hazirki parolynyz",
+        "new_password": "Täze parol",
+        "new_password_confirmation": "Täze parol tassyklamasy"
+      },
+      "flash_messages": {
+        "success": {
+          "password_was_changed": "Parol üýtgedildi"
+        }
+      }
+    }
+  }
+}

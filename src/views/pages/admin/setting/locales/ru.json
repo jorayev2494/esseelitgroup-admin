@@ -1,0 +1,14 @@
+{
+  "context_title": "Настройки",
+  "tabs": {
+    "general_settings": "Общие настройки",
+    "about_us": "O нас"
+  },
+  "form": {
+    "about_us": {
+      "title": "Заголовок",
+      "content": "Содержание",
+      "cover": "Обложка"
+    }
+  }
+}

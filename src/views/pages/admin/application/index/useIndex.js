@@ -1,47 +1,67 @@
 import { useUrlPattern } from '@/views/pages/utils/UrlPattern';
 import { usePaginator } from '@/views/pages/utils/paginator';
 import { onMounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
+import { getStatusStyle } from "../useCases/usePartials";
 
 export default function useIndex() {
-
   const store = useStore();
   const paginator = usePaginator();
   const { image } = useUrlPattern();
+  const { t, d } = useI18n();
+  const { defaultImage } = useUrlPattern();
 
   const loading = ref(true);
   const items = ref([]);
   const columns = [
-    { field: 'full_name', title: 'Full name' },
-    { field: 'email', title: 'Email' },
-    { field: 'university.name', title: 'University' },
-    { field: 'faculty.name', title: 'Faculty' },
-    { field: 'status.value', title: 'Status' },
-    { field: 'created_at', title: 'Created At', type: 'date' },
-    { field: 'actions', title: 'Actions', sort: false, headerClass: 'float-end' },
+    { field: 'student', title: t('application.form.student') },
+    { field: 'language', title: t('application.form.language') },
+    { field: 'company', title: t('application.form.company') },
+    { field: 'degree.value', title: t('application.form.degree') },
+    { field: 'country', title: t('application.form.country') },
+    { field: 'university', title: t('application.form.university') },
+    { field: 'status', title: t('application.form.status') },
+    { field: 'created_at', title: t('system.created_at'), type: 'date' },
+    { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
   ];
 
-  const reloadData = () => {
+  const reloadData = (params = {}) => {
     items.value = [];
-    loadApplications();
+    loadApplications(params);
   }
 
-  const departmentMapper = faculty => {
+  const applicationMapper = application => {
+    if (application.student.avatar?.url === undefined) {
+      application.student.avatar = {
+        url: defaultImage('avatar'),
+      };
+    }
 
-    return faculty;
+    application.created_at = d(new Date(application.created_at * 1000), 'short');
+
+    return application;
   }
 
-  const loadApplications = () => {
+  const statusSelected = ({ uuid }) => {
+    reloadData({
+      filters: {
+        status_value_uuids: [uuid],
+      },
+    })
+  }
+
+  const clearSelected = () => reloadData()
+
+  const loadApplications = (params = {}) => {
     loading.value = true;
 
-    store.dispatch('application/loadApplicationsAsync', { params: { ...paginator.toQueryParams(), } })
+    store.dispatch('application/loadApplicationsAsync', { params: { ...paginator.toQueryParams(), ...params } })
       .then(response => {
         const { data } = response;
-        console.log('Data: ', data, 'response: ', response)
 
         paginator.setMetaData(data);
-        items.value = data.data.map(departmentMapper);
-        console.log('Department data: ', data.data)
+        items.value = data.data.map(applicationMapper);
       })
       .catch(error => error)
       .finally(() => loading.value = false);
@@ -74,5 +94,8 @@ export default function useIndex() {
     paginator,
 
     changeServer,
+    getStatusStyle,
+    statusSelected,
+    clearSelected,
   }
 }

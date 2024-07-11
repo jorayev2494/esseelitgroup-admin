@@ -1,6 +1,8 @@
 import { useUrlPattern } from '@/views/pages/utils/UrlPattern';
+import { useDate } from '@/views/pages/utils/helpers';
 import { usePaginator } from '@/views/pages/utils/paginator';
 import { onMounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
 
 export default function useIndex() {
@@ -8,16 +10,18 @@ export default function useIndex() {
   const store = useStore();
   const paginator = usePaginator();
   const { image, defaultImage } = useUrlPattern();
+  const { t, d } = useI18n();
+  const { dateFromTimestamp } = useDate()
 
   const loading = ref(true);
   const items = ref([]);
   const columns = [
-    { field: 'logo', title: 'Logo' },
-    { field: 'name', title: 'Name' },
-    { field: 'domain', title: 'Domain' },
-    { field: 'status.value', title: 'Status' },
-    { field: 'created_at', title: 'Created At', type: 'date' },
-    { field: 'actions', title: 'actions', sort: false },
+    { field: 'logo', title: t('company.form.logo') },
+    { field: 'name', title: t('company.form.name') },
+    { field: 'is_main', title: t('company.form.is_main') },
+    // { field: 'status.value', title: t('company.form.status') },
+    { field: 'created_at', title: t('system.created_at'), type: 'date' },
+    { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
   ];
 
   const reloadData = () => {
@@ -27,7 +31,8 @@ export default function useIndex() {
 
   const companyMapper = company => {
     // company.logo = image(company.logo, 60, 60);
-    company.logo = company?.logo?.url ?? defaultImage('logo');
+    company.logo = image(company?.logo);
+    company.created_at = d(dateFromTimestamp(company.created_at), 'short');
 
     return company;
   }

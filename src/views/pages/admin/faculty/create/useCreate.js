@@ -1,52 +1,34 @@
 import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
-import { onMounted, reactive, ref, getCurrentInstance } from "vue"
-import { useRoute, useRouter } from "vue-router";
+import { onMounted, reactive } from "vue"
+import { useRouter } from "vue-router";
 import { useStore } from "vuex"
+import { useInputs } from '../useCases/usePartials'
+import { useName } from "../useCases/useName";
+import { useUniversity } from "../useCases/useUniversity";
+import coverUseCases from '../../../components/imageCropper/useCases'
 
 export default function useCreate() {
 
   const store = useStore();
   const router = useRouter();
-  const route = useRoute();
   const { image } = useUrlPattern();
+  const { nameSelectedPreview, names, loadNamesList } = useName();
+  const { universitiesPreview, universities, loadUniversities } = useUniversity();
+  const {
+    imagePreview,
+    modalBindings,
 
-  const logoPreview = ref(null);
+    changedImage,
+    croppedImage,
+  } = coverUseCases();
 
-  const universities = ref([]);
-
-  const translations = {
-    name: '',
-    description: '',
-  }
+  const inputs = useInputs();
 
   const form = reactive({
     logo: '',
-    university_uuid: '',
+    name_uuid: '',
     translations: {},
   });
-
-  const makeTranslationsForm = (form, translations) => {
-    const clientSupportedLocales = getCurrentInstance().appContext.config.globalProperties.$clientSupportedLocales;
-
-    clientSupportedLocales.forEach(locale => {
-      form.translations[locale] = { ...translations };
-    });
-  }
-
-  const uploadLogo = event => {
-    const uploadedLogo = event.target.files[0];
-
-    if (uploadedLogo) {
-      form.logo = uploadedLogo;
-      logoPreview.value = URL.createObjectURL(uploadedLogo);
-    }
-  }
-
-  const loadUniversities = () => {
-    store.dispatch('university/loadUniversityListAsync').then(response => {
-      universities.value = response.data;
-    })
-  }
 
   const decorateFormData = () => {
     const formData = new FormData();
@@ -59,13 +41,10 @@ export default function useCreate() {
           for (const kk in value) {
             if (Object.hasOwnProperty.call(value, kk)) {
               const vv = value[kk];
-              console.log('Nested: ', kk, 'vv: ', vv);
 
               for (const k in vv) {
                 if (Object.hasOwnProperty.call(vv, k)) {
                   const v = vv[k];
-                  console.log('Nested - Nested: ', k, 'v: ', v);
-                  
                   formData.append(`${key}[${kk}][${k}]`, v);
 
                 }
@@ -92,18 +71,23 @@ export default function useCreate() {
   }
 
   onMounted(() => {
-    loadUniversities();
-    logoPreview.value = image(logoPreview.value)
-    makeTranslationsForm(form, translations)
+    loadNamesList()
+    loadUniversities()
+    imagePreview.value  = image()
   })
 
   return {
     form,
-    translations,
+    names,
+    inputs,
+    universitiesPreview,
     universities,
-    logoPreview,
-
-    uploadLogo,
+    imagePreview,
+    nameSelectedPreview,
+    modalBindings,
+    
+    changedImage,
+    croppedImage,
     create,
   }
 }

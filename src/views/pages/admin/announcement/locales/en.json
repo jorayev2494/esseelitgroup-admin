@@ -1,0 +1,12 @@
+{
+  "context_title": "Announcements",
+  "form": {
+    "author": "Author",
+    "for": "For",
+    "title": "Title",
+    "content": "Content",
+    "start_time": "Start time",
+    "end_time": "End time",
+    "is_active": "Is Active"
+  }
+}

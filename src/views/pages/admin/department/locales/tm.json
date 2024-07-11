@@ -1,3 +1,19 @@
 {
-    "context_title": "Bölümler"
+  "context_title": "Bölümler",
+  "translations": "Terjimeleri",
+  "form": {
+    "company": "Kompaniýa",
+    "alias": "Lakam",
+    "university": "Uniwersitet",
+    "faculty": "Fakultet",
+    "activity": "Activity",
+    "name": "Ady",
+    "description": "Düşündiriş",
+    "degree": "Dereje",
+    "language": "Dil",
+    "price": "Bahasy",
+    "discount_price": "İndirimli fiyat",
+    "currency": "Walyuta",
+    "is_filled": "Kwota"
+  }
 }

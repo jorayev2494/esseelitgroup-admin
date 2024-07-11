@@ -56,7 +56,25 @@ import university from '@/views/pages/admin/university/routes';
 import faculty from '@/views/pages/admin/faculty/routes';
 import department from '@/views/pages/admin/department/routes';
 import application from '@/views/pages/admin/application/routes';
+import countryAndCity from '@/views/pages/admin/countryAndCity/routes';
+import country from '@/views/pages/admin/countryAndCity/country/routes';
+import city from '@/views/pages/admin/countryAndCity/city/routes';
 import errors from '@/views/pages/admin/errors/routes';
+import degree from '@/views/pages/admin/degree/routes';
+import alias from '@/views/pages/admin/alias/routes';
+import language from '@/views/pages/admin/language/routes';
+import facultyName from '@/views/pages/admin/facultyName/routes';
+import departmentName from '@/views/pages/admin/departmentName/routes';
+import student from '@/views/pages/admin/student/routes';
+import applicationStatusValue from '@/views/pages/admin/applicationStatusValue/routes';
+import employee from '@/views/pages/admin/employee/routes';
+import announcement from '@/views/pages/admin/announcement/routes';
+import manager from '@/views/pages/admin/manager/routes';
+import profile from '@/views/pages/admin/profile/routes';
+import contest from '@/views/pages/admin/contest/routes';
+import contestStudent from '@/views/pages/admin/contestStudent/routes';
+import setting from '@/views/pages/admin/setting/routes';
+import document from '@/views/pages/admin/document/routes';
 
 const routes = [
   ...auth,
@@ -72,6 +90,24 @@ const routes = [
       ...faculty,
       ...department,
       ...application,
+      ...countryAndCity,
+      ...country,
+      ...city,
+      ...degree,
+      ...alias,
+      ...language,
+      ...facultyName,
+      ...departmentName,
+      ...student,
+      ...applicationStatusValue,
+      ...employee,
+      ...announcement,
+      ...manager,
+      ...profile,
+      ...contest,
+      ...contestStudent,
+      ...setting,
+      ...document,
     ],
     meta: {
       middleware: [
@@ -107,8 +143,8 @@ const routes = [
     component: Transactionlist
   },
   {
-    path: 'settings',
-    name: 'settings',
+    path: 'setting',
+    name: 'setting',
     component: Settings
   },
   {

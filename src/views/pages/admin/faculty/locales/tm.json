@@ -1,3 +1,10 @@
 {
-    "context_title": "Fakultetler"
+  "context_title": "Fakultetler",
+  "form": {
+    "university": "Universitet",
+    "logo": "Logotip",
+    "name": "Ady",
+    "label": "Etiketkasy",
+    "description": "Düşündiriş"
+  }
 }

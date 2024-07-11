@@ -4,12 +4,15 @@
   "description": "mentoring-vuejs project",
   "private": true,
   "scripts": {
+    "dev": "vue-cli-service build --mode development",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "@bhplugin/vue3-datatable": "^1.1.3",
+    "@ckeditor/ckeditor5-build-classic": "^41.1.0",
+    "@ckeditor/ckeditor5-vue": "^5.1.0",
     "axios": "^1.6.5",
     "bootstrap": "5.2.3",
     "datatables.net-bs4": "^3.2.2",
@@ -17,8 +20,11 @@
     "device-uuid": "^1.0.4",
     "feather-icons": "^4.28.0",
     "file-loader": "^6.2.0",
+    "flag-icons": "^7.2.1",
     "jquery": "^3.7.1",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
+    "npm": "^10.5.1",
     "popper.js": "^1.16.1",
     "raphael": "^2.3.0",
     "sass-loader": "^11.0.1",
@@ -26,7 +32,10 @@
     "vue-custom-scrollbar": "^1.4.1",
     "vue-i18n": "^9.9.1",
     "vue-morris": "^1.1.0",
+    "vue-multiselect": "^3.0.0-beta.3",
+    "vue-picture-cropper": "^0.7.0",
     "vue-router": "^4.2.5",
+    "vue-select": "^4.0.0-beta.6",
     "vue-slick": "^1.1.16",
     "vue-tiny-slider": "^0.1.39",
     "vue3-autocounter": "^1.0.6",
@@ -35,6 +44,7 @@
     "vue3-perfect-scrollbar": "^1.6.1",
     "vue3-select2-component": "^0.1.7",
     "vue3-toastify": "^0.2.1",
+    "vue3-ytframe": "^0.4.0",
     "vuex": "^4.1.0"
   },
   "devDependencies": {

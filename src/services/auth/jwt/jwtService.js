@@ -30,12 +30,9 @@ export default class JwtService {
       ...jwtOverrideConfig,
     }
 
-    // Request Interceptor
+    // // Request Interceptor
     // this.httpClientIns.interceptors.request.use(
     //   config => {
-    //     config.headers['X-Device-Id'] = this.makeDeviceIdHash()
-    //     // config.headers['X-Socket-Id'] = window.Echo.socketId()
-
     //     // Get token from localStorage
     //     const accessToken = this.getToken()
 
@@ -51,61 +48,40 @@ export default class JwtService {
 
     // Add request/response interceptor
     this.httpClientIns.interceptors.response.use(
-      response => {
-        return response
-      },
+      response => response,
       error => {
-        const {
-          config,
-          response: {
-            status
-          }
-        } = error
+        const { config, response } = error
         const originalRequest = config
 
-        if (status === 401) {
+        if (response && response.status === 401) {
           if (!this.isAlreadyFetchingAccessToken) {
             this.isAlreadyFetchingAccessToken = true
             this.refreshToken().then(r => {
-              // this.isAlreadyFetchingAccessToken = false
+              this.isAlreadyFetchingAccessToken = false
+              const { access_token: accessToken, refresh_token: refreshToken } = r.data;
 
               // Update accessToken in localStorage
-              this.setAccessToken(r.data.access_token)
-              this.setRefreshToken(r.data.refresh_token)
+              this.setAccessToken(accessToken)
+              this.setRefreshToken(refreshToken)
 
-              // this.onAccessTokenFetched(r.data.access_token)
+              this.onAccessTokenFetched(accessToken)
             })
-          } else {
-            this.logout()
           }
 
-          // const retryOriginalRequest = new Promise(resolve => {
-          //   this.addSubscriber(accessToken => {
-          //     // Make sure to assign accessToken according to your response.
-          //     // Check: https://pixinvent.ticksy.com/ticket/2413870
-          //     // Change Authorization header
-          //     originalRequest.headers.Authorization = `${this.jwtConfig.tokenType} ${accessToken}`
-          //     resolve(this.httpClientIns(originalRequest))
-          //   })
-          // })
-
-          // return retryOriginalRequest
-          // return Promise.resolve(error)
-
-          return new Promise(resolve => {
+          const retryOriginalRequest = new Promise(resolve => {
             this.addSubscriber(accessToken => {
-              // console.log('getToken: ', getToken)
               // Make sure to assign accessToken according to your response.
               // Check: https://pixinvent.ticksy.com/ticket/2413870
               // Change Authorization header
               originalRequest.headers.Authorization = `${this.jwtConfig.tokenType} ${accessToken}`
-
-              return resolve(this.httpClientIns(originalRequest))
+              resolve(this.httpClientIns(originalRequest))
             })
           })
+
+          return retryOriginalRequest
         }
 
-        return Promise.reject(error);
+        return Promise.reject(error)
       },
     )
   }
@@ -127,23 +103,12 @@ export default class JwtService {
   }
 
   setAccessToken(value) {
+    store.commit('auth/setAccessToken', value);
     localStorage.setItem(this.jwtConfig.storageTokenKeyName, value);
   }
 
   setRefreshToken(value) {
     localStorage.setItem(this.jwtConfig.storageRefreshTokenKeyName, value);
-  }
-
-  setAuthData() {
-    // store.dispatch('profile/loadProfileAsync').then(response => {
-    //   const {
-    //     data: profile
-    //   } = response;
-    //   localStorage.setItem(this.jwtConfig.storageAuthDataKeyName, JSON.stringify(profile));
-    //   toast.success('Welcome ' + profile.first_name + ' ' + profile.last_name);
-    // }).catch((err) => {
-    // 
-    // });
   }
 
   login(...args) {
@@ -152,12 +117,12 @@ export default class JwtService {
         const {
           access_token: accessToken,
           refresh_token: refreshToken,
-          // auth_data: authData,
+          auth_data: authData,
         } = response.data;
 
         this.setAccessToken(accessToken);
         this.setRefreshToken(refreshToken);
-        this.setAuthData();
+        this.setAuthData(authData);
 
         // userData.role.permissions = [...userData.role.permissions, ...initialAbility, ...profileAbility]
         // localStorage.setItem('userData', JSON.stringify(userData))
@@ -182,26 +147,13 @@ export default class JwtService {
     return this.httpClientIns.put(this.jwtConfig.restorePasswordEndpoint, ...args);
   }
 
-  async refreshToken() {
-    return await new Promise((resolve, reject) => {
-      this.httpClientIns.post(this.jwtConfig.refreshEndpoint, {
-        refresh_token: this.getRefreshToken(),
-      }).then(r => {
-        this.isAlreadyFetchingAccessToken = false
-
-        // Update accessToken in localStorage
-        this.setAccessToken(r.data.access_token)
-        this.setRefreshToken(r.data.refresh_token)
-        this.onAccessTokenFetched(r.data.access_token)
-        // defineAbilityFor().update([])
-
-        return resolve(r)
-      }).catch(error => reject(error))
+  refreshToken() {
+    return this.httpClientIns.post(this.jwtConfig.refreshEndpoint, {
+      refresh_token: this.getRefreshToken(),
     })
   }
 
   logout(...args) {
-    console.log('Logout: ', this.jwtConfig.logoutEndpoint, 'router: ', router);
     const serverResponse = this.httpClientIns.post(this.jwtConfig.logoutEndpoint, ...args);
 
     // Reset ability
@@ -213,6 +165,8 @@ export default class JwtService {
       this.jwtConfig.storageTokenKeyName,
       this.jwtConfig.storageRefreshTokenKeyName,
       this.jwtConfig.storageAuthDataKeyName,
+      store.getters['auth/getKeyName'],
+      'who',
     ];
 
     authClearKeys.forEach(key => localStorage.removeItem(key));
@@ -223,5 +177,9 @@ export default class JwtService {
     // });
 
     return serverResponse;
+  }
+
+  setAuthData(payload) {
+    store.commit('auth/setAuthData', payload)
   }
 }

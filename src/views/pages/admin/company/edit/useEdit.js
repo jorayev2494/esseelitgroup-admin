@@ -14,7 +14,8 @@ export default function useCreate() {
 
   const form = ref({
     name: '',
-    domain: '',
+    email: '',
+    is_main: '',
     logo: '',
   });
 
@@ -42,6 +43,12 @@ export default function useCreate() {
     for (const key in form.value) {
       if (Object.hasOwnProperty.call(form.value, key)) {
         const value = form.value[key];
+
+        if (key === 'logo' && ! (value instanceof File)) {
+          formData.append(key, '');
+          continue;
+        }
+
         formData.append(key, value);
       }
     }
@@ -50,7 +57,7 @@ export default function useCreate() {
   }
 
   const update = () => {
-    store.dispatch('company/createCompanyAsync', decorateFormData())
+    store.dispatch('company/updateCompanyAsync', { uuid: route.params.uuid, data: decorateFormData() })
       .then(() => {
         router.push({ name: 'companies' });
       })

@@ -3,6 +3,15 @@ import store from './services/store'
 import router from './services/router';
 import translation from './services/translations/index.js';
 import globalVariables from './services/globalVariables/index'
+import VueYtframe from "vue3-ytframe"
+
+// flag-icons styles
+import "/node_modules/flag-icons/css/flag-icons.min.css";
+
+// DateTime style
+// import "./assets/css/admin/datetime.css";
+
+// import CKEditor from '@ckeditor/ckeditor5-vue';
 
 // Table
 import Vue3Datatable from '@bhplugin/vue3-datatable';
@@ -153,4 +162,6 @@ app.use(
 );
 app.use(store);
 app.use(router);
+app.use(VueYtframe);
+// app.use(CKEditor);
 app.mount('#app');

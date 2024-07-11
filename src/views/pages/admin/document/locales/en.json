@@ -1,0 +1,10 @@
+{
+  "context_title": "Documents",
+  "form": {
+    "title": "Title",
+    "type": "Type",
+    "file": "File",
+    "downloaded_count": "Downloaded count",
+    "is_active": "Activity"
+  }
+}

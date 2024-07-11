@@ -24,40 +24,40 @@ const routes = [
       ],
     },
   },
-  // {
-  //   path: 'applications/create',
-  //   name: 'application-create',
-  //   component: () => import('./create/Index.vue'),
-  //   meta: {
-  //     title: 'department.context_title',
-  //     middleware: [
-  //       'auth',
-  //     ],
-  //     breadcrumbs: [
-  //       {
-  //         label: 'dashboard.context_title',
-  //         route: {
-  //           name: 'dashboard',
-  //         },
-  //       },
-  //       {
-  //         label: 'department.context_title',
-  //         route: {
-  //           name: 'departments',
-  //         },
-  //       },
-  //       {
-  //         label: 'system.create',
-  //       },
-  //     ],
-  //   },
-  // },
+  {
+    path: 'applications/create/:student_uuid',
+    name: 'application-create',
+    component: () => import('./create/Index.vue'),
+    meta: {
+      title: 'department.context_title',
+      middleware: [
+        'auth',
+      ],
+      breadcrumbs: [
+        {
+          label: 'dashboard.context_title',
+          route: {
+            name: 'dashboard',
+          },
+        },
+        {
+          label: 'application.context_title',
+          route: {
+            name: 'applications',
+          },
+        },
+        {
+          label: 'system.create',
+        },
+      ],
+    },
+  },
   {
     path: 'applications/show/:uuid',
     name: 'application-show',
     component: () => import('./show/Index.vue'),
     meta: {
-      title: 'department.context_title',
+      title: 'application.context_title',
       middleware: [
         'auth',
       ],

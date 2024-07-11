@@ -10,8 +10,8 @@
 							<div class="col-sm-6">
 								<h3 class="page-title">Settings</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><router-link :to="{ name: 'dashboard' }">Dashboard</router-link></li>
-									<li class="breadcrumb-item"><router-link :to="{ name: 'settings' }">Settings</router-link></li>
+									<li class="breadcrumb-item"><router-link :to="$tMakeRoute({ name: 'dashboard' })">Dashboard</router-link></li>
+									<li class="breadcrumb-item"><router-link :to="$tMakeRoute({ name: 'settings' })">Settings</router-link></li>
 									<li class="breadcrumb-item active">Payment Settings</li>
 								</ul>
 							</div>

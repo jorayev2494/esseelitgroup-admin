@@ -1,6 +1,16 @@
 <template>
     <div class="content container-fluid">
 
+        <!-- <div>
+            <div class="progress progress-lg">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div> -->
+    
+        <div class="row">
+            <Announcement />
+        </div>
+
         <div class="row">
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
@@ -86,6 +96,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12 col-lg-6">
 
@@ -120,7 +131,7 @@
             <div class="col-md-6 d-flex">
 
                 <!-- Recent Orders -->
-                <div class="card card-table flex-fill">
+                <!-- <div class="card card-table flex-fill">
                     <div class="card-header">
                         <h4 class="card-title">Mentor List</h4>
                     </div>
@@ -160,14 +171,14 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- /Recent Orders -->
 
             </div>
             <div class="col-md-6 d-flex">
 
                 <!-- Feed Activity -->
-                <div class="card  card-table flex-fill">
+                <!-- <div class="card  card-table flex-fill">
                     <div class="card-header">
                         <h4 class="card-title">Mentee List</h4>
                     </div>
@@ -201,16 +212,17 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- /Feed Activity -->
 
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12">
 
                 <!-- Recent Orders -->
-                <div class="card card-table">
+                <!-- <div class="card card-table">
                     <div class="card-header">
                         <h4 class="card-title">Booking List</h4>
                     </div>
@@ -264,7 +276,7 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- /Recent Orders -->
 
             </div>
@@ -274,6 +286,7 @@
 </template>
 
 <script>
+    import Announcement from '../../announcement/components/list/Index.vue'
     import mentorlist from '@/assets/json/admin/AdminIndex/mentorlist.json'
     import menteelist from '@/assets/json/admin/AdminIndex/menteelist.json'
     import bookinglist from '@/assets/json/admin/AdminIndex/bookinglist.json'
@@ -415,6 +428,9 @@
             return {
 
             }
+        },
+        components: {
+            Announcement,
         },
     }
 </script>

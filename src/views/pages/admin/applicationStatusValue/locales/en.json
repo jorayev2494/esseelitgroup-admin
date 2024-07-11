@@ -1,0 +1,11 @@
+{
+  "context_title": "Application Statuses",
+  "form": {
+    "value": "Name",
+    "text_color": "Text Color",
+    "background_color": "Background Color",
+    "description": "Description",
+    "is_required_note": "Required Note",
+    "is_first": "Is first"
+  }
+}

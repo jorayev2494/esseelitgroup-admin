@@ -2,11 +2,39 @@
     "supported-locales": {
         "en": "English",
         "ru": "Русский",
-        "tm": "Türkmençe"
+        "tm": "Türkmençe",
+        "tr": "Türkçe"
     },
+    "gender": {
+        "label": "Пол",
+        "items": {
+            "male": "Мужской",
+            "female": "Женский"
+        }
+    },
+    "marital_status": {
+        "label": "Семейное положение",
+        "items": {
+            "single": "Одинокий",
+            "married": "Женатый"
+        }
+    },
+    "pagination": {
+        "info": "Показаны с {zero} по {first} из {two} записей"
+    },
+    "translations": "Переводы",
+    "actions": "Действи",
     "create": "Создать",
     "edit": "Редактировать",
     "show": "Показывать",
-    "delete": "Delete",
-    "send": "Удалить"
+    "delete": "Удалить",
+    "send": "Отправить",
+    "save": "Сохранить",
+    "save_changes": "Сохранить изменени",
+    "created_at": "Создан в",
+    "clear": "Очистить",
+    "upload": "Загрузить",
+    "uploaded": "Загружено",
+    "all": "Все",
+    "search_btn": "Поиск"
 }

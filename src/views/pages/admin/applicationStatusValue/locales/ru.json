@@ -1,0 +1,11 @@
+{
+  "context_title": "Статус заявки",
+  "form": {
+    "value": "Имя",
+    "text_color": "Text Color",
+    "background_color": "Цвет фона",
+    "description": "Описание",
+    "is_required_note": "Обязательное примечание",
+    "is_first": "Это первый"
+  }
+}

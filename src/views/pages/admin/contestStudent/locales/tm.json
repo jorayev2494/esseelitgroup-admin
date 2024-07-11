@@ -1,0 +1,24 @@
+{
+    "context_title": "Studentler",
+    "application_form": "Anketa",
+    "documents": "Resminamalar",
+    "additional_documents": "Goşmaça resminamalar",
+    "add_additional_document": "Goşmaça resminama goş",
+    "save_changes": "Uýtgetmeleri ýatda sakla",
+    "document": "Resminama",
+    "document_type": "Resminamanyň görnüşi",
+    "document_name": "Resminamanyň ady",
+    "extension": "Formaty",
+    "file_name": "Faýlyň ady",
+    "code": "Kod",
+    "student": "Student",
+    "form": {
+        "gift_given_at": "Sowgat berildi",
+        "note": "Bellik",
+        "student": {
+            "first_name": "Ady",
+            "last_name": "Familyasy",
+            "avatar": "Avatar"
+        }
+    }
+}
