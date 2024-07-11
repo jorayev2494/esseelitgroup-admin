@@ -12,7 +12,7 @@ RUN apt-get update \
 
 ############################################################################################
 
-FROM base AS serve
+FROM base AS local
 
 EXPOSE 8080
 
