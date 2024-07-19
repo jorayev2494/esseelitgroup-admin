@@ -1,11 +1,4 @@
-const addresses = {
-  local: 'http://127.0.0.1:9000',
-  develop: 'http://212.24.101.35:9000',
-  development: 'http://212.24.101.35:9000',
-  production: 'http://31.131.17.136:9000',
-}
-
-const endpoint = addresses[process.env.NODE_ENV] ?? addresses['local'];
+const endpoint = process.env.VUE_APP_STORAGE_ENDPOINT;
 
 export function useUrlPattern() {
 
@@ -39,7 +32,7 @@ export function useUrlPattern() {
       let { url_pattern } = urlPattern
 
       const avatarPatterns = {
-        endpoint: process.env.VUE_APP_STORAGE_URL,
+        endpoint,
       }
 
       for (const key in avatarPatterns) {

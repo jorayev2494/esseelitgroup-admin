@@ -4,10 +4,13 @@ services:
   node:
       container_name: ${COMPOSE_PROJECT_NAME}-admin
       build: 
-          context: ../
-          dockerfile: ./docker/node/Dockerfile
+          context: ./node
+          dockerfile: Dockerfile
           target: ${TARGET}
       ports:
         # - 3000:3000
         - ${DEVELOP_PORT}:8080
         - ${PRODUCTION_PORT}:80
+      volumes:
+        - ../:/var/project
+      command: ['npm', 'run', 'serve']
