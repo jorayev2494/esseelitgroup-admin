@@ -2,9 +2,17 @@ FROM node:21.5 AS base
 
 WORKDIR /var/project
 
-COPY ./ /var/project
+############################################################################################
 
-RUN ls -la
+FROM base AS local
+
+EXPOSE 8080
+
+############################################################################################
+
+FROM base AS build-stage
+
+COPY ./ /var/project
 
 RUN apt-get update \
     && npm install --no-progress -g npm@10.2 \
@@ -12,15 +20,7 @@ RUN apt-get update \
 
 ############################################################################################
 
-FROM base AS local
-
-EXPOSE 8080
-
-CMD ["npm", "run", "serve"]
-
-############################################################################################
-
-FROM base AS develop
+FROM build-stage AS develop
 
 EXPOSE 8080
 
@@ -28,7 +28,7 @@ CMD ["npm", "run", "dev"]
 
 ############################################################################################
 
-FROM base AS build
+FROM build-stage AS build
 
 RUN npm run build
 
