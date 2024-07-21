@@ -10,11 +10,11 @@ console.log('MODE process.env.NODE_ENV: ', `${process.env.NODE_ENV},`, 'baseURL:
 const httpClient = axios.create({
   baseURL,
   // timeout: 1000,
-  headers: {
-    // "Content-Type": "application/json",
-    // Accept: "application/json",
-    // "X-Socket-Id": () => window.Echo.socketId(),
-  },
+  // headers: {
+  //   "Content-Type": "application/json",
+  //   Accept: "application/json",
+  //   "X-Socket-Id": () => window.Echo.socketId(),
+  // },
 });
 
 httpClient.interceptors.request.use(request.request, request.requestError);
