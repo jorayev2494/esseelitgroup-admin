@@ -75,6 +75,8 @@ import contest from '@/views/pages/admin/contest/routes';
 import contestStudent from '@/views/pages/admin/contestStudent/routes';
 import setting from '@/views/pages/admin/setting/routes';
 import document from '@/views/pages/admin/document/routes';
+import role from '@/views/pages/admin/role/routes';
+import permission from '@/views/pages/admin/permission/routes';
 
 const routes = [
   ...auth,
@@ -108,6 +110,8 @@ const routes = [
       ...contestStudent,
       ...setting,
       ...document,
+      ...role,
+      ...permission,
     ],
     meta: {
       middleware: [

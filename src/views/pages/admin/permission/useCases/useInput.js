@@ -1,7 +1,7 @@
 export const useInput = () => [
   {
-    field: 'value',
-    tLabel: 'language.form.name',
+    field: 'label',
+    tLabel: 'permission.form.label',
     type: 'text',
     required: true,
   },

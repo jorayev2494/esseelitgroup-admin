@@ -70,5 +70,5 @@
     paginator,
 
     changeServer,
-  } = useIndex();  
+  } = useIndex();
 </script>

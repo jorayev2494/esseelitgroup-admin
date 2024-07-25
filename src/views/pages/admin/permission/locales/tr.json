@@ -1,0 +1,9 @@
+{
+  "context_title": "İzinler",
+  "form": {
+    "label": "Etiket",
+    "resource": "Kaynak",
+    "action": "Eylem",
+    "is_active": "Etkinlik"
+  }
+}

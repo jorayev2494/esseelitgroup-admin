@@ -335,23 +335,11 @@
                 name: 'announcements',
               },
             },
-            {
-              label: 'manager',
-              route: {
-                name: 'managers',
-              },
-            },
 
             {
               label: 'contest',
               route: {
                 name: 'contests',
-              },
-            },
-            {
-              label: 'setting',
-              route: {
-                name: 'settings',
               },
             },
             {
@@ -483,6 +471,43 @@
             //     name: 'applications',
             //   },
             // },
+          ],
+        },
+
+        {
+          label: 'Site',
+          icon: 'users',
+          class: '',
+          items: [
+            {
+              label: 'manager',
+              submenu: [
+                {
+                  label: 'manager',
+                  route: {
+                    name: 'managers',
+                  },
+                },
+                {
+                  label: 'role',
+                  route: {
+                    name: 'roles',
+                  },
+                },
+                {
+                  label: 'permission',
+                  route: {
+                    name: 'permissions',
+                  },
+                },
+              ],
+            },
+            {
+              label: 'setting',
+              route: {
+                name: 'settings',
+              },
+            },
           ],
         },
 

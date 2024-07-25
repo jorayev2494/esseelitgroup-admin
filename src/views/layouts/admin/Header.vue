@@ -45,7 +45,7 @@
             </div>
             <div class="user-text">
               <h6>{{ $store.getters['auth/getAuthDataProperty']('full_name') }}</h6>
-              <!-- <p class="text-muted mb-0">Administrator</p> -->
+              <p class="text-muted mb-0">{{ $store.getters['auth/getRole']?.name }}</p>
             </div>
           </div>
           <router-link class="dropdown-item" :to="$tMakeRoute({ name: 'profile-show' })">My Profile</router-link>
