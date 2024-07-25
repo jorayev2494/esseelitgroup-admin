@@ -23,6 +23,8 @@ import contest from '@/views/pages/admin/contest/locales/tr.json'
 import contestStudent from '@/views/pages/admin/contestStudent/locales/tr.json'
 import setting from '@/views/pages/admin/setting/locales/tr.json'
 import document from '@/views/pages/admin/document/locales/tr.json'
+import role from '@/views/pages/admin/role/locales/tr.json'
+import permission from '@/views/pages/admin/permission/locales/tr.json'
 
 export default {
   system,
@@ -50,4 +52,6 @@ export default {
   contestStudent,
   setting,
   document,
+  role,
+  permission,
 }
