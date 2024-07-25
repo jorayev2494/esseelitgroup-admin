@@ -1,0 +1,9 @@
+{
+  "context_title": "Rugsatlar",
+  "form": {
+    "label": "Etiketkasy",
+    "resource": "Resurs",
+    "action": "Hereket",
+    "is_active": "Aktiwligi"
+  }
+}

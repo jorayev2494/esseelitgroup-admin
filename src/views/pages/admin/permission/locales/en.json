@@ -1,0 +1,9 @@
+{
+  "context_title": "Permissions",
+  "form": {
+    "label": "Label",
+    "resource": "Resource",
+    "action": "Action",
+    "is_active": "Is Active"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "context_title": "Роли",
+  "form": {
+    "name": "Название",
+    "is_admin": "Is admin",
+    "is_active": "Активность"
+  }
+}

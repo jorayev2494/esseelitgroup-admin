@@ -58,11 +58,17 @@ export default class JwtService {
             this.isAlreadyFetchingAccessToken = true
             this.refreshToken().then(r => {
               this.isAlreadyFetchingAccessToken = false
-              const { access_token: accessToken, refresh_token: refreshToken } = r.data;
+              const {
+                access_token: accessToken,
+                refresh_token: refreshToken,
+                auth_data: authData,
+              } = r.data;
 
               // Update accessToken in localStorage
               this.setAccessToken(accessToken)
+              this.setPermissions(accessToken)
               this.setRefreshToken(refreshToken)
+              this.setAuthData(authData);
 
               this.onAccessTokenFetched(accessToken)
             })
@@ -121,6 +127,7 @@ export default class JwtService {
         } = response.data;
 
         this.setAccessToken(accessToken);
+        this.setPermissions(accessToken);
         this.setRefreshToken(refreshToken);
         this.setAuthData(authData);
 
@@ -181,5 +188,9 @@ export default class JwtService {
 
   setAuthData(payload) {
     store.commit('auth/setAuthData', payload)
+  }
+
+  setPermissions(payload) {
+    store.commit('auth/setPermissions', payload);
   }
 }
