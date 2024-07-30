@@ -6,12 +6,15 @@ import useApplicationStatus from "../../useCases/useApplicationStatus";
 import useStudentNationality from "../../useCases/useStudentNationality";
 import { useDate } from "@/views/pages/utils/helpers";
 import useParticipants from "../../useCases/useParticipants";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default function useCreate() {
 
   const store = useStore();
   const router = useRouter();
   const route = useRoute();
+  const { protectPermission } = useACLProtection();
   const { uuid } = route.params;
 
   const { dateTimeFromTimestamp } = useDate();
@@ -65,10 +68,12 @@ export default function useCreate() {
   }
 
   const update = () => {
-    store.dispatch('contest/updateContestAsync', { uuid, data: getData() })
-      .then(() => {
-        router.push({ name: 'contests' });
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_UPDATE).then(() => {
+      store.dispatch('contest/updateContestAsync', { uuid, data: getData() })
+        .then(() => {
+          router.push({ name: 'contests' });
+        })
+    })
   }
 
   const loadItem = () => {

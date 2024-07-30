@@ -5,5 +5,18 @@
     "resource": "Resource",
     "action": "Action",
     "is_active": "Is Active"
+  },
+  "resources": {
+    "country": "Country",
+    "city": "City",
+    "language": "Language",
+    "announcement": "Announcement"
+  },
+  "actions": {
+    "index": "Index",
+    "create": "Create",
+    "show": "Show",
+    "update": "Update",
+    "delete": "Delete"
   }
 }

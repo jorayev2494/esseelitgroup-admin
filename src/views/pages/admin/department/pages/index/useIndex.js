@@ -5,6 +5,8 @@ import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
 import useFilters from "../../useCases/useFilters";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default function useIndex() {
 
@@ -14,6 +16,7 @@ export default function useIndex() {
   const { filters } = useFilters();
   const { t, d } = useI18n();
   const { dateFromTimestamp } = useDate();
+  const { checkPermissions, protectPermission } = useACLProtection();
 
   const loading = ref(true);
   const items = ref([]);
@@ -26,7 +29,7 @@ export default function useIndex() {
     { field: 'price', title: t('department.form.price') },
     { field: 'is_filled', title: t('department.form.is_filled') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
-    { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
+    { field: 'actions', title: t('system.actions'), sort: false, hide: ! checkPermissions([RESOURCE_ACTIONS.RESOURCE_UPDATE, RESOURCE_ACTIONS.RESOURCE_DELETE]), headerClass: 'float-end', cellClass: 'float-end' },
   ];
 
   const reloadData = (params = {}) => {
@@ -62,7 +65,9 @@ export default function useIndex() {
     const confirmed = confirm(`Do you want delete the department '${data.value.name}'`);
 
     if (confirmed) {
-      store.dispatch('department/deleteDepartmentAsync', { uuid: data.value.uuid }).then(reloadData);
+      protectPermission(RESOURCE_ACTIONS.RESOURCE_DELETE).then(() => {
+        store.dispatch('department/deleteDepartmentAsync', { uuid: data.value.uuid }).then(reloadData);
+      })
     }
   }
 
@@ -77,6 +82,8 @@ export default function useIndex() {
   });
 
   return {
+    RESOURCE_ACTIONS,
+
     items,
     columns,
     loading,

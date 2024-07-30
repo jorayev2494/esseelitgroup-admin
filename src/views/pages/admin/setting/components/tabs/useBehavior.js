@@ -1,5 +1,7 @@
 import { computed } from "vue"
 import { useRoute } from "vue-router"
+import { makePermission } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default () => {
   const route = useRoute()
@@ -15,6 +17,11 @@ export default () => {
       label: 'setting.tabs.about_us',
       route: {
         name: 'settings.about-us',
+      },
+      meta: {
+        ...makePermission([
+          RESOURCE_ACTIONS.RESOURCE_ABOUT_US,
+        ]),
       },
     }
     // {

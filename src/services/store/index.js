@@ -1,4 +1,4 @@
-import { createStore } from 'vuex'
+import { createStore, createLogger } from 'vuex'
 import { defaultLocale, localeOptions } from '@/configs/index.js';
 
 import auth from '@/views/pages/admin/auth/store/index.js';
@@ -28,6 +28,10 @@ import document from '@/views/pages/admin/document/store/index.js';
 import role from '@/views/pages/admin/role/store/index.js';
 import permission from '@/views/pages/admin/permission/store/index.js';
 import staticPage from './staticPage.js'
+
+const plugins = process.env.NODE_ENV === 'production' ? [] : [
+  createLogger(),
+]
 
 export default createStore({
   state: {
@@ -83,5 +87,6 @@ export default createStore({
     role,
     permission,
     staticPage,
-  }
+  },
+  plugins,
 });

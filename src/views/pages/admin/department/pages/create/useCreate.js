@@ -10,6 +10,8 @@ import { useFaculty } from "../../useCases/useFaculty";
 import { useLanguage } from "../../useCases/useLanguage";
 import useDegree from "../../useCases/useDegree";
 import useCurrency from "../../useCases/useCurrency";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default function useCreate() {
 
@@ -23,6 +25,7 @@ export default function useCreate() {
   const { languagesPreview, languages, loadLanguages } = useLanguage();
   const { degreesPreviews, degrees, loadDegrees } = useDegree();
   const { currenciesPreviews, currencies, loadCurrencies } = useCurrency();
+  const { protectPermission } = useACLProtection();
 
   const logoPreview = ref(null);
 
@@ -89,10 +92,12 @@ export default function useCreate() {
   };
 
   const create = () => {
-    store.dispatch('department/createDepartmentAsync', { data: getData() })
-      .then(() => {
-        router.push({ name: 'departments' });
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_CREATE).then(async () => {
+      await store.dispatch('department/createDepartmentAsync', { data: getData() })
+        .then(() => {
+          router.push({ name: 'departments' });
+        })
+    })
   }
 
   onMounted(() => {
@@ -108,6 +113,8 @@ export default function useCreate() {
   })
 
   return {
+    RESOURCE_ACTIONS,
+
     form,
     names,
     aliasesPreview,

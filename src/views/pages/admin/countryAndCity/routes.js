@@ -1,3 +1,7 @@
+import { RESOURCE_ACTIONS as COUNTRY_RESOURCE_ACTIONS } from './country/acl/constants'
+import { RESOURCE_ACTIONS as CITY_RESOURCE_ACTIONS } from './city/acl/constants'
+import { makeRouterAnyPermission } from '@/services/acl/useACLProtection';
+
 const routes = [
     {
       path: 'countries',
@@ -8,6 +12,10 @@ const routes = [
         middleware: [
           'auth',
         ],
+        ...makeRouterAnyPermission([
+          COUNTRY_RESOURCE_ACTIONS.RESOURCE_INDEX,
+          CITY_RESOURCE_ACTIONS.RESOURCE_INDEX,
+        ]),
         breadcrumbs: [
           {
             label: 'dashboard.context_title',

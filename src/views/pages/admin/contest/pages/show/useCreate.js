@@ -6,12 +6,15 @@ import useApplicationStatus from "../../useCases/useApplicationStatus";
 import useStudentNationality from "../../useCases/useStudentNationality";
 import { useDate } from "@/views/pages/utils/helpers";
 import useParticipants from "../../useCases/useParticipants";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default function useCreate() {
 
   const store = useStore();
   const router = useRouter();
   const route = useRoute();
+  const { protectPermission } = useACLProtection();
   const { uuid } = route.params;
 
   const { dateTimeFromTimestamp } = useDate();
@@ -45,26 +48,13 @@ export default function useCreate() {
     return item
   }
 
-  const update = () => {
-    loadParticipants(param);
-
-    if (participants.total < form.participants_number) {
-      alert(`Participants counts ${participants.total} less than need participants number ${form.participants_number}`)
-
-      return
-    }
-
-    store.dispatch('contest/updateContestAsync', { uuid, data: getData() })
-      .then(() => {
-        router.push({ name: 'contests' });
-      })
-  }
-
   const loadItem = () => {
-    store.dispatch('contest/showContestAsync', { uuid })
-      .then(response => {
-        form.value = itemMapper(response.data);
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_SHOW).then(() => {
+      store.dispatch('contest/showContestAsync', { uuid })
+        .then(response => {
+          form.value = itemMapper(response.data);
+        })
+    })
   }
 
   onMounted(() => {
@@ -87,7 +77,5 @@ export default function useCreate() {
     studentNationalities,
 
     activityOptions,
-
-    update,
   }
 }

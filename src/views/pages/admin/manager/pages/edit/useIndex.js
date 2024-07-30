@@ -2,9 +2,11 @@ import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { onMounted, ref } from "vue"
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
-import { useCompany } from '../../useCases/usePartials' 
+import { useRole } from '../../useCases/usePartials'
 import Tr from '@/services/translations/translation'
 import useChangeImage from "@/views/pages/useCases/useChangeImage";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default () => {
 
@@ -12,11 +14,12 @@ export default () => {
   const router = useRouter();
   const store = useStore();
   const { image } = useUrlPattern();
+  const { protectPermission } = useACLProtection();
 
   const { uuid } = route.params;
 
   const { imagePreview: avatarPreview, uploadImage: uploadAvatar } = useChangeImage();
-  const { companyPreview, companies, loadCompanies } = useCompany();
+  const { rolePreview, roles, loadRoles } = useRole();
 
   const form = ref({});
 
@@ -35,10 +38,12 @@ export default () => {
   };
 
   const update = () => {
-    store.dispatch('manager/updateManagerAsync', { uuid, data: getData() })
-      .then(() => {
-        router.push(Tr.makeRoute({ name: 'managers' }))
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_UPDATE).then(() => {
+      store.dispatch('manager/updateManagerAsync', { uuid, data: getData() })
+        .then(() => {
+          router.push(Tr.makeRoute({ name: 'managers' }))
+        })
+    })
   }
 
   const studentMapper = student => {    
@@ -56,7 +61,7 @@ export default () => {
 
   onMounted(() => {
     loadStudent();
-    loadCompanies();
+    loadRoles();
   })
 
   return {
@@ -64,8 +69,8 @@ export default () => {
     avatarPreview,
     uploadAvatar,
 
-    companyPreview,
-    companies,
+    rolePreview,
+    roles,
 
     update,
   }

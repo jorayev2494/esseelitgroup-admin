@@ -6,7 +6,7 @@
         </div>
 
         <div class="card-body" v-if="form">
-          <form action="#" method="POST" @submit.prevent="update">
+          <form action="#" method="POST">
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">{{ $t('contest.form.participants_number') }}</label>
               <div class="col-lg-9">
@@ -111,8 +111,6 @@
     studentNationalities,
 
     activityOptions,
-
-    update,
   } = useCreate();
 </script>
 

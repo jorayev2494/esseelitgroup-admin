@@ -1,10 +1,10 @@
 import jwtDefaultConfig from './jwtDefaultConfig';
-import router from '@/services/router/index.js';
+// import router from '@/services/router/index.js';
 import store from '@/services/store/index';
 // import ToastificationContent from '@core/components/toastification/ToastificationContent.vue';
 // import ServerValidateToastificationContent from '@core/components/toastification/ServerValidateToastificationContent.vue';
 // import defineAbilityFor from "@/services/acl";
-import { toast } from 'vue3-toastify';
+// import { toast } from 'vue3-toastify';
 
 export default class JwtService {
   // Will be used by this service for making API calls
@@ -65,10 +65,10 @@ export default class JwtService {
               } = r.data;
 
               // Update accessToken in localStorage
+              this.setAuthData(authData);
               this.setAccessToken(accessToken)
               this.setPermissions(accessToken)
               this.setRefreshToken(refreshToken)
-              this.setAuthData(authData);
 
               this.onAccessTokenFetched(accessToken)
             })
@@ -117,8 +117,8 @@ export default class JwtService {
     localStorage.setItem(this.jwtConfig.storageRefreshTokenKeyName, value);
   }
 
-  login(...args) {
-    return new Promise((resolve, reject) => {
+  async login(...args) {
+    return await new Promise((resolve, reject) => {
       return this.httpClientIns.post(this.jwtConfig.loginEndpoint, ...args).then(response => {
         const {
           access_token: accessToken,
@@ -126,10 +126,10 @@ export default class JwtService {
           auth_data: authData,
         } = response.data;
 
+        this.setAuthData(authData);
         this.setAccessToken(accessToken);
         this.setPermissions(accessToken);
         this.setRefreshToken(refreshToken);
-        this.setAuthData(authData);
 
         // userData.role.permissions = [...userData.role.permissions, ...initialAbility, ...profileAbility]
         // localStorage.setItem('userData', JSON.stringify(userData))
@@ -182,6 +182,8 @@ export default class JwtService {
     // router.push({
     //   name: 'login'
     // });
+
+    store?.reset();
 
     return serverResponse;
   }

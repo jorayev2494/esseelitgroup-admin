@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import store from './services/store'
 import router from './services/router';
 import translation from './services/translations/index.js';
+import acl from './services/acl'
 import globalVariables from './services/globalVariables/index'
 import VueYtframe from "vue3-ytframe"
 
@@ -64,7 +65,6 @@ import Breadcrumb23 from './components/breadcrumb/Booking'
 import Breadcrumb24 from './components/breadcrumb/Appointments'
 import Settings from './components/breadcrumb/Settings'
 import ReportFilter from './components/breadcrumb/ReportFilter'
-
 
 
 // plugins
@@ -162,6 +162,7 @@ app.use(
 );
 app.use(store);
 app.use(router);
+app.use(acl);
 app.use(VueYtframe);
 // app.use(CKEditor);
 app.mount('#app');

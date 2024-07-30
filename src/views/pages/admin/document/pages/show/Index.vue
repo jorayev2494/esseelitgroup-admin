@@ -6,7 +6,7 @@
         </div>
 
         <div class="card-body" v-if="form">
-          <form action="#" method="POST" @submit.prevent="update" enctype="multipart/form-data">
+          <form action="#" method="POST" enctype="multipart/form-data">
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">{{ $t('document.form.type') }}</label>
               <div class="col-lg-9">
@@ -22,12 +22,12 @@
               </div>
             </div>
 
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label class="col-lg-3 col-form-label">{{ $t('document.form.file') }}</label>
               <div class="col-lg-9">
                 <input class="form-control" type="file" accept="application/pdf" @change="uploadFile" disabled>
               </div>
-            </div>
+            </div> -->
 
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">{{ $t('document.form.is_active') }}</label>
@@ -58,8 +58,5 @@
     form,
     types,
     inputs,
-
-    uploadFile,
-    update,
   } = useCreate();
 </script>

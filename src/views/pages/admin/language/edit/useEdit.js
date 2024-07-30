@@ -2,6 +2,8 @@ import { onMounted, ref } from "vue"
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInput } from "../useCases/useInput";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../acl/constants'
 
 export default function useEdit() {
 
@@ -9,6 +11,7 @@ export default function useEdit() {
   const router = useRouter();
   const route = useRoute();
   const { uuid } = route.params;
+  const { protectPermission } = useACLProtection();
 
   const form = ref({});
   
@@ -26,10 +29,12 @@ export default function useEdit() {
   }
 
   const update = () => {
-    store.dispatch('language/updateLanguageAsync', { uuid, data: decorateFormData() })
-      .then(() => {
-        router.push({ name: 'languages' });
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_UPDATE).then(() => {
+      store.dispatch('language/updateLanguageAsync', { uuid, data: decorateFormData() })
+        .then(() => {
+          router.push({ name: 'languages' });
+        })
+    })
   }
 
   onMounted(() => {
@@ -37,6 +42,7 @@ export default function useEdit() {
   })
 
   return {
+    RESOURCE_ACTIONS,
     form,
     inputs,
 
