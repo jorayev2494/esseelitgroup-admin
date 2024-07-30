@@ -1,4 +1,7 @@
 <template>
+  <div v-if="title" class="text-danger">
+    <strong>{{ title }}</strong>
+  </div>
   <span>{{ message }}</span>
 </template>
 
@@ -11,10 +14,12 @@
     },
     setup(props) {
       const {
+        title,
         message,
       } = props.toastProps.data;
 
       return {
+        title: title ?? null,
         message,
       };
     }

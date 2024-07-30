@@ -5,5 +5,18 @@
     "resource": "Ресурс",
     "action": "Действие",
     "is_active": "Активность"
+  },
+  "resources": {
+    "country": "Страна",
+    "city": "Город",
+    "language": "Язык",
+    "announcement": "Обявление"
+  },
+  "actions": {
+    "index": "Индекс",
+    "create": "Создавать",
+    "show": "Посмотреть",
+    "update": "Обновить",
+    "delete": "Удалить"
   }
 }

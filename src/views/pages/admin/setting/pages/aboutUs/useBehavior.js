@@ -4,6 +4,8 @@ import { useAboutUsInput } from '../../useCases/useInput'
 import useChangeImage from "@/views/pages/useCases/useChangeImage";
 import { formDataTranslations } from '../../../../utils/helpers'
 import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default () => {
   const store = useStore();
@@ -11,6 +13,7 @@ export default () => {
   const { image } = useUrlPattern();
   const { imagePreview: coverPreview, uploadImage: uploadCover } = useChangeImage();
   const inputs = useAboutUsInput();
+  const { checkPermissions, protectPermission } = useACLProtection();
 
   const slug = 'about-us';
   const form = ref(null);
@@ -50,10 +53,12 @@ export default () => {
   }
 
   const update = () => {
-    store.dispatch('staticPage/updateStaticPageAsync', { slug, data: getData() })
-      .then(response => {
-          alert('Updated')
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_ABOUT_US).then(() => {
+      store.dispatch('staticPage/updateStaticPageAsync', { slug, data: getData() })
+        .then(response => {
+            alert('Updated')
+        })
+    })
   }
 
   onMounted(() => {

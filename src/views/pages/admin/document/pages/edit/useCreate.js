@@ -5,6 +5,8 @@ import { useStore } from "vuex"
 import useInput from '../../useCases/useInputs'
 import useType from "../../useCases/useType";
 import { formDataTranslations } from '../../../../utils/helpers'
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default function useCreate() {
 
@@ -12,6 +14,7 @@ export default function useCreate() {
   const router = useRouter();
   const route = useRoute();
   const inputs = useInput();
+  const { protectPermission } = useACLProtection();
 
   const { types, loadTypes } = useType();
   const { uuid } = route.params;
@@ -54,10 +57,12 @@ export default function useCreate() {
   }
 
   const update = () => {
-    store.dispatch('document/updateDocumentAsync', { uuid, data: decorateFormData() })
-      .then(() => {
-        router.push({ name: 'documents' });
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_UPDATE).then(() => {
+      store.dispatch('document/updateDocumentAsync', { uuid, data: decorateFormData() })
+        .then(() => {
+          router.push({ name: 'documents' });
+        })
+    })
   }
 
   onMounted(() => {

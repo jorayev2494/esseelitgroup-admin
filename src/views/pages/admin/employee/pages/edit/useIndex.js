@@ -5,6 +5,8 @@ import { useStore } from "vuex"
 import { useCompany } from '../../useCases/usePartials' 
 import Tr from '@/services/translations/translation'
 import useChangeImage from "@/views/pages/useCases/useChangeImage";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default () => {
 
@@ -12,6 +14,7 @@ export default () => {
   const router = useRouter();
   const store = useStore();
   const { image } = useUrlPattern();
+  const { protectPermission } = useACLProtection();
 
   const { uuid } = route.params;
 
@@ -35,10 +38,12 @@ export default () => {
   };
 
   const update = () => {
-    store.dispatch('employee/updateEmployeeAsync', { uuid, data: getData() })
-      .then(() => {
-        router.push(Tr.makeRoute({ name: 'employees' }))
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_UPDATE).then(() => {
+      store.dispatch('employee/updateEmployeeAsync', { uuid, data: getData() })
+        .then(() => {
+          router.push(Tr.makeRoute({ name: 'employees' }))
+        })
+    })
   }
 
   const studentMapper = student => {    

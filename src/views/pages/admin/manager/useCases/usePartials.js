@@ -81,3 +81,24 @@ export const useHighSchoolCountry = () => {
     loadHighSchoolCountries,
   }
 }
+
+export const useRole = () => {
+  const store = useStore()
+  
+  const rolePreview = ref(null);
+  const roles = ref([]);
+
+  const loadRoles = (params = {}) => {
+    store.dispatch('role/loadRolesListAsync', { params }).then(response => {
+      roles.value = response.data
+    })
+  }
+
+  return {
+    rolePreview,
+    roles,
+
+    loadRoles,
+  }
+}
+

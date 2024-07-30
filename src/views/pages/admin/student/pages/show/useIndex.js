@@ -9,6 +9,8 @@ import useMaritalStatus from "@/views/pages/useCases/useMaritalStatus";
 import useChangeImage from "@/views/pages/useCases/useChangeImage";
 import { useDate } from "@/views/pages/utils/helpers";
 import { useI18n } from "vue-i18n";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default () => {
 
@@ -17,6 +19,7 @@ export default () => {
   const store = useStore();
   const { d } = useI18n()
   const { image } = useUrlPattern();
+  const { protectPermission } = useACLProtection();
 
   const { uuid } = route.params;
 
@@ -125,8 +128,10 @@ export default () => {
   }
 
   const loadStudent = () => {
-    store.dispatch('student/showStudentAsync', { uuid }).then(response => {
-      form.value = studentMapper(response.data);
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_SHOW).then(() => {
+      store.dispatch('student/showStudentAsync', { uuid }).then(response => {
+        form.value = studentMapper(response.data);
+      })
     })
   }
 

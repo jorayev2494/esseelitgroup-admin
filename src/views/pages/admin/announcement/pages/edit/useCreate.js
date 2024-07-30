@@ -4,12 +4,15 @@ import { useStore } from "vuex"
 import { useInputs } from '../../useCases/usePartials'
 import useStatus from "../../useCases/useStatus";
 import { useDate } from "@/views/pages/utils/helpers";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default function useCreate() {
 
   const store = useStore();
   const route = useRoute();
   const router = useRouter();
+  const { protectPermission } = useACLProtection();
   const { uuid } = route.params
 
   const { dateTimeFromTimestamp } = useDate();
@@ -41,10 +44,12 @@ export default function useCreate() {
   }
 
   const update = () => {
-    store.dispatch('announcement/updateAnnouncementAsync', { uuid, data: getData() })
-      .then(() => {
-        router.push({ name: 'announcements' });
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_UPDATE).then(() => {
+      store.dispatch('announcement/updateAnnouncementAsync', { uuid, data: getData() })
+        .then(() => {
+          router.push({ name: 'announcements' });
+        })
+    })
   }
 
   onMounted(() => {

@@ -5,6 +5,7 @@ import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import { toast } from "vue3-toastify";
+import { rowBgClass } from '../../useCases/useTable'
 
 export default function useIndex() {
 
@@ -23,10 +24,10 @@ export default function useIndex() {
   const items = ref([]);
   const columns = [
     { field: 'label', title: t('permission.form.label') },
-    // { field: 'resource', title: t('permission.form.resource') },
-    // { field: 'action', title: t('permission.form.action') },
+    { field: 'resource', title: t('permission.form.resource') },
+    { field: 'action', title: t('permission.form.action') },
     { field: 'is_active', title: t('permission.form.is_active') },
-    { field: 'created_at', title: t('system.created_at'), type: 'date' },
+    { field: 'created_at', title: t('system.created_at'), type: 'date', rowClass: 'text-bg-danger' },
   ];
 
   const reloadData = () => {
@@ -48,7 +49,10 @@ export default function useIndex() {
         const { data } = response;
 
         paginator.total.value = data.length;
-        items.value = data.map(roleMapper);
+        // items.value = data.map(roleMapper);
+
+        items.value = Object.groupBy(data.map(roleMapper), ({ resource }) => resource);
+
         loadRolePermissionsList()
       })
       .catch(error => error)
@@ -78,17 +82,6 @@ export default function useIndex() {
         toast.success('Updated')
       })
       .catch(error => error);
-  }
-
-  const remove = data => {
-    const confirmed = confirm(`Do you want delete the permission '${data.value.name}'`);
-
-    if (confirmed) {
-      store.dispatch('permission/deletePermissionAsync', { uuid: data.value.uuid })
-        .then(() => {
-          reloadData()
-        })
-    }
   }
 
   const selectedRows = selectedItems => {
@@ -123,10 +116,10 @@ export default function useIndex() {
     items,
     columns,
     loading,
-    remove,
 
     paginator,
     updatePermissions,
+    rowBgClass,
 
     changeServer,
     selectedRows,

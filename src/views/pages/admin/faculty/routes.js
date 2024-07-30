@@ -1,13 +1,19 @@
+import { RESOURCE_ACTIONS } from './acl/constants'
+import { makeRouterPermission } from '@/services/acl/useACLProtection';
+
 const routes = [
   {
     path: 'faculties',
     name: 'faculties',
-    component: () => import('./index/Index.vue'),
+    component: () => import('./pages/index/Index.vue'),
     meta: {
       title: 'faculty.context_title',
       middleware: [
         'auth',
       ],
+      ...makeRouterPermission([
+        RESOURCE_ACTIONS.RESOURCE_INDEX,
+      ]),
       breadcrumbs: [
         {
           label: 'dashboard.context_title',
@@ -27,12 +33,15 @@ const routes = [
   {
     path: 'faculties/create',
     name: 'faculty-create',
-    component: () => import('./create/Index.vue'),
+    component: () => import('./pages/create/Index.vue'),
     meta: {
       title: 'faculty.context_title',
       middleware: [
         'auth',
       ],
+      ...makeRouterPermission([
+        RESOURCE_ACTIONS.RESOURCE_CREATE,
+      ]),
       breadcrumbs: [
         {
           label: 'dashboard.context_title',
@@ -58,12 +67,15 @@ const routes = [
   {
     path: 'faculties/show/:uuid',
     name: 'faculty-show',
-    component: () => import('./show/Index.vue'),
+    component: () => import('./pages/show/Index.vue'),
     meta: {
       title: 'faculty.context_title',
       middleware: [
         'auth',
       ],
+      ...makeRouterPermission([
+        RESOURCE_ACTIONS.RESOURCE_SHOW,
+      ]),
       breadcrumbs: [
         {
           label: 'dashboard.context_title',
@@ -86,12 +98,15 @@ const routes = [
   {
     path: 'faculties/edit/:uuid',
     name: 'faculty-edit',
-    component: () => import('./edit/Index.vue'),
+    component: () => import('./pages/edit/Index.vue'),
     meta: {
       title: 'faculty.context_title',
       middleware: [
         'auth',
       ],
+      ...makeRouterPermission([
+        RESOURCE_ACTIONS.RESOURCE_UPDATE,
+      ]),
       breadcrumbs: [
         {
           label: 'dashboard.context_title',

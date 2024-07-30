@@ -1,4 +1,5 @@
 import system from './system/tm.json'
+import error from './error/tm.json'
 import auth from '@/views/pages/admin/auth/locales/tm.json';
 import dashboard from '@/views/pages/admin/dashboard/locales/tm.json';
 import company from '@/views/pages/admin/company/locales/tm.json'
@@ -28,6 +29,7 @@ import permission from '@/views/pages/admin/permission/locales/tm.json'
 
 export default {
   system,
+  error,
   auth,
   dashboard,
   company,

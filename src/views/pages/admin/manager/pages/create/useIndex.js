@@ -1,17 +1,20 @@
-import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
-import { ref } from "vue"
+import { onMounted, ref } from "vue"
 import { useRouter } from "vue-router";
 import { useStore } from "vuex"
+import { useRole } from '../../useCases/usePartials'
 import Tr from '@/services/translations/translation'
 import useChangeImage from "@/views/pages/useCases/useChangeImage";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default () => {
 
   const router = useRouter();
   const store = useStore();
-  const { image } = useUrlPattern();
+  const { protectPermission } = useACLProtection();
 
   const { imagePreview: avatarPreview, uploadImage: uploadAvatar } = useChangeImage();
+  const { rolePreview, roles, loadRoles } = useRole();
 
   const form = ref({
     first_name: '',
@@ -34,16 +37,25 @@ export default () => {
   };
 
   const create = () => {
-    store.dispatch('manager/createManagerAsync', { data: getData() })
-      .then(() => {
-        router.push(Tr.makeRoute({ name: 'managers' }))
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_CREATE).then(async () => {
+      store.dispatch('manager/createManagerAsync', { data: getData() })
+        .then(() => {
+          router.push(Tr.makeRoute({ name: 'managers' }))
+        })
+    })
   }
+
+  onMounted(() => {
+    loadRoles();
+  })
 
   return {
     form,
     avatarPreview,
     uploadAvatar,
+
+    rolePreview,
+    roles,
 
     create,
   }

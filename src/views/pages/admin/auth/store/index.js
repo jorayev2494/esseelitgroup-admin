@@ -1,13 +1,13 @@
 import { jwtDecode } from "jwt-decode";
 const keyName = 'auth_data'
 
-const getAuthData = () => {
-  const authData = localStorage.getItem(keyName);
+const getAuthData = async () => {
+  const authData = await localStorage.getItem(keyName);
 
-  return authData !== null ? state.authData = JSON.parse(authData) : null;
+  return authData !== null ? state.authData = await JSON.parse(authData) : null;
 }
 
-// const loadAccessToken = () => window.localStorage.getItem('access_token');
+const loadAccessToken = () => window.localStorage.getItem('access_token');
 
 const state = {
   accessToken: null,
@@ -18,9 +18,9 @@ const state = {
 
 const getters = {
   getAccessToken: state => state.accessToken = state.accessToken ?? window.localStorage.getItem('access_token'),
-  getAuthData: state => state.authData = state.authData ?? getAuthData(),
+  getAuthData: async state => state.authData = state.authData ?? await getAuthData(),
   getAuthDataProperty: state => prop => {
-    const authData = getAuthData();
+    const authData = state.authData ?? getAuthData();
 
     return authData !== null ? authData[prop] : null
   },
@@ -30,7 +30,15 @@ const getters = {
 
     return state.authData !== null ? state.authData['role'] : null
   },
-  getPermissions: state => state.permissions ?? [],
+  getPermissions: state => {
+    if (! Array.isArray(state.permissions) || ! state.permissions.length) {
+      const { role: { permissions } } = jwtDecode(loadAccessToken());
+
+      state.permissions = permissions;
+    }
+
+    return state.permissions ?? [];
+  },
 }
 
 const mutations = {
@@ -40,7 +48,7 @@ const mutations = {
   setAuthData: (state, payload) => {
     state.authData = payload;
     localStorage.removeItem(state.keyName);
-    localStorage.setItem(state.keyName, state.authData = JSON.stringify(payload));
+    localStorage.setItem(state.keyName, JSON.stringify(payload));
   },
   setPermissions: (state, accessToken) => {
     const { role: { permissions } } = jwtDecode(accessToken);

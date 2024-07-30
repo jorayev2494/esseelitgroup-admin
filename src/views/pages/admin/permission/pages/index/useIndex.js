@@ -3,6 +3,9 @@ import { usePaginator } from '@/views/pages/utils/paginator';
 import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
+import { rowBgClass } from '../../useCases/useTable'
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default function useIndex() {
 
@@ -10,6 +13,7 @@ export default function useIndex() {
   const paginator = usePaginator();
   const { t, d } = useI18n();
   const { dateFromTimestamp } = useDate();
+  const { checkPermissions, protectPermission } = useACLProtection();
 
   const table = ref(null)
   const loading = ref(true);
@@ -20,7 +24,7 @@ export default function useIndex() {
     { field: 'action', title: t('permission.form.action') },
     { field: 'is_active', title: t('permission.form.is_active') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
-    { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
+    { field: 'actions', title: t('system.actions'), sort: false, hide: ! checkPermissions([RESOURCE_ACTIONS.RESOURCE_UPDATE]), headerClass: 'float-end', cellClass: 'float-end' },
   ];
 
   const reloadData = () => {
@@ -59,12 +63,15 @@ export default function useIndex() {
   });
 
   return {
+    RESOURCE_ACTIONS,
+
     table,
     items,
     columns,
     loading,
 
     paginator,
+    rowBgClass,
 
     changeServer,
   }
