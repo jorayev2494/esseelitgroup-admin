@@ -6,6 +6,8 @@ import { useStore } from 'vuex';
 import { useApplicationStatusStyle } from "../../../../useCases/useApplicationStatusStyle";
 import useFilters from "../../useCases/useFilters";
 import useSearch from "@/views/pages/utils/useSearch";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default function useIndex() {
 
@@ -15,6 +17,7 @@ export default function useIndex() {
   const { filters } = useFilters();
   const { image } = useUrlPattern();
   const { form: searchForm, toQueryParams } = useSearch('full_name');
+  const { checkPermissions, protectPermission } = useACLProtection();
 
   const loading = ref(true);
   const items = ref([]);
@@ -27,7 +30,7 @@ export default function useIndex() {
     { field: 'application_departments', title: t('student.application.departments') },
     { field: 'application_status', title: t('student.application.status') },
     // { field: 'created_at', title: t('system.created_at'), type: 'date' },
-    { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
+    { field: 'actions', title: t('system.actions'), sort: false, hide: ! checkPermissions([RESOURCE_ACTIONS.RESOURCE_SHOW, RESOURCE_ACTIONS.RESOURCE_UPDATE, RESOURCE_ACTIONS.RESOURCE_DELETE]), headerClass: 'float-end', cellClass: 'float-end' },
   ];
 
   const reloadData = (params = {}) => {
@@ -84,7 +87,9 @@ export default function useIndex() {
     const confirmed = confirm(`Do you want delete the student '${data.value.full_name}'`);
 
     if (confirmed) {
-      store.dispatch('student/deleteStudentAsync', { uuid: data.value.uuid }).then(reloadData);
+      protectPermission(RESOURCE_ACTIONS.RESOURCE_DELETE).then(() => {
+        store.dispatch('student/deleteStudentAsync', { uuid: data.value.uuid }).then(reloadData);
+      })
     }
   }
 
@@ -99,6 +104,8 @@ export default function useIndex() {
   });
 
   return {
+    RESOURCE_ACTIONS,
+
     searchForm,
     items,
     columns,

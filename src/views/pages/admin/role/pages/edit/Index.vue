@@ -9,14 +9,14 @@
         <form action="#" method="POST" @submit.prevent="update" enctype="multipart/form-data">
           <div class="form-group row">
             <label class="col-lg-3 col-form-label">{{ $t('role.form.is_active') }}</label>
-            <div class="col-lg-9">
 
+            <div class="col-lg-9" v-if="! form.is_admin">
               <div class="status-toggle d-flex justify-content-left">
-                <input type="checkbox" id="is_active" name="is_active" v-model="form.is_active" class="check">
+                <input type="checkbox" id="is_active" name="is_active" v-model="form.is_active" class="check" :disabled="form.is_admin">
                 <label for="is_active" class="checktoggle m-0">checkbox</label>
               </div>
-
             </div>
+
           </div>
 
           <div class="text-right">

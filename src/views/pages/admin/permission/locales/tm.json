@@ -5,5 +5,18 @@
     "resource": "Resurs",
     "action": "Hereket",
     "is_active": "Aktiwligi"
+  },
+  "resources": {
+    "country": "Yurt",
+    "city": "Şeher",
+    "language": "Dil",
+    "announcement": "Announcement"
+  },
+  "actions": {
+    "index": "Index",
+    "create": "Doretmet",
+    "show": "Gorkezmek",
+    "update": "Redaktirlemek",
+    "delete": "Ocurmek"
   }
 }

@@ -16,12 +16,39 @@ export function useLogin() {
   })
 
   const login = () => {
-    useAuth.login(form).then(response => {
-      router.push(Tr.makeRoute({ name: 'dashboard' })).then(() => {
-        const { first_name } = response.data.auth_data
-        toast.success(t('auth.flash_messages.success.welcome', { first_name }))
-      });
-    });
+    // const handling = await useAuth.login(form).then(async response => {
+    //   await router.push(Tr.makeRoute({ name: 'dashboard' })).then(() => {
+    //     const { first_name } = response.data.auth_data
+    //     toast.success(t('auth.flash_messages.success.welcome', { first_name }))
+    //   });
+    // });
+
+    toast.promise(
+      useAuth.login(form).then(response => response),
+      {
+        pending: {
+          render() {
+            return "⏳ I'm loading";
+          },
+
+          // icon: '✨',
+          icon: true
+        },
+        success: {
+          render({ data: response }) {
+            const { first_name } = response.data.auth_data
+
+            return t('auth.flash_messages.success.welcome', { first_name });
+          },
+
+          icon: true,
+        },
+        error: 'Promise rejected 🤯',
+      },
+    )
+    .then(() => {
+      router.push(Tr.makeRoute({ name: 'dashboard' }))
+    })
   }
 
   return {

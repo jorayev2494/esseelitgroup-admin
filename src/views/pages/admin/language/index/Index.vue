@@ -11,7 +11,11 @@
       <div class="card-body">
 
         <div class="mb-2">
-          <router-link class="btn btn-primary btn-sm me-2" :to="$tMakeRoute({ name: 'language-create' })">
+          <router-link
+            v-permission="RESOURCE_ACTIONS.RESOURCE_CREATE"
+            class="btn btn-primary btn-sm me-2"
+            :to="$tMakeRoute({ name: 'language-create' })"
+          >
             <i class="fa fa-plus"></i> {{ $t('system.create') }}
           </router-link>
         </div>
@@ -42,11 +46,19 @@
               <i class="fa fa-info-circle"></i>
             </router-link> -->
 
-            <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'language-edit', params: { uuid: data.value.uuid } })">
+            <router-link
+              v-permission="RESOURCE_ACTIONS.RESOURCE_UPDATE"
+              class="btn btn-sm bg-success-light me-2"
+              :to="$tMakeRoute({ name: 'language-edit', params: { uuid: data.value.uuid } })"
+            >
               <i class="fa fa-edit"></i>
             </router-link>
             
-            <span class="btn btn-sm bg-danger-light" @click="remove(data)">
+            <span
+              v-permission="RESOURCE_ACTIONS.RESOURCE_DELETE"
+              class="btn btn-sm bg-danger-light"
+              @click="remove(data)"
+            >
               <i class="fa fa-trash"></i>
             </span>
           </template>
@@ -62,6 +74,8 @@
   import useIndex from './useIndex.js';
 
   const {
+    RESOURCE_ACTIONS,
+
     items,
     columns,
     loading,

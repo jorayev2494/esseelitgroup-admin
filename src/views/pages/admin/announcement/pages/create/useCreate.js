@@ -1,9 +1,11 @@
-import { onMounted, ref, getCurrentInstance } from "vue"
+import { onMounted, ref } from "vue"
 import { useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInputs } from '../../useCases/usePartials'
 import useStatus from "../../useCases/useStatus";
 import { useDate } from "@/views/pages/utils/helpers";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default function useCreate() {
 
@@ -13,6 +15,7 @@ export default function useCreate() {
   const { statusSelectedPreview, statuses, loadStatusList } = useStatus();
 
   const inputs = useInputs();
+  const { protectPermission } = useACLProtection();
 
   const form = ref({
     for: '',
@@ -30,10 +33,12 @@ export default function useCreate() {
   };
 
   const create = () => {
-    store.dispatch('announcement/createAnnouncementAsync', { data: getData() })
-      .then(() => {
-        router.push({ name: 'announcements' });
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_CREATE).then(() => {
+      store.dispatch('announcement/createAnnouncementAsync', { data: getData() })
+        .then(() => {
+          router.push({ name: 'announcements' });
+        })
+    })
   }
 
   onMounted(() => {
@@ -45,6 +50,8 @@ export default function useCreate() {
   })
 
   return {
+    RESOURCE_ACTIONS,
+  
     form,
     inputs,
     statusSelectedPreview,

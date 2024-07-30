@@ -2,12 +2,16 @@ import { onMounted, ref } from "vue"
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInput } from "../useCases/useInput";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../acl/constants'
+import Tr from '@/services/translations/translation.js';
 
 export default function useEdit() {
 
   const store = useStore();
   const router = useRouter();
   const route = useRoute();
+  const { protectPermission } = useACLProtection();
   const { uuid } = route.params;
 
   const form = ref({});
@@ -24,11 +28,14 @@ export default function useEdit() {
   const decorateFormData = () => {
     return form.value;
   }
+
   const update = () => {
-    store.dispatch('country/updateCountryAsync', { uuid, data: decorateFormData() })
-      .then(() => {
-        router.push({ name: 'countries' });
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_UPDATE).then(() => {
+      store.dispatch('country/updateCountryAsync', { uuid, data: decorateFormData() })
+        .then(() => {
+          router.push(Tr.makeRoute({ name: 'countries' }));
+        })
+    })
   }
 
   onMounted(() => {
@@ -36,6 +43,8 @@ export default function useEdit() {
   })
 
   return {
+    RESOURCE_ACTIONS,
+
     form,
     inputs,
 

@@ -56,6 +56,30 @@
               </div>
             </div> -->
 
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">{{ $t('manager.form.role') }}</label>
+              <div class="col-lg-9">
+                <VueMultiselect
+                  v-model="form.role"
+                  :options="roles"
+
+                  track-by="uuid"
+                  label="name"
+                  :placeholder="$t('manager.form.role')"
+
+                  @select="item => form.role_uuid = item.uuid"
+                  @remove="item => form.role_uuid = null"
+                >
+                </VueMultiselect>
+                <!-- :select-group-label="$t('student.form.faculties_and_departments_select.select_group_label')"
+                :deselect-group-label="$t('student.form.faculties_and_departments_select.deselect_group_label')"
+                
+                :select-label="$t('student.form.faculties_and_departments_select.select_label')"
+                :deselect-label="$t('student.form.faculties_and_departments_select.deselect_label')"
+                :selected-label="$t('student.form.faculties_and_departments_select.selected')" -->
+              </div>
+            </div>
+
             <div class="text-right">
                 <button type="submit" class="btn btn-primary">{{ $t('system.save') }}</button>
             </div>
@@ -70,12 +94,16 @@
 </template>
 
 <script setup>
+  import VueMultiselect from 'vue-multiselect'
   import useIndex from './useIndex';
 
   const {
     form,
     avatarPreview,
     uploadAvatar,
+
+    rolePreview,
+    roles,
 
     create,
   } = useIndex();

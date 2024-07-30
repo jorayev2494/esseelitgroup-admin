@@ -4,6 +4,8 @@ import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
 import { getStatusStyle } from "../../useCases/usePartials";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default function useIndex() {
 
@@ -11,13 +13,15 @@ export default function useIndex() {
   const paginator = usePaginator();
   const { image } = useUrlPattern();
   const { t, d } = useI18n();
+  const { checkPermissions, protectPermission } = useACLProtection();
 
   const loading = ref(true);
   const items = ref([]);
   const columns = [
     { field: 'full_name', title: t('manager.form.full_name') },
+    { field: 'role', title: t('manager.form.role') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
-    { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
+    { field: 'actions', title: t('system.actions'), sort: false, hide: ! checkPermissions([RESOURCE_ACTIONS.RESOURCE_SHOW, RESOURCE_ACTIONS.RESOURCE_UPDATE, RESOURCE_ACTIONS.RESOURCE_DELETE]), headerClass: 'float-end', cellClass: 'float-end' },
   ];
 
   const reloadData = () => {
@@ -56,7 +60,9 @@ export default function useIndex() {
     const confirmed = confirm(`Do you want delete the manager '${data.value.full_name}'`);
 
     if (confirmed) {
-      store.dispatch('manager/deleteManagerAsync', { uuid: data.value.uuid }).then(reloadData);
+      protectPermission(RESOURCE_ACTIONS.RESOURCE_DELETE).then(() => {
+        store.dispatch('manager/deleteManagerAsync', { uuid: data.value.uuid }).then(reloadData);
+      })
     }
   }
 
@@ -71,6 +77,8 @@ export default function useIndex() {
   });
 
   return {
+    RESOURCE_ACTIONS,
+
     items,
     columns,
     loading,

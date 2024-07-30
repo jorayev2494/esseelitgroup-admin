@@ -7,6 +7,7 @@
         <div id="sidebar-menu" class="sidebar-menu">
           <ul v-if="menuItems">
             <SidebarMenuItems :menu-items="menuItems" />
+
             <hr>
 
             <SidebarMenuItems v-if="$app.isNodeEnv('local')" :menu-items="otherMenuItems" />
@@ -208,6 +209,31 @@
   import { onMounted } from "vue";
   import feather from "feather-icons";
 
+  import { makePermission, makeAnyPermission } from '@/services/acl/useACLProtection';
+  import { RESOURCE_ACTIONS as DASHBOARD_RESOURCE_ACTIONS } from '@/views/pages/admin/dashboard/acl/constants';
+  import { RESOURCE_ACTIONS as COUNTRY_RESOURCE_ACTIONS } from '@/views/pages/admin/countryAndCity/country/acl/constants';
+  import { RESOURCE_ACTIONS as CITY_RESOURCE_ACTIONS } from '@/views/pages/admin/countryAndCity/city/acl/constants';
+  import { RESOURCE_ACTIONS as LANGUAGE_RESOURCE_ACTIONS } from '@/views/pages/admin/language/acl/constants';
+  import { RESOURCE_ACTIONS as ANNOUNCEMENT_RESOURCE_ACTIONS } from '@/views/pages/admin/announcement/acl/constants';
+  import { RESOURCE_ACTIONS as CONTEST_RESOURCE_ACTIONS } from '@/views/pages/admin/contest/acl/constants';
+  import { RESOURCE_ACTIONS as DOCUMENT_RESOURCE_ACTIONS } from '@/views/pages/admin/document/acl/constants';
+  import { RESOURCE_ACTIONS as COMPANY_RESOURCE_ACTIONS } from '@/views/pages/admin/company/acl/constants';
+  import { RESOURCE_ACTIONS as EMPLOYEE_RESOURCE_ACTIONS } from '@/views/pages/admin/employee/acl/constants';
+  import { RESOURCE_ACTIONS as STUDENT_RESOURCE_ACTIONS } from '@/views/pages/admin/student/acl/constants';
+  import { RESOURCE_ACTIONS as APPLICATION_STATUS_VALUE_RESOURCE_ACTIONS } from '@/views/pages/admin/applicationStatusValue/acl/constants';
+  import { RESOURCE_ACTIONS as ALIAS_RESOURCE_ACTIONS } from '@/views/pages/admin/alias/acl/constants';
+  import { RESOURCE_ACTIONS as DEGREE_RESOURCE_ACTIONS } from '@/views/pages/admin/degree/acl/constants';
+  import { RESOURCE_ACTIONS as UNIVERSITY_RESOURCE_ACTIONS } from '@/views/pages/admin/university/acl/constants';
+  import { RESOURCE_ACTIONS as FACULTY_NAME_RESOURCE_ACTIONS } from '@/views/pages/admin/facultyName/acl/constants';
+  import { RESOURCE_ACTIONS as FACULTY_RESOURCE_ACTIONS } from '@/views/pages/admin/faculty/acl/constants';
+  import { RESOURCE_ACTIONS as DEPARTMENT_NAME_RESOURCE_ACTIONS } from '@/views/pages/admin/departmentName/acl/constants';
+  import { RESOURCE_ACTIONS as DEPARTMENT_RESOURCE_ACTIONS } from '@/views/pages/admin/department/acl/constants';
+  import { RESOURCE_ACTIONS as MANAGER_RESOURCE_ACTIONS } from '@/views/pages/admin/manager/acl/constants';
+
+  import { RESOURCE_ACTIONS as ROLE_RESOURCE_ACTIONS } from '@/views/pages/admin/role/acl/constants';
+  import { RESOURCE_ACTIONS as PERMISSION_RESOURCE_ACTIONS } from '@/views/pages/admin/permission/acl/constants';
+  import { RESOURCE_ACTIONS as SETTING_RESOURCE_ACTIONS } from '@/views/pages/admin/setting/acl/constants';
+
   export default {
     data() {
       return {
@@ -310,17 +336,39 @@
           label: 'Main',
           icon: 'pie-chart',
           class: '',
+          meta: {
+            // ...makeAnyPermission([
+            //   // DASHBOARD_RESOURCE_ACTIONS.RESOURCE_INDEX,
+            //   COUNTRY_RESOURCE_ACTIONS.RESOURCE_INDEX,
+            //   CITY_RESOURCE_ACTIONS.RESOURCE_INDEX,
+            //   LANGUAGE_RESOURCE_ACTIONS.RESOURCE_INDEX,
+            //   ANNOUNCEMENT_RESOURCE_ACTIONS.RESOURCE_INDEX,
+            //   CONTEST_RESOURCE_ACTIONS.RESOURCE_INDEX,
+            //   DOCUMENT_RESOURCE_ACTIONS.RESOURCE_INDEX,
+            // ]),
+          },
           items: [
             {
               label: 'dashboard',
               route: {
                 name: 'dashboard',
               },
+              // meta: {
+              //   ...makePermission([
+              //     DASHBOARD_RESOURCE_ACTIONS.RESOURCE_INDEX,
+              //   ]),
+              // },
             },
             {
               label: 'country',
               route: {
                 name: 'countries',
+              },
+              meta: {
+                ...makeAnyPermission([
+                  COUNTRY_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                  CITY_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                ]),
               },
             },
             {
@@ -328,11 +376,21 @@
               route: {
                 name: 'languages',
               },
+              meta: {
+                ...makePermission([
+                  LANGUAGE_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                ]),
+              },
             },
             {
               label: 'announcement',
               route: {
                 name: 'announcements',
+              },
+              meta: {
+                ...makePermission([
+                  ANNOUNCEMENT_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                ]),
               },
             },
 
@@ -341,14 +399,23 @@
               route: {
                 name: 'contests',
               },
+              meta: {
+                ...makePermission([
+                  CONTEST_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                ]),
+              },
             },
             {
               label: 'document',
               route: {
                 name: 'documents',
               },
+              meta: {
+                ...makePermission([
+                  DOCUMENT_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                ]),
+              },
             },
-
           ],
         },
 
@@ -356,17 +423,33 @@
           label: 'Company',
           icon: 'building',
           class: '',
+          meta: {
+            ...makeAnyPermission([
+              COMPANY_RESOURCE_ACTIONS.RESOURCE_INDEX,
+              EMPLOYEE_RESOURCE_ACTIONS.RESOURCE_INDEX,
+            ]),
+          },
           items: [
             {
               label: 'company',
               route: {
                 name: 'companies',
               },
+              meta: {
+                ...makePermission([
+                  COMPANY_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                ]),
+              },
             },
             {
               label: 'employee',
               route: {
                 name: 'employees',
+              },
+              meta: {
+                ...makePermission([
+                  EMPLOYEE_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                ]),
               },
             },
           ],
@@ -376,17 +459,41 @@
           label: 'University',
           icon: 'university',
           class: '',
+          meta: {
+            ...makeAnyPermission([
+              ALIAS_RESOURCE_ACTIONS.RESOURCE_INDEX,
+              DEGREE_RESOURCE_ACTIONS.RESOURCE_INDEX,
+              UNIVERSITY_RESOURCE_ACTIONS.RESOURCE_INDEX,
+
+              FACULTY_NAME_RESOURCE_ACTIONS.RESOURCE_INDEX,
+              FACULTY_RESOURCE_ACTIONS.RESOURCE_INDEX,
+
+              DEPARTMENT_NAME_RESOURCE_ACTIONS.RESOURCE_INDEX,
+              DEPARTMENT_RESOURCE_ACTIONS.RESOURCE_INDEX,
+
+            ]),
+          },
           items: [
             {
               label: 'alias',
               route: {
                 name: 'aliases',
               },
+              meta: {
+                ...makePermission([
+                  ALIAS_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                ]),
+              },
             },
             {
               label: 'degree',
               route: {
                 name: 'degrees',
+              },
+              meta: {
+                ...makePermission([
+                  DEGREE_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                ]),
               },
             },
 
@@ -395,15 +502,31 @@
               route: {
                 name: 'universities',
               },
+              meta: {
+                ...makePermission([
+                  UNIVERSITY_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                ]),
+              },
             },
 
             {
               label: 'faculty',
+              meta: {
+                ...makeAnyPermission([
+                  FACULTY_NAME_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                  FACULTY_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                ]),
+              },
               submenu: [
                 {
                   label: 'facultyName',
                   route: {
                     name: 'faculties-names',
+                  },
+                  meta: {
+                    ...makePermission([
+                      FACULTY_NAME_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                    ]),
                   },
                 },
                 {
@@ -411,17 +534,33 @@
                   route: {
                     name: 'faculties',
                   },
+                  meta: {
+                    ...makePermission([
+                      FACULTY_RESOURCE_ACTIONS.RESOURCE_INDEX
+                    ]),
+                  },
                 },
               ],
             },
 
             {
               label: 'department',
+              meta: {
+                ...makeAnyPermission([
+                  DEPARTMENT_NAME_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                  DEPARTMENT_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                ]),
+              },
               submenu: [
                 {
                   label: 'departmentName',
                   route: {
                     name: 'departments-names',
+                  },
+                  meta: {
+                    ...makePermission([
+                      DEPARTMENT_NAME_RESOURCE_ACTIONS.RESOURCE_INDEX
+                    ]),
                   },
                 },
                 {
@@ -429,22 +568,14 @@
                   route: {
                     name: 'departments',
                   },
+                  meta: {
+                    ...makePermission([
+                      DEPARTMENT_RESOURCE_ACTIONS.RESOURCE_INDEX
+                    ]),
+                  },
                 },
               ],
             },
-
-            // {
-            //   label: 'departmentName',
-            //   route: {
-            //     name: 'departments-names',
-            //   },
-            // },
-            // {
-            //   label: 'department',
-            //   route: {
-            //     name: 'departments',
-            //   },
-            // },
           ],
         },
 
@@ -452,17 +583,33 @@
           label: 'Student',
           icon: 'users',
           class: '',
+          meta: {
+            ...makeAnyPermission([
+              STUDENT_RESOURCE_ACTIONS.RESOURCE_INDEX,
+              APPLICATION_STATUS_VALUE_RESOURCE_ACTIONS.RESOURCE_INDEX,
+            ]),
+          },
           items: [
             {
               label: 'student',
               route: {
                 name: 'students',
               },
+              meta: {
+                ...makePermission([
+                  STUDENT_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                ]),
+              },
             },
             {
               label: 'applicationStatusValue',
               route: {
                 name: 'application-statuses',
+              },
+              meta: {
+                ...makePermission([
+                  APPLICATION_STATUS_VALUE_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                ]),
               },
             },
             // {
@@ -476,16 +623,36 @@
 
         {
           label: 'Site',
-          icon: 'users',
+          icon: 'puzzle-piece',
           class: '',
+          meta: {
+            ...makeAnyPermission([
+              MANAGER_RESOURCE_ACTIONS.RESOURCE_INDEX,
+              ROLE_RESOURCE_ACTIONS.RESOURCE_INDEX,
+              PERMISSION_RESOURCE_ACTIONS.RESOURCE_INDEX,
+              SETTING_RESOURCE_ACTIONS.RESOURCE_INDEX,
+            ]),
+          },
           items: [
             {
               label: 'manager',
+              meta: {
+                ...makeAnyPermission([
+                  MANAGER_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                  ROLE_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                  PERMISSION_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                ]),
+              },
               submenu: [
                 {
                   label: 'manager',
                   route: {
                     name: 'managers',
+                  },
+                  meta: {
+                    ...makePermission([
+                      MANAGER_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                    ]),
                   },
                 },
                 {
@@ -493,11 +660,21 @@
                   route: {
                     name: 'roles',
                   },
+                  meta: {
+                    ...makePermission([
+                      ROLE_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                    ]),
+                  },
                 },
                 {
                   label: 'permission',
                   route: {
                     name: 'permissions',
+                  },
+                  meta: {
+                    ...makePermission([
+                      PERMISSION_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                    ]),
                   },
                 },
               ],
@@ -507,44 +684,15 @@
               route: {
                 name: 'settings',
               },
+              meta: {
+                ...makeAnyPermission([
+                  SETTING_RESOURCE_ACTIONS.RESOURCE_INDEX,
+                  SETTING_RESOURCE_ACTIONS.RESOURCE_ABOUT_US,
+                ]),
+              },
             },
           ],
         },
-
-        // {
-        //   label: 'Test',
-        //   icon: 'file-text',
-        //   class: '',
-        //   items: [{
-        //       label: 'My Profile',
-        //       route: {
-        //         name: 'profile',
-        //       },
-        //     },
-        //     {
-        //       label: 'Blog',
-        //       submenu: [{
-        //           label: 'Blog Details',
-        //           route: {
-        //             name: 'blogdetails',
-        //           },
-        //         },
-        //         {
-        //           label: 'Add Blog',
-        //           route: {
-        //             name: 'addblog',
-        //           },
-        //         },
-        //         {
-        //           label: 'Edit Blog',
-        //           route: {
-        //             name: 'editblog',
-        //           },
-        //         },
-        //       ],
-        //     },
-        //   ]
-        // }
       ];
 
       onMounted(() => {

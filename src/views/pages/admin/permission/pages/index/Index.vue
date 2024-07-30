@@ -11,9 +11,9 @@
       <div class="card-body">
 
         <div class="mb-2">
-          <router-link class="btn btn-primary btn-sm me-2" :to="$tMakeRoute({ name: 'role-create' })">
+          <!-- <router-link class="btn btn-primary btn-sm me-2" :to="$tMakeRoute({ name: 'role-create' })">
             <i class="fa fa-plus"></i> {{ $t('system.create') }}
-          </router-link>
+          </router-link> -->
         </div>
 
         <data-table
@@ -26,14 +26,26 @@
           :showNumbersCount="3"
           :pageSizeOptions="paginator.perPageOptions"
           :isServerMode="true"
-          :pagination="false"
           :paginationInfo="$t('system.pagination.info', { zero: '{0}', first: '{1}', two: '{2}' })"
 
           skin="bh-table-hover"
+          :rowClass="rowBgClass"
 
           @change="changeServer"
           @rowSelect="selectedRows"
         >
+          <template #resource="data">
+            <span>
+              {{ $t(`permission.resources.${data.value.resource}`) }}
+            </span>
+          </template>
+
+          <template #action="data">
+            <span>
+              {{ $t(`permission.actions.${data.value.action}`) }}
+            </span>
+          </template>
+
           <template #is_active="data">
             <div class="d-flex flex-row">
               <IndexActivity :isActive="data.value.is_active" />
@@ -45,7 +57,11 @@
               <i class="fa fa-info-circle"></i>
             </router-link> -->
 
-            <router-link class="btn btn-sm bg-success-light" :to="$tMakeRoute({ name: 'permission-edit', params: { id: data.value.id } })">
+            <router-link
+              v-permission="RESOURCE_ACTIONS.RESOURCE_UPDATE"
+              class="btn btn-sm bg-success-light"
+              :to="$tMakeRoute({ name: 'permission-edit', params: { id: data.value.id } })"
+            >
               <i class="fa fa-edit"></i>
             </router-link>
             
@@ -66,12 +82,15 @@
   import IndexActivity from '@/views/pages/components/Activity/Index/Index.vue'
 
   const {
+    RESOURCE_ACTIONS,
+
     table,
     items,
     columns,
     loading,
 
     paginator,
+    rowBgClass,
 
     changeServer,
     selectedRows

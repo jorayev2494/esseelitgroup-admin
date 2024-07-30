@@ -6,6 +6,8 @@ import useApplicationStatus from "../../useCases/useApplicationStatus";
 import useStudentNationality from "../../useCases/useStudentNationality";
 import { useDate } from "@/views/pages/utils/helpers";
 import useParticipants from '../../useCases/useParticipants'
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default function useCreate() {
 
@@ -17,6 +19,7 @@ export default function useCreate() {
   const { participants, loadParticipants } = useParticipants();
 
   const inputs = useInputs();
+  const { protectPermission } = useACLProtection();
 
   const form = reactive({
     participants_number: '',
@@ -40,7 +43,7 @@ export default function useCreate() {
     return form;
   };
 
-  const create = async () => {
+  const tryToCreate = async () => {
     const param = {
       application_status_uuids: form.application_status_uuids,
       student_nationality_uuids: form.student_nationality_uuids,
@@ -53,13 +56,20 @@ export default function useCreate() {
         return
       }
 
-      store.dispatch('contest/createContestAsync', { data: getData() })
-        .then(() => {
-          router.push({ name: 'contests' });
-        })
+      create()
     }).catch((err) => {
       
     });
+    
+  }
+
+  const create = () => {
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_CREATE).then(async () => {
+      await store.dispatch('contest/createContestAsync', { data: getData() })
+        .then(() => {
+          router.push({ name: 'contests' });
+        })
+    })
   }
 
   onMounted(() => {
@@ -72,6 +82,8 @@ export default function useCreate() {
   })
 
   return {
+    RESOURCE_ACTIONS,
+
     form,
 
     inputs,
@@ -82,6 +94,6 @@ export default function useCreate() {
 
     activityOptions,
 
-    create,
+    tryToCreate,
   }
 }

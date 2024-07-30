@@ -5,5 +5,18 @@
     "resource": "Kaynak",
     "action": "Eylem",
     "is_active": "Etkinlik"
+  },
+  "resources": {
+    "country": "Ulke",
+    "city": "Şehir",
+    "language": "Dil",
+    "announcement": "DuyuruBildiriş"
+  },
+  "actions": {
+    "index": "Dizin",
+    "create": "Oluşturmak",
+    "show": "Göstermek",
+    "update": "Güncellemek",
+    "delete": "Silmek"
   }
 }

@@ -29,7 +29,7 @@ const responseError = error => {
     );
   }
 
-  if (response && response.status === 400) {
+  if (response && [400, 403].includes(response.status)) {
     toast.error(
       BadRequest,
       {

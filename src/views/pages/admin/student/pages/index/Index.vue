@@ -17,7 +17,11 @@
       <div class="card-body">
 
         <div class="mb-2">
-          <router-link class="btn btn-primary btn-sm me-2" :to="$tMakeRoute({ name: 'student-create' })">
+          <router-link
+            v-permission="RESOURCE_ACTIONS.RESOURCE_CREATE"
+            class="btn btn-primary btn-sm me-2"
+            :to="$tMakeRoute({ name: 'student-create' })"
+          >
             <i class="fa fa-plus"></i> {{ $t('system.create') }}
           </router-link>
         </div>
@@ -131,15 +135,27 @@
           </template>
 
           <template #actions="data">
-            <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'student-show', params: { uuid: data.value.uuid } })">
+            <router-link
+              v-permission="RESOURCE_ACTIONS.RESOURCE_SHOW"
+              class="btn btn-sm bg-primary-light me-2"
+              :to="$tMakeRoute({ name: 'student-show', params: { uuid: data.value.uuid } })"
+            >
               <i class="fa fa-eye"></i>
             </router-link>
 
-            <router-link class="btn btn-sm bg-success-light me-2" :to="$tMakeRoute({ name: 'student-edit', params: { uuid: data.value.uuid } })">
+            <router-link
+              v-permission="RESOURCE_ACTIONS.RESOURCE_UPDATE"
+              class="btn btn-sm bg-success-light me-2"
+              :to="$tMakeRoute({ name: 'student-edit', params: { uuid: data.value.uuid } })"
+            >
               <i class="fa fa-edit"></i>
             </router-link>
             
-            <span class="btn btn-sm bg-danger-light" @click="remove(data)">
+            <span
+              v-permission="RESOURCE_ACTIONS.RESOURCE_DELETE"
+              class="btn btn-sm bg-danger-light"
+              @click="remove(data)"
+            >
               <i class="fa fa-trash"></i>
             </span>
           </template>
@@ -158,6 +174,8 @@
   import TableFilter from '@/views/pages/components/tableFilter/Index.vue'
 
   const {
+    RESOURCE_ACTIONS,
+
     searchForm,
     items,
     columns,

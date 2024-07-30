@@ -9,6 +9,8 @@ import useMaritalStatus from "@/views/pages/useCases/useMaritalStatus";
 import useChangeImage from "@/views/pages/useCases/useChangeImage";
 import { useDate } from "@/views/pages/utils/helpers";
 import { useI18n } from "vue-i18n";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default () => {
 
@@ -17,6 +19,7 @@ export default () => {
   const store = useStore();
   const { d } = useI18n()
   const { image } = useUrlPattern();
+  const { protectPermission } = useACLProtection();
 
   const { uuid } = route.params;
 
@@ -71,10 +74,12 @@ export default () => {
   };
 
   const update = () => {
-    store.dispatch('student/updateStudentAsync', { uuid, data: getData() })
-      .then(() => {
-        router.push(Tr.makeRoute({ name: 'students' }))
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_UPDATE).then(() => {
+      store.dispatch('student/updateStudentAsync', { uuid, data: getData() })
+        .then(() => {
+          router.push(Tr.makeRoute({ name: 'students' }))
+        })
+    })
   }
 
   const studentMapper = student => {

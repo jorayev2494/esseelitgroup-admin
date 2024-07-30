@@ -4,6 +4,8 @@ import { usePaginator } from '@/views/pages/utils/paginator';
 import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default function useIndex() {
 
@@ -12,6 +14,7 @@ export default function useIndex() {
   const { image } = useUrlPattern();
   const { t, d } = useI18n();
   const { dateFromTimestamp } = useDate();
+  const { checkPermissions, protectPermission } = useACLProtection();
 
   const loading = ref(true);
   const items = ref([]);
@@ -23,7 +26,7 @@ export default function useIndex() {
     { field: 'for', title: t('announcement.form.for') },
     { field: 'is_active', title: t('announcement.form.is_active') },
     { field: 'created_at', title: t('system.created_at'), type: 'date' },
-    { field: 'actions', title: t('system.actions'), sort: false, headerClass: 'float-end', cellClass: 'float-end' },
+    { field: 'actions', title: t('system.actions'), sort: false, hide: ! checkPermissions([RESOURCE_ACTIONS.RESOURCE_UPDATE, RESOURCE_ACTIONS.RESOURCE_DELETE]), headerClass: 'float-end', cellClass: 'float-end' },
   ];
 
   const reloadData = () => {
@@ -60,7 +63,9 @@ export default function useIndex() {
     const confirmed = confirm(`Do you want delete the announcement '${data.value.title}'`);
 
     if (confirmed) {
-      store.dispatch('announcement/deleteAnnouncementAsync', { uuid: data.value.uuid }).then(reloadData);
+      protectPermission(RESOURCE_ACTIONS.RESOURCE_DELETE).then(() => {
+        store.dispatch('announcement/deleteAnnouncementAsync', { uuid: data.value.uuid }).then(reloadData);
+      })
     }
   }
 
@@ -75,6 +80,8 @@ export default function useIndex() {
   });
 
   return {
+    RESOURCE_ACTIONS,
+
     items,
     columns,
     loading,

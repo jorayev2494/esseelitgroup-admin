@@ -26,7 +26,7 @@
         </div>
 
         <div class="card-body">
-          <form action="#" method="POST" @submit.prevent="update" enctype="multipart/form-data">
+          <form action="#" method="POST" enctype="multipart/form-data">
 
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">{{ $t('manager.form.first_name') }}</label>
@@ -79,7 +79,6 @@
     uploadAvatar,
 
     companies,
-    update,
   } = useIndex();
 </script>
 

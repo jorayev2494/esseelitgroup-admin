@@ -5,6 +5,7 @@
         "first_name": "İlk adı",
         "last_name": "Soy isim",
         "avatar": "Avatar",
-        "email": "E-posta"
+        "email": "E-posta",
+        "role": "Rol"
     }
 }

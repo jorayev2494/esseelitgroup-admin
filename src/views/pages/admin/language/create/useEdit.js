@@ -2,7 +2,8 @@ import { ref } from "vue"
 import { useRouter } from "vue-router";
 import { useStore } from "vuex"
 import { useInput } from "../useCases/useInput";
-
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../acl/constants'
 
 export default function useEdit() {
 
@@ -10,6 +11,7 @@ export default function useEdit() {
   const router = useRouter();
 
   const inputs = useInput();
+  const { protectPermission } = useACLProtection();
 
   const form = ref({
     value: '',
@@ -22,13 +24,17 @@ export default function useEdit() {
   }
 
   const create = () => {
-    store.dispatch('language/createLanguageAsync', { data: decorateData() })
-      .then(() => {
-        router.push({ name: 'languages' });
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_CREATE).then(() => {
+      store.dispatch('language/createLanguageAsync', { data: decorateData() })
+        .then(() => {
+          router.push({ name: 'languages' });
+        })
+    })
   }
 
   return {
+    RESOURCE_ACTIONS,
+
     form,
     inputs,
 

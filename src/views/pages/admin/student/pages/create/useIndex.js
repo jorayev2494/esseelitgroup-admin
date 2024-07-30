@@ -7,12 +7,15 @@ import Tr from '@/services/translations/translation'
 import useGender from "@/views/pages/useCases/useGender";
 import useMaritalStatus from "@/views/pages/useCases/useMaritalStatus";
 import useChangeImage from "@/views/pages/useCases/useChangeImage";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default () => {
 
   const router = useRouter();
   const store = useStore();
   const { image } = useUrlPattern();
+  const { protectPermission } = useACLProtection();
 
   const { imagePreview: avatarPreview, uploadImage: uploadAvatar } = useChangeImage();
   const { companyPreview, companies, loadCompanies } = useCompany();
@@ -70,10 +73,12 @@ export default () => {
   };
 
   const create = () => {
-    store.dispatch('student/createStudentAsync', { data: getData() })
-      .then(() => {
-        router.push(Tr.makeRoute({ name: 'students' }))
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_CREATE).then(async () => {
+      await store.dispatch('student/createStudentAsync', { data: getData() })
+        .then(() => {
+          router.push(Tr.makeRoute({ name: 'students' }))
+        })
+    })
   }
 
   onMounted(() => {
@@ -85,6 +90,8 @@ export default () => {
   })
 
   return {
+    RESOURCE_ACTIONS,
+
     form,
     avatarPreview,
     uploadAvatar,

@@ -6,7 +6,7 @@
         </div>
 
         <div class="card-body">
-          <form action="#" method="POST" @submit.prevent="create" enctype="multipart/form-data">
+          <form action="#" method="POST" @submit.prevent="tryToCreate" enctype="multipart/form-data">
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">{{ $t('contest.form.participants_number') }}</label>
               <div class="col-lg-9">
@@ -110,7 +110,7 @@
 
     activityOptions,
 
-    create,
+    tryToCreate,
   } = useCreate();
 </script>
 

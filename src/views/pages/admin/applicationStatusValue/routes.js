@@ -1,13 +1,19 @@
+import { RESOURCE_ACTIONS } from './acl/constants'
+import { makeRouterPermission } from '@/services/acl/useACLProtection';
+
 const routes = [
   {
     path: 'applications/statuses',
     name: 'application-statuses',
-    component: () => import('./index/Index.vue'),
+    component: () => import('./pages/index/Index.vue'),
     meta: {
       title: 'applicationStatusValue.context_title',
       middleware: [
         'auth',
       ],
+      ...makeRouterPermission([
+        RESOURCE_ACTIONS.RESOURCE_INDEX,
+      ]),
       breadcrumbs: [
         {
           label: 'dashboard.context_title',
@@ -27,12 +33,15 @@ const routes = [
   {
     path: '/applications/statuses/create',
     name: 'application-status-create',
-    component: () => import('./create/Index.vue'),
+    component: () => import('./pages/create/Index.vue'),
     meta: {
       title: 'system.create',
       middleware: [
         'auth',
       ],
+      ...makeRouterPermission([
+        RESOURCE_ACTIONS.RESOURCE_CREATE,
+      ]),
       breadcrumbs: [
         {
           label: 'dashboard.context_title',
@@ -58,12 +67,15 @@ const routes = [
   {
     path: '/applications/statuses/edit/:uuid',
     name: 'application-status-edit',
-    component: () => import('./edit/Index.vue'),
+    component: () => import('./pages/edit/Index.vue'),
     meta: {
       title: 'system.edit',
       middleware: [
         'auth',
       ],
+      ...makeRouterPermission([
+        RESOURCE_ACTIONS.RESOURCE_UPDATE,
+      ]),
       breadcrumbs: [
         {
           label: 'dashboard.context_title',

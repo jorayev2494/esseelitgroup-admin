@@ -13,7 +13,11 @@
       <div class="card-body">
 
         <div class="mb-2">
-          <router-link class="btn btn-primary btn-sm me-2" :to="$tMakeRoute({ name: 'manager-create' })">
+          <router-link
+            v-permission="RESOURCE_ACTIONS.RESOURCE_CREATE"
+            class="btn btn-primary btn-sm me-2"
+            :to="$tMakeRoute({ name: 'manager-create' })"
+          >
             <i class="fa fa-plus"></i> {{ $t('system.create') }}
           </router-link>
         </div>
@@ -63,13 +67,24 @@
             </span>
           </template>
 
+          <template #role="data">
+            <span v-if="data.value.role">
+              {{ data.value.role.name }}
+            </span>
+          </template>
+
           <template #actions="data">
-            <router-link class="btn btn-sm bg-primary-light me-2" :to="$tMakeRoute({ name: 'manager-show', params: { uuid: data.value.uuid } })">
+            <router-link
+              v-permission="RESOURCE_ACTIONS.RESOURCE_SHOW"
+              class="btn btn-sm bg-primary-light me-2"
+              :to="$tMakeRoute({ name: 'manager-show', params: { uuid: data.value.uuid } })"
+            >
               <i class="fa fa-eye"></i>
             </router-link>
 
             <router-link
               v-if="$store.getters['auth/getAuthDataProperty']('uuid') !== data.value.uuid"
+              v-permission="RESOURCE_ACTIONS.RESOURCE_UPDATE"
               class="btn btn-sm bg-success-light me-2"
               :to="$tMakeRoute({ name: 'manager-edit', params: { uuid: data.value.uuid } })"
             >
@@ -78,6 +93,7 @@
             
             <span
               v-if="$store.getters['auth/getAuthDataProperty']('uuid') !== data.value.uuid"
+              v-permission="RESOURCE_ACTIONS.RESOURCE_DELETE"
               class="btn btn-sm bg-danger-light"
               @click="remove(data)"
             >
@@ -96,6 +112,8 @@
   import useIndex from './useIndex.js';
 
   const {
+    RESOURCE_ACTIONS,
+
     items,
     columns,
     loading,

@@ -9,6 +9,8 @@ import { useFaculty } from "../../useCases/useFaculty";
 import { useLanguage } from "../../useCases/useLanguage";
 import useDegree from "../../useCases/useDegree";
 import useCurrency from "../../useCases/useCurrency";
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default function useCreate() {
 
@@ -22,6 +24,7 @@ export default function useCreate() {
   const { languagesPreview, languages, loadLanguages } = useLanguage();
   const { degrees, loadDegrees } = useDegree();
   const { currenciesPreviews, currencies, loadCurrencies } = useCurrency();
+  const { protectPermission } = useACLProtection();
 
   const { uuid } = route.params;
 
@@ -82,10 +85,12 @@ export default function useCreate() {
   };
 
   const update = () => {
-    store.dispatch('department/updateDepartmentAsync', { uuid: route.params.uuid, data: getData() })
-      .then(() => {
-        router.push({ name: 'departments' });
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_UPDATE).then(() => {
+      store.dispatch('department/updateDepartmentAsync', { uuid: route.params.uuid, data: getData() })
+        .then(() => {
+          router.push({ name: 'departments' });
+        })
+    })
   }
 
   onMounted(() => {

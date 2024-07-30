@@ -44,7 +44,7 @@
               <img :src="avatarPreview" alt="User Image" class="avatar-img rounded-circle" />
             </div>
             <div class="user-text">
-              <h6>{{ $store.getters['auth/getAuthDataProperty']('full_name') }}</h6>
+              <h6>{{ $store.getters['auth/getAuthDataProperty']('first_name') }}</h6>
               <p class="text-muted mb-0">{{ $store.getters['auth/getRole']?.name }}</p>
             </div>
           </div>
@@ -92,7 +92,9 @@
       onMounted(() => {
         feather.replace();
 
-        avatarPreview.value = image(authData.value.avatar)
+        authData.value.then(({ avatar }) => {
+          avatarPreview.value = image(avatar)
+        })
       });
 
       return {

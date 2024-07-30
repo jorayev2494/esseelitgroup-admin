@@ -5,6 +5,8 @@ import { useStore } from "vuex"
 import useInput from '../../useCases/useInputs'
 import useType from "../../useCases/useType";
 import { formDataTranslations } from '../../../../utils/helpers'
+import { useACLProtection } from '@/services/acl/useACLProtection';
+import { RESOURCE_ACTIONS } from '../../acl/constants';
 
 export default function useCreate() {
 
@@ -13,6 +15,7 @@ export default function useCreate() {
   const inputs = useInput();
 
   const { typePreview, types, loadTypes } = useType();
+  const { protectPermission } = useACLProtection();
 
   const form = ref({
     file: '',
@@ -46,10 +49,12 @@ export default function useCreate() {
   }
 
   const create = () => {
-    store.dispatch('document/createDocumentAsync', { data: decorateFormData() })
-      .then(() => {
-        router.push({ name: 'documents' });
-      })
+    protectPermission(RESOURCE_ACTIONS.RESOURCE_CREATE).then(async () => {
+      await store.dispatch('document/createDocumentAsync', { data: decorateFormData() })
+        .then(() => {
+          router.push({ name: 'documents' });
+        })
+    })
   }
 
   onMounted(() => {
@@ -57,6 +62,8 @@ export default function useCreate() {
   })
 
   return {
+    RESOURCE_ACTIONS,
+
     form,
     types,
     inputs,
