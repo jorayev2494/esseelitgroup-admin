@@ -1,0 +1,6 @@
+{
+  "unauthorized_action": {
+    "title": "Erişim Reddedildi",
+    "message": "Bu işlem hesabınız için izin verilmemiştir. Lütfen erişim haklarınızı kontrol edin veya destek ekibimizle iletişime geçin."
+  }
+}
