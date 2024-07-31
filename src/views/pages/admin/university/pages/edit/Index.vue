@@ -99,11 +99,11 @@
 </template>
 
 <script setup>
-  import Media from '../partials/media/Index.vue'
-  import YouTubeFrame from '../partials/youtubeFrame/Index.vue'
+  import Media from '../../partials/media/Index.vue'
+  import YouTubeFrame from '../../partials/youtubeFrame/Index.vue'
   import useEdit from './useEdit.js';
-  import Inputs from '../../../components/InputCard/Index.vue'
-  import ImageCropper from '../../../components/imageCropper/Index.vue'
+  import Inputs from '../../../../components/InputCard/Index.vue'
+  import ImageCropper from '../../../../components/imageCropper/Index.vue'
 
   const {
     form,
