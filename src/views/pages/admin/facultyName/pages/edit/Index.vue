@@ -23,7 +23,7 @@
 
 <script setup>
   import useEdit from './useEdit.js';
-  import Inputs from '../../../components/InputCard/Index.vue'
+  import Inputs from '../../../../components/InputCard/Index.vue'
 
   const {
     form,
