@@ -1,0 +1,11 @@
+{
+  "context_title": "Notifications",
+  "view_all_Notifications": "View all Notifications",
+  "content": "content",
+  "notify": {
+    "test_title": "Test title EN"
+  },
+  "form": {
+    "name": "Name"
+  }
+}

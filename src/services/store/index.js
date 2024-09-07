@@ -1,6 +1,7 @@
 import { createStore, createLogger } from 'vuex'
 import { defaultLocale, localeOptions } from '@/configs/index.js';
 
+import ws from '@/services/ws/store.js';
 import auth from '@/views/pages/admin/auth/store/index.js';
 import company from '@/views/pages/admin/company/store/index.js';
 import university from '@/views/pages/admin/university/store/index.js';
@@ -27,6 +28,7 @@ import setting from '@/views/pages/admin/setting/store/index.js';
 import document from '@/views/pages/admin/document/store/index.js';
 import role from '@/views/pages/admin/role/store/index.js';
 import permission from '@/views/pages/admin/permission/store/index.js';
+import notification from '@/views/pages/admin/notification/store/index.js';
 import staticPage from './staticPage.js'
 
 const plugins = process.env.NODE_ENV === 'production' ? [] : [
@@ -60,6 +62,7 @@ export default createStore({
     }
   },
   modules: {
+    ws,
     auth,
     company,
     university,
@@ -86,6 +89,7 @@ export default createStore({
     document,
     role,
     permission,
+    notification,
     staticPage,
   },
   plugins,

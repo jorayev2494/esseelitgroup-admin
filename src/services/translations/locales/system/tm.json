@@ -33,8 +33,10 @@
     "save_changes": "Üýtgetmeleri ýatda sakla",
     "created_at": "Döredildi",
     "clear": "Arassala",
+    "clear_all": "Hemmesini arassala",
     "upload": "Yükle",
     "uploaded": "Yüklendi",
     "all": "Ählisi",
-    "search_btn": "Gözläň"
+    "search_btn": "Gözläň",
+    "notification": "Duýduryş"
 }

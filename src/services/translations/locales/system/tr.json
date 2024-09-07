@@ -33,8 +33,10 @@
     "save_changes": "Değişiklikleri Kaydet",
     "created_at": "Oluşturulma tarihi",
     "clear": "Temizle",
+    "clear_all": "Hepsini temizle",
     "upload": "Yükle",
     "uploaded": "Yüklendi",
     "all": "Tümü",
-    "search_btn": "Aramak"
+    "search_btn": "Aramak",
+    "notification": "Bildirim"
 }

@@ -1,3 +1,4 @@
+import { useCentrifuge } from '@/services/ws/centrifuge';
 import jwtDefaultConfig from './jwtDefaultConfig';
 // import router from '@/services/router/index.js';
 import store from '@/services/store/index';
@@ -9,6 +10,8 @@ import store from '@/services/store/index';
 export default class JwtService {
   // Will be used by this service for making API calls
   httpClientIns = null
+
+  centrifuge = null
 
   // jwtConfig <= Will be used by this service
   jwtConfig = {
@@ -25,6 +28,7 @@ export default class JwtService {
 
   constructor(httpClientIns, jwtOverrideConfig) {
     this.httpClientIns = httpClientIns
+    this.centrifuge = useCentrifuge();
     this.jwtConfig = {
       ...this.jwtConfig,
       ...jwtOverrideConfig,
@@ -110,7 +114,7 @@ export default class JwtService {
 
   setAccessToken(value) {
     store.commit('auth/setAccessToken', value);
-    localStorage.setItem(this.jwtConfig.storageTokenKeyName, value);
+    store.dispatch('ws/centrifuge/loadWSAccessTokenAsync');
   }
 
   setRefreshToken(value) {
@@ -161,7 +165,10 @@ export default class JwtService {
   }
 
   logout(...args) {
-    const serverResponse = this.httpClientIns.post(this.jwtConfig.logoutEndpoint, ...args);
+    const serverResponse = this.httpClientIns.post(this.jwtConfig.logoutEndpoint, ...args)
+      .finally(() => {
+        this.logouted()
+      });
 
     // Reset ability
     // vue.$ability.update(guestAbility)
@@ -194,5 +201,22 @@ export default class JwtService {
 
   setPermissions(payload) {
     store.commit('auth/setPermissions', payload);
+  }
+
+  logouted() {
+    const handlers = [
+      () => {
+        const wsSubscriptions = this.centrifuge.subscriptions();
+
+        for (const channelName in wsSubscriptions) {
+          if (Object.prototype.hasOwnProperty.call(wsSubscriptions, channelName)) {
+            const subscriber = wsSubscriptions[channelName];
+            this.centrifuge.removeSubscription(subscriber);
+          }
+        }
+      }
+    ]
+
+    handlers.forEach(callback => callback())
   }
 }

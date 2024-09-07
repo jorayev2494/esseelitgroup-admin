@@ -1,5 +1,6 @@
 {
     "context_title": "Goýmalar",
+    "application": "Goýma",
     "application_form": "Anketa",
     "documents": "Resminamalar",
     "additional_documents": "Goşmaça resminamalar",
@@ -10,6 +11,9 @@
     "document_name": "Resminamanyň ady",
     "extension": "Formaty",
     "file_name": "Faýlyň ady",
+    "notify": {
+        "application_was_created": " täze <a href=\"{href}\" class=\"{applicationClass}\"> @:application.application </a> döredildi"
+    },
     "form": {
         "student": "Student",
         "alias": "Alias",

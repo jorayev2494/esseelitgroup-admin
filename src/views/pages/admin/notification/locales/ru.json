@@ -1,0 +1,11 @@
+{
+  "context_title": "Уведомлении",
+  "view_all_Notifications": "Просмотреть все Уведомлении",
+  "content": "Содержание",
+  "notify": {
+    "test_title": "Test title RU"
+  },
+  "form": {
+    "name": "Название"
+  }
+}

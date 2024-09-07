@@ -26,6 +26,7 @@ import setting from '@/views/pages/admin/setting/locales/tr.json'
 import document from '@/views/pages/admin/document/locales/tr.json'
 import role from '@/views/pages/admin/role/locales/tr.json'
 import permission from '@/views/pages/admin/permission/locales/tr.json'
+import notification from '@/views/pages/admin/notification/locales/tr.json'
 
 export default {
   system,
@@ -56,4 +57,5 @@ export default {
   document,
   role,
   permission,
+  notification,
 }

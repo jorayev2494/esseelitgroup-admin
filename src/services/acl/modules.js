@@ -21,6 +21,7 @@ import manager from '../../views/pages/admin/manager/acl/index'
 import role from '../../views/pages/admin/role/acl/index'
 import permission from '../../views/pages/admin/permission/acl/index'
 import setting from '../../views/pages/admin/setting/acl/index'
+import notification from '../../views/pages/admin/notification/acl/index'
 
 const modules = {
   dashboard,
@@ -46,6 +47,7 @@ const modules = {
   role,
   permission,
   setting,
+  notification,
 }
 
 export default modules
