@@ -17,7 +17,7 @@ const state = {
 }
 
 const getters = {
-  getAccessToken: state => state.accessToken = state.accessToken ?? window.localStorage.getItem('access_token'),
+  getAccessToken: state => state.accessToken = state.accessToken ?? loadAccessToken(),
   getAuthData: async state => state.authData = state.authData ?? await getAuthData(),
   getAuthDataProperty: state => prop => {
     const authData = state.authData ?? getAuthData();
@@ -39,11 +39,12 @@ const getters = {
 
     return state.permissions ?? [];
   },
+  isAuthenticated: () => typeof(loadAccessToken()) === 'string',
 }
 
 const mutations = {
   setAccessToken: (state, accessToken) => {
-    state.accessToken = accessToken
+    localStorage.setItem('access_token', state.accessToken = accessToken);
   },
   setAuthData: (state, payload) => {
     state.authData = payload;

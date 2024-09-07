@@ -29,7 +29,7 @@
     <!-- Header Right Menu -->
     <ul class="nav user-menu">
       <LanguageSwitcher />
-      <!-- <Notification /> -->
+      <Notification />
 
       <!-- User Menu -->
       <li class="nav-item dropdown has-arrow">

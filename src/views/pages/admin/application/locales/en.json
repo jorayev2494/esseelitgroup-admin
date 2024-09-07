@@ -1,5 +1,6 @@
 {
     "context_title": "Applications",
+    "application": "Application",
     "application_form": "Application Form",
     "documents": "Documents",
     "additional_documents": "Additional documents",
@@ -10,6 +11,9 @@
     "document_name": "Document name",
     "extension": "Extension",
     "file_name": "File name",
+    "notify": {
+        "application_was_created": " was created a new <a href=\"{href}\" class=\"{applicationClass}\"> @:application.application </a>"
+    },
     "form": {
         "student": "Student",
         "alias": "Alias",

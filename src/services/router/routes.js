@@ -77,6 +77,7 @@ import setting from '@/views/pages/admin/setting/routes';
 import document from '@/views/pages/admin/document/routes';
 import role from '@/views/pages/admin/role/routes';
 import permission from '@/views/pages/admin/permission/routes';
+import notification from '@/views/pages/admin/notification/routes';
 
 const routes = [
   ...auth,
@@ -112,6 +113,7 @@ const routes = [
       ...document,
       ...role,
       ...permission,
+      ...notification,
     ],
     meta: {
       middleware: [

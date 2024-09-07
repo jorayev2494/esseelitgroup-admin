@@ -9,7 +9,7 @@
         {{ $t('error.unauthorized_action.title') }}!
       </h3>
       <p class="h4 font-weight-normal">{{ $t('error.unauthorized_action.message') }}</p>
-      <router-link to="/admin/index" class="btn btn-primary">Back to Home</router-link>
+      <router-link :to="$tMakeRoute({ name: 'dashboard' })" class="btn btn-primary">Back to Home</router-link>
     </div>
 
   </div>
