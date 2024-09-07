@@ -1,5 +1,6 @@
 {
     "context_title": "Заявки",
+    "application": "Заявка",
     "application_form": "Форма заявки",
     "documents": "Документы",
     "additional_documents": "Дополнительные документы",
@@ -10,6 +11,9 @@
     "document_name": "Название документа",
     "extension": "Расширение",
     "file_name": "Имя файла",
+    "notify": {
+        "application_was_created": " был создан новый <a href=\"{href}\" class=\"{applicationClass}\"> @:application.application </a>"
+    },
     "form": {
         "student": "Студент",
         "alias": "Псевдоним",

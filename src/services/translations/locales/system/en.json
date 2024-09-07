@@ -33,8 +33,10 @@
     "save_changes": "Save changes",
     "created_at": "Created at",
     "clear": "Clear",
+    "clear_all": "Clear all",
     "upload": "Upload",
     "uploaded": "Uploaded",
     "all": "All",
-    "search_btn": "Search"
+    "search_btn": "Search",
+    "notification": "Notification"
 }

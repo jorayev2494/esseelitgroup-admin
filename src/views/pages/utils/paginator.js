@@ -6,7 +6,7 @@ export function usePaginator() {
   const lastPage = ref(1);
   const to = ref(0);
   const total = ref(0);
-  const perPageOptions = [2, 10, 25, 50, 75, 100];
+  const perPageOptions = [10, 25, 50, 75, 100];
 
   const toQueryParams = () => ({
     page: page.value,
@@ -29,8 +29,6 @@ export function usePaginator() {
     if (['page', 'pagesize'].includes(data.change_type)) {
       page.value = data.current_page ?? page.value;
       perPage.value = data.pagesize ?? perPage.value;
-
-      console.log('ServerPaginate: ', page.value, perPage.value)
     }
   }
 

@@ -291,11 +291,15 @@
     import menteelist from '@/assets/json/admin/AdminIndex/menteelist.json'
     import bookinglist from '@/assets/json/admin/AdminIndex/bookinglist.json'
     import {
-        onMounted
+        onBeforeUnmount,
+        onMounted,
+        onUnmounted,
+        ref,
     } from 'vue';
 
     import { useACLProtection } from '@/services/acl/useACLProtection';
     import { RESOURCE_ACTIONS } from '../../acl/constants';
+    import { useCentrifuge } from '@/services/ws/centrifuge/index'
 
     export default {
         data() {
@@ -306,6 +310,19 @@
             }
         },
         setup() {
+            const centrifuge = useCentrifuge();
+
+            const dashboardSubscribe = ref(centrifuge.newSubscription('dashboard'));
+
+            const alertSubscribe = () => {
+                dashboardSubscribe.value.on('publication', ctx => {
+                    const { channel, data } = ctx;
+                    console.log('Dashboard ws: ', ctx, 'Channel: ', channel, 'Message: ', data?.message);
+                })
+
+                dashboardSubscribe.value.subscribe();
+            }
+
             onMounted(() => {
                 $(function () {
 
@@ -426,8 +443,17 @@
                         return false;
                     }
                 });
+
+                alertSubscribe()
             })
 
+            // onBeforeUnmount(() => {
+            //     console.log('onBeforeUnmount');
+            // })
+
+            onUnmounted(() => {
+                centrifuge.removeSubscription(dashboardSubscribe.value);
+            })
 
             return {
 
@@ -438,6 +464,7 @@
         },
     }
 </script>
+
 <style>
     .fa-users {
         font-size: 20px;

@@ -7291,3 +7291,8 @@ div.table-responsive>div.dataTables_wrapper>div.row {
 .cursor-pointer {
 	cursor: pointer;
 }
+
+.avatar-min {
+    width: 2.0rem;
+    height: 2.0rem;
+}

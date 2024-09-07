@@ -1,5 +1,6 @@
 {
     "context_title": "Başvurular",
+    "application": "Başvuru",
     "application_form": "Başvuru Formu",
     "documents": "Belgeler",
     "additional_documents": "Ek belgeler",
@@ -10,6 +11,9 @@
     "document_name": "Belge adı",
     "extension": "Uzantı",
     "file_name": "Dosya adı",
+    "notify": {
+        "application_was_created": " yeni bir  <a href=\"{href}\" class=\"{applicationClass}\"> @:application.application </a> oluşturuldu"
+    },
     "form": {
         "student": "Öğrenci",
         "alias": "Takma ad",

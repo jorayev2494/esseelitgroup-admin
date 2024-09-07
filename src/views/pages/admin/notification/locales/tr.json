@@ -1,0 +1,11 @@
+{
+  "context_title": "Bildirimler",
+  "view_all_Notifications": "Tüm Bildirimleri Görüntüle",
+  "content": "İçerik",
+  "notify": {
+    "test_title": "Test title TR"
+  },
+  "form": {
+    "name": "Ad"
+  }
+}
