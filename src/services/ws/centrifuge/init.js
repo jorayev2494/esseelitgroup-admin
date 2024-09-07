@@ -1,12 +1,6 @@
 import store from '@/services/store';
 import { Centrifuge } from 'centrifuge';
 
-// const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5YmYwNDhjZC00ZGQ3LTRiOTctOGE3Yy0wN2I2YjIwYzY5MDUiLCJleHAiOjE3MjM0OTUxOTEsImlhdCI6MTcyMjg5MDM5MX0.wEl5u6HFlgfF7AdTZeSo9TG8XJSwIw2mJP_b8yR_nNg';
-// const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjM1MDA5MjMsImlhdCI6MTcyMjg5NjEyM30.k-c67uTY5MLtVvOoiq1maWKvy09Cw0j6fTvPXv_DePw';
-// const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM3MjIiLCJleHAiOjE3MjM2NjExNTgsImlhdCI6MTcyMzA1NjM1OH0.EBwUKvbWT0IWB-zvhIm61wJP7aAgaK8DzJBultXuD60';
-// const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5YmYwNDhjZC00ZGQ3LTRiOTctOGE3Yy0wN2I2YjIwYzY5MDUiLCJjaGFubmVscyI6WyJuZXdzIl19.FjlsRq-RwcBz0_BoEoouTL-GyN9Q4bE0jwknIQxlOaI';
-
-// const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5YmYwNDhjZC00ZGQ3LTRiOTctOGE3Yy0wN2I2YjIwYzY5MDUiLCJpbmZvIjp7InV1aWQiOiI5YmYwNDhjZC00ZGQ3LTRiOTctOGE3Yy0wN2I2YjIwYzY5MDUiLCJmaXJzdF9uYW1lIjoiTWFuYWdlclVwUyIsImxhc3RfbmFtZSI6Ik1hbmFnZXJvdlVwUyJ9fQ.o7AiLSYttXb6A41f9QaYG3gSs8cGejip9v4-WWFWVk0';
 const token = store.getters['ws/centrifuge/getWSAccessToken'];
 
 export const singleton = (function () {
@@ -17,12 +11,15 @@ export const singleton = (function () {
   let instance;
 
   function createInstance() {
-    const endpoint = 'ws://localhost:8000/connection/websocket';
+    const wsServerEndpoint = process.env.VUE_APP_WS_SERVER_ENDPOINT;
+    const endpoint = `${wsServerEndpoint}/connection/websocket`;
+
+    console.log('MODE process.env.NODE_ENV: ', `${process.env.NODE_ENV},`, 'WS endpoint: ', endpoint)
 
     const centrifuge = new Centrifuge(
       endpoint,
       {
-        user: '9bf048cd-4dd7-4b97-8a7c-07b6b20c6905',
+        // user: '9bf048cd-4dd7-4b97-8a7c-07b6b20c6905',
         token,
         timestamp,
         // data: {
