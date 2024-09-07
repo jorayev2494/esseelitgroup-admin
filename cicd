@@ -1,0 +1,44 @@
+#!/bin/bash
+
+PRODUCTION_SERVER_IP='31.131.17.136'
+
+function buildProduction()
+{
+    docker build -t idocker2494/esseelitegroup-admin ./ -f ./docker/node/Dockerfile --target production
+}
+
+function pushImage()
+{
+    docker push idocker2494/esseelitegroup-admin
+}
+
+function pullInProduction()
+{
+    ssh -t root@$PRODUCTION_SERVER_IP 'cd /var/www/esse-elite-group-server && docker image pull idocker2494/esseelitegroup-admin'
+}
+
+function restartInProduction()
+{
+    ssh -t root@$PRODUCTION_SERVER_IP 'cd /var/www/esse-elite-group-server && docker compose -f ./docker/docker-compose.production.yml restart admin-front-end'
+}
+
+case "$1" in
+    build-production)
+        buildProduction
+    ;;
+    push-image)
+        pushImage
+    ;;
+    pull-in-production)
+        pullInProduction
+    ;;
+    restart-in-production)
+        restartInProduction
+    ;;
+    *)
+        # printCommandsInfo
+
+        # echo -e "${BLUE}$(date +"%d-%m-%Y %H-%M-%S")${ENDCOLOR}";
+        # exit 1
+    ;;
+esac
