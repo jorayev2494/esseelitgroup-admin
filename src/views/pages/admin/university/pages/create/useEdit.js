@@ -31,6 +31,7 @@ export default function useEdit() {
     translations: {},
     is_on_the_country_list: false,
     is_for_foreign: false,
+    top_position: '',
   });
 
   const {
