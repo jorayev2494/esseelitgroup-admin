@@ -6,7 +6,7 @@
         <div class="card-header d-flex justify-content-between align-items-center">
           <h5 class="card-title">{{ $t('setting.form.about_us.cover') }}</h5>
         </div>
-        <div class="card-body pt-0">
+        <div class="card-body pt-0 w-100">
           <form>
             <div class="settings-form">
 

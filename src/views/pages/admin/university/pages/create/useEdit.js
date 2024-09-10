@@ -30,6 +30,7 @@ export default function useEdit() {
     description: '',
     translations: {},
     is_on_the_country_list: false,
+    is_for_foreign: false,
   });
 
   const {
@@ -48,7 +49,7 @@ export default function useEdit() {
       if (Object.hasOwnProperty.call(form.value, key)) {
         const value = form.value[key];
 
-        if (key === 'is_on_the_country_list') {
+        if (key === 'is_on_the_country_list' || key === 'is_for_foreign') {
           formData.append(key, value === true ? 1 : 0);
           continue;
         }

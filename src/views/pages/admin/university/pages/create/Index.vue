@@ -71,6 +71,18 @@
                 </div>
               </div>
 
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label">{{ $t('university.form.is_for_foreign') }}</label>
+                <div class="col-lg-9">
+
+                  <div class="status-toggle d-flex justify-content-left">
+                    <input type="checkbox" id="is_for_foreign" name="is_for_foreign" v-model="form.is_for_foreign" class="check">
+                    <label for="is_for_foreign" class="checktoggle m-0">checkbox</label>
+                  </div>
+
+                </div>
+              </div>
+
               <div class="text-right">
                   <button type="submit" class="btn btn-primary">{{ $t('system.save') }}</button>
               </div>

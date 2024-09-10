@@ -64,7 +64,41 @@ export default [
             },
           ],
         },
-      }
+      },
+      {
+        path: 'university-for-foreign-student',
+        name: 'settings.university-for-foreign-student',
+        component: () => import('./pages/universityForForeignStudent/Index.vue'),
+        meta: {
+          title: 'setting.context_title',
+          middleware: [
+            'auth',
+          ],
+          ...makeRouterPermission([
+            RESOURCE_ACTIONS.RESOURCE_UNIVERSITY_FOR_FOREIGN_STUDENT,
+          ]),
+          breadcrumbs: [
+            {
+              label: 'dashboard.context_title',
+              route: {
+                name: 'dashboard',
+              },
+            },
+            {
+              label: 'setting.context_title',
+              route: {
+                name: 'settings',
+              },
+            },
+            {
+              label: 'setting.tabs.university-for-foreign-student',
+              route: {
+                name: 'settings',
+              },
+            },
+          ],
+        },
+      },
     ],
   }
 ]

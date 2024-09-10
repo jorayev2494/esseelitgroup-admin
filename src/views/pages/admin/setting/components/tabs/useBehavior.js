@@ -23,7 +23,18 @@ export default () => {
           RESOURCE_ACTIONS.RESOURCE_ABOUT_US,
         ]),
       },
-    }
+    },
+    {
+      label: 'setting.tabs.university-for-foreign-student',
+      route: {
+        name: 'settings.university-for-foreign-student',
+      },
+      meta: {
+        ...makePermission([
+          RESOURCE_ACTIONS.RESOURCE_UNIVERSITY_FOR_FOREIGN_STUDENT,
+        ]),
+      },
+    },
     // {
     //   label: 'Localization',
     //   route: {
