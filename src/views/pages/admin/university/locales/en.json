@@ -11,6 +11,7 @@
         "name": "Name",
         "label": "Label",
         "description": "Description",
-        "is_on_the_country_list": "Is on the country list"
+        "is_on_the_country_list": "Is on the country list",
+        "is_for_foreign": "Is for foreign students"
     }
 }

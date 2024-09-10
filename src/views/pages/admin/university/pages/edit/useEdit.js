@@ -61,7 +61,7 @@ export default function useEdit() {
           }
         }
 
-        if (key === 'is_on_the_country_list') {
+        if (key === 'is_on_the_country_list' || key === 'is_for_foreign') {
           formData.append(key, value === true ? 1 : 0);
           continue;
         }

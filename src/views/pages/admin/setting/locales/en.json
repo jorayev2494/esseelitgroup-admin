@@ -2,7 +2,8 @@
   "context_title": "Settings",
   "tabs": {
     "general_settings": "General Settings",
-    "about_us": "About us"
+    "about_us": "About us",
+    "university-for-foreign-student": "University for foreign student"
   },
   "form": {
     "about_us": {

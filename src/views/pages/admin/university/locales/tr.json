@@ -11,6 +11,7 @@
         "name": "Ad",
         "label": "Etiket",
         "description": "Açıklama",
-        "is_on_the_country_list": "Ülke listesinde var"
+        "is_on_the_country_list": "Ülke listesinde var",
+        "is_for_foreign": "Yabancı öğrenciler içindir"
     }
 }
