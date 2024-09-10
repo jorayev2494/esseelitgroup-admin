@@ -12,6 +12,7 @@
         "label": "Etiket",
         "description": "Açıklama",
         "is_on_the_country_list": "Ülke listesinde var",
-        "is_for_foreign": "Yabancı öğrenciler içindir"
+        "is_for_foreign": "Yabancı öğrenciler içindir",
+        "top_position": "TOP pozisyon"
     }
 }

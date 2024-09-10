@@ -33,16 +33,24 @@ export default function useEdit() {
   const { countries, loadCountries } = useCountry();
   const { cities, loadCities } = useCity();
 
+  const universityMapper = university => {
+    const { logo, cover, country_uuid } = university
+    form.value = university;
+
+    logoPreview.value = image(logo)
+    coverPreview.value = image(cover)
+
+    loadCities({ filters: { country_uuids: [country_uuid] } })
+
+    university.top_position = university.top_position ?? '';
+
+    return university;
+  }
+
   const loadUniversity = () => {
     store.dispatch('university/showUniversityAsync', uuid)
       .then(response => {
-        const { logo, cover, country_uuid } = response.data
-        form.value = response.data;
-
-        logoPreview.value = image(logo)
-        coverPreview.value = image(cover)
-
-        loadCities({ filters: { country_uuids: [country_uuid] } })
+        universityMapper(response.data);
       })
   }
 
