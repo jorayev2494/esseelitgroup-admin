@@ -12,8 +12,6 @@ const getters = {
   getWSAccessToken: state => {
     const res = state.WSAccessToken = state.WSAccessToken ?? loadWSAccessToken();
 
-    console.log('Get WS Access Token Res: ', res);
-
     return res;
   },
 }

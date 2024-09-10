@@ -2,7 +2,8 @@
   "context_title": "Ayarlar",
   "tabs": {
     "general_settings": "Genel Ayarlar",
-    "about_us": "Hakkımızda"
+    "about_us": "Hakkımızda",
+    "university-for-foreign-student": "Yabancı öğrenciler için üniversite"
   },
   "form": {
     "about_us": {

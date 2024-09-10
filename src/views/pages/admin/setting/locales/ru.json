@@ -2,7 +2,8 @@
   "context_title": "Настройки",
   "tabs": {
     "general_settings": "Общие настройки",
-    "about_us": "O нас"
+    "about_us": "O нас",
+    "university-for-foreign-student": "Университет для иностранных студентов"
   },
   "form": {
     "about_us": {

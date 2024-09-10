@@ -19,6 +19,7 @@ export const singleton = (function () {
     const centrifuge = new Centrifuge(
       endpoint,
       {
+        debug: true,
         // user: '9bf048cd-4dd7-4b97-8a7c-07b6b20c6905',
         token,
         timestamp,
