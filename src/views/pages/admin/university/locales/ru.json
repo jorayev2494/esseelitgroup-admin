@@ -12,6 +12,7 @@
     "label": "Этикетка",
     "description": "Описание",
     "is_on_the_country_list": "Есть в списке страны",
-    "is_for_foreign": "Для иностранных студентов"
+    "is_for_foreign": "Для иностранных студентов",
+    "top_position": "TOP позиция"
   }
 }

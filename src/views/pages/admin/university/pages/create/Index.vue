@@ -53,10 +53,10 @@
               </div> -->
 
               <div class="form-group row">
-                  <label class="col-lg-3 col-form-label">{{ $t('university.form.youtube_video_id') }}</label>
-                  <div class="col-lg-9">
-                    <input type="text" v-model="form.youtube_video_id" class="form-control" required>
-                  </div>
+                <label class="col-lg-3 col-form-label">{{ $t('university.form.youtube_video_id') }}</label>
+                <div class="col-lg-9">
+                  <input type="text" v-model="form.youtube_video_id" class="form-control" required>
+                </div>
               </div>
 
               <div class="form-group row">
@@ -80,6 +80,13 @@
                     <label for="is_for_foreign" class="checktoggle m-0">checkbox</label>
                   </div>
 
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label">{{ $t('university.form.top_position') }}</label>
+                <div class="col-lg-9">
+                  <input type="number" min="1" v-model="form.top_position" class="form-control">
                 </div>
               </div>
 

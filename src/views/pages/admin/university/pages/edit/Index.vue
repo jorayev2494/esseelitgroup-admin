@@ -83,6 +83,13 @@
                 </div>
               </div>
 
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label">{{ $t('university.form.top_position') }}</label>
+                <div class="col-lg-9">
+                  <input type="number" min="1" v-model="form.top_position" class="form-control">
+                </div>
+              </div>
+
               <div class="text-right">
                   <button type="submit" class="btn btn-primary">{{ $t('system.save_changes') }}</button>
               </div>
