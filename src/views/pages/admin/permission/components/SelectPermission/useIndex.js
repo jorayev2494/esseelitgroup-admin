@@ -18,16 +18,16 @@ export default function useIndex() {
 
   const table = ref(null)
   const form = reactive({
-    permission_ids: [],
+    permission_ids: {},
   })
   const loading = ref(true);
   const items = ref([]);
   const columns = [
     { field: 'label', title: t('permission.form.label') },
-    { field: 'resource', title: t('permission.form.resource') },
+    // { field: 'resource', title: t('permission.form.resource') },
     { field: 'action', title: t('permission.form.action') },
     { field: 'is_active', title: t('permission.form.is_active') },
-    { field: 'created_at', title: t('system.created_at'), type: 'date', rowClass: 'text-bg-danger' },
+    // { field: 'created_at', title: t('system.created_at'), type: 'date', rowClass: 'text-bg-danger' },
   ];
 
   const reloadData = () => {
@@ -35,10 +35,13 @@ export default function useIndex() {
     loadPermissions();
   }
 
-  const roleMapper = role => {
-    role.created_at = d(dateFromTimestamp(role.created_at), 'short');
+  const permissionMapper = permission => {
+    console.log('permission :>> ', permission);
+    // permission.created_at = d(dateFromTimestamp(permission.created_at), 'short');
+    permission.isRowSelected = () => true;
+    // permission.isRowSelected = true;
 
-    return role;
+    return permission;
   }
 
   const loadPermissions = () => {
@@ -49,9 +52,9 @@ export default function useIndex() {
         const { data } = response;
 
         paginator.total.value = data.length;
-        // items.value = data.map(roleMapper);
+        // items.value = data.map(permissionMapper);
 
-        items.value = Object.groupBy(data.map(roleMapper), ({ resource }) => resource);
+        items.value = Object.groupBy(data.map(permissionMapper), ({ resource }) => resource);
 
         loadRolePermissionsList()
       })
@@ -71,7 +74,17 @@ export default function useIndex() {
   }
 
   const getData = () => {
-    form.permission_ids = form.permission_ids.map(({ id }) => id);
+    let permissionIds = [];
+
+    for (const res in form.permission_ids) {
+      if (Object.prototype.hasOwnProperty.call(form.permission_ids, res)) {
+        const perIds = form.permission_ids[res];
+        permissionIds = [...permissionIds, ...perIds.map(({ id }) => id)];
+      }
+    }
+
+    // form.permission_ids = form.permission_ids.map(({ id }) => id);
+    form.permission_ids = permissionIds;
 
     return form;
   }
@@ -84,8 +97,8 @@ export default function useIndex() {
       .catch(error => error);
   }
 
-  const selectedRows = selectedItems => {
-    form.permission_ids = selectedItems
+  const selectedRows = (resource, selectedItems) => {
+    form.permission_ids[resource] = selectedItems
   }
 
   const changeServer = data => {
@@ -98,11 +111,15 @@ export default function useIndex() {
    * @param {Array} rolePermissions
    */
   const rolePermissions = rolePermissions => {
-    rolePermissions.forEach(({ id }) => {
-      table.value.selectRow(
-        items.value.findIndex(p => p.id === id)
-      )
+    rolePermissions.forEach(item => {
+      selectedRowss.value.push(item);
     });
+
+    // rolePermissions.forEach(({ id }) => {
+    //   table.value.selectRow(
+    //     items.value.findIndex(p => p.id === id)
+    //   )
+    // });
   }
 
   onMounted(() => {

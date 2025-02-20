@@ -43,7 +43,7 @@
                 :boxStyle="{
                   width: '100%',
                   height: '100%',
-                  backgroundColor: '#0f271a',
+                  backgroundColor: '#1c5925',
                   margin: 'auto',
                 }"
                 :options="options"
