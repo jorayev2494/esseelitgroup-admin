@@ -1,4 +1,4 @@
-// primary-color: #0f271a - green
+// primary-color: #1c5925 - green
 // Star color: #eda713 - yellow
 
 const routes = [
