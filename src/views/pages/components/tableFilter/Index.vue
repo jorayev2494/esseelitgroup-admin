@@ -296,7 +296,7 @@
     padding: 4px 8px;
     font-weight: 400;
     background: #FFFFFF;
-    border: 1px solid #0f271a;
+    border: 1px solid #1c5925;
     border-radius: 7px;
     display: flex;
     display: -ms-flexbox;
@@ -307,9 +307,9 @@
 
   .report-btn .btn {
     font-weight: 600;
-    color: #0f271a;
+    color: #1c5925;
     background: #FFFFFF;
-    border: 2px solid #0f271a;
+    border: 2px solid #1c5925;
     border-radius: 8px;
     width: 100%;
     padding: 2px 0;

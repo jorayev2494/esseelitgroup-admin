@@ -1,6 +1,25 @@
 #!/bin/bash
 
+source ./colors.sh;
+
 PRODUCTION_SERVER_IP='31.131.17.136'
+
+printCommandsInfo()
+{
+    echo -e "
+ ${CYAN}Server command line interface for the Docker-based web development environment demo.
+
+${YELLOW} Usage:${ENDCOLOR}
+    demo <command> [options] [arguments]
+
+    Build and Deploy
+    build-production ${BLUE}..................................................................${GREEN} Build production
+    push-image ${BLUE}........................................................................${GREEN} Push image
+    pull-in-production ${BLUE}................................................................${GREEN} Pull in production
+    
+    ${ENDCOLOR}
+"
+}
 
 function buildProduction()
 {
@@ -36,9 +55,6 @@ case "$1" in
         restartInProduction
     ;;
     *)
-        # printCommandsInfo
-
-        # echo -e "${BLUE}$(date +"%d-%m-%Y %H-%M-%S")${ENDCOLOR}";
-        # exit 1
+        printCommandsInfo
     ;;
 esac

@@ -1,5 +1,5 @@
 <template>
-  <div class="col-sm-12">
+  <div class="col-sm-12 mb-4">
     <!-- <div class="card">
       <div class="card-header">
         <h4 class="card-title">Default Datatable</h4>
@@ -10,7 +10,7 @@
       </div>
       <div class="card-body"> -->
 
-      <pre>{{ tables }}</pre>
+      <!-- <pre>{{ tables }}</pre> -->
 
         <template v-for="(actions, resource, idx) of items" :key="idx">
 
@@ -18,8 +18,6 @@
 
             <div class="card">
               <div class="card-body">
-
-                <!-- <pre>{{ tables[resource] }}</pre> -->
 
                 <div class="section-header">
                   <h3 class="section-title">{{ $t(`permission.resources.${resource}`) }}</h3>
@@ -43,10 +41,9 @@
                   class="mb-2"
 
                   skin="bh-table-hover"
-                  :rowClass="rowBgClass"
 
                   @change="changeServer"
-                  @rowSelect="selectedRows"
+                  @rowSelect="selectedItems => selectedRows(resource, selectedItems)"
                 >
                   <template #resource="data">
                     <span>
@@ -152,7 +149,7 @@
     rowBgClass,
 
     changeServer,
-    selectedRows
+    selectedRows,
   } = useIndex();
 </script>
 

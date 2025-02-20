@@ -6,11 +6,17 @@ ps:
 up:
 	docker compose -f ${DOCKER_COMPOSE_FILE} up -d --remove-orphans
 
+up-watch:
+	docker compose -f ${DOCKER_COMPOSE_FILE} up --remove-orphans
+
 up-build:
 	docker compose -f ${DOCKER_COMPOSE_FILE} up --build -d --remove-orphans
 
 down:
 	docker compose -f ${DOCKER_COMPOSE_FILE} down --remove-orphans
+
+pull:
+	docker compose -f ${DOCKER_COMPOSE_FILE} pull
 
 build:
 	docker compose -f ${DOCKER_COMPOSE_FILE} build --no-cache --progress=plain
