@@ -6,6 +6,8 @@ import { useInput } from "../useCases/useInput";
 import { useACLProtection } from '@/services/acl/useACLProtection';
 import { RESOURCE_ACTIONS } from '../acl/constants'
 import Tr from '@/services/translations/translation.js';
+import { toast } from "vue3-toastify";
+import { useI18n } from "vue-i18n";
 
 export default function useEdit() {
 
@@ -15,6 +17,7 @@ export default function useEdit() {
   const { protectPermission } = useACLProtection();
   const { countries, loadCountries } = useCountry();
   const { uuid } = route.params;
+  const { t } = useI18n();
 
   const form = ref({});
   const inputs = useInput();
@@ -34,7 +37,9 @@ export default function useEdit() {
     protectPermission(RESOURCE_ACTIONS.RESOURCE_UPDATE).then(() => {
       store.dispatch('city/updateCityAsync', { uuid, data: decorateFormData() })
         .then(() => {
-          router.push({ name: 'countries' });
+          router.push({ name: 'countries' }).then(() => {
+            toast.success(t('city.flash_messages.success.city_was_updated'));
+          });
         })
     })
   }

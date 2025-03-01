@@ -2,5 +2,12 @@
   "context_title": "Aliaslar",
   "form": {
     "name": "Ady"
+  },
+  "flash_messages": {
+    "success": {
+      "alias_was_created": "Alias ​​döredildi",
+      "alias_was_updated": "Alias ​​täzelendi",
+      "alias_was_deleted": "Alias ​​öçürildi"
+    }
   }
 }

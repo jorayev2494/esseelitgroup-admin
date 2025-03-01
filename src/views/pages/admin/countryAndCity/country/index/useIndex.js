@@ -5,6 +5,7 @@ import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
 import { useACLProtection } from '@/services/acl/useACLProtection';
 import { RESOURCE_ACTIONS } from '../acl/constants'
+import { toast } from 'vue3-toastify';
 
 export default function useIndex() {
 
@@ -55,7 +56,8 @@ export default function useIndex() {
       protectPermission(RESOURCE_ACTIONS.RESOURCE_DELETE).then(() => {
         store.dispatch('country/deleteCountryAsync', { uuid: data.value.uuid })
           .then(() => {
-            reloadData()
+            toast.success(t('country.flash_messages.success.country_was_deleted'));
+            reloadData();
           })
       })
     }

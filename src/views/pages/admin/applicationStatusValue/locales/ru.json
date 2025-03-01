@@ -7,5 +7,12 @@
     "description": "Описание",
     "is_required_note": "Обязательное примечание",
     "is_first": "Это первый"
+  },
+  "flash_messages": {
+    "success": {
+      "application_status_was_created": "Статус заявки был создан",
+      "application_status_was_updated": "Статус заявки был обновлен",
+      "application_status_was_deleted": "Статус заявки был удален"
+    }
   }
 }

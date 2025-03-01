@@ -3,5 +3,12 @@
   "form": {
     "name": "Название",
     "country": "Страна"
+  },
+  "flash_messages": {
+    "success": {
+      "city_was_created": "Город был создан",
+      "city_was_updated": "Город был обновлен",
+      "city_was_deleted": "Город был удален"
+    }
   }
 }

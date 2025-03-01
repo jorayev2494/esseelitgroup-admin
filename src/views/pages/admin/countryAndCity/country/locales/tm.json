@@ -4,5 +4,12 @@
     "name": "Ady",
     "flag_prefix": "Baýdak prefiksi",
     "flag": "Baýdak"
+  },
+  "flash_messages": {
+    "success": {
+      "country_was_created": "Ýurt döredildi",
+      "country_was_updated": "Ýurt täzelendi",
+      "country_was_deleted": "Ýurt pozuldy"
+    }
   }
 }

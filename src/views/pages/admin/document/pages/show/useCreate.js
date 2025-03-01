@@ -1,6 +1,5 @@
-import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
-import { onMounted, reactive, ref } from "vue"
-import { useRoute, useRouter } from "vue-router";
+import { onMounted, ref } from "vue"
+import { useRoute } from "vue-router";
 import { useStore } from "vuex"
 import useInput from '../../useCases/useInputs'
 import useType from "../../useCases/useType";
@@ -11,7 +10,6 @@ import { RESOURCE_ACTIONS } from '../../acl/constants';
 export default function useCreate() {
 
   const store = useStore();
-  const router = useRouter();
   const route = useRoute();
   const inputs = useInput();
   const { protectPermission } = useACLProtection();
@@ -41,11 +39,16 @@ export default function useCreate() {
     return formData;
   }
 
+  const fileMapper = file => {
+    return file;
+  }
+
   const loadItem = () => {
     protectPermission(RESOURCE_ACTIONS.RESOURCE_SHOW).then(() => {
       store.dispatch('document/showDocumentAsync', { uuid })
         .then(response => {
-          form.value = response.data
+          form.value = response.data;
+          form.value.file = fileMapper(response.data.file);
         })
     })
   }

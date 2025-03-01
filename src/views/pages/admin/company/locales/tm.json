@@ -1,10 +1,17 @@
 {
-    "context_title": "Kompaniýalar",
-    "form": {
-      "name": "Ady",
-      "email": "E-pocta",
-      "logo": "Logotip",
-      "is_main": "Esasy",
-      "status": "Status"
+  "context_title": "Kompaniýalar",
+  "form": {
+    "name": "Ady",
+    "email": "E-pocta",
+    "logo": "Logotip",
+    "is_main": "Esasy",
+    "status": "Status"
+  },
+  "flash_messages": {
+    "success": {
+      "company_was_created": "Kompaniýa döredildi",
+      "company_was_updated": "Kompaniýa täzelendi",
+      "company_was_deleted": "Kompaniýa öçürildi"
     }
+  }
 }

@@ -4,6 +4,9 @@ import { useStore } from "vuex"
 import { useInput } from "../useCases/useInput";
 import { useACLProtection } from '@/services/acl/useACLProtection';
 import { RESOURCE_ACTIONS } from '../acl/constants'
+import { toast } from "vue3-toastify";
+import { useI18n } from "vue-i18n";
+import Tr from '@/services/translations/translation.js';
 
 export default function useEdit() {
 
@@ -12,6 +15,7 @@ export default function useEdit() {
   const route = useRoute();
   const { uuid } = route.params;
   const { protectPermission } = useACLProtection();
+  const { t } = useI18n();
 
   const form = ref({});
   
@@ -32,7 +36,9 @@ export default function useEdit() {
     protectPermission(RESOURCE_ACTIONS.RESOURCE_UPDATE).then(() => {
       store.dispatch('language/updateLanguageAsync', { uuid, data: decorateFormData() })
         .then(() => {
-          router.push({ name: 'languages' });
+          router.push(Tr.makeRoute({ name: 'languages' })).then(() => {
+            toast.success(t('language.flash_messages.success.language_was_updated'));
+          });
         })
     })
   }

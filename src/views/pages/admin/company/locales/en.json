@@ -6,5 +6,12 @@
     "logo": "Logo",
     "is_main": "Main",
     "status": "Status"
+  },
+  "flash_messages": {
+    "success": {
+      "company_was_created": "Company was created",
+      "company_was_updated": "Company was updated",
+      "company_was_deleted": "Company was deleted"
+    }
   }
 }

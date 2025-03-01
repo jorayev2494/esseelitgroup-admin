@@ -36,5 +36,10 @@
     "show": "Посмотреть",
     "update": "Обновить",
     "delete": "Удалить"
+  },
+  "flash_messages": {
+    "success": {
+      "permission_was_updated": "Разрешение обновлено"
+    }
   }
 }

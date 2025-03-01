@@ -1,11 +1,18 @@
 {
-    "context_title": "Yöneticiler",
-    "form": {
-        "full_name": "Ad Soyad",
-        "first_name": "İlk adı",
-        "last_name": "Soy isim",
-        "avatar": "Avatar",
-        "email": "E-posta",
-        "role": "Rol"
+  "context_title": "Yöneticiler",
+  "form": {
+    "full_name": "Ad Soyad",
+    "first_name": "İlk adı",
+    "last_name": "Soy isim",
+    "avatar": "Avatar",
+    "email": "E-posta",
+    "role": "Rol"
+  },
+  "flash_messages": {
+    "success": {
+      "manager_was_created": "Yönetici oluşturuldu",
+      "manager_was_updated": "Yönetici güncellendi",
+      "manager_was_deleted": "Yönetici silindi"
     }
+  }
 }

@@ -3,5 +3,12 @@
   "form": {
     "name": "Ad",
     "flag": "Bayrak"
+  },
+  "flash_messages": {
+    "success": {
+      "language_was_created": "Dil oluşturuldu",
+      "language_was_updated": "Dil güncellendi",
+      "language_was_deleted": "Dil silindi"
+    }
   }
 }

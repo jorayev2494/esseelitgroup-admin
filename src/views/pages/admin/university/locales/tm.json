@@ -14,5 +14,12 @@
     "is_on_the_country_list": "ýurduň sanawynda bar",
     "is_for_foreign": "Daşary ýurtly talyplar üçin",
     "top_position": "TOP pozisiýasy"
+  },
+  "flash_messages": {
+    "success": {
+      "university_was_created": "Uniwersitet döredildi",
+      "university_was_updated": "Uniwersitet täzelendi",
+      "university_was_deleted": "Uniwersitet öçürildi"
+    }
   }
 }

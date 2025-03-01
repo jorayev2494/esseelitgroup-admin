@@ -1,4 +1,3 @@
-import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { onMounted, reactive, ref } from "vue"
 import { useRouter } from "vue-router";
 import { useStore } from "vuex"
@@ -9,12 +8,14 @@ import useMaritalStatus from "@/views/pages/useCases/useMaritalStatus";
 import useChangeImage from "@/views/pages/useCases/useChangeImage";
 import { useACLProtection } from '@/services/acl/useACLProtection';
 import { RESOURCE_ACTIONS } from '../../acl/constants';
+import { toast } from "vue3-toastify";
+import { useI18n } from "vue-i18n";
 
 export default () => {
 
   const router = useRouter();
   const store = useStore();
-  const { image } = useUrlPattern();
+  const { t } = useI18n();
   const { protectPermission } = useACLProtection();
 
   const { imagePreview: avatarPreview, uploadImage: uploadAvatar } = useChangeImage();
@@ -76,7 +77,9 @@ export default () => {
     protectPermission(RESOURCE_ACTIONS.RESOURCE_CREATE).then(async () => {
       await store.dispatch('student/createStudentAsync', { data: getData() })
         .then(() => {
-          router.push(Tr.makeRoute({ name: 'students' }))
+          router.push(Tr.makeRoute({ name: 'students' })).then(() => {
+            toast.success(t('student.flash_messages.success.student_was_created'));
+          })
         })
     })
   }

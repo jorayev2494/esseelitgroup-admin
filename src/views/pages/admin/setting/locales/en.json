@@ -11,5 +11,17 @@
       "content": "Content",
       "cover": "Cover"
     }
+  },
+  "flash_messages": {
+    "about_us": {
+      "success": {
+        "about_us_was_updated": "About us was updated"
+      }
+    },
+    "university_for_foreign_student": {
+      "success": {
+        "university_for_foreign_student_was_updated": "University for foreign student was updated"
+      }
+    }
   }
 }

@@ -6,6 +6,7 @@ import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
 import { useACLProtection } from '@/services/acl/useACLProtection';
 import { RESOURCE_ACTIONS } from '../../acl/constants';
+import { toast } from 'vue3-toastify';
 
 export default function useIndex() {
 
@@ -60,7 +61,10 @@ export default function useIndex() {
 
     if (confirmed) {
       protectPermission(RESOURCE_ACTIONS.RESOURCE_DELETE).then(() => {
-        store.dispatch('university/deleteUniversityAsync', { uuid: data.value.uuid }).then(reloadData)
+        store.dispatch('university/deleteUniversityAsync', { uuid: data.value.uuid }).then(() => {
+          toast.success(t('university.flash_messages.success.university_was_deleted'));
+          reloadData();
+        })
       })
     }
   }

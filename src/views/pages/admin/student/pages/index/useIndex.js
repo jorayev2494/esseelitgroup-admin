@@ -8,6 +8,7 @@ import useFilters from "../../useCases/useFilters";
 import useSearch from "@/views/pages/utils/useSearch";
 import { useACLProtection } from '@/services/acl/useACLProtection';
 import { RESOURCE_ACTIONS } from '../../acl/constants';
+import { toast } from 'vue3-toastify';
 
 export default function useIndex() {
 
@@ -88,7 +89,10 @@ export default function useIndex() {
 
     if (confirmed) {
       protectPermission(RESOURCE_ACTIONS.RESOURCE_DELETE).then(() => {
-        store.dispatch('student/deleteStudentAsync', { uuid: data.value.uuid }).then(reloadData);
+        store.dispatch('student/deleteStudentAsync', { uuid: data.value.uuid }).then(() => {
+          toast.success(t('student.flash_messages.success.student_was_deleted'));
+          reloadData();
+        });
       })
     }
   }

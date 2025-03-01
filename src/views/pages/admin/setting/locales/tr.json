@@ -11,5 +11,17 @@
       "content": "İçerik",
       "cover": "Küçük resim"
     }
+  },
+  "flash_messages": {
+    "about_us": {
+      "success": {
+        "about_us_was_updated": "Hakkımızda güncellendi"
+      }
+    },
+    "university_for_foreign_student": {
+      "success": {
+        "university_for_foreign_student_was_updated": "Yabancı Öğrenci Üniversitesi güncellendi"
+      }
+    }
   }
 }
