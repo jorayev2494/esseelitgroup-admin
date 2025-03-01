@@ -4,5 +4,12 @@
     "name": "Название",
     "flag_prefix": "Префикс флага",
     "flag": "Флага"
+  },
+  "flash_messages": {
+    "success": {
+      "country_was_created": "Страна была создана",
+      "country_was_updated": "Страна была обновлена",
+      "country_was_deleted": "Страна была удалена"
+    }
   }
 }

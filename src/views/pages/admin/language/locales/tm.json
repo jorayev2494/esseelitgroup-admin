@@ -3,5 +3,12 @@
   "form": {
     "name": "Ady",
     "flag": "Baýdak"
+  },
+  "flash_messages": {
+    "success": {
+      "language_was_created": "Dil döredildi",
+      "language_was_updated": "Dil täzelendi",
+      "language_was_deleted": "Dil öçürildi"
+    }
   }
 }

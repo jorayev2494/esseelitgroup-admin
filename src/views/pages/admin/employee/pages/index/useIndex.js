@@ -6,6 +6,7 @@ import { useStore } from 'vuex';
 import { getStatusStyle } from "../../useCases/usePartials";
 import { useACLProtection } from '@/services/acl/useACLProtection';
 import { RESOURCE_ACTIONS } from '../../acl/constants';
+import { toast } from 'vue3-toastify';
 
 export default function useIndex() {
 
@@ -61,7 +62,10 @@ export default function useIndex() {
 
     if (confirmed) {
       protectPermission(RESOURCE_ACTIONS.RESOURCE_DELETE).then(() => {
-        store.dispatch('employee/deleteEmployeeAsync', { uuid: data.value.uuid }).then(reloadData);
+        store.dispatch('employee/deleteEmployeeAsync', { uuid: data.value.uuid }).then(() => {
+          toast.success(t('employee.flash_messages.success.employee_was_deleted'));
+          reloadData();
+        });
       })
     }
   }

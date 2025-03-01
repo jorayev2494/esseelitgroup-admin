@@ -36,5 +36,10 @@
     "show": "Göstermek",
     "update": "Güncellemek",
     "delete": "Silmek"
+  },
+  "flash_messages": {
+    "success": {
+      "permission_was_updated": "İzin güncellendi"
+    }
   }
 }

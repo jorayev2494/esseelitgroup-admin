@@ -7,5 +7,12 @@
     "description": "Description",
     "is_required_note": "Required Note",
     "is_first": "Is first"
+  },
+  "flash_messages": {
+    "success": {
+      "application_status_was_created": "Application Status was created",
+      "application_status_was_updated": "Application Status was updated",
+      "application_status_was_deleted": "Application Status was deleted"
+    }
   }
 }

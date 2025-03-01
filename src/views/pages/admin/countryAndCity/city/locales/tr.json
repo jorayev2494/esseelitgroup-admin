@@ -3,5 +3,12 @@
   "form": {
     "name": "Ad",
     "country": "Ülke"
+  },
+  "flash_messages": {
+    "success": {
+      "city_was_created": "Şehir yaratıldı",
+      "city_was_updated": "Şehir güncellendi",
+      "city_was_deleted": "Şehir silindi"
+    }
   }
 }

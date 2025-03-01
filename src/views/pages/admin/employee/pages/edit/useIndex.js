@@ -7,6 +7,8 @@ import Tr from '@/services/translations/translation'
 import useChangeImage from "@/views/pages/useCases/useChangeImage";
 import { useACLProtection } from '@/services/acl/useACLProtection';
 import { RESOURCE_ACTIONS } from '../../acl/constants';
+import { toast } from "vue3-toastify";
+import { useI18n } from "vue-i18n";
 
 export default () => {
 
@@ -15,6 +17,7 @@ export default () => {
   const store = useStore();
   const { image } = useUrlPattern();
   const { protectPermission } = useACLProtection();
+  const { t } = useI18n();
 
   const { uuid } = route.params;
 
@@ -41,7 +44,9 @@ export default () => {
     protectPermission(RESOURCE_ACTIONS.RESOURCE_UPDATE).then(() => {
       store.dispatch('employee/updateEmployeeAsync', { uuid, data: getData() })
         .then(() => {
-          router.push(Tr.makeRoute({ name: 'employees' }))
+          router.push(Tr.makeRoute({ name: 'employees' })).then(() => {
+            toast.success(t('employee.flash_messages.success.employee_was_updated'));
+          })
         })
     })
   }

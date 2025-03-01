@@ -2,10 +2,10 @@
   <div class="col-sm-12">
     <div class="card">
       <div class="card-header">
-        <h4 class="card-title">Default Datatable</h4>
+        <h4 class="card-title">{{ $t('alias.context_title') }}</h4>
         <p class="card-text">
-          This is the most basic example of the datatables with zero configuration. Use the <code>.datatable</code>
-          class to initialize datatables.
+          <!-- This is the most basic example of the datatables with zero configuration. Use the <code>.datatable</code>
+          class to initialize datatables. -->
         </p>
       </div>
       <div class="card-body">

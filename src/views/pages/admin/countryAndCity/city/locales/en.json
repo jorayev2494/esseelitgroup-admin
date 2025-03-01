@@ -3,5 +3,12 @@
   "form": {
     "name": "Name",
     "country": "Country"
+  },
+  "flash_messages": {
+    "success": {
+      "city_was_created": "City was created",
+      "city_was_updated": "City was updated",
+      "city_was_deleted": "City was deleted"
+    }
   }
 }

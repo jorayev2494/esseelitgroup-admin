@@ -6,5 +6,12 @@
     "file": "Dosya",
     "downloaded_count": "İndirilenlerin sayısı",
     "is_active": "Aktivite"
+  },
+  "flash_messages": {
+    "success": {
+      "document_was_created": "Belge oluşturuldu",
+      "document_was_updated": "Belge güncellendi",
+      "document_was_deleted": "Belge silindi"
+    }
   }
 }

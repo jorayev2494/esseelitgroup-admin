@@ -6,5 +6,12 @@
     "file": "Fayl",
     "downloaded_count": "Yuklenilen sany",
     "is_active": "Aktivligi"
+  },
+  "flash_messages": {
+    "success": {
+      "document_was_created": "Resminama döredildi",
+      "document_was_updated": "Resminama täzelendi",
+      "document_was_deleted": "Resminama öçürildi"
+    }
   }
 }

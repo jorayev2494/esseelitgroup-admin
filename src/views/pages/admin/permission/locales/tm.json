@@ -36,5 +36,10 @@
     "show": "Gorkezmek",
     "update": "Redaktirlemek",
     "delete": "Ocurmek"
+  },
+  "flash_messages": {
+    "success": {
+      "permission_was_updated": "Rugsat täzelendi"
+    }
   }
 }

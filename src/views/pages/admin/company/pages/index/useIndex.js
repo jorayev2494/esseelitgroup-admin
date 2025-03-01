@@ -6,6 +6,7 @@ import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
 import { useACLProtection } from '@/services/acl/useACLProtection';
 import { RESOURCE_ACTIONS } from '../../acl/constants';
+import { toast } from 'vue3-toastify';
 
 export default function useIndex() {
 
@@ -46,7 +47,6 @@ export default function useIndex() {
     store.dispatch('company/loadCompaniesAsync', { params: { ...paginator.toQueryParams(), } })
       .then(response => {
         const { data } = response;
-        console.log('Data: ', data, 'response: ', response)
 
         paginator.setMetaData(data);
         items.value = data.data.map(companyMapper);
@@ -56,14 +56,13 @@ export default function useIndex() {
   };
 
   const remove = data => {
-    console.log('Remove data: ', data);
-
     const confirmed = confirm(`Do you want delete the company '${data.value.name}'`);
 
     if (confirmed) {
       protectPermission(RESOURCE_ACTIONS.RESOURCE_DELETE).then(() => {
-        store.dispatch('company/deleteCompanyAsync', data.value.uuid).then(response => {
-          reloadData()
+        store.dispatch('company/deleteCompanyAsync', data.value.uuid).then(() => {
+          toast.success(t('company.flash_messages.success.company_was_deleted'));
+          reloadData();
         })
       })
     }

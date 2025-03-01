@@ -11,5 +11,17 @@
       "content": "Содержание",
       "cover": "Обложка"
     }
+  },
+  "flash_messages": {
+    "about_us": {
+      "success": {
+        "about_us_was_updated": "О нас было обновлено"
+      }
+    },
+    "university_for_foreign_student": {
+      "success": {
+        "university_for_foreign_student_was_updated": "Университет иностранных студентов был обновлен"
+      }
+    }
   }
 }

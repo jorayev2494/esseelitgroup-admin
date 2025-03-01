@@ -45,14 +45,19 @@
   </div>
 
   <div class="col-xl-6">
-    <!-- <pre>{{ form }}</pre> -->
     <Inputs v-if="form && form.translations" :form="form" :inputs="inputs" :values="form.translations" :readonly="true" />
   </div>
+
+  <div class="col-xl-12 mh-100" v-if="form?.file">
+    <Iframe :file="form?.file" />
+  </div>
+
 </template>
 
 <script setup>
   import useCreate from './useCreate';
   import Inputs from '../../../../components/InputCard/Index.vue'
+  import Iframe from '../../../../components/iframeCard/Index.vue'
 
   const {
     form,

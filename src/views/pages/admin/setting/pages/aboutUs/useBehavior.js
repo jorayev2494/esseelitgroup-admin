@@ -6,6 +6,8 @@ import { formDataTranslations } from '../../../../utils/helpers'
 import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { useACLProtection } from '@/services/acl/useACLProtection';
 import { RESOURCE_ACTIONS } from '../../acl/constants';
+import { toast } from "vue3-toastify";
+import { useI18n } from "vue-i18n";
 
 export default () => {
   const store = useStore();
@@ -14,6 +16,7 @@ export default () => {
   const { imagePreview: coverPreview, uploadImage: uploadCover } = useChangeImage();
   const inputs = useAboutUsInput();
   const { checkPermissions, protectPermission } = useACLProtection();
+  const { t } = useI18n();
 
   const slug = 'about-us';
   const form = ref(null);
@@ -55,8 +58,8 @@ export default () => {
   const update = () => {
     protectPermission(RESOURCE_ACTIONS.RESOURCE_ABOUT_US).then(() => {
       store.dispatch('staticPage/updateStaticPageAsync', { slug, data: getData() })
-        .then(response => {
-            alert('Updated')
+        .then(() => {
+            toast.success(t('setting.flash_messages.about_us.success.about_us_was_updated'));
         })
     })
   }

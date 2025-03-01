@@ -1,6 +1,6 @@
 import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { onMounted, ref } from "vue"
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import { useStore } from "vuex"
 import { useCompany } from '../../useCases/usePartials' 
 import useChangeImage from "@/views/pages/useCases/useChangeImage";

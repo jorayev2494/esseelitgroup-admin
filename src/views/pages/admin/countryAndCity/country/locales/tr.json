@@ -4,5 +4,12 @@
     "name": "Ad",
     "flag_prefix": "Bayrak Öneki",
     "flag": "Bayrak"
+  },
+  "flash_messages": {
+    "success": {
+      "country_was_created": "Ülke yaratıldı",
+      "country_was_updated": "Ülke güncellendi",
+      "country_was_deleted": "Ülke silindi"
+    }
   }
 }

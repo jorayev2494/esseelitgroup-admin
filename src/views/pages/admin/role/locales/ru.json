@@ -4,5 +4,12 @@
     "name": "Название",
     "is_admin": "Is admin",
     "is_active": "Активность"
+  },
+  "flash_messages": {
+    "success": {
+      "role_was_created": "Роль была создана",
+      "role_was_updated": "Роль была обновлена",
+      "role_was_deleted": "Роль была удалена"
+    }
   }
 }

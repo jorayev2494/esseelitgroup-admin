@@ -7,5 +7,12 @@
     "description": "Düşündiriş",
     "is_required_note": "Gerekli bellik",
     "is_first": "Birinjidir"
+  },
+  "flash_messages": {
+    "success": {
+      "application_status_was_created": "Goýmalaryn statusy döredildi",
+      "application_status_was_updated": "Goýmalaryn statusy täzelendi",
+      "application_status_was_deleted": "Goýmalaryn statusy pozuldy"
+    }
   }
 }
