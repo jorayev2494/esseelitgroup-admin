@@ -6,5 +6,12 @@
     "logo": "Logo",
     "is_main": "Ana",
     "status": "Durum"
+  },
+  "flash_messages": {
+    "success": {
+      "company_was_created": "Şirket yaratıldı",
+      "company_was_updated": "Şirket güncellendi",
+      "company_was_deleted": "Şirket silindi"
+    }
   }
 }

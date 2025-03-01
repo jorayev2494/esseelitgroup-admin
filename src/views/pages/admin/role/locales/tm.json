@@ -4,5 +4,12 @@
     "name": "Ady",
     "is_admin": "Is admin",
     "is_active": "Aktiwligi"
+  },
+  "flash_messages": {
+    "success": {
+      "role_was_created": "Role was created",
+      "role_was_updated": "Role was updated",
+      "role_was_deleted": "Role was deleted"
+    }
   }
 }

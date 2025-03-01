@@ -7,5 +7,12 @@
     "description": "Açıklama",
     "is_required_note": "Gerekli Not",
     "is_first": "İlk"
+  },
+  "flash_messages": {
+    "success": {
+      "application_status_was_created": "Başvuru durumu oluşturuldu",
+      "application_status_was_updated": "Başvuru durumu güncellendi",
+      "application_status_was_deleted": "Başvuru durumu silindi"
+    }
   }
 }

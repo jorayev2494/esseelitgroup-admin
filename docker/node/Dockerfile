@@ -14,9 +14,14 @@ FROM base AS build-stage
 
 COPY ./ /var/project
 
-RUN apt-get update \
-    && npm install --no-progress -g npm@10.2 \
-    && npm install --no-progress
+# RUN apt-get update
+
+# RUN npm cache clean --force
+# RUN npm config set registry https://registry.npmmirror.com
+# RUN npm install --no-progress -g npm@10.2 \
+#     && npm install --no-progress
+
+RUN ls -la
 
 ############################################################################################
 

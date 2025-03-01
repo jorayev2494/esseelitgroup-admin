@@ -2,5 +2,12 @@
   "context_title": "Dereceler",
   "form": {
     "name": "Ad"
+  },
+  "flash_messages": {
+    "success": {
+      "degree_was_created": "Degrees was created",
+      "degree_was_updated": "Degrees was updated",
+      "degree_was_deleted": "Degrees was deleted"
+    }
   }
 }

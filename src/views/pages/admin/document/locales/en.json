@@ -6,5 +6,12 @@
     "file": "File",
     "downloaded_count": "Downloaded count",
     "is_active": "Activity"
+  },
+  "flash_messages": {
+    "success": {
+      "document_was_created": "Document was created",
+      "document_was_updated": "Document was updated",
+      "document_was_deleted": "Document was deleted"
+    }
   }
 }

@@ -1,10 +1,17 @@
 {
-    "context_title": "Компании",
-    "form": {
-      "name": "Название",
-      "email": "E-почта",
-      "logo": "Логотип",
-      "is_main": "Главный",
-      "status": "Статус"
+  "context_title": "Компании",
+  "form": {
+    "name": "Название",
+    "email": "E-почта",
+    "logo": "Логотип",
+    "is_main": "Главный",
+    "status": "Статус"
+  },
+  "flash_messages": {
+    "success": {
+      "company_was_created": "Компания была создана",
+      "company_was_updated": "Компания была обновлена",
+      "company_was_deleted": "Компания была удалена"
     }
+  }
 }

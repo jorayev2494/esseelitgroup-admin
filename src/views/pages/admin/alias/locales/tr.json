@@ -2,5 +2,12 @@
   "context_title": "Takma adlar",
   "form": {
     "name": "Ad"
+  },
+  "flash_messages": {
+    "success": {
+      "alias_was_created": "Takma ad yaratıldı",
+      "alias_was_updated": "Takma adı güncellendi",
+      "alias_was_deleted": "Takma ad silindi"
+    }
   }
 }

@@ -7,5 +7,12 @@
     "avatar": "Аватар",
     "email": "Эл. почта",
     "role": "Роль"
+  },
+  "flash_messages": {
+    "success": {
+      "manager_was_created": "Менеджер был создан",
+      "manager_was_updated": "Менеджер был обновлен",
+      "manager_was_deleted": "Менеджер был удален"
+    }
   }
 }

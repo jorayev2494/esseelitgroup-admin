@@ -7,5 +7,12 @@
     "avatar": "Awatar",
     "email": "E-poçta",
     "role": "Rol"
+  },
+  "flash_messages": {
+    "success": {
+      "manager_was_created": "Menejerler döredildi",
+      "manager_was_updated": "Menejerler täzelendi",
+      "manager_was_deleted": "Menejerler öçürildi"
+    }
   }
 }

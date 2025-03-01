@@ -30,8 +30,6 @@
           </div>
         </label>
       </center>
-    
-      <input class="form-control d-none" id="avatar" type="file" accept="image/*" @change="event => uploadAvatar(event, avatar => form.avatar = avatar)">
     </div>
   </div>
 
@@ -86,16 +84,13 @@
 </template>
 
 <script setup>
-  import VueMultiselect from 'vue-multiselect'
   import useIndex from './useIndex';
 
   const {
     form,
     avatarPreview,
-    uploadAvatar,
 
     companies,
-    update,
   } = useIndex();
 </script>
 

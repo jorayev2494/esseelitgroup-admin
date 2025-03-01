@@ -36,5 +36,10 @@
     "show": "Show",
     "update": "Update",
     "delete": "Delete"
+  },
+  "flash_messages": {
+    "success": {
+      "permission_was_updated": "Permission was updated"
+    }
   }
 }

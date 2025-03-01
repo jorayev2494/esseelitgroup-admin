@@ -29,3 +29,11 @@ logs:
 
 cc: # 👇️ clean npm cache
 	docker compose -f ${DOCKER_COMPOSE_FILE} run --rm node bash -c "npm cache clean --force"
+
+build-image:
+	cd ./docker/node
+	docker build -t idocker2494/esseelitegroup-admin ../../ -f Dockerfile
+	# docker build -t idocker2494/esseelitegroup-admin ../../ -f Dockerfile.dev
+
+push-image:
+	docker push idocker2494/esseelitegroup-admin

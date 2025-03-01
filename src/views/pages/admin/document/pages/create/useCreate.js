@@ -7,12 +7,15 @@ import useType from "../../useCases/useType";
 import { formDataTranslations } from '../../../../utils/helpers'
 import { useACLProtection } from '@/services/acl/useACLProtection';
 import { RESOURCE_ACTIONS } from '../../acl/constants';
+import { toast } from "vue3-toastify";
+import { useI18n } from "vue-i18n";
 
 export default function useCreate() {
 
   const store = useStore();
   const router = useRouter();
   const inputs = useInput();
+  const { t } = useI18n();
 
   const { typePreview, types, loadTypes } = useType();
   const { protectPermission } = useACLProtection();
@@ -52,7 +55,9 @@ export default function useCreate() {
     protectPermission(RESOURCE_ACTIONS.RESOURCE_CREATE).then(async () => {
       await store.dispatch('document/createDocumentAsync', { data: decorateFormData() })
         .then(() => {
-          router.push({ name: 'documents' });
+          router.push({ name: 'documents' }).then(() => {
+            toast.success(t('document.flash_messages.success.document_was_created'));
+          });
         })
     })
   }

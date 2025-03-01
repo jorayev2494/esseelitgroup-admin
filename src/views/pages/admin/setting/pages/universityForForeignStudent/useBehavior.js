@@ -4,12 +4,15 @@ import { useAboutUsInput } from '../../useCases/useInput'
 import { formDataTranslations } from '../../../../utils/helpers'
 import { useACLProtection } from '@/services/acl/useACLProtection';
 import { RESOURCE_ACTIONS } from '../../acl/constants';
+import { toast } from "vue3-toastify";
+import { useI18n } from "vue-i18n";
 
 export default () => {
   const store = useStore();
 
   const inputs = useAboutUsInput();
   const { checkPermissions, protectPermission } = useACLProtection();
+  const { t } = useI18n();
 
   const slug = 'u-for-foreign-s'; // university-for-foreign-student
   const form = ref(null);
@@ -49,8 +52,8 @@ export default () => {
   const update = () => {
     protectPermission(RESOURCE_ACTIONS.RESOURCE_ABOUT_US).then(() => {
       store.dispatch('staticPage/updateStaticPageAsync', { slug, data: getData() })
-        .then(response => {
-            alert('Updated')
+        .then(() => {
+            toast.success(t('setting.flash_messages.university_for_foreign_student.success.university_for_foreign_student_was_updated'));
         })
     })
   }

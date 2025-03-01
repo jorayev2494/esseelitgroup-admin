@@ -6,5 +6,12 @@
     "file": "файл",
     "downloaded_count": "Количество скачанных",
     "is_active": "Активность"
+  },
+  "flash_messages": {
+    "success": {
+      "document_was_created": "Документ создан",
+      "document_was_updated": "Документ был обновлен",
+      "document_was_deleted": "Документ был удален"
+    }
   }
 }

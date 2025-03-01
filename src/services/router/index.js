@@ -1,4 +1,3 @@
-import { reactive, getCurrentInstance } from 'vue';
 import { createRouter, createWebHistory, RouterView } from 'vue-router';
 import routes from './routes.js';
 import Tr from '@/services/translations/translation.js';

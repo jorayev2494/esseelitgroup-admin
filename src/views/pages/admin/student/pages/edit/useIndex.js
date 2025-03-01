@@ -11,13 +11,14 @@ import { useDate } from "@/views/pages/utils/helpers";
 import { useI18n } from "vue-i18n";
 import { useACLProtection } from '@/services/acl/useACLProtection';
 import { RESOURCE_ACTIONS } from '../../acl/constants';
+import { toast } from "vue3-toastify";
 
 export default () => {
 
   const route = useRoute();
   const router = useRouter();
   const store = useStore();
-  const { d } = useI18n()
+  const { t } = useI18n();
   const { image } = useUrlPattern();
   const { protectPermission } = useACLProtection();
 
@@ -77,7 +78,9 @@ export default () => {
     protectPermission(RESOURCE_ACTIONS.RESOURCE_UPDATE).then(() => {
       store.dispatch('student/updateStudentAsync', { uuid, data: getData() })
         .then(() => {
-          router.push(Tr.makeRoute({ name: 'students' }))
+          router.push(Tr.makeRoute({ name: 'students' })).then(() => {
+            toast.success(t('student.flash_messages.success.student_was_updated'));
+          })
         })
     })
   }

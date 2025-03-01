@@ -8,6 +8,8 @@ import { useCropper } from '../../useCases/useCropper';
 import { useUrlPattern } from "@/views/pages/utils/UrlPattern";
 import { useACLProtection } from '@/services/acl/useACLProtection';
 import { RESOURCE_ACTIONS } from '../../acl/constants';
+import { toast } from "vue3-toastify";
+import { useI18n } from "vue-i18n";
 
 export default function useEdit() {
 
@@ -17,6 +19,7 @@ export default function useEdit() {
   const { uuid } = route.params;
   const { image } = useUrlPattern();
   const { protectPermission } = useACLProtection();
+  const { t } = useI18n();
 
   const form = ref({});
   const inputs = useInputs();
@@ -129,7 +132,9 @@ export default function useEdit() {
     protectPermission(RESOURCE_ACTIONS.RESOURCE_UPDATE).then(() => {
       store.dispatch('university/updateUniversityAsync', { uuid, data: decorateFormData() })
         .then(() => {
-          router.push({ name: 'universities' });
+          router.push({ name: 'universities' }).then(() => {
+            toast.success(t('university.flash_messages.success.university_was_updated'));
+          });
         })
     })
   }

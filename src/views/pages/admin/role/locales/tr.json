@@ -4,5 +4,12 @@
     "name": "Ad",
     "is_admin": "Is admin",
     "is_active": "Etkinlik"
+  },
+  "flash_messages": {
+    "success": {
+      "role_was_created": "Rol yaratıldı",
+      "role_was_updated": "Rol güncellendi",
+      "role_was_deleted": "Rol silindi"
+    }
   }
 }

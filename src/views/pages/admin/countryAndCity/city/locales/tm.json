@@ -3,5 +3,12 @@
   "form": {
     "name": "Ady",
     "country": "Yurt"
+  },
+  "flash_messages": {
+    "success": {
+      "city_was_created": "Şäher döredildi",
+      "city_was_updated": "Şäher täzelendi",
+      "city_was_deleted": "Şäher pozuldy"
+    }
   }
 }

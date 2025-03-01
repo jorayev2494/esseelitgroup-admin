@@ -14,5 +14,12 @@
     "is_on_the_country_list": "Есть в списке страны",
     "is_for_foreign": "Для иностранных студентов",
     "top_position": "TOP позиция"
+  },
+  "flash_messages": {
+    "success": {
+      "university_was_created": "Университет был создан",
+      "university_was_updated": "Университет был обновлен",
+      "university_was_deleted": "Университет был удален"
+    }
   }
 }

@@ -11,5 +11,17 @@
       "content": "Mazmuny",
       "cover": "Örtük"
     }
+  },
+  "flash_messages": {
+    "about_us": {
+      "success": {
+        "about_us_was_updated": "Biz hakda täzelendi"
+      }
+    },
+    "university_for_foreign_student": {
+      "success": {
+        "university_for_foreign_student_was_updated": "Daşary ýurtly talyplar üçin uniwersitet täzelendi"
+      }
+    }
   }
 }

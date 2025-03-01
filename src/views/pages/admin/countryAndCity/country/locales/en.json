@@ -4,5 +4,12 @@
     "name": "Name",
     "flag_prefix": "Flag Prefix",
     "flag": "Flag"
+  },
+  "flash_messages": {
+    "success": {
+      "country_was_created": "Country was created",
+      "country_was_updated": "Country was updated",
+      "country_was_deleted": "Country was deleted"
+    }
   }
 }
